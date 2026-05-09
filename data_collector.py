@@ -3,22 +3,6 @@ data_collector.py
 =================
 Script de recolección de datos para el Pronosticador del Mundial 2026.
 
-Fuentes:
-  1. Kaggle  — resultados internacionales históricos (CSV local o descarga automática)
-  2. football-data.co.uk — córners, tarjetas y cuotas históricas por partido
-  3. fbref.com — estadísticas avanzadas de selecciones (xG, posesión, presión)
-  4. transfermarkt.com — perfil histórico de árbitros (scraping)
-
-Uso:
-  python data_collector.py
-
-Salida (carpeta ./data/):
-  results.csv       — resultados internacionales históricos
-  fd_matches.csv    — partidos con córners, tarjetas y cuotas (football-data.co.uk)
-  fbref_stats.csv   — stats avanzadas por partido de selecciones
-  referees.csv      — perfil de árbitros con promedios de tarjetas
-  unified.csv       — dataset unificado listo para modelado
-
 Requisitos:
   pip install requests pandas beautifulsoup4 lxml
 """
