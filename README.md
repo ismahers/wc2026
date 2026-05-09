@@ -7,7 +7,6 @@ Sistema de predicción de partidos y detección de valor en apuestas para el Mun
 ```
 wc2026/
 ├── data/                   # Datos crudos y procesados (no subir a Git)
-│   ├── results_raw.csv     # Dataset Kaggle — descargar manualmente
 │   ├── results.csv         # Resultados filtrados (generado por script)
 │   ├── statsbomb_matches.csv  # Stats avanzadas de Mundiales y Eurocopas
 │   ├── referees.csv        # Perfil de árbitros — rellenar manualmente
