@@ -45,12 +45,9 @@ pip install -r requirements.txt
 ## Recolección de datos
 
 ```bash
-# 1. Descarga results_raw.csv desde Kaggle y ponlo en ./data/
-# https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017
+# 1. Rellena ./data/referees.csv manualmente desde transfermarkt.es
 
-# 2. Rellena ./data/referees.csv manualmente desde transfermarkt.es
-
-# 3. Ejecuta el script (tarda ~15 min por StatsBomb)
+# 2. Ejecuta el script (tarda ~15 min por StatsBomb)
 python data_collector.py
 ```
 
