@@ -1,0 +1,33 @@
+match_number,stage,match_date,home_slot,away_slot,venue_id,competition,season
+73,Round of 32,2026-06-28,2A,2B,los_angeles_sofi,FIFA World Cup,2026
+74,Round of 32,2026-06-29,1E,3A/B/C/D/F,boston_gillette,FIFA World Cup,2026
+75,Round of 32,2026-06-29,1F,2C,monterrey_bbva,FIFA World Cup,2026
+76,Round of 32,2026-06-29,1C,2F,houston_nrg,FIFA World Cup,2026
+77,Round of 32,2026-06-30,1I,3C/D/F/G/H,new_york_new_jersey_metlife,FIFA World Cup,2026
+78,Round of 32,2026-06-30,2E,2I,dallas_att,FIFA World Cup,2026
+79,Round of 32,2026-06-30,1A,3C/E/F/H/I,mexico_city_azteca,FIFA World Cup,2026
+80,Round of 32,2026-07-01,1L,3E/H/I/J/K,atlanta_mercedes_benz,FIFA World Cup,2026
+81,Round of 32,2026-07-01,1D,3B/E/F/I/J,san_francisco_bay_area_levis,FIFA World Cup,2026
+82,Round of 32,2026-07-01,1G,3A/E/H/I/J,seattle_lumen,FIFA World Cup,2026
+83,Round of 32,2026-07-02,2K,2L,toronto_bmo_field,FIFA World Cup,2026
+84,Round of 32,2026-07-02,1H,2J,los_angeles_sofi,FIFA World Cup,2026
+85,Round of 32,2026-07-02,1B,3E/F/G/I/J,vancouver_bc_place,FIFA World Cup,2026
+86,Round of 32,2026-07-03,1J,2H,miami_hard_rock,FIFA World Cup,2026
+87,Round of 32,2026-07-03,1K,3D/E/I/J/L,kansas_city_arrowhead,FIFA World Cup,2026
+88,Round of 32,2026-07-03,2D,2G,dallas_att,FIFA World Cup,2026
+89,Round of 16,2026-07-04,Winner 74,Winner 77,philadelphia_lincoln_financial,FIFA World Cup,2026
+90,Round of 16,2026-07-04,Winner 73,Winner 75,houston_nrg,FIFA World Cup,2026
+91,Round of 16,2026-07-05,Winner 76,Winner 78,new_york_new_jersey_metlife,FIFA World Cup,2026
+92,Round of 16,2026-07-05,Winner 79,Winner 80,mexico_city_azteca,FIFA World Cup,2026
+93,Round of 16,2026-07-06,Winner 83,Winner 84,dallas_att,FIFA World Cup,2026
+94,Round of 16,2026-07-06,Winner 81,Winner 82,seattle_lumen,FIFA World Cup,2026
+95,Round of 16,2026-07-07,Winner 86,Winner 88,atlanta_mercedes_benz,FIFA World Cup,2026
+96,Round of 16,2026-07-07,Winner 85,Winner 87,vancouver_bc_place,FIFA World Cup,2026
+97,Quarter-finals,2026-07-09,Winner 89,Winner 90,boston_gillette,FIFA World Cup,2026
+98,Quarter-finals,2026-07-10,Winner 93,Winner 94,los_angeles_sofi,FIFA World Cup,2026
+99,Quarter-finals,2026-07-11,Winner 91,Winner 92,miami_hard_rock,FIFA World Cup,2026
+100,Quarter-finals,2026-07-11,Winner 95,Winner 96,kansas_city_arrowhead,FIFA World Cup,2026
+101,Semi-finals,2026-07-14,Winner 97,Winner 98,dallas_att,FIFA World Cup,2026
+102,Semi-finals,2026-07-15,Winner 99,Winner 100,atlanta_mercedes_benz,FIFA World Cup,2026
+103,Third-place play-off,2026-07-18,Loser 101,Loser 102,miami_hard_rock,FIFA World Cup,2026
+104,Final,2026-07-19,Winner 101,Winner 102,new_york_new_jersey_metlife,FIFA World Cup,2026

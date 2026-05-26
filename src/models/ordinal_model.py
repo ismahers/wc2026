@@ -13,6 +13,7 @@ Implementa:
 
 import numpy as np
 import pandas as pd
+from typing import Optional
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.preprocessing import StandardScaler, LabelEncoder

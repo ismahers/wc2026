@@ -1,6 +1,13 @@
 # Datos — no subir al repo
-data/
-outputs/
+/data/*
+!/data/raw/
+/data/raw/*
+!/data/raw/venues.csv
+!/data/raw/referees_wc2026.csv
+!/data/raw/base_camps_wc2026.csv
+!/data/raw/group_stage_wc2026.csv
+!/data/raw/knockout_wc2026.csv
+/outputs/
 
 # Python
 __pycache__/
