@@ -92,13 +92,18 @@ def fetch_kaggle_results() -> pd.DataFrame:
             )
             return pd.DataFrame()
 
-    # Filtrar partidos relevantes (Mundiales y clasificatorias desde 1990)
-    wc_tournaments = [
-        "FIFA World Cup", "FIFA World Cup qualification",
-        "Friendly", "AFC Asian Cup", "UEFA Euro",
-        "Copa América", "Africa Cup of Nations",
-    ]
-    df = df[df["tournament"].isin(wc_tournaments) & (df["date"].dt.year >= 1990)]
+    # # Filtrar partidos relevantes (Mundiales y clasificatorias desde 1990)
+    # wc_tournaments = [
+    #     "FIFA World Cup", "FIFA World Cup qualification",
+    #     "Friendly", "AFC Asian Cup", "UEFA Euro",
+    #     "Copa América", "Africa Cup of Nations",
+    # ]
+    # df = df[df["tournament"].isin(wc_tournaments) & (df["date"].dt.year >= 1990)]
+
+    # Filtrar solo por año — todos los torneos cuentan para el Elo
+    # (amistosos K=20, Mundiales K=60, etc.)
+    df = df[df["date"].dt.year >= 1990]
+
     df = df.reset_index(drop=True)
 
     out = os.path.join(DATA_DIR, "results.csv")
