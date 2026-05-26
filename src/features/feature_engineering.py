@@ -5,10 +5,21 @@ Construcción de features para el Pronosticador Mundial 2026.
 
 Para cada partido genera:
   - Features de forma reciente (últimos N partidos de cada equipo)
-  - Features de ranking FIFA
+  - Features de contexto (fase, sede, confederación, neutral/host)
   - Features del árbitro
-  - Features de contexto (fase, sede, confederación)
   - Variables objetivo para cada mercado
+
+Ventaja de local en el Mundial
+-------------------------------
+En el Mundial todos los partidos son en sede neutral, así que la ventaja
+de local tradicional no existe. El feature `effective_home_adv` lo captura:
+  - Partido no neutral (clasificatorias, amistosos): 1.0
+  - Partido neutral sin anfitrión (la mayoría del WC2026): 0.0
+  - Partido neutral con anfitrión (USA/México/Canadá en WC2026): 0.5
+
+El modelo aprende solo del histórico que `is_neutral=1` anula la ventaja,
+y al predecir el Mundial usa `effective_home_adv=0` para todos salvo los
+tres anfitriones.
 """
 
 import pandas as pd
@@ -18,73 +29,70 @@ from typing import Optional
 
 # ── Configuración ─────────────────────────────────────────────────────────────
 
-N_RECENT = 10   # Ventana de partidos recientes para calcular forma
+N_RECENT = 10
 
 
 # ── Utilidades ────────────────────────────────────────────────────────────────
 
-def _result_points(result: str, perspective: str) -> float:
-    """Convierte resultado en puntos desde la perspectiva del equipo (H o A)."""
-    if perspective == "H":
-        return {"H": 3.0, "D": 1.0, "A": 0.0}.get(result, np.nan)
-    else:
-        return {"A": 3.0, "D": 1.0, "H": 0.0}.get(result, np.nan)
-
-
-def _get_team_history(df: pd.DataFrame, team: str, before_date: pd.Timestamp, n: int) -> pd.DataFrame:
-    """
-    Devuelve los últimos N partidos de un equipo anteriores a una fecha dada.
-    Incluye tanto partidos como local como visitante.
-    """
+def _get_team_history(
+    df: pd.DataFrame,
+    team: str,
+    before_date: pd.Timestamp,
+    n: int,
+) -> pd.DataFrame:
+    """Últimos N partidos de un equipo antes de una fecha (sin leakage)."""
     mask = (
         ((df["home_team"] == team) | (df["away_team"] == team)) &
-        (df["date"] < before_date)
+        (df["date"] < before_date) &
+        df["result"].notna()
     )
     return df[mask].sort_values("date", ascending=False).head(n)
 
 
 # ── Features de forma reciente ────────────────────────────────────────────────
 
-def compute_recent_form(df: pd.DataFrame, team: str, before_date: pd.Timestamp, n: int = N_RECENT) -> dict:
+def compute_recent_form(
+    df: pd.DataFrame,
+    team: str,
+    before_date: pd.Timestamp,
+    n: int = N_RECENT,
+) -> dict:
     """
-    Calcula features de forma reciente para un equipo:
-      - win_rate, draw_rate, loss_rate
-      - avg_goals_scored, avg_goals_conceded
-      - avg_corners_for, avg_corners_against   (si disponible)
-      - avg_yellow_cards                        (si disponible)
-      - points_per_game
-      - form_streak: racha actual (+ victorias, - derrotas)
+    Forma reciente de un equipo en los últimos N partidos.
+    Incluye win_rate en partidos neutrales para capturar rendimiento
+    en condiciones similares al Mundial.
     """
     history = _get_team_history(df, team, before_date, n)
-    feats = {}
 
+    empty = {
+        f"form_wins_{n}":          np.nan,
+        f"form_draws_{n}":         np.nan,
+        f"form_losses_{n}":        np.nan,
+        f"form_gf_{n}":            np.nan,
+        f"form_gc_{n}":            np.nan,
+        f"form_ppg_{n}":           np.nan,
+        f"form_corners_for_{n}":   np.nan,
+        f"form_yellows_{n}":       np.nan,
+        f"form_streak":            0,
+        f"form_neutral_wins_{n}":  np.nan,
+    }
     if history.empty:
-        return {
-            f"form_wins_{n}":        np.nan,
-            f"form_draws_{n}":       np.nan,
-            f"form_losses_{n}":      np.nan,
-            f"form_gf_{n}":          np.nan,
-            f"form_gc_{n}":          np.nan,
-            f"form_ppg_{n}":         np.nan,
-            f"form_corners_for_{n}": np.nan,
-            f"form_yellows_{n}":     np.nan,
-            f"form_streak":          0,
-        }
+        return empty
 
-    results, gf_list, gc_list, corners_list, yellow_list = [], [], [], [], []
+    results, gf_list, gc_list, corners_list, yellow_list, neutral_wins = [], [], [], [], [], []
 
     for _, row in history.iterrows():
         is_home = row["home_team"] == team
         if is_home:
             r  = row["result"]
-            gf = row["home_score"]
-            gc = row["away_score"]
+            gf = row.get("home_score", np.nan)
+            gc = row.get("away_score", np.nan)
             c  = row.get("corners_home", np.nan)
             y  = row.get("yellow_home",  np.nan)
         else:
             r  = {"H": "A", "A": "H", "D": "D"}.get(row["result"], "D")
-            gf = row["away_score"]
-            gc = row["home_score"]
+            gf = row.get("away_score", np.nan)
+            gc = row.get("home_score", np.nan)
             c  = row.get("corners_away", np.nan)
             y  = row.get("yellow_away",  np.nan)
 
@@ -94,12 +102,16 @@ def compute_recent_form(df: pd.DataFrame, team: str, before_date: pd.Timestamp, 
         corners_list.append(c)
         yellow_list.append(y)
 
-    n_played = len(results)
-    wins     = results.count("H")
-    draws    = results.count("D")
-    losses   = results.count("A")
+        is_neutral = bool(row.get("neutral", False) or row.get("is_neutral", False))
+        if is_neutral:
+            neutral_wins.append(1 if r == "H" else 0)
 
-    # Racha actual
+    n_played = len(results)
+    wins   = results.count("H")
+    draws  = results.count("D")
+    losses = results.count("A")
+
+    # Racha actual (+ victorias consecutivas, - derrotas)
     streak = 0
     for r in results:
         if r == "H":
@@ -111,187 +123,221 @@ def compute_recent_form(df: pd.DataFrame, team: str, before_date: pd.Timestamp, 
         else:
             break
 
-    feats[f"form_wins_{n}"]        = wins / n_played
-    feats[f"form_draws_{n}"]       = draws / n_played
-    feats[f"form_losses_{n}"]      = losses / n_played
-    feats[f"form_gf_{n}"]          = np.nanmean(gf_list)
-    feats[f"form_gc_{n}"]          = np.nanmean(gc_list)
-    feats[f"form_ppg_{n}"]         = (wins * 3 + draws) / n_played
-    feats[f"form_corners_for_{n}"] = np.nanmean(corners_list)
-    feats[f"form_yellows_{n}"]     = np.nanmean(yellow_list)
-    feats[f"form_streak"]          = streak
-
-    return feats
+    return {
+        f"form_wins_{n}":         wins / n_played,
+        f"form_draws_{n}":        draws / n_played,
+        f"form_losses_{n}":       losses / n_played,
+        f"form_gf_{n}":           np.nanmean(gf_list),
+        f"form_gc_{n}":           np.nanmean(gc_list),
+        f"form_ppg_{n}":          (wins * 3 + draws) / n_played,
+        f"form_corners_for_{n}":  np.nanmean(corners_list),
+        f"form_yellows_{n}":      np.nanmean(yellow_list),
+        f"form_streak":           streak,
+        f"form_neutral_wins_{n}": np.mean(neutral_wins) if neutral_wins else np.nan,
+    }
 
 
 # ── Features de contexto ──────────────────────────────────────────────────────
 
 CONFEDERATION_MAP = {
-    # UEFA
     "Spain": "UEFA", "Germany": "UEFA", "France": "UEFA", "England": "UEFA",
     "Portugal": "UEFA", "Netherlands": "UEFA", "Belgium": "UEFA", "Italy": "UEFA",
     "Croatia": "UEFA", "Poland": "UEFA", "Switzerland": "UEFA", "Denmark": "UEFA",
     "Austria": "UEFA", "Sweden": "UEFA", "Norway": "UEFA", "Serbia": "UEFA",
     "Slovakia": "UEFA", "Slovenia": "UEFA", "Scotland": "UEFA", "Turkey": "UEFA",
-    # CONMEBOL
+    "Czech Republic": "UEFA", "Bosnia and Herzegovina": "UEFA",
     "Brazil": "CONMEBOL", "Argentina": "CONMEBOL", "Uruguay": "CONMEBOL",
     "Colombia": "CONMEBOL", "Chile": "CONMEBOL", "Ecuador": "CONMEBOL",
     "Paraguay": "CONMEBOL", "Peru": "CONMEBOL", "Venezuela": "CONMEBOL",
     "Bolivia": "CONMEBOL",
-    # CONCACAF
     "United States": "CONCACAF", "Mexico": "CONCACAF", "Canada": "CONCACAF",
     "Costa Rica": "CONCACAF", "Panama": "CONCACAF", "Jamaica": "CONCACAF",
     "Honduras": "CONCACAF", "El Salvador": "CONCACAF", "Haiti": "CONCACAF",
-    # AFC
+    "Curacao": "CONCACAF",
     "Japan": "AFC", "South Korea": "AFC", "Iran": "AFC", "Australia": "AFC",
     "Saudi Arabia": "AFC", "Qatar": "AFC", "Jordan": "AFC", "Iraq": "AFC",
-    "Uzbekistan": "AFC",
-    # CAF
+    "Uzbekistan": "AFC", "China": "AFC",
     "Morocco": "CAF", "Senegal": "CAF", "Nigeria": "CAF", "Ivory Coast": "CAF",
     "Ghana": "CAF", "Cameroon": "CAF", "Egypt": "CAF", "Tunisia": "CAF",
-    "Algeria": "CAF", "South Africa": "CAF", "DR Congo": "CAF",
-    # OFC
+    "Algeria": "CAF", "South Africa": "CAF", "DR Congo": "CAF", "Cape Verde": "CAF",
     "New Zealand": "OFC",
 }
 
+HOST_NATIONS = {"United States", "Mexico", "Canada"}
+
 STAGE_ORDER = {
-    "Group Stage": 0, "Round of 16": 1, "Quarter-finals": 2,
-    "Semi-finals": 3, "3rd Place Final": 4, "Final": 5,
+    "Group Stage": 0, "Round of 32": 1, "Round of 16": 2,
+    "Quarter-finals": 3, "Semi-finals": 4,
+    "Third-place play-off": 5, "Final": 6,
 }
 
 
 def compute_context_features(row: pd.Series) -> dict:
-    """Features de contexto del partido."""
-    home_conf = CONFEDERATION_MAP.get(row["home_team"], "OTHER")
-    away_conf = CONFEDERATION_MAP.get(row["away_team"], "OTHER")
+    """
+    Features de contexto del partido.
+
+    effective_home_adv:
+      1.0 → partido no neutral (ventaja local real)
+      0.5 → partido neutral, equipo local es anfitrión del torneo
+      0.0 → partido neutral, sin anfitrión (la mayoría del WC2026)
+    """
+    home_team = str(row.get("home_team", ""))
+    away_team = str(row.get("away_team", ""))
+    home_conf = CONFEDERATION_MAP.get(home_team, "OTHER")
+    away_conf = CONFEDERATION_MAP.get(away_team, "OTHER")
+
+    is_neutral   = bool(row.get("neutral", False) or row.get("is_neutral", False))
+    home_is_host = int(home_team in HOST_NATIONS)
+    away_is_host = int(away_team in HOST_NATIONS)
+
+    if not is_neutral:
+        effective_home_adv = 1.0
+    elif home_is_host:
+        effective_home_adv = 0.5
+    else:
+        effective_home_adv = 0.0
 
     return {
-        "is_neutral":         int(row.get("neutral", False)),
-        "same_confederation": int(home_conf == away_conf),
-        "stage_ordinal":      STAGE_ORDER.get(row.get("stage", "Group Stage"), 0),
-        "home_confederation": home_conf,
-        "away_confederation": away_conf,
+        # Ventaja de local
+        "is_neutral":          int(is_neutral),
+        "home_is_host":        home_is_host,
+        "away_is_host":        away_is_host,
+        "effective_home_adv":  effective_home_adv,
+        # Confederaciones
+        "same_confederation":  int(home_conf == away_conf),
+        "home_confederation":  home_conf,
+        "away_confederation":  away_conf,
+        # Fase del torneo
+        "stage_ordinal":       STAGE_ORDER.get(str(row.get("stage", "")), 0),
+        # Sede (solo WC2026)
+        "altitude_m":          row.get("altitude_m", np.nan),
+        "is_indoor":           int(str(row.get("roof_type", "")).lower() in {"fixed", "retractable"}),
+        # Descanso
+        "home_rest_days":      row.get("home_rest_days", np.nan),
+        "away_rest_days":      row.get("away_rest_days", np.nan),
+        "rest_days_diff":      _safe_diff(row.get("home_rest_days"), row.get("away_rest_days")),
+        # Viaje (solo WC2026)
+        "home_travel_km":      row.get("home_travel_km", np.nan),
+        "away_travel_km":      row.get("away_travel_km", np.nan),
+        "travel_km_diff":      _safe_diff(row.get("home_travel_km"), row.get("away_travel_km")),
     }
+
+
+def _safe_diff(a, b):
+    if a is None or b is None:
+        return np.nan
+    try:
+        fa, fb = float(a), float(b)
+        return np.nan if (np.isnan(fa) or np.isnan(fb)) else fa - fb
+    except (TypeError, ValueError):
+        return np.nan
 
 
 # ── Features del árbitro ──────────────────────────────────────────────────────
 
 def compute_referee_features(row: pd.Series) -> dict:
-    """Features del árbitro asignado al partido."""
     return {
-        "ref_yellow_per_match": row.get("yellow_per_match", np.nan),
-        "ref_red_per_match":    row.get("red_per_match",    np.nan),
+        "ref_yellow_per_match": row.get("ref_yellow_per_match", np.nan),
+        "ref_red_per_match":    row.get("ref_red_per_match",    np.nan),
     }
 
 
 # ── Variables objetivo ────────────────────────────────────────────────────────
 
 def compute_targets(row: pd.Series) -> dict:
-    """
-    Calcula todas las variables objetivo para los distintos mercados.
-    """
-    hs = row.get("home_score", np.nan)
+    hs  = row.get("home_score", np.nan)
     as_ = row.get("away_score", np.nan)
-    total_goals = (hs or 0) + (as_ or 0) if pd.notna(hs) and pd.notna(as_) else np.nan
+    total_goals = (hs + as_) if pd.notna(hs) and pd.notna(as_) else np.nan
 
-    ct = row.get("corners_total", np.nan)
-    yt = row.get("yellow_total",  np.nan)
-    rh = row.get("red_home",      np.nan)
-    ra = row.get("red_away",      np.nan)
-    red_total = (rh or 0) + (ra or 0) if pd.notna(rh) and pd.notna(ra) else np.nan
+    ct        = row.get("corners_total", np.nan)
+    yt        = row.get("yellow_total",  np.nan)
+    rh        = row.get("red_home",      np.nan)
+    ra        = row.get("red_away",      np.nan)
+    red_total = ((rh or 0) + (ra or 0)) if pd.notna(rh) and pd.notna(ra) else np.nan
 
     return {
-        # Mercado principal
-        "target_result":      row.get("result", np.nan),       # H / D / A
-        # Goles
-        "target_over25":      int(total_goals > 2.5) if pd.notna(total_goals) else np.nan,
-        "target_btts":        int((hs or 0) > 0 and (as_ or 0) > 0) if pd.notna(hs) and pd.notna(as_) else np.nan,
-        "target_total_goals": total_goals,
-        # Descanso
-        "target_ht_result":   row.get("ht_result", np.nan),    # H / D / A (si disponible)
-        # Córners
-        "target_corners":     ct,
-        "target_over85c":     int(ct > 8.5) if pd.notna(ct) else np.nan,
-        # Tarjetas
-        "target_yellows":     yt,
-        "target_over35y":     int(yt > 3.5) if pd.notna(yt) else np.nan,
-        "target_red":         int(red_total > 0) if pd.notna(red_total) else np.nan,
-        # Quién marca primero (requeriría eventos, dejamos NaN por ahora)
+        "target_result":       row.get("result", np.nan),
+        "target_over25":       int(total_goals > 2.5) if pd.notna(total_goals) else np.nan,
+        "target_btts":         int((hs or 0) > 0 and (as_ or 0) > 0) if pd.notna(hs) and pd.notna(as_) else np.nan,
+        "target_total_goals":  total_goals,
+        "target_ht_result":    row.get("ht_result", np.nan),
+        "target_corners":      ct,
+        "target_over85c":      int(ct > 8.5) if pd.notna(ct) else np.nan,
+        "target_yellows":      yt,
+        "target_over35y":      int(yt > 3.5) if pd.notna(yt) else np.nan,
+        "target_red":          int(red_total > 0) if pd.notna(red_total) else np.nan,
         "target_first_scorer": np.nan,
     }
 
 
 # ── Pipeline principal ────────────────────────────────────────────────────────
 
-def build_feature_matrix(df: pd.DataFrame, n_recent: int = N_RECENT) -> pd.DataFrame:
+def build_feature_matrix(
+    df: pd.DataFrame,
+    n_recent: int = N_RECENT,
+    require_result: bool = False,
+) -> pd.DataFrame:
     """
-    Construye la matriz de features completa a partir del dataset unificado.
-
-    Para cada partido calcula features de forma de ambos equipos usando
-    solo información disponible ANTES del partido (sin data leakage).
+    Construye la matriz de features completa sin data leakage.
 
     Parámetros
     ----------
-    df : DataFrame con el dataset unificado (unified.csv)
-    n_recent : ventana de partidos recientes
-
-    Retorna
-    -------
-    DataFrame con una fila por partido y todas las features + targets
+    df : DataFrame de matches_enriched.csv (salida del builder)
+    n_recent : ventana de partidos recientes para forma
+    require_result : True para solo entrenamiento, False para incluir WC2026 futuro
     """
     df = df.copy()
+
+    # Normalizar columna de fecha
+    date_col = "match_date" if "match_date" in df.columns else "date"
+    df = df.rename(columns={date_col: "date"})
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
-    df = df.dropna(subset=["date", "home_team", "away_team", "result"]).reset_index(drop=True)
+    df = df.dropna(subset=["date", "home_team", "away_team"]).reset_index(drop=True)
     df = df.sort_values("date").reset_index(drop=True)
+
+    if require_result:
+        df = df[df["result"].notna()].reset_index(drop=True)
 
     rows = []
     total = len(df)
 
     for i, row in df.iterrows():
-        if i % 500 == 0:
-            print(f"  Procesando partido {i+1}/{total}...")
+        if i % 1000 == 0:
+            print(f"  Procesando {i+1}/{total}...")
 
         date      = row["date"]
         home_team = row["home_team"]
         away_team = row["away_team"]
 
-        # Forma reciente de ambos equipos (sin data leakage)
         home_form = compute_recent_form(df, home_team, date, n_recent)
         away_form = compute_recent_form(df, away_team, date, n_recent)
 
-        # Renombrar con prefijo
         home_feats = {f"home_{k}": v for k, v in home_form.items()}
         away_feats = {f"away_{k}": v for k, v in away_form.items()}
 
-        # Diferencias entre equipos (features de diferencia)
         diff_feats = {}
         for key in home_form:
-            hk, ak = f"home_{key}", f"away_{key}"
-            hv, av = home_feats.get(hk), away_feats.get(ak)
-            if isinstance(hv, float) and isinstance(av, float):
-                diff_feats[f"diff_{key}"] = hv - av
+            hv = home_feats.get(f"home_{key}")
+            av = away_feats.get(f"away_{key}")
+            diff_feats[f"diff_{key}"] = _safe_diff(hv, av)
 
-        # Contexto y árbitro
         ctx_feats = compute_context_features(row)
         ref_feats = compute_referee_features(row)
+        targets   = compute_targets(row)
 
-        # Targets
-        targets = compute_targets(row)
-
-        # Fila final
-        feat_row = {
-            "date":      date,
-            "home_team": home_team,
-            "away_team": away_team,
-            "tournament": row.get("tournament"),
+        rows.append({
+            "date":       date,
+            "home_team":  home_team,
+            "away_team":  away_team,
+            "tournament": row.get("tournament") or row.get("competition"),
+            "_source":    row.get("_source", "historical"),
             **home_feats,
             **away_feats,
             **diff_feats,
             **ctx_feats,
             **ref_feats,
             **targets,
-        }
-        rows.append(feat_row)
+        })
 
     result_df = pd.DataFrame(rows)
     print(f"\nFeature matrix: {len(result_df)} partidos × {len(result_df.columns)} columnas")
@@ -304,20 +350,50 @@ if __name__ == "__main__":
     import os
 
     DATA_DIR = "./data"
-    unified_path = os.path.join(DATA_DIR, "unified.csv")
+    enriched_path = os.path.join(DATA_DIR, "processed", "matches_enriched.csv")
+    unified_path  = os.path.join(DATA_DIR, "unified.csv")
 
-    if not os.path.exists(unified_path):
-        print(f"No se encuentra {unified_path}. Ejecuta primero data_collector.py")
+    if os.path.exists(enriched_path):
+        print(f"Cargando {enriched_path}...")
+        df = pd.read_csv(enriched_path)
+    elif os.path.exists(unified_path):
+        print(f"Fallback a {unified_path}...")
+        df = pd.read_csv(unified_path)
+    else:
+        print("No se encuentra dataset. Ejecuta data_collector.py y builder.py primero.")
         exit(1)
 
-    print("Cargando unified.csv...")
-    df = pd.read_csv(unified_path, parse_dates=["date"])
-    print(f"  → {len(df)} partidos cargados")
-
+    print(f"  → {len(df)} partidos, {len(df.columns)} columnas")
     print("\nConstruyendo feature matrix...")
-    features = build_feature_matrix(df)
 
-    out = os.path.join(DATA_DIR, "features.csv")
+    features = build_feature_matrix(df, require_result=False)
+
+    os.makedirs(os.path.join(DATA_DIR, "processed"), exist_ok=True)
+
+    # Todos los partidos
+    out = os.path.join(DATA_DIR, "processed", "features.csv")
     features.to_csv(out, index=False)
-    print(f"\nGuardado en {out}")
-    print(features.describe().to_string())
+    print(f"Guardado en {out}")
+
+    # Solo histórico con resultado → entrenamiento
+    train = features[features["target_result"].notna()].copy()
+    out_train = os.path.join(DATA_DIR, "processed", "features_train.csv")
+    train.to_csv(out_train, index=False)
+    print(f"Entrenamiento: {out_train}  ({len(train)} partidos)")
+
+    # Solo WC2026 → predicción
+    wc = features[features["_source"] == "wc2026"].copy()
+    out_wc = os.path.join(DATA_DIR, "processed", "features_wc2026.csv")
+    wc.to_csv(out_wc, index=False)
+    print(f"WC2026: {out_wc}  ({len(wc)} partidos)")
+
+    # Resumen de features clave
+    print("\nCobertura de features:")
+    key = ["effective_home_adv", "is_neutral", "home_is_host",
+           "altitude_m", "home_rest_days", "home_travel_km",
+           "home_form_ppg_10", "diff_form_ppg_10"]
+    for col in key:
+        if col in features.columns:
+            pct = features[col].notna().mean() * 100
+            print(f"  {col:<30} {pct:.0f}%")
+            
