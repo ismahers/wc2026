@@ -1,0 +1,17 @@
+venue_id,stadium_name,city,country,lat,lon,altitude_m,timezone,roof_type,surface
+mexico_city_azteca,Estadio Azteca,Mexico City,Mexico,19.3029,-99.1505,2240,America/Mexico_City,Open,Grass
+monterrey_bbva,Estadio BBVA,Monterrey,Mexico,25.6680,-100.2445,540,America/Monterrey,Open,Grass
+guadalajara_akron,Estadio Akron,Guadalajara,Mexico,20.6817,-103.4628,1560,America/Mexico_City,Open,Grass
+vancouver_bc_place,BC Place,Vancouver,Canada,49.2768,-123.1119,4,America/Vancouver,Retractable,Turf/Grass
+toronto_bmo_field,BMO Field,Toronto,Canada,43.6332,-79.4186,76,America/Toronto,Open,Grass
+atlanta_mercedes_benz,Mercedes-Benz Stadium,Atlanta,United States,33.7554,-84.4008,320,America/New_York,Retractable,Turf/Grass
+boston_gillette,Gillette Stadium,Foxborough,United States,42.0909,-71.2643,88,America/New_York,Open,Turf/Grass
+dallas_att,AT&T Stadium,Arlington,United States,32.7473,-97.0945,165,America/Chicago,Retractable,Turf/Grass
+houston_nrg,NRG Stadium,Houston,United States,29.6847,-95.4107,15,America/Chicago,Retractable,Turf/Grass
+kansas_city_arrowhead,Arrowhead Stadium,Kansas City,United States,39.0489,-94.4839,265,America/Chicago,Open,Grass
+los_angeles_sofi,SoFi Stadium,Inglewood,United States,33.9535,-118.3392,38,America/Los_Angeles,Fixed,Turf/Grass
+miami_hard_rock,Hard Rock Stadium,Miami Gardens,United States,25.9580,-80.2389,2,America/New_York,Open,Grass
+new_york_new_jersey_metlife,MetLife Stadium,East Rutherford,United States,40.8135,-74.0745,2,America/New_York,Open,Turf/Grass
+philadelphia_lincoln_financial,Lincoln Financial Field,Philadelphia,United States,39.9008,-75.1675,12,America/New_York,Open,Grass
+san_francisco_bay_area_levis,Levi's Stadium,Santa Clara,United States,37.4030,-121.9700,3,America/Los_Angeles,Open,Grass
+seattle_lumen,Lumen Field,Seattle,United States,47.5952,-122.3316,8,America/Los_Angeles,Open,Turf/Grass

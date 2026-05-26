@@ -1,0 +1,73 @@
+match_number,group,match_date,home_team,away_team,venue_id,stage,competition,season
+1,A,2026-06-11,Mexico,South Africa,mexico_city_azteca,Group Stage,FIFA World Cup,2026
+2,A,2026-06-11,South Korea,Czech Republic,guadalajara_akron,Group Stage,FIFA World Cup,2026
+25,A,2026-06-18,Czech Republic,South Africa,atlanta_mercedes_benz,Group Stage,FIFA World Cup,2026
+28,A,2026-06-18,Mexico,South Korea,guadalajara_akron,Group Stage,FIFA World Cup,2026
+53,A,2026-06-24,Czech Republic,Mexico,mexico_city_azteca,Group Stage,FIFA World Cup,2026
+54,A,2026-06-24,South Africa,South Korea,monterrey_bbva,Group Stage,FIFA World Cup,2026
+3,B,2026-06-12,Canada,Bosnia and Herzegovina,toronto_bmo_field,Group Stage,FIFA World Cup,2026
+8,B,2026-06-13,Qatar,Switzerland,san_francisco_bay_area_levis,Group Stage,FIFA World Cup,2026
+26,B,2026-06-18,Switzerland,Bosnia and Herzegovina,los_angeles_sofi,Group Stage,FIFA World Cup,2026
+27,B,2026-06-18,Canada,Qatar,vancouver_bc_place,Group Stage,FIFA World Cup,2026
+51,B,2026-06-24,Switzerland,Canada,vancouver_bc_place,Group Stage,FIFA World Cup,2026
+52,B,2026-06-24,Bosnia and Herzegovina,Qatar,seattle_lumen,Group Stage,FIFA World Cup,2026
+7,C,2026-06-13,Brazil,Morocco,new_york_new_jersey_metlife,Group Stage,FIFA World Cup,2026
+5,C,2026-06-13,Haiti,Scotland,boston_gillette,Group Stage,FIFA World Cup,2026
+29,C,2026-06-19,Brazil,Haiti,philadelphia_lincoln_financial,Group Stage,FIFA World Cup,2026
+30,C,2026-06-19,Scotland,Morocco,boston_gillette,Group Stage,FIFA World Cup,2026
+49,C,2026-06-24,Scotland,Brazil,miami_hard_rock,Group Stage,FIFA World Cup,2026
+50,C,2026-06-24,Morocco,Haiti,atlanta_mercedes_benz,Group Stage,FIFA World Cup,2026
+4,D,2026-06-12,United States,Paraguay,los_angeles_sofi,Group Stage,FIFA World Cup,2026
+6,D,2026-06-13,Australia,Turkey,vancouver_bc_place,Group Stage,FIFA World Cup,2026
+31,D,2026-06-19,Turkey,Paraguay,san_francisco_bay_area_levis,Group Stage,FIFA World Cup,2026
+32,D,2026-06-19,United States,Australia,seattle_lumen,Group Stage,FIFA World Cup,2026
+59,D,2026-06-25,Turkey,United States,los_angeles_sofi,Group Stage,FIFA World Cup,2026
+60,D,2026-06-25,Paraguay,Australia,san_francisco_bay_area_levis,Group Stage,FIFA World Cup,2026
+9,E,2026-06-14,Germany,Curacao,houston_nrg,Group Stage,FIFA World Cup,2026
+10,E,2026-06-14,Ivory Coast,Ecuador,philadelphia_lincoln_financial,Group Stage,FIFA World Cup,2026
+33,E,2026-06-20,Germany,Ivory Coast,toronto_bmo_field,Group Stage,FIFA World Cup,2026
+34,E,2026-06-20,Ecuador,Curacao,kansas_city_arrowhead,Group Stage,FIFA World Cup,2026
+56,E,2026-06-25,Ecuador,Germany,new_york_new_jersey_metlife,Group Stage,FIFA World Cup,2026
+55,E,2026-06-25,Curacao,Ivory Coast,philadelphia_lincoln_financial,Group Stage,FIFA World Cup,2026
+11,F,2026-06-14,Netherlands,Japan,dallas_att,Group Stage,FIFA World Cup,2026
+12,F,2026-06-14,Sweden,Tunisia,monterrey_bbva,Group Stage,FIFA World Cup,2026
+35,F,2026-06-20,Netherlands,Sweden,houston_nrg,Group Stage,FIFA World Cup,2026
+36,F,2026-06-20,Tunisia,Japan,monterrey_bbva,Group Stage,FIFA World Cup,2026
+57,F,2026-06-25,Japan,Sweden,kansas_city_arrowhead,Group Stage,FIFA World Cup,2026
+58,F,2026-06-25,Tunisia,Netherlands,dallas_att,Group Stage,FIFA World Cup,2026
+15,G,2026-06-15,Iran,New Zealand,los_angeles_sofi,Group Stage,FIFA World Cup,2026
+16,G,2026-06-15,Belgium,Egypt,seattle_lumen,Group Stage,FIFA World Cup,2026
+39,G,2026-06-21,Belgium,Iran,los_angeles_sofi,Group Stage,FIFA World Cup,2026
+40,G,2026-06-21,New Zealand,Egypt,vancouver_bc_place,Group Stage,FIFA World Cup,2026
+64,G,2026-06-26,New Zealand,Belgium,vancouver_bc_place,Group Stage,FIFA World Cup,2026
+63,G,2026-06-26,Egypt,Iran,seattle_lumen,Group Stage,FIFA World Cup,2026
+14,H,2026-06-15,Spain,Cape Verde,atlanta_mercedes_benz,Group Stage,FIFA World Cup,2026
+13,H,2026-06-15,Saudi Arabia,Uruguay,miami_hard_rock,Group Stage,FIFA World Cup,2026
+38,H,2026-06-21,Spain,Saudi Arabia,atlanta_mercedes_benz,Group Stage,FIFA World Cup,2026
+37,H,2026-06-21,Uruguay,Cape Verde,miami_hard_rock,Group Stage,FIFA World Cup,2026
+66,H,2026-06-26,Uruguay,Spain,guadalajara_akron,Group Stage,FIFA World Cup,2026
+65,H,2026-06-26,Cape Verde,Saudi Arabia,houston_nrg,Group Stage,FIFA World Cup,2026
+17,I,2026-06-16,France,Senegal,new_york_new_jersey_metlife,Group Stage,FIFA World Cup,2026
+18,I,2026-06-16,Iraq,Norway,boston_gillette,Group Stage,FIFA World Cup,2026
+42,I,2026-06-22,France,Iraq,philadelphia_lincoln_financial,Group Stage,FIFA World Cup,2026
+41,I,2026-06-22,Norway,Senegal,new_york_new_jersey_metlife,Group Stage,FIFA World Cup,2026
+61,I,2026-06-26,Norway,France,boston_gillette,Group Stage,FIFA World Cup,2026
+62,I,2026-06-26,Senegal,Iraq,toronto_bmo_field,Group Stage,FIFA World Cup,2026
+19,J,2026-06-16,Argentina,Algeria,kansas_city_arrowhead,Group Stage,FIFA World Cup,2026
+20,J,2026-06-16,Austria,Jordan,san_francisco_bay_area_levis,Group Stage,FIFA World Cup,2026
+43,J,2026-06-22,Argentina,Austria,dallas_att,Group Stage,FIFA World Cup,2026
+44,J,2026-06-22,Jordan,Algeria,san_francisco_bay_area_levis,Group Stage,FIFA World Cup,2026
+70,J,2026-06-27,Jordan,Argentina,dallas_att,Group Stage,FIFA World Cup,2026
+69,J,2026-06-27,Algeria,Austria,kansas_city_arrowhead,Group Stage,FIFA World Cup,2026
+23,K,2026-06-17,Portugal,DR Congo,houston_nrg,Group Stage,FIFA World Cup,2026
+24,K,2026-06-17,Uzbekistan,Colombia,mexico_city_azteca,Group Stage,FIFA World Cup,2026
+47,K,2026-06-23,Portugal,Uzbekistan,houston_nrg,Group Stage,FIFA World Cup,2026
+48,K,2026-06-23,Colombia,DR Congo,guadalajara_akron,Group Stage,FIFA World Cup,2026
+71,K,2026-06-27,Colombia,Portugal,miami_hard_rock,Group Stage,FIFA World Cup,2026
+72,K,2026-06-27,DR Congo,Uzbekistan,atlanta_mercedes_benz,Group Stage,FIFA World Cup,2026
+22,L,2026-06-17,England,Croatia,dallas_att,Group Stage,FIFA World Cup,2026
+21,L,2026-06-17,Ghana,Panama,toronto_bmo_field,Group Stage,FIFA World Cup,2026
+45,L,2026-06-23,England,Ghana,boston_gillette,Group Stage,FIFA World Cup,2026
+46,L,2026-06-23,Panama,Croatia,toronto_bmo_field,Group Stage,FIFA World Cup,2026
+67,L,2026-06-27,Panama,England,new_york_new_jersey_metlife,Group Stage,FIFA World Cup,2026
+68,L,2026-06-27,Croatia,Ghana,philadelphia_lincoln_financial,Group Stage,FIFA World Cup,2026
