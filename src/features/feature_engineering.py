@@ -13,12 +13,27 @@ Para cada partido genera:
 
 import pandas as pd
 import numpy as np
+import os
+from pathlib import Path
 from typing import Optional
+
+# [NUEVO] Rutas a los datasets que hemos generado
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DATA_DIR = PROJECT_ROOT / "data"
+PLAYERS_PATH = DATA_DIR / "processed" / "wc2026_players_ready.csv"
+REFEREES_PATH = DATA_DIR / "raw" / "referees_wc2026.csv"
+VENUES_PATH = DATA_DIR / "raw" / "venues.csv"
+
+# Cargamos en memoria (Globales para no recargar por partido)
+df_players = pd.read_csv(PLAYERS_PATH) if os.path.exists(PLAYERS_PATH) else pd.DataFrame()
+df_refs = pd.read_csv(REFEREES_PATH) if os.path.exists(REFEREES_PATH) else pd.DataFrame()
+df_venues = pd.read_csv(VENUES_PATH) if os.path.exists(VENUES_PATH) else pd.DataFrame()
 
 
 # ── Configuración ─────────────────────────────────────────────────────────────
 
 N_RECENT = 10   # Ventana de partidos recientes para calcular forma
+HOST_TEAMS = {"United States", "USA", "Mexico", "Canada"}
 
 
 # ── Utilidades ────────────────────────────────────────────────────────────────
@@ -41,6 +56,28 @@ def _get_team_history(df: pd.DataFrame, team: str, before_date: pd.Timestamp, n:
         (df["date"] < before_date)
     )
     return df[mask].sort_values("date", ascending=False).head(n)
+
+
+def _strip_source_id(value: object) -> str:
+    text = "" if pd.isna(value) else str(value)
+    return text.split(":")[-1]
+
+
+def _lookup_venue(venue_id: object) -> pd.Series | None:
+    if df_venues.empty or "venue_id" not in df_venues.columns:
+        return None
+
+    raw_id = _strip_source_id(venue_id)
+    venue_ids = df_venues["venue_id"].astype(str)
+    match = df_venues[venue_ids.isin([str(venue_id), raw_id])]
+    if match.empty:
+        return None
+    return match.iloc[0]
+
+
+def _safe_numeric(value: object, default: float = 0.0) -> float:
+    numeric = pd.to_numeric(value, errors="coerce")
+    return default if pd.isna(numeric) else float(numeric)
 
 
 # ── Features de forma reciente ────────────────────────────────────────────────
@@ -161,26 +198,51 @@ STAGE_ORDER = {
 
 
 def compute_context_features(row: pd.Series) -> dict:
-    """Features de contexto del partido."""
-    home_conf = CONFEDERATION_MAP.get(row["home_team"], "OTHER")
-    away_conf = CONFEDERATION_MAP.get(row["away_team"], "OTHER")
+    """Extrae factores externos reales (Altitud, Viaje, Turf) desde el CSV de sedes."""
+    venue_id = row.get("venue_id", "")
+    venue_info = _lookup_venue(venue_id)
+
+    if venue_info is not None:
+        altitude = _safe_numeric(venue_info.get("altitude_m"), default=0.0)
+        is_turf = 1 if "Turf" in str(venue_info.get("surface", "")) else 0
+    else:
+        altitude = 0.0
+        is_turf = 0
+
+    home_team = row.get("home_team", "")
+    away_team = row.get("away_team", "")
+    home_conf = CONFEDERATION_MAP.get(home_team, "OTHER")
+    away_conf = CONFEDERATION_MAP.get(away_team, "OTHER")
 
     return {
-        "is_neutral":         int(row.get("neutral", False)),
+        "is_neutral": int(row.get("neutral", False)),
         "same_confederation": int(home_conf == away_conf),
-        "stage_ordinal":      STAGE_ORDER.get(row.get("stage", "Group Stage"), 0),
+        "stage_ordinal": STAGE_ORDER.get(row.get("stage", "Group Stage"), 0),
         "home_confederation": home_conf,
         "away_confederation": away_conf,
+        "is_knockout": 1 if row.get("stage", "Group Stage") != "Group Stage" else 0,
+        "is_host_playing": 1 if home_team in HOST_TEAMS or away_team in HOST_TEAMS else 0,
+        "altitude_m": altitude,
+        "is_high_altitude": 1 if altitude > 1500 else 0,
+        "is_artificial_turf": is_turf
     }
 
-
-# ── Features del árbitro ──────────────────────────────────────────────────────
-
 def compute_referee_features(row: pd.Series) -> dict:
-    """Features del árbitro asignado al partido."""
+    """Extrae la tendencia real del árbitro a sacar tarjetas desde el CSV."""
+    ref_name = row.get("referee", "Unknown")
+    
+    # Si tenemos el dataset de árbitros y el árbitro existe
+    if not df_refs.empty and "referee_name" in df_refs.columns and ref_name in df_refs['referee_name'].values:
+        ref_stats = df_refs[df_refs['referee_name'] == ref_name].iloc[0]
+        # Si tienes la columna de tarjetas por partido en el csv:
+        cards_pg = ref_stats.get('yellow_per_match', 4.0)
+        cards_pg = 4.0 if pd.isna(cards_pg) else float(cards_pg)
+    else:
+        cards_pg = 4.0 # Media FIFA por defecto
+
     return {
-        "ref_yellow_per_match": row.get("yellow_per_match", np.nan),
-        "ref_red_per_match":    row.get("red_per_match",    np.nan),
+        "referee_cards_per_game": cards_pg,
+        "referee_strictness_high": 1 if cards_pg > 4.5 else 0
     }
 
 
@@ -223,7 +285,47 @@ def compute_targets(row: pd.Series) -> dict:
 
 # ── Pipeline principal ────────────────────────────────────────────────────────
 
-def build_feature_matrix(df: pd.DataFrame, n_recent: int = N_RECENT) -> pd.DataFrame:
+
+# Esto suma el xG y los Tiros de los 11 jugadores más importantes de cada equipo para saber su nivel de peligro ofensivo real.
+def compute_squad_features(home_team: str, away_team: str) -> dict:
+    """Calcula el poder ofensivo de los equipos sumando la producción real de sus jugadores clave."""
+    if df_players.empty:
+        return {}
+    required_cols = {"team", "90s", "xG_per90", "Sh_per90"}
+    if not required_cols.issubset(df_players.columns):
+        return {}
+
+    def get_team_power(team_name):
+        team_players = df_players[df_players['team'] == team_name]
+        if team_players.empty:
+            return {"team_xG90": 1.0, "team_Shots90": 10.0} # Valores medios si no hay datos
+            
+        # Cogemos a los 10 jugadores de campo con más minutos jugados ('90s') de esa selección
+        top_players = team_players.sort_values(by='90s', ascending=False).head(10)
+        
+        return {
+            "team_xG90": top_players['xG_per90'].sum(),
+            "team_Shots90": top_players['Sh_per90'].sum()
+        }
+        
+    home_power = get_team_power(home_team)
+    away_power = get_team_power(away_team)
+    
+    return {
+        "home_squad_xG": home_power["team_xG90"],
+        "away_squad_xG": away_power["team_xG90"],
+        "diff_squad_xG": home_power["team_xG90"] - away_power["team_xG90"],
+        "home_squad_Shots": home_power["team_Shots90"],
+        "diff_squad_Shots": home_power["team_Shots90"] - away_power["team_Shots90"]
+    }
+
+
+def build_feature_matrix(
+    df: pd.DataFrame,
+    n_recent: int = N_RECENT,
+    *,
+    require_result: bool = True,
+) -> pd.DataFrame:
     """
     Construye la matriz de features completa a partir del dataset unificado.
 
@@ -234,14 +336,22 @@ def build_feature_matrix(df: pd.DataFrame, n_recent: int = N_RECENT) -> pd.DataF
     ----------
     df : DataFrame con el dataset unificado (unified.csv)
     n_recent : ventana de partidos recientes
+    require_result : si True, descarta filas sin resultado real (modo training).
+        Para fixtures futuros usar False.
 
     Retorna
     -------
     DataFrame con una fila por partido y todas las features + targets
     """
     df = df.copy()
+    if "date" not in df.columns and "match_date" in df.columns:
+        df["date"] = df["match_date"]
+    required_cols = ["date", "home_team", "away_team"]
+    if require_result and "result" in df.columns:
+        required_cols.append("result")
+
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
-    df = df.dropna(subset=["date", "home_team", "away_team", "result"]).reset_index(drop=True)
+    df = df.dropna(subset=required_cols).reset_index(drop=True)
     df = df.sort_values("date").reset_index(drop=True)
 
     rows = []
@@ -274,6 +384,7 @@ def build_feature_matrix(df: pd.DataFrame, n_recent: int = N_RECENT) -> pd.DataF
         # Contexto y árbitro
         ctx_feats = compute_context_features(row)
         ref_feats = compute_referee_features(row)
+        squad_feats = compute_squad_features(home_team, away_team)
 
         # Targets
         targets = compute_targets(row)
@@ -289,6 +400,7 @@ def build_feature_matrix(df: pd.DataFrame, n_recent: int = N_RECENT) -> pd.DataF
             **diff_feats,
             **ctx_feats,
             **ref_feats,
+            **squad_feats,
             **targets,
         }
         rows.append(feat_row)

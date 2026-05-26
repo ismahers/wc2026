@@ -291,10 +291,22 @@ def validate_columns(
     present = set(df.columns)
     missing_required = sorted(required - present)
     extra_columns = sorted(present - set(schema.column_names))
+    available_required = [column for column in required if column in df.columns]
+    null_required = sorted(
+        column for column in available_required
+        if df[column].isna().any() or (df[column].astype(str).str.strip() == "").any()
+    )
+
+    duplicate_primary_keys = 0
+    primary_key_columns = [column for column in schema.primary_key if column in df.columns]
+    if require_primary_key and len(primary_key_columns) == len(schema.primary_key):
+        duplicate_primary_keys = int(df.duplicated(subset=primary_key_columns).sum())
 
     return {
         "table": table_name,
-        "ok": not missing_required,
+        "ok": not missing_required and not null_required and duplicate_primary_keys == 0,
         "missing_required": missing_required,
+        "null_required": null_required,
+        "duplicate_primary_keys": duplicate_primary_keys,
         "extra_columns": extra_columns,
     }

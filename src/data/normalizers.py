@@ -24,13 +24,27 @@ SHARP_BOOKMAKERS = {"pinnacle", "betfair_ex_uk", "betfair_ex_eu", "matchbook"}
 SELECTION_LINE_RE = re.compile(r"^(?P<name>.+?)\s*\((?P<side>Over|Under)\s+(?P<line>\d+(?:\.\d+)?)\)$")
 
 
-def _as_source_id(source: str, entity: str, raw_id: Any, fallback: str = "") -> str:
-    if raw_id not in (None, ""):
-        return f"{source}:{entity}:{raw_id}"
-    clean = unicodedata.normalize("NFKD", str(fallback))
+def _slugify(value: Any) -> str:
+    clean = unicodedata.normalize("NFKD", str(value))
     clean = clean.encode("ascii", "ignore").decode("ascii")
-    clean = re.sub(r"[^a-zA-Z0-9]+", "-", clean.strip().lower()).strip("-")
-    return f"{source}:{entity}:{clean}"
+    clean = re.sub(r"[^a-zA-Z0-9_]+", "-", clean.strip().lower()).strip("-")
+    return clean or "unknown"
+
+
+def _is_missing(value: Any) -> bool:
+    if value is None:
+        return True
+    if isinstance(value, str) and value == "":
+        return True
+    try:
+        return bool(pd.isna(value))
+    except (TypeError, ValueError):
+        return False
+
+
+def _as_source_id(source: str, entity: str, raw_id: Any, fallback: str = "") -> str:
+    value = fallback if _is_missing(raw_id) else raw_id
+    return f"{source}:{entity}:{_slugify(value)}"
 
 
 def _stable_id(*parts: Any) -> str:
