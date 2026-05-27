@@ -41,6 +41,9 @@ def _get_team_history(
     n: int,
 ) -> pd.DataFrame:
     """Últimos N partidos de un equipo antes de una fecha (sin leakage)."""
+    if "result" not in df.columns:
+        return pd.DataFrame()
+
     mask = (
         ((df["home_team"] == team) | (df["away_team"] == team)) &
         (df["date"] < before_date) &
@@ -220,6 +223,10 @@ def compute_context_features(row: pd.Series) -> dict:
         "home_travel_km":      row.get("home_travel_km", np.nan),
         "away_travel_km":      row.get("away_travel_km", np.nan),
         "travel_km_diff":      _safe_diff(row.get("home_travel_km"), row.get("away_travel_km")),
+        # Fuerza relativa de equipo. No usar home_elo/away_elo separados
+        # como features del modelo en sede neutral: el lado home/away es
+        # administrativo salvo anfitriones.
+        "elo_diff":            row.get("elo_diff", np.nan),
     }
 
 

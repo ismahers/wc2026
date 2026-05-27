@@ -204,6 +204,7 @@ TABLE_SCHEMAS: dict[str, TableSchema] = {
             ColumnSpec("training_site", "string", True, "Team training site."),
             ColumnSpec("latitude", "float64", True, "Base camp city or training-site latitude."),
             ColumnSpec("longitude", "float64", True, "Base camp city or training-site longitude."),
+            ColumnSpec("altitude_m", "float64", True, "Base camp city altitude above sea level."),
             ColumnSpec("timezone", "string", True, "Base camp timezone."),
         ),
     ),

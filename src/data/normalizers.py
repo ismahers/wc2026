@@ -700,6 +700,7 @@ def normalize_manual_base_camps(
             "training_site": raw.get("training_site"),
             "latitude": raw.get("lat", raw.get("latitude")),
             "longitude": raw.get("lon", raw.get("longitude")),
+            "altitude_m": raw.get("altitude_m"),
             "timezone": raw.get("timezone"),
         })
 

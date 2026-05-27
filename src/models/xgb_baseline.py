@@ -73,6 +73,7 @@ CONTEXT_FEATURES = [
 EXTRA_FEATURES = [
     "altitude_m", "is_indoor",
     "home_travel_km", "away_travel_km", "travel_km_diff",
+    "elo_diff",
     "home_form_neutral_wins_10", "away_form_neutral_wins_10",
     "diff_form_neutral_wins_10",
     "ref_yellow_per_match", "ref_red_per_match",
@@ -231,7 +232,8 @@ class MarketModel:
 
     def _select_features(self, df: pd.DataFrame) -> list[str]:
         """Selecciona features disponibles (no todo-NaN) del pool del mercado."""
-        pool = _get_features_for_market(self.config.name)
+        market_key = self.config.target_col.replace("target_", "")
+        pool = _get_features_for_market(market_key)
         available = []
         for f in pool:
             if f in df.columns:

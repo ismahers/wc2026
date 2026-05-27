@@ -50,6 +50,43 @@ pip install -r requirements.txt
 python data_collector.py
 ```
 
+### Cuotas históricas y CLV
+
+El collector de The Odds API descarga dos snapshots por partido, por defecto
+apertura aproximada (`T-48h`) y cierre (`T-1h`), cachea el JSON crudo en
+`data/raw/odds/the_odds_api/` y genera:
+
+| Salida | Uso |
+|---|---|
+| `data/processed/odds_history.csv` | Tabla normalizada `odds` para joins y EV |
+| `data/processed/odds_open_close.csv` | Apertura/cierre en la misma fila para CLV |
+
+```bash
+ODDS_API_KEY=tu_key python -m src.data.historical_odds_collector \
+  --target-date 2022-12-18T15:00:00Z \
+  --sport soccer_fifa_world_cup \
+  --markets h2h,totals \
+  --bookmakers pinnacle,bet365
+```
+
+Para props de jugador no uses un market genérico tipo `player_props`: hay que
+pasar las claves concretas que ofrezca The Odds API para ese deporte/evento y
+tu plan histórico. Esos mercados ampliados se piden por `eventId` histórico:
+
+```bash
+ODDS_API_KEY=tu_key python -m src.data.historical_odds_collector \
+  --list-events-date 2024-07-14T19:00:00Z \
+  --sport soccer_uefa_european_championship \
+  --events-output data/processed/odds_events_euro_2024.csv
+
+ODDS_API_KEY=tu_key python -m src.data.historical_odds_collector \
+  --target-date 2024-07-14T19:00:00Z \
+  --sport soccer_uefa_european_championship \
+  --event-id EVENT_ID_DE_THE_ODDS_API \
+  --markets player_shots_on_target,player_shots \
+  --bookmakers pinnacle
+```
+
 ## Arquitectura objetivo
 
 El proyecto pasa de un predictor centrado en 1X2 a un sistema de mercados/eventos. La capa de datos debe normalizar entidades antes de entrenar modelos:
@@ -107,6 +144,15 @@ Modelos por mercado
 Calibración + comparación contra cuotas sharp
         ↓
 Valor esperado, ROI simulado, closing line value y staking conservador
+```
+
+Entrenamiento del baseline XGBoost:
+
+```bash
+python -m src.models.xgboost_model \
+  --features data/processed/features_train.csv \
+  --wc-features data/processed/features_wc2026.csv \
+  --markets result_1x2,over25,btts,total_goals
 ```
 
 ## Mercados predichos

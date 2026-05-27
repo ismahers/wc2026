@@ -12,7 +12,6 @@ Funciones principales:
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from typing import Optional
 
 
@@ -33,6 +32,216 @@ def expected_value(prob: float, odds: float) -> float:
     odds : cuota decimal ofrecida por la casa (ej: 2.50)
     """
     return prob * odds - 1
+
+
+def add_no_vig_probability(
+    odds: pd.DataFrame,
+    group_cols: Optional[list[str]] = None,
+) -> pd.DataFrame:
+    """
+    Add margin-adjusted probabilities within each market group.
+
+    The default grouping treats each match/bookmaker/market/line as one book.
+    Example: h2h has home/draw/away outcomes; totals has over/under at a line.
+    """
+    if odds.empty:
+        return odds.copy()
+
+    group_cols = group_cols or ["match_id", "bookmaker", "market", "line"]
+    result = odds.copy()
+    result["implied_probability"] = 1 / result["odds_decimal"].astype(float)
+    denom = result.groupby(group_cols, dropna=False)["implied_probability"].transform("sum")
+    result["no_vig_probability"] = result["implied_probability"] / denom
+    result["book_overround"] = denom - 1
+    return result
+
+
+def prepare_h2h_odds_matrix(odds: pd.DataFrame) -> pd.DataFrame:
+    """
+    Pivot flat h2h odds into one row per match with H/D/A odds and no-vig probs.
+
+    Labels follow the model convention:
+      H = home team
+      D = draw
+      A = away team
+    """
+    if odds.empty:
+        return pd.DataFrame()
+
+    h2h = odds[odds["market"] == "h2h"].copy()
+    if h2h.empty:
+        return pd.DataFrame()
+
+    h2h = add_no_vig_probability(h2h)
+
+    def _side(row: pd.Series) -> str | None:
+        selection = str(row["selection"])
+        if selection == str(row["home_team"]):
+            return "H"
+        if selection == str(row["away_team"]):
+            return "A"
+        if selection.lower() == "draw":
+            return "D"
+        return None
+
+    h2h["side"] = h2h.apply(_side, axis=1)
+    h2h = h2h.dropna(subset=["side"])
+    index_cols = ["match_id", "match_date", "home_team", "away_team", "bookmaker"]
+    odds_wide = h2h.pivot_table(
+        index=index_cols,
+        columns="side",
+        values="odds_decimal",
+        aggfunc="first",
+    ).rename(columns={"H": "odds_H", "D": "odds_D", "A": "odds_A"})
+    prob_wide = h2h.pivot_table(
+        index=index_cols,
+        columns="side",
+        values="no_vig_probability",
+        aggfunc="first",
+    ).rename(columns={"H": "prob_market_H", "D": "prob_market_D", "A": "prob_market_A"})
+    overround = h2h.groupby(index_cols, dropna=False)["book_overround"].first().rename("book_overround")
+    return odds_wide.join(prob_wide).join(overround).reset_index()
+
+
+def prepare_totals_odds_matrix(odds: pd.DataFrame) -> pd.DataFrame:
+    """
+    Pivot totals odds into one row per match/bookmaker/line with Over/Under.
+    """
+    if odds.empty:
+        return pd.DataFrame()
+
+    totals = odds[odds["market"] == "totals"].copy()
+    if totals.empty:
+        return pd.DataFrame()
+
+    totals = add_no_vig_probability(totals)
+    totals["side"] = totals["selection"].astype(str).str.lower().map({"over": "Over", "under": "Under"})
+    totals = totals.dropna(subset=["side"])
+
+    index_cols = ["match_id", "match_date", "home_team", "away_team", "bookmaker", "line"]
+    odds_wide = totals.pivot_table(
+        index=index_cols,
+        columns="side",
+        values="odds_decimal",
+        aggfunc="first",
+    ).rename(columns={"Over": "odds_over", "Under": "odds_under"})
+    prob_wide = totals.pivot_table(
+        index=index_cols,
+        columns="side",
+        values="no_vig_probability",
+        aggfunc="first",
+    ).rename(columns={"Over": "prob_market_over", "Under": "prob_market_under"})
+    overround = totals.groupby(index_cols, dropna=False)["book_overround"].first().rename("book_overround")
+    return odds_wide.join(prob_wide).join(overround).reset_index()
+
+
+def compare_1x2_predictions_to_odds(
+    predictions: pd.DataFrame,
+    odds: pd.DataFrame,
+    *,
+    min_ev: float = 0.0,
+) -> pd.DataFrame:
+    """
+    Compare model 1X2 probabilities against flat h2h odds and return EV rows.
+
+    Expected prediction columns: date, home_team, away_team, prob_H, prob_D, prob_A.
+    """
+    if predictions.empty or odds.empty:
+        return pd.DataFrame()
+
+    h2h = prepare_h2h_odds_matrix(odds)
+    if h2h.empty:
+        return pd.DataFrame()
+
+    pred = predictions.copy()
+    pred["date"] = pd.to_datetime(pred["date"], errors="coerce", utc=True).dt.date
+    h2h["date"] = pd.to_datetime(h2h["match_date"], errors="coerce", utc=True).dt.date
+    merged = pred.merge(h2h, on=["date", "home_team", "away_team"], how="inner", suffixes=("_model", "_odds"))
+
+    rows = []
+    for _, row in merged.iterrows():
+        for side in ("H", "D", "A"):
+            prob = row.get(f"prob_{side}")
+            odds_decimal = row.get(f"odds_{side}")
+            if pd.isna(prob) or pd.isna(odds_decimal):
+                continue
+            ev = expected_value(float(prob), float(odds_decimal))
+            if ev < min_ev:
+                continue
+            rows.append({
+                "date": row["date"],
+                "home_team": row["home_team"],
+                "away_team": row["away_team"],
+                "bookmaker": row["bookmaker"],
+                "selection": side,
+                "prob_model": float(prob),
+                "prob_market_no_vig": row.get(f"prob_market_{side}"),
+                "odds_decimal": float(odds_decimal),
+                "expected_value": ev,
+                "book_overround": row.get("book_overround"),
+            })
+
+    result = pd.DataFrame(rows)
+    if not result.empty:
+        result = result.sort_values("expected_value", ascending=False).reset_index(drop=True)
+    return result
+
+
+def compare_over_predictions_to_odds(
+    predictions: pd.DataFrame,
+    odds: pd.DataFrame,
+    *,
+    model_prob_col: str = "prob_over25",
+    target_line: float = 2.5,
+    min_ev: float = 0.0,
+) -> pd.DataFrame:
+    """
+    Compare model Over probability against totals odds at a target line.
+
+    Expected prediction columns: date, home_team, away_team, and model_prob_col.
+    """
+    if predictions.empty or odds.empty:
+        return pd.DataFrame()
+
+    totals = prepare_totals_odds_matrix(odds)
+    if totals.empty:
+        return pd.DataFrame()
+
+    totals = totals[np.isclose(totals["line"].astype(float), float(target_line))].copy()
+    if totals.empty:
+        return pd.DataFrame()
+
+    pred = predictions.copy()
+    pred["date"] = pd.to_datetime(pred["date"], errors="coerce", utc=True).dt.date
+    totals["date"] = pd.to_datetime(totals["match_date"], errors="coerce", utc=True).dt.date
+    merged = pred.merge(totals, on=["date", "home_team", "away_team"], how="inner", suffixes=("_model", "_odds"))
+
+    rows = []
+    for _, row in merged.iterrows():
+        prob = row.get(model_prob_col)
+        odds_decimal = row.get("odds_over")
+        if pd.isna(prob) or pd.isna(odds_decimal):
+            continue
+        ev = expected_value(float(prob), float(odds_decimal))
+        if ev < min_ev:
+            continue
+        rows.append({
+            "date": row["date"],
+            "home_team": row["home_team"],
+            "away_team": row["away_team"],
+            "bookmaker": row["bookmaker"],
+            "market": f"over_{target_line:g}",
+            "prob_model": float(prob),
+            "prob_market_no_vig": row.get("prob_market_over"),
+            "odds_decimal": float(odds_decimal),
+            "expected_value": ev,
+            "book_overround": row.get("book_overround"),
+        })
+
+    result = pd.DataFrame(rows)
+    if not result.empty:
+        result = result.sort_values("expected_value", ascending=False).reset_index(drop=True)
+    return result
 
 
 def find_value_bets(
@@ -162,6 +371,8 @@ def calibration_report(
     -------
     dict con ece y fraction_positives por bin
     """
+    import matplotlib.pyplot as plt
+
     bins       = np.linspace(0, 1, n_bins + 1)
     bin_lowers = bins[:-1]
     bin_uppers = bins[1:]

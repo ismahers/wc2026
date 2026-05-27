@@ -1,49 +1,49 @@
-team_name,city,country,accommodation,training_site,tournament
-Algeria,Lawrence,United States,The Oread Lawrence,University of Kansas,World Cup 2026
-Argentina,Kansas City,United States,Origin Kansas City Riverfront,Sporting Kansas City Training Center,World Cup 2026
-Australia,Berkeley,United States,Claremont Hotel & Spa,Oakland Roots SC Training Center,World Cup 2026
-Austria,Goleta,United States,Bacara Resort,Harder Stadium,World Cup 2026
-Belgium,Renton,United States,Lake Washington at Southport,Seattle Sounders FC High Performance Center and Clubhouse,World Cup 2026
-Bosnia and Herzegovina,Salt Lake City,United States,Salt Lake City Union Pacific Depot,Real Salt Lake Training Center,World Cup 2026
-Brazil,Basking Ridge,United States,The Ridge,Columbia Park,World Cup 2026
-Canada,Vancouver,Canada,The Westin Bayshore,National Soccer Development Centre,World Cup 2026
-Cape Verde,Tampa,United States,Grand Hyatt Tampa Bay,Waters Sports Complex,World Cup 2026
-Colombia,Guadalajara,Mexico,Grand Fiesta Americana Country Club,Atlas FC Academy,World Cup 2026
-Croatia,Alexandria,United States,Hotel AKA Alexandria,Episcopal High School,World Cup 2026
-Curacao,Boca Raton,United States,Boca Raton Marriott at Boca Center,Florida Atlantic University,World Cup 2026
-Czech Republic,Arlington,United States,Hilton Garden Inn,Texas Health Mansfield Stadium,World Cup 2026
-DR Congo,Houston,United States,Omni Hotels & Resorts,Houston Sports Park,World Cup 2026
-Ecuador,Columbus,United States,Le Meridien Columbus,Historic Crew Stadium,World Cup 2026
-Egypt,Airway Heights,United States,Northern Quest Resort & Casino,Gonzaga University,World Cup 2026
-England,Kansas City,United States,The Inn at Meadowbrook,Swope Soccer Village,World Cup 2026
-France,Boston,United States,Four Seasons Hotels and Resorts,Bentley University,World Cup 2026
-Germany,Winston-Salem,United States,Graylyn,Wake Forest University,World Cup 2026
-Ghana,Providence,United States,Providence Biltmore,Bryant University,World Cup 2026
-Haiti,Atlantic City,United States,Sheraton Atlantic City Convention Center Hotel,Stockton University,World Cup 2026
-Iran,Tijuana,Mexico,Hotel Marriott de Tijuana,Centro Xoloitzcuintle,World Cup 2026
-Iraq,White Sulphur Springs,United States,The Greenbrier,The Greenbrier Sports Performance Centre,World Cup 2026
-Ivory Coast,Wilmington,United States,DuPont Building,Subaru Park,World Cup 2026
-Japan,Nashville,United States,TBA,Nashville SC Training Center,World Cup 2026
-Jordan,Portland,United States,The Nines,University of Portland,World Cup 2026
-Mexico,Mexico City,Mexico,Centro de Alto Rendimiento,,World Cup 2026
-Morocco,Warren,United States,Hilton Hotels & Resorts,Pingry School,World Cup 2026
-Netherlands,Kansas City,United States,Cascade Hotel,Kansas City Current Training Center,World Cup 2026
-New Zealand,San Diego,United States,Hyatt Regency,Torero Stadium,World Cup 2026
-Norway,Greensboro,United States,Wyndham Hotels & Resorts,UNC Greensboro,World Cup 2026
-Panama,New Tecumseth,Canada,Nottawasaga Inn Resort & Conference Centre,Nottawasaga Training Site,World Cup 2026
-Paraguay,San Jose,United States,Signia by Hilton San Jose,Spartan Stadium,World Cup 2026
-Portugal,Palm Beach,United States,Four Seasons Hotels and Resorts,Gardens North County District Park,World Cup 2026
-Qatar,Goleta,United States,Courtyard by Marriott,Westmont College,World Cup 2026
-Saudi Arabia,Austin,United States,Four Seasons Hotels and Resorts,Q2 Stadium,World Cup 2026
-Scotland,Charlotte,United States,Renaissance Hotels,Charlotte FC Training Center,World Cup 2026
-Senegal,New Brunswick,United States,The Heldrich Hotel and Conference Center,Rutgers University,World Cup 2026
-South Africa,Pachuca,Mexico,Camino Real Hotels,Universidad del Futbol,World Cup 2026
-South Korea,Guadalajara,Mexico,Westin Hotels & Resorts,Verde Valle,World Cup 2026
-Spain,Chattanooga,United States,The Read House Hotel,Baylor School,World Cup 2026
-Sweden,Frisco,United States,Westin Hotels & Resorts,Toyota Stadium,World Cup 2026
-Switzerland,San Diego,United States,Fairmont Hotels and Resorts,San Diego Jewish Academy,World Cup 2026
-Tunisia,San Pedro,Mexico,InterContinental,CF Monterrey Training Center,World Cup 2026
-Turkey,Mesa,United States,Courtyard Mesa and Wrigleyville West,Legacy Park,World Cup 2026
-United States,Irvine,United States,Marriott Hotels & Resorts,Great Park,World Cup 2026
-Uruguay,Playa del Carmen,Mexico,Fairmont Hotels and Resorts,Mayakoba Training Center,World Cup 2026
-Uzbekistan,Atlanta,United States,JW Marriott Hotels,Atlanta United FC Training Center,World Cup 2026
+team_name,city,country,accommodation,training_site,lat,lon,altitude_m,timezone,tournament
+Algeria,Lawrence,United States,The Oread Lawrence,University of Kansas,38.9717,-95.2353,264,America/Chicago,World Cup 2026
+Argentina,Kansas City,United States,Origin Kansas City Riverfront,Sporting Kansas City Training Center,39.0997,-94.5786,277,America/Chicago,World Cup 2026
+Australia,Berkeley,United States,Claremont Hotel & Spa,Oakland Roots SC Training Center,37.8716,-122.2727,52,America/Los_Angeles,World Cup 2026
+Austria,Goleta,United States,Bacara Resort,Harder Stadium,34.4258,-119.8276,6,America/Los_Angeles,World Cup 2026
+Belgium,Renton,United States,Lake Washington at Southport,Seattle Sounders FC High Performance Center and Clubhouse,47.4829,-122.2171,12,America/Los_Angeles,World Cup 2026
+Bosnia and Herzegovina,Salt Lake City,United States,Salt Lake City Union Pacific Depot,Real Salt Lake Training Center,40.7608,-111.8910,1288,America/Denver,World Cup 2026
+Brazil,Basking Ridge,United States,The Ridge,Columbia Park,40.7057,-74.5488,95,America/New_York,World Cup 2026
+Canada,Vancouver,Canada,The Westin Bayshore,National Soccer Development Centre,49.2827,-123.1207,2,America/Vancouver,World Cup 2026
+Cape Verde,Tampa,United States,Grand Hyatt Tampa Bay,Waters Sports Complex,27.9506,-82.4572,15,America/New_York,World Cup 2026
+Colombia,Guadalajara,Mexico,Grand Fiesta Americana Country Club,Atlas FC Academy,20.6597,-103.3496,1566,America/Mexico_City,World Cup 2026
+Croatia,Alexandria,United States,Hotel AKA Alexandria,Episcopal High School,38.8048,-77.0469,12,America/New_York,World Cup 2026
+Curacao,Boca Raton,United States,Boca Raton Marriott at Boca Center,Florida Atlantic University,26.3683,-80.1289,4,America/New_York,World Cup 2026
+Czech Republic,Arlington,United States,Hilton Garden Inn,Texas Health Mansfield Stadium,32.7357,-97.1081,184,America/Chicago,World Cup 2026
+DR Congo,Houston,United States,Omni Hotels & Resorts,Houston Sports Park,29.7604,-95.3698,15,America/Chicago,World Cup 2026
+Ecuador,Columbus,United States,Le Meridien Columbus,Historic Crew Stadium,39.9612,-82.9988,275,America/New_York,World Cup 2026
+Egypt,Airway Heights,United States,Northern Quest Resort & Casino,Gonzaga University,47.6449,-117.5920,725,America/Los_Angeles,World Cup 2026
+England,Kansas City,United States,The Inn at Meadowbrook,Swope Soccer Village,39.0997,-94.5786,277,America/Chicago,World Cup 2026
+France,Boston,United States,Four Seasons Hotels and Resorts,Bentley University,42.3601,-71.0589,43,America/New_York,World Cup 2026
+Germany,Winston-Salem,United States,Graylyn,Wake Forest University,36.0999,-80.2442,296,America/New_York,World Cup 2026
+Ghana,Providence,United States,Providence Biltmore,Bryant University,41.8240,-71.4128,23,America/New_York,World Cup 2026
+Haiti,Atlantic City,United States,Sheraton Atlantic City Convention Center Hotel,Stockton University,39.3643,-74.4229,2,America/New_York,World Cup 2026
+Iran,Tijuana,Mexico,Hotel Marriott de Tijuana,Centro Xoloitzcuintle,32.5149,-117.0382,20,America/Tijuana,World Cup 2026
+Iraq,White Sulphur Springs,United States,The Greenbrier,The Greenbrier Sports Performance Centre,37.7965,-80.2997,572,America/New_York,World Cup 2026
+Ivory Coast,Wilmington,United States,DuPont Building,Subaru Park,39.7447,-75.5484,28,America/New_York,World Cup 2026
+Japan,Nashville,United States,TBA,Nashville SC Training Center,36.1627,-86.7816,182,America/Chicago,World Cup 2026
+Jordan,Portland,United States,The Nines,University of Portland,45.5051,-122.6750,15,America/Los_Angeles,World Cup 2026
+Mexico,Mexico City,Mexico,Centro de Alto Rendimiento,,19.4326,-99.1332,2240,America/Mexico_City,World Cup 2026
+Morocco,Warren,United States,Hilton Hotels & Resorts,Pingry School,40.7684,-74.4143,138,America/New_York,World Cup 2026
+Netherlands,Kansas City,United States,Cascade Hotel,Kansas City Current Training Center,39.0997,-94.5786,277,America/Chicago,World Cup 2026
+New Zealand,San Diego,United States,Hyatt Regency,Torero Stadium,32.7157,-117.1611,19,America/Los_Angeles,World Cup 2026
+Norway,Greensboro,United States,Wyndham Hotels & Resorts,UNC Greensboro,36.0726,-79.7920,272,America/New_York,World Cup 2026
+Panama,New Tecumseth,Canada,Nottawasaga Inn Resort & Conference Centre,Nottawasaga Training Site,44.0780,-79.8133,221,America/Toronto,World Cup 2026
+Paraguay,San Jose,United States,Signia by Hilton San Jose,Spartan Stadium,37.3382,-121.8863,25,America/Los_Angeles,World Cup 2026
+Portugal,Palm Beach,United States,Four Seasons Hotels and Resorts,Gardens North County District Park,26.7056,-80.0364,2,America/New_York,World Cup 2026
+Qatar,Goleta,United States,Courtyard by Marriott,Westmont College,34.4258,-119.8276,6,America/Los_Angeles,World Cup 2026
+Saudi Arabia,Austin,United States,Four Seasons Hotels and Resorts,Q2 Stadium,30.2672,-97.7431,149,America/Chicago,World Cup 2026
+Scotland,Charlotte,United States,Renaissance Hotels,Charlotte FC Training Center,35.2271,-80.8431,229,America/New_York,World Cup 2026
+Senegal,New Brunswick,United States,The Heldrich Hotel and Conference Center,Rutgers University,40.4862,-74.4518,22,America/New_York,World Cup 2026
+South Africa,Pachuca,Mexico,Camino Real Hotels,Universidad del Futbol,20.1011,-98.7591,2400,America/Mexico_City,World Cup 2026
+South Korea,Guadalajara,Mexico,Westin Hotels & Resorts,Verde Valle,20.6597,-103.3496,1566,America/Mexico_City,World Cup 2026
+Spain,Chattanooga,United States,The Read House Hotel,Baylor School,35.0456,-85.3097,206,America/New_York,World Cup 2026
+Sweden,Frisco,United States,Westin Hotels & Resorts,Toyota Stadium,33.1584,-96.8236,210,America/Chicago,World Cup 2026
+Switzerland,San Diego,United States,Fairmont Hotels and Resorts,San Diego Jewish Academy,32.7157,-117.1611,19,America/Los_Angeles,World Cup 2026
+Tunisia,San Pedro,Mexico,InterContinental,CF Monterrey Training Center,25.6572,-100.4027,640,America/Monterrey,World Cup 2026
+Turkey,Mesa,United States,Courtyard Mesa and Wrigleyville West,Legacy Park,33.4152,-111.8315,379,America/Phoenix,World Cup 2026
+United States,Irvine,United States,Marriott Hotels & Resorts,Great Park,33.6846,-117.8265,17,America/Los_Angeles,World Cup 2026
+Uruguay,Playa del Carmen,Mexico,Fairmont Hotels and Resorts,Mayakoba Training Center,20.6296,-87.0739,10,America/Cancun,World Cup 2026
+Uzbekistan,Atlanta,United States,JW Marriott Hotels,Atlanta United FC Training Center,33.7490,-84.3880,320,America/New_York,World Cup 2026
