@@ -241,6 +241,9 @@ if __name__ == "__main__":
 
     log.info("  → %d partidos cargados", len(df))
 
+    from src.data.team_names import add_canonical_columns
+    df = add_canonical_columns(df, ["home_team", "away_team"], suffix="")
+
     # Calcular Elo
     ratings = compute_elo_history(df, save_snapshots_every_n=1)
 

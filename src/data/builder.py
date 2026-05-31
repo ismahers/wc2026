@@ -160,6 +160,28 @@ def _compute_rest_days(matches: pd.DataFrame) -> pd.DataFrame:
     matches["away_rest_days"] = away_rest
     return matches
 
+def _build_ratings_index(ratings: pd.DataFrame) -> dict:
+    """Precalcula, por equipo, (fechas, elos) ordenados para búsqueda as-of rápida."""
+    ratings = ratings.dropna(subset=["team_name", "rating_date", "elo_rating"]).copy()
+    ratings["rating_date"] = pd.to_datetime(ratings["rating_date"], errors="coerce")
+    ratings = ratings.dropna(subset=["rating_date"]).sort_values("rating_date")
+    index = {}
+    for team, sub in ratings.groupby("team_name"):
+        index[team] = (sub["rating_date"].values, sub["elo_rating"].values)
+    return index
+
+
+def _as_of_rating_fast(index: dict, team_name: str, before_date) -> float:
+    """Elo más reciente ESTRICTAMENTE antes de before_date, con índice precalculado."""
+    data = index.get(team_name)
+    if data is None:
+        return float("nan")
+    dates, elos = data
+    pos = np.searchsorted(dates, np.datetime64(before_date), side="left")
+    if pos == 0:
+        return float(elos[0])
+    return float(elos[pos - 1])
+
 
 def _as_of_rating(
     ratings: pd.DataFrame,
@@ -327,6 +349,8 @@ class MatchDatasetBuilder:
                  len(df),
                  (df["_source"] == "historical").sum(),
                  (df["_source"] == "wc2026").sum())
+        from src.data.team_names import add_canonical_columns
+        df = add_canonical_columns(df, ["home_team", "away_team"], suffix="")
         return df
 
 
@@ -398,6 +422,7 @@ class MatchDatasetBuilder:
         stat_cols = [c for c in [
             "yellow_per_match", "red_per_match", "matches",
             "yellow_cards", "red_cards", "confederation",
+            "yellow_per_match_model", "red_per_match_model",   # <-- añadir
         ] if c in ref.columns]
 
         ref_stats = ref[["referee_name"] + stat_cols].drop_duplicates("referee_name")
@@ -527,8 +552,24 @@ class MatchDatasetBuilder:
             df["elo_diff"] = float("nan")
             return df
 
+        # ratings = self._ratings.copy()
+        # ratings["rating_date"] = pd.to_datetime(ratings["rating_date"], errors="coerce")
+
+        # home_elo_list, away_elo_list = [], []
+        # for _, row in df.iterrows():
+        #     date = row.get("match_date")
+        #     ht = row.get("home_team", "")
+        #     at = row.get("away_team", "")
+        #     if pd.isna(date):
+        #         home_elo_list.append(float("nan"))
+        #         away_elo_list.append(float("nan"))
+        #         continue
+        #     home_elo_list.append(_as_of_rating(ratings, ht, date))
+        #     away_elo_list.append(_as_of_rating(ratings, at, date))
+
         ratings = self._ratings.copy()
         ratings["rating_date"] = pd.to_datetime(ratings["rating_date"], errors="coerce")
+        index = _build_ratings_index(ratings)
 
         home_elo_list, away_elo_list = [], []
         for _, row in df.iterrows():
@@ -539,8 +580,8 @@ class MatchDatasetBuilder:
                 home_elo_list.append(float("nan"))
                 away_elo_list.append(float("nan"))
                 continue
-            home_elo_list.append(_as_of_rating(ratings, ht, date))
-            away_elo_list.append(_as_of_rating(ratings, at, date))
+            home_elo_list.append(_as_of_rating_fast(index, ht, date))
+            away_elo_list.append(_as_of_rating_fast(index, at, date))
 
         df["home_elo"] = home_elo_list
         df["away_elo"] = away_elo_list

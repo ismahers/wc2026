@@ -243,9 +243,12 @@ def _safe_diff(a, b):
 # ── Features del árbitro ──────────────────────────────────────────────────────
 
 def compute_referee_features(row: pd.Series) -> dict:
+    def _pick(model_key, raw_key):
+        v = row.get(model_key, np.nan)
+        return v if pd.notna(v) else row.get(raw_key, np.nan)
     return {
-        "ref_yellow_per_match": row.get("ref_yellow_per_match", np.nan),
-        "ref_red_per_match":    row.get("ref_red_per_match",    np.nan),
+        "ref_yellow_per_match": _pick("ref_yellow_per_match_model", "ref_yellow_per_match"),
+        "ref_red_per_match":    _pick("ref_red_per_match_model",    "ref_red_per_match"),
     }
 
 
