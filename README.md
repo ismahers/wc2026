@@ -50,6 +50,18 @@ pip install -r requirements.txt
 python data_collector.py
 ```
 
+StatsBomb Open Data también puede regenerarse de forma aislada:
+
+```bash
+python -m src.data.statsbomb_collector
+```
+
+Esto genera `data/raw/international_match_stats.csv` y
+`data/statsbomb_matches.csv` con córners, tarjetas, tiros y xG de Mundial
+2018/2022 y Euro 2020/2024. Es la cobertura gratuita disponible en StatsBomb
+Open Data para selecciones; para ampliar córners/tarjetas a miles de partidos
+hace falta otra fuente.
+
 ### Cuotas históricas y CLV
 
 El collector de The Odds API descarga dos snapshots por partido, por defecto

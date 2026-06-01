@@ -96,10 +96,10 @@ def _get_features_for_market(market: str) -> list[str]:
     """Devuelve la lista de features disponible para cada mercado."""
     base = FORM_FEATURES + CONTEXT_FEATURES + EXTRA_FEATURES
     if market in ("corners", "over85c"):
-        return base + CORNERS_FEATURES
+        return list(dict.fromkeys(base + CORNERS_FEATURES))
     if market in ("yellows", "over35y"):
-        return base + CARDS_FEATURES
-    return base
+        return list(dict.fromkeys(base + CARDS_FEATURES))
+    return list(dict.fromkeys(base))
 
 
 # ---------------------------------------------------------------------------
@@ -114,6 +114,7 @@ class MarketConfig:
     eval_metric: str
     xgb_params: dict
     min_samples: int = 100
+    split_strategy: str = "global_temporal"
 
 
 MARKETS: dict[str, MarketConfig] = {
@@ -196,6 +197,7 @@ MARKETS: dict[str, MarketConfig] = {
             "min_child_weight": 3,
         },
         min_samples=50,
+        split_strategy="latest_target_year",
     ),
     "yellows": MarketConfig(
         name="Tarjetas Amarillas",
@@ -212,6 +214,7 @@ MARKETS: dict[str, MarketConfig] = {
             "min_child_weight": 3,
         },
         min_samples=50,
+        split_strategy="latest_target_year",
     ),
 }
 
@@ -446,6 +449,34 @@ class XGBBaselinePipeline:
         self.models: dict[str, MarketModel] = {}
         self.all_metrics: list[dict] = []
 
+    def _split_for_market(
+        self,
+        df: pd.DataFrame,
+        config: MarketConfig,
+    ) -> tuple[pd.DataFrame, pd.DataFrame]:
+        """
+        Return train/validation splits for a market.
+
+        Most markets use the global temporal split. Sparse event markets such
+        as corners and cards only exist in recent StatsBomb tournaments, so they
+        hold out the latest target year instead of using `< train_cutoff`.
+        """
+        if config.split_strategy == "latest_target_year":
+            target_df = df[df[config.target_col].notna()].copy()
+            if target_df.empty:
+                return target_df, target_df
+            latest_year = int(target_df["date"].dt.year.max())
+            df_train = target_df[target_df["date"].dt.year < latest_year].copy()
+            df_val = target_df[target_df["date"].dt.year == latest_year].copy()
+            return df_train, df_val
+
+        df_train = df[df["date"].dt.year < self.train_cutoff].copy()
+        df_val = df[
+            (df["date"].dt.year >= self.train_cutoff) &
+            (df["date"].dt.year < self.val_cutoff)
+        ].copy()
+        return df_train, df_val
+
     def run(self, df: pd.DataFrame, output_dir: str = "./outputs") -> pd.DataFrame:
         """Ejecuta el pipeline completo: train → evaluate → report."""
         os.makedirs(output_dir, exist_ok=True)
@@ -454,9 +485,9 @@ class XGBBaselinePipeline:
         df["date"] = pd.to_datetime(df["date"], errors="coerce")
         df = df.sort_values("date").reset_index(drop=True)
 
-        # Split temporal
-        df_train = df[df["date"].dt.year < self.train_cutoff].copy()
-        df_val = df[
+        # Split temporal global. Algunos mercados escasos usan split propio.
+        df_train_global = df[df["date"].dt.year < self.train_cutoff].copy()
+        df_val_global = df[
             (df["date"].dt.year >= self.train_cutoff) &
             (df["date"].dt.year < self.val_cutoff)
         ].copy()
@@ -464,8 +495,8 @@ class XGBBaselinePipeline:
         log.info("=" * 60)
         log.info("XGBoost Baseline Pipeline")
         log.info("=" * 60)
-        log.info("Train:  %d partidos  (< %d)", len(df_train), self.train_cutoff)
-        log.info("Val:    %d partidos  (%d-%d)", len(df_val), self.train_cutoff, self.val_cutoff - 1)
+        log.info("Train global:  %d partidos  (< %d)", len(df_train_global), self.train_cutoff)
+        log.info("Val global:    %d partidos  (%d-%d)", len(df_val_global), self.train_cutoff, self.val_cutoff - 1)
         log.info("=" * 60)
 
         for market_key in self.market_names:
@@ -475,6 +506,17 @@ class XGBBaselinePipeline:
                 continue
 
             model = MarketModel(config)
+            df_train, df_val = self._split_for_market(df, config)
+            train_target_n = df_train[config.target_col].notna().sum() if config.target_col in df_train else 0
+            val_target_n = df_val[config.target_col].notna().sum() if config.target_col in df_val else 0
+            log.info(
+                "Split %s: train=%d (%d target), val=%d (%d target)",
+                config.split_strategy,
+                len(df_train),
+                train_target_n,
+                len(df_val),
+                val_target_n,
+            )
 
             try:
                 model.fit(df_train)

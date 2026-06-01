@@ -52,6 +52,15 @@ def _get_team_history(
     return df[mask].sort_values("date", ascending=False).head(n)
 
 
+def _safe_nanmean(values: list[float]) -> float:
+    """Mean that stays quiet when a market has no historical coverage."""
+    arr = np.asarray(values, dtype=float)
+    arr = arr[~np.isnan(arr)]
+    if len(arr) == 0:
+        return np.nan
+    return float(arr.mean())
+
+
 # ── Features de forma reciente ────────────────────────────────────────────────
 
 def compute_recent_form(
@@ -130,11 +139,11 @@ def compute_recent_form(
         f"form_wins_{n}":         wins / n_played,
         f"form_draws_{n}":        draws / n_played,
         f"form_losses_{n}":       losses / n_played,
-        f"form_gf_{n}":           np.nanmean(gf_list),
-        f"form_gc_{n}":           np.nanmean(gc_list),
+        f"form_gf_{n}":           _safe_nanmean(gf_list),
+        f"form_gc_{n}":           _safe_nanmean(gc_list),
         f"form_ppg_{n}":          (wins * 3 + draws) / n_played,
-        f"form_corners_for_{n}":  np.nanmean(corners_list),
-        f"form_yellows_{n}":      np.nanmean(yellow_list),
+        f"form_corners_for_{n}":  _safe_nanmean(corners_list),
+        f"form_yellows_{n}":      _safe_nanmean(yellow_list),
         f"form_streak":           streak,
         f"form_neutral_wins_{n}": np.mean(neutral_wins) if neutral_wins else np.nan,
     }
@@ -365,10 +374,10 @@ if __name__ == "__main__":
 
     if os.path.exists(enriched_path):
         print(f"Cargando {enriched_path}...")
-        df = pd.read_csv(enriched_path)
+        df = pd.read_csv(enriched_path, low_memory=False)
     elif os.path.exists(unified_path):
         print(f"Fallback a {unified_path}...")
-        df = pd.read_csv(unified_path)
+        df = pd.read_csv(unified_path, low_memory=False)
     else:
         print("No se encuentra dataset. Ejecuta data_collector.py y builder.py primero.")
         exit(1)

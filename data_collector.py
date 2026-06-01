@@ -219,6 +219,24 @@ def fetch_statsbomb_data() -> pd.DataFrame:
     Por cada partido agrega: córners, tarjetas, tiros, xG local y visitante.
     Guarda el resultado en ./data/statsbomb_matches.csv
     """
+    try:
+        from src.data.statsbomb_collector import StatsBombInternationalCollector
+
+        collector = StatsBombInternationalCollector(request_delay_seconds=0.3)
+        df = collector.collect()
+        collector.save(
+            df,
+            raw_output=os.path.join(DATA_DIR, "raw", "international_match_stats.csv"),
+            statsbomb_output=os.path.join(DATA_DIR, "statsbomb_matches.csv"),
+        )
+        return df
+    except Exception as e:
+        log.warning(
+            "No se pudo usar src.data.statsbomb_collector (%s). "
+            "Fallback a collector legado en data_collector.py",
+            e,
+        )
+
     log.info("Descargando datos de StatsBomb Open Data...")
     all_rows = []
 
@@ -512,15 +530,43 @@ def unify_datasets(
             "date", "home_team", "away_team",
             "corners_home", "corners_away", "corners_total",
             "yellow_home",  "yellow_away",  "yellow_total",
-            "red_home",     "red_away",
-            "shots_home",   "shots_away",
-            "xg_home",      "xg_away",
-            "stage",
+            "red_home",     "red_away",     "red_total",
+            "shots_home",   "shots_away",   "shots_total",
+            "shots_on_target_home", "shots_on_target_away", "shots_on_target_total",
+            "xg_home",      "xg_away",      "xg_total",
+            "stage",        "referee",
         ]
         sb_sub = statsbomb[[c for c in sb_cols if c in statsbomb.columns]].copy()
         sb_sub["date"] = pd.to_datetime(sb_sub["date"], errors="coerce")
         df["date"]     = pd.to_datetime(df["date"], errors="coerce")
-        df = df.merge(sb_sub, on=["date", "home_team", "away_team"], how="left")
+
+        from src.data.team_names import add_canonical_columns
+
+        df = add_canonical_columns(df, ["home_team", "away_team"], suffix="_merge")
+        sb_sub = add_canonical_columns(sb_sub, ["home_team", "away_team"], suffix="_merge")
+
+        swap_cols = [
+            ("home_team_merge", "away_team_merge"),
+            ("corners_home", "corners_away"),
+            ("yellow_home", "yellow_away"),
+            ("red_home", "red_away"),
+            ("shots_home", "shots_away"),
+            ("shots_on_target_home", "shots_on_target_away"),
+            ("xg_home", "xg_away"),
+        ]
+        sb_swapped = sb_sub.copy()
+        for left, right in swap_cols:
+            if left in sb_swapped.columns and right in sb_swapped.columns:
+                sb_swapped[[left, right]] = sb_swapped[[right, left]].to_numpy()
+
+        sb_merge = pd.concat([sb_sub, sb_swapped], ignore_index=True, sort=False)
+        sb_merge = sb_merge.drop_duplicates(["date", "home_team_merge", "away_team_merge"], keep="first")
+        df = df.merge(
+            sb_merge.drop(columns=["home_team", "away_team"]),
+            on=["date", "home_team_merge", "away_team_merge"],
+            how="left",
+        )
+        df = df.drop(columns=["home_team_merge", "away_team_merge"])
         n_matched = df["xg_home"].notna().sum()
         log.info(f"  → StatsBomb enriqueció {n_matched} partidos con stats avanzadas")
 
