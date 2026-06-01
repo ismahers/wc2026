@@ -338,7 +338,11 @@ class MarketModel:
 
         y_true = df_clean[target].values
 
-        metrics = {"market": self.config.name, "n_test": len(y_true)}
+        metrics = {
+            "market": self.config.name,
+            "target_col": target,
+            "n_test": len(y_true),
+        }
 
         if self.config.task == "multiclass":
             y_true_enc = self.label_encoder.transform(y_true)
@@ -346,7 +350,10 @@ class MarketModel:
             preds = self.label_encoder.inverse_transform(np.argmax(proba, axis=1))
 
             metrics["accuracy"] = round(accuracy_score(y_true, preds), 4)
-            metrics["log_loss"] = round(log_loss(y_true_enc, proba), 4)
+            metrics["log_loss"] = round(
+                log_loss(y_true_enc, proba, labels=np.arange(len(self.label_encoder.classes_))),
+                4,
+            )
 
             # Brier multiclase
             y_onehot = np.zeros_like(proba)
@@ -359,17 +366,23 @@ class MarketModel:
                 metrics[f"actual_pct_{cls}"] = round((y_true == cls).mean(), 4)
 
         elif self.config.task == "binary":
-            y_true_float = y_true.astype(float)
-            proba = self.model.predict_proba(X)[:, 1]
+            y_true_binary = y_true.astype(int)
+            proba_matrix = self.model.predict_proba(X)
+            proba = proba_matrix[:, 1] if proba_matrix.ndim == 2 else proba_matrix
             preds = (proba >= 0.5).astype(int)
 
-            metrics["accuracy"] = round(accuracy_score(y_true_float, preds), 4)
-            metrics["log_loss"] = round(log_loss(y_true_float, proba), 4)
-            metrics["brier"] = round(brier_score_loss(y_true_float, proba), 4)
-            metrics["auc"] = round(roc_auc_score(y_true_float, proba), 4)
-            metrics["f1"] = round(f1_score(y_true_float, preds), 4)
-            metrics["pred_mean"] = round(proba.mean(), 4)
-            metrics["actual_mean"] = round(y_true_float.mean(), 4)
+            metrics["accuracy"] = round(accuracy_score(y_true_binary, preds), 4)
+            metrics["log_loss"] = round(log_loss(y_true_binary, proba, labels=[0, 1]), 4)
+            metrics["brier"] = round(brier_score_loss(y_true_binary, proba), 4)
+            if len(np.unique(y_true_binary)) == 2:
+                metrics["auc"] = round(roc_auc_score(y_true_binary, proba), 4)
+            else:
+                metrics["auc"] = float("nan")
+            metrics["f1"] = round(f1_score(y_true_binary, preds, zero_division=0), 4)
+            metrics["pred_mean"] = round(float(proba.mean()), 4)
+            metrics["pred_std"] = round(float(proba.std()), 4)
+            metrics["actual_mean"] = round(float(y_true_binary.mean()), 4)
+            metrics["positive_count"] = int(y_true_binary.sum())
 
         else:  # poisson
             y_true_float = y_true.astype(float)
