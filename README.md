@@ -62,6 +62,17 @@ Esto genera `data/raw/international_match_stats.csv` y
 Open Data para selecciones; para ampliar córners/tarjetas a miles de partidos
 hace falta otra fuente.
 
+Convocatorias oficiales WC2026:
+
+```bash
+python -m src.data.normalize_squads
+```
+
+Este comando valida `data/raw/squads_wc2026_final_official_corrected.csv`
+(48 selecciones, 26 jugadores por selección, posiciones válidas y sin
+duplicados) y genera `data/processed/players_wc2026.csv` con el contrato
+normalizado de `players`.
+
 ### Cuotas históricas y CLV
 
 El collector de The Odds API descarga dos snapshots por partido, por defecto
@@ -128,6 +139,7 @@ Los contratos iniciales están definidos en `src/data/schemas.py`. Esta capa per
 | API-Football | API REST para fixtures, alineaciones, estadios, árbitros, eventos y estadísticas de jugador | Freemium; útil como integración estructurada si compensa el coste |
 | The Odds API | Historial de cuotas por timestamp para apertura, movimientos de mercado y cierre | API comercial; cachear respuestas y usar para EV/CLV |
 | Transfermarkt Datasets | Alineaciones, minutos, posiciones, sustituciones y valor de mercado como proxy de calidad | Dataset comunitario CC0 en CSV/Parquet; preferible a scraping directo |
+| WC 2026 Official Squads | Convocados oficiales por selección, club y posición | Archivo estático validado en `data/raw/squads_wc2026_final_official_corrected.csv` |
 | WC 2026 Manual Venues | CSV local con las 16 sedes, coordenadas, altura, zona horaria, techo y superficie | Archivo estático en `data/raw/venues.csv` |
 | WC 2026 Manual Referees | CSV local con árbitros, país, confederación y torneo | Archivo estático en `data/raw/referees_wc2026.csv` |
 | WC 2026 Manual Base Camps | CSV local con campamento base, hospedaje y campo de entrenamiento por selección | Archivo estático en `data/raw/base_camps_wc2026.csv` |

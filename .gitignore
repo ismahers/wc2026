@@ -7,6 +7,7 @@
 !/data/raw/base_camps_wc2026.csv
 !/data/raw/group_stage_wc2026.csv
 !/data/raw/knockout_wc2026.csv
+!/data/raw/squads_wc2026_final_official_corrected.csv
 /outputs/
 
 # Python
