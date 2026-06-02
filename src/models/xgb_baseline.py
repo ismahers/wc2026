@@ -77,6 +77,12 @@ EXTRA_FEATURES = [
     "home_form_neutral_wins_10", "away_form_neutral_wins_10",
     "diff_form_neutral_wins_10",
     "ref_yellow_per_match", "ref_red_per_match",
+    "home_squad_size", "away_squad_size", "squad_size_diff",
+    "home_goalkeepers", "away_goalkeepers", "goalkeepers_diff",
+    "home_defenders", "away_defenders", "defenders_diff",
+    "home_midfielders", "away_midfielders", "midfielders_diff",
+    "home_forwards", "away_forwards", "forwards_diff",
+    "home_unique_clubs", "away_unique_clubs", "unique_clubs_diff",
 ]
 
 # Features específicas de córners y tarjetas

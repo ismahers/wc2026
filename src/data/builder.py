@@ -39,6 +39,8 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
+from src.data.normalize_squads import make_team_id
+
 log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
@@ -78,6 +80,14 @@ OUTPUT_COLS_MATCHES = [
     "temperature_c", "humidity_pct", "precipitation_mm", "wind_speed_kmh",
     # host advantage flag
     "home_is_host", "away_is_host",
+    # squad summary (WC2026 only)
+    "home_team_id", "away_team_id",
+    "home_squad_size", "away_squad_size",
+    "home_goalkeepers", "away_goalkeepers",
+    "home_defenders", "away_defenders",
+    "home_midfielders", "away_midfielders",
+    "home_forwards", "away_forwards",
+    "home_unique_clubs", "away_unique_clubs",
 ]
 
 HOST_NATIONS = {"United States", "Mexico", "Canada"}
@@ -234,6 +244,7 @@ class MatchDatasetBuilder:
         self._referees: pd.DataFrame = pd.DataFrame()
         self._ratings: pd.DataFrame = pd.DataFrame()
         self._weather: pd.DataFrame = pd.DataFrame()
+        self._squad_summary: pd.DataFrame = pd.DataFrame()
 
     # ------------------------------------------------------------------
     # Carga de fuentes
@@ -276,6 +287,15 @@ class MatchDatasetBuilder:
             )
         else:
             log.info("weather_hourly.csv no encontrado — features de clima omitidas")
+
+        squad_summary_path = os.path.join(p, "squad_summary_wc2026.csv")
+        if os.path.exists(squad_summary_path):
+            self._squad_summary = _load_csv(squad_summary_path)
+        else:
+            log.info(
+                "squad_summary_wc2026.csv no encontrado — ejecuta "
+                "python -m src.data.normalize_squads para conectar convocatorias"
+            )
 
     # ------------------------------------------------------------------
     # Carga de partidos
@@ -646,6 +666,76 @@ class MatchDatasetBuilder:
         df["away_is_host"] = df.get("away_team", pd.Series(dtype=str)).isin(HOST_NATIONS).astype(int)
         return df
 
+    def _add_team_ids(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Añade IDs estables para enlazar partidos con tablas de equipos/jugadores."""
+        df["home_team_id"] = df["home_team"].map(make_team_id)
+        df["away_team_id"] = df["away_team"].map(make_team_id)
+        return df
+
+    def _join_squad_summary(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Añade conteos de convocatoria solo a filas WC2026.
+
+        El histórico no tiene una fuente equivalente de convocatorias, así que
+        dejamos esas columnas a NaN para evitar entrenar con datos no comparables.
+        """
+        squad_cols = [
+            "squad_size", "goalkeepers", "defenders",
+            "midfielders", "forwards", "unique_clubs",
+        ]
+        for side in ["home", "away"]:
+            for col in squad_cols:
+                out_col = f"{side}_{col}"
+                if out_col not in df.columns:
+                    df[out_col] = float("nan")
+
+        if self._squad_summary.empty:
+            return df
+        if "team_id" not in self._squad_summary.columns:
+            log.warning("squad_summary_wc2026.csv no tiene team_id — convocatorias omitidas")
+            return df
+        if "_source" not in df.columns:
+            return df
+
+        summary = self._squad_summary[["team_id"] + [
+            c for c in squad_cols if c in self._squad_summary.columns
+        ]].drop_duplicates("team_id")
+
+        wc_mask = df["_source"].eq("wc2026")
+        wc = df[wc_mask].copy()
+        rest = df[~wc_mask].copy()
+
+        for side in ["home", "away"]:
+            wc = wc.drop(
+                columns=[f"{side}_{col}" for col in squad_cols],
+                errors="ignore",
+            )
+            prefixed = summary.rename(columns={
+                col: f"{side}_{col}" for col in squad_cols if col in summary.columns
+            })
+            wc = wc.merge(
+                prefixed,
+                left_on=f"{side}_team_id",
+                right_on="team_id",
+                how="left",
+                suffixes=("", "_squad"),
+            )
+            wc = wc.drop(columns=["team_id"], errors="ignore")
+
+        df = pd.concat([wc, rest], ignore_index=True, sort=False)
+        for side in ["home", "away"]:
+            for col in squad_cols:
+                out_col = f"{side}_{col}"
+                if out_col not in df.columns:
+                    df[out_col] = float("nan")
+        df = df.sort_values("match_date").reset_index(drop=True)
+
+        n_home = df.loc[df["_source"].eq("wc2026"), "home_squad_size"].notna().sum()
+        n_away = df.loc[df["_source"].eq("wc2026"), "away_squad_size"].notna().sum()
+        log.info("Convocatorias: %d/%d home y %d/%d away WC2026 enlazadas",
+                 n_home, wc_mask.sum(), n_away, wc_mask.sum())
+        return df
+
     def _add_result_column(self, df: pd.DataFrame) -> pd.DataFrame:
         """Añade columna result (H/D/A) si los scores están disponibles."""
         if "result" in df.columns:
@@ -719,6 +809,8 @@ class MatchDatasetBuilder:
         df = self._join_team_ratings(df)
         df = self._join_weather(df)
         df = self._add_host_flags(df)
+        df = self._add_team_ids(df)
+        df = self._join_squad_summary(df)
         df = self._add_result_column(df)
 
         log.info("-" * 60)
@@ -727,12 +819,12 @@ class MatchDatasetBuilder:
         # Resumen de cobertura por columna clave
         key_cols = [
             "altitude_m", "home_travel_km", "home_elo",
-            "ref_yellow_per_match", "temperature_c",
+            "ref_yellow_per_match", "temperature_c", "home_squad_size",
         ]
         for col in key_cols:
             if col in df.columns:
                 pct = df[col].notna().mean() * 100
-                log.info("  %-28s cobertura: %.0f%%", col, pct)
+                log.info("  %-28s cobertura: %.1f%%", col, pct)
 
         if save:
             out = os.path.join(self.processed_dir, "matches_enriched.csv")

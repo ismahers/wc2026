@@ -66,12 +66,38 @@ Convocatorias oficiales WC2026:
 
 ```bash
 python -m src.data.normalize_squads
+python -m src.data.player_master
 ```
 
 Este comando valida `data/raw/squads_wc2026_final_official_corrected.csv`
 (48 selecciones, 26 jugadores por selección, posiciones válidas y sin
 duplicados) y genera `data/processed/players_wc2026.csv` con el contrato
-normalizado de `players`.
+normalizado de `players`, `data/processed/teams_wc2026.csv` y
+`data/processed/squad_summary_wc2026.csv`.
+
+El segundo comando crea la capa de identidad de jugador:
+
+| Salida | Uso |
+|---|---|
+| `data/processed/players_master.csv` | Tabla base con `player_key`, nombre normalizado, club de convocatoria y placeholders de fuentes externas |
+| `data/processed/player_source_matches.csv` | Tabla puente para enlazar FBref, Transfermarkt y StatsBomb con confianza y revisión manual |
+
+La convocatoria oficial sigue siendo la fuente base. Los scrapers futuros no
+deben modificar ese CSV; deben rellenar `player_source_matches.csv` y producir
+tablas separadas de estadísticas.
+
+Matching Transfermarkt (fase 2):
+
+```bash
+python -m src.data.match_transfermarkt \
+  --transfermarkt-input data/raw/transfermarkt/players.csv.gz
+```
+
+Este paso espera un CSV local de Transfermarkt, por ejemplo
+`players.csv.gz` del dataset `dcaribou/transfermarkt-datasets`. Actualiza
+`data/processed/player_source_matches.csv`, genera
+`data/processed/transfermarkt_player_profiles.csv` y deja los cruces dudosos en
+`data/processed/transfermarkt_match_review.csv`.
 
 ### Cuotas históricas y CLV
 

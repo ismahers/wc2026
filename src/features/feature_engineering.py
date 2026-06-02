@@ -209,6 +209,17 @@ def compute_context_features(row: pd.Series) -> dict:
     else:
         effective_home_adv = 0.0
 
+    squad_features = {}
+    for key in [
+        "squad_size", "goalkeepers", "defenders",
+        "midfielders", "forwards", "unique_clubs",
+    ]:
+        home_key = f"home_{key}"
+        away_key = f"away_{key}"
+        squad_features[home_key] = row.get(home_key, np.nan)
+        squad_features[away_key] = row.get(away_key, np.nan)
+        squad_features[f"{key}_diff"] = _safe_diff(row.get(home_key), row.get(away_key))
+
     return {
         # Ventaja de local
         "is_neutral":          int(is_neutral),
@@ -236,6 +247,8 @@ def compute_context_features(row: pd.Series) -> dict:
         # como features del modelo en sede neutral: el lado home/away es
         # administrativo salvo anfitriones.
         "elo_diff":            row.get("elo_diff", np.nan),
+        # Convocatorias WC2026 (histórico queda NaN para evitar leakage)
+        **squad_features,
     }
 
 
