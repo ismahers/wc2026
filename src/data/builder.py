@@ -91,6 +91,11 @@ OUTPUT_COLS_MATCHES = [
 ]
 
 HOST_NATIONS = {"United States", "Mexico", "Canada"}
+HOST_COUNTRY_BY_TEAM = {
+    "United States": "United States",
+    "Mexico": "Mexico",
+    "Canada": "Canada",
+}
 
 
 # ---------------------------------------------------------------------------
@@ -343,6 +348,7 @@ class MatchDatasetBuilder:
         )
         if not gs.empty:
             gs["_source"] = "wc2026"
+            gs["neutral"] = True
             frames.append(gs)
             log.info("WC2026 grupos: %d partidos", len(gs))
 
@@ -355,6 +361,7 @@ class MatchDatasetBuilder:
             if "home_slot" in ko.columns:
                 ko = ko.rename(columns={"home_slot": "home_team", "away_slot": "away_team"})
             ko["_source"] = "wc2026"
+            ko["neutral"] = True
             frames.append(ko)
             log.info("WC2026 eliminatorias: %d partidos", len(ko))
 
@@ -661,9 +668,16 @@ class MatchDatasetBuilder:
         return df
 
     def _add_host_flags(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Marca si el equipo local o visitante es anfitrión del torneo."""
-        df["home_is_host"] = df.get("home_team", pd.Series(dtype=str)).isin(HOST_NATIONS).astype(int)
-        df["away_is_host"] = df.get("away_team", pd.Series(dtype=str)).isin(HOST_NATIONS).astype(int)
+        """Marca ventaja de anfitrión solo cuando el equipo juega en su país sede."""
+        venue_country = df.get("country", pd.Series(index=df.index, dtype=object)).fillna("")
+        df["home_is_host"] = [
+            int(HOST_COUNTRY_BY_TEAM.get(team) == country)
+            for team, country in zip(df.get("home_team", pd.Series(dtype=str)), venue_country)
+        ]
+        df["away_is_host"] = [
+            int(HOST_COUNTRY_BY_TEAM.get(team) == country)
+            for team, country in zip(df.get("away_team", pd.Series(dtype=str)), venue_country)
+        ]
         return df
 
     def _add_team_ids(self, df: pd.DataFrame) -> pd.DataFrame:

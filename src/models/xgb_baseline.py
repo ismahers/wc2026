@@ -37,13 +37,18 @@ from sklearn.metrics import (
     mean_squared_error,
 )
 
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore", category=UserWarning, module="xgboost")
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s  %(levelname)s  %(message)s",
     datefmt="%H:%M:%S",
 )
 log = logging.getLogger(__name__)
+
+
+def _metric_float(value, ndigits: int = 4) -> float:
+    """Round sklearn/numpy metric values into JSON-safe Python floats."""
+    return round(float(value), ndigits)
 
 
 # ---------------------------------------------------------------------------
@@ -358,21 +363,20 @@ class MarketModel:
             proba = self.model.predict_proba(X)
             preds = self.label_encoder.inverse_transform(np.argmax(proba, axis=1))
 
-            metrics["accuracy"] = round(accuracy_score(y_true, preds), 4)
-            metrics["log_loss"] = round(
+            metrics["accuracy"] = _metric_float(accuracy_score(y_true, preds))
+            metrics["log_loss"] = _metric_float(
                 log_loss(y_true_enc, proba, labels=np.arange(len(self.label_encoder.classes_))),
-                4,
             )
 
             # Brier multiclase
             y_onehot = np.zeros_like(proba)
             y_onehot[np.arange(len(y_true_enc)), y_true_enc] = 1
-            metrics["brier"] = round(np.mean(np.sum((proba - y_onehot) ** 2, axis=1)), 4)
+            metrics["brier"] = _metric_float(np.mean(np.sum((proba - y_onehot) ** 2, axis=1)))
 
             # Distribución predicha vs real
             for i, cls in enumerate(self.label_encoder.classes_):
-                metrics[f"pred_mean_{cls}"] = round(proba[:, i].mean(), 4)
-                metrics[f"actual_pct_{cls}"] = round((y_true == cls).mean(), 4)
+                metrics[f"pred_mean_{cls}"] = _metric_float(proba[:, i].mean())
+                metrics[f"actual_pct_{cls}"] = _metric_float((y_true == cls).mean())
 
         elif self.config.task == "binary":
             y_true_binary = y_true.astype(int)
@@ -380,26 +384,26 @@ class MarketModel:
             proba = proba_matrix[:, 1] if proba_matrix.ndim == 2 else proba_matrix
             preds = (proba >= 0.5).astype(int)
 
-            metrics["accuracy"] = round(accuracy_score(y_true_binary, preds), 4)
-            metrics["log_loss"] = round(log_loss(y_true_binary, proba, labels=[0, 1]), 4)
-            metrics["brier"] = round(brier_score_loss(y_true_binary, proba), 4)
+            metrics["accuracy"] = _metric_float(accuracy_score(y_true_binary, preds))
+            metrics["log_loss"] = _metric_float(log_loss(y_true_binary, proba, labels=[0, 1]))
+            metrics["brier"] = _metric_float(brier_score_loss(y_true_binary, proba))
             if len(np.unique(y_true_binary)) == 2:
-                metrics["auc"] = round(roc_auc_score(y_true_binary, proba), 4)
+                metrics["auc"] = _metric_float(roc_auc_score(y_true_binary, proba))
             else:
                 metrics["auc"] = float("nan")
-            metrics["f1"] = round(f1_score(y_true_binary, preds, zero_division=0), 4)
-            metrics["pred_mean"] = round(float(proba.mean()), 4)
-            metrics["pred_std"] = round(float(proba.std()), 4)
-            metrics["actual_mean"] = round(float(y_true_binary.mean()), 4)
+            metrics["f1"] = _metric_float(f1_score(y_true_binary, preds, zero_division=0))
+            metrics["pred_mean"] = _metric_float(proba.mean())
+            metrics["pred_std"] = _metric_float(proba.std())
+            metrics["actual_mean"] = _metric_float(y_true_binary.mean())
             metrics["positive_count"] = int(y_true_binary.sum())
 
         else:  # poisson
             y_true_float = y_true.astype(float)
             preds = self.model.predict(X)
-            metrics["mae"] = round(mean_absolute_error(y_true_float, preds), 4)
-            metrics["rmse"] = round(np.sqrt(mean_squared_error(y_true_float, preds)), 4)
-            metrics["pred_mean"] = round(preds.mean(), 4)
-            metrics["actual_mean"] = round(y_true_float.mean(), 4)
+            metrics["mae"] = _metric_float(mean_absolute_error(y_true_float, preds))
+            metrics["rmse"] = _metric_float(np.sqrt(mean_squared_error(y_true_float, preds)))
+            metrics["pred_mean"] = _metric_float(preds.mean())
+            metrics["actual_mean"] = _metric_float(y_true_float.mean())
 
         self.metrics = metrics
         return metrics
@@ -566,35 +570,70 @@ class XGBBaselinePipeline:
             return pd.DataFrame()
 
         results = df_wc[["date", "home_team", "away_team"]].copy()
+        placeholder_mask = self._placeholder_match_mask(df_wc)
+        results["is_placeholder_match"] = placeholder_mask
 
         for market_key, model in self.models.items():
             config = model.config
 
             try:
-                preds = model.predict_proba(df_wc)
+                pred_rows = df_wc[~placeholder_mask].copy()
+                if pred_rows.empty:
+                    continue
+
+                preds = model.predict_proba(pred_rows)
 
                 if config.task == "multiclass":
                     for i, cls in enumerate(model.label_encoder.classes_):
-                        results[f"prob_{cls}"] = preds[:, i].round(4)
-                    results["pred_result"] = model.label_encoder.inverse_transform(
+                        results[f"prob_{cls}"] = pd.NA
+                        results.loc[~placeholder_mask, f"prob_{cls}"] = preds[:, i].round(4)
+                    results["pred_result"] = pd.NA
+                    results.loc[~placeholder_mask, "pred_result"] = model.label_encoder.inverse_transform(
                         np.argmax(preds, axis=1)
                     )
 
                 elif config.task == "binary":
                     col_name = config.target_col.replace("target_", "")
-                    results[f"prob_{col_name}"] = preds[:, 1].round(4)
+                    results[f"prob_{col_name}"] = pd.NA
+                    results.loc[~placeholder_mask, f"prob_{col_name}"] = preds[:, 1].round(4)
 
                 else:  # poisson
                     col_name = config.target_col.replace("target_", "")
-                    results[f"pred_{col_name}"] = preds.round(2)
+                    results[f"pred_{col_name}"] = pd.NA
+                    results.loc[~placeholder_mask, f"pred_{col_name}"] = preds.round(2)
 
             except Exception as e:
                 log.warning("  ⚠ Predicción %s falló: %s", config.name, e)
+
+        n_placeholders = int(placeholder_mask.sum())
+        if n_placeholders:
+            log.info(
+                "WC2026: %d partidos de eliminatorias/slots se guardan sin predicción "
+                "hasta resolver equipos reales",
+                n_placeholders,
+            )
 
         out_path = os.path.join(output_dir, "wc2026_predictions.csv")
         results.to_csv(out_path, index=False)
         log.info("Predicciones WC2026 guardadas en %s", out_path)
         return results
+
+    @staticmethod
+    def _placeholder_match_mask(df: pd.DataFrame) -> pd.Series:
+        """
+        Detect unresolved knockout slots.
+
+        Slots such as 1A, 3A/B/C/D/F, Winner 74, etc. have no Elo or recent
+        form. Producing model averages for them is more misleading than useful.
+        """
+        required = ["elo_diff", "home_form_ppg_10", "away_form_ppg_10"]
+        if not all(col in df.columns for col in required):
+            return pd.Series(False, index=df.index)
+        return (
+            df["elo_diff"].isna()
+            & df["home_form_ppg_10"].isna()
+            & df["away_form_ppg_10"].isna()
+        )
 
     def _print_metrics(self, metrics: dict) -> None:
         for k, v in metrics.items():

@@ -15,11 +15,12 @@ En el Mundial todos los partidos son en sede neutral, así que la ventaja
 de local tradicional no existe. El feature `effective_home_adv` lo captura:
   - Partido no neutral (clasificatorias, amistosos): 1.0
   - Partido neutral sin anfitrión (la mayoría del WC2026): 0.0
-  - Partido neutral con anfitrión (USA/México/Canadá en WC2026): 0.5
+  - Partido neutral con home anfitrión en su país sede: 0.5
+  - Partido neutral con away anfitrión en su país sede: -0.5
 
 El modelo aprende solo del histórico que `is_neutral=1` anula la ventaja,
-y al predecir el Mundial usa `effective_home_adv=0` para todos salvo los
-tres anfitriones.
+y al predecir el Mundial solo aplica ventaja si USA/México/Canadá juegan
+en su propio país sede, aunque el fixture los liste como away.
 """
 
 import pandas as pd
@@ -114,7 +115,7 @@ def compute_recent_form(
         corners_list.append(c)
         yellow_list.append(y)
 
-        is_neutral = bool(row.get("neutral", False) or row.get("is_neutral", False))
+        is_neutral = _safe_bool(row.get("neutral", False)) or _safe_bool(row.get("is_neutral", False))
         if is_neutral:
             neutral_wins.append(1 if r == "H" else 0)
 
@@ -175,7 +176,11 @@ CONFEDERATION_MAP = {
     "New Zealand": "OFC",
 }
 
-HOST_NATIONS = {"United States", "Mexico", "Canada"}
+HOST_COUNTRY_BY_TEAM = {
+    "United States": "United States",
+    "Mexico": "Mexico",
+    "Canada": "Canada",
+}
 
 STAGE_ORDER = {
     "Group Stage": 0, "Round of 32": 1, "Round of 16": 2,
@@ -190,22 +195,26 @@ def compute_context_features(row: pd.Series) -> dict:
 
     effective_home_adv:
       1.0 → partido no neutral (ventaja local real)
-      0.5 → partido neutral, equipo local es anfitrión del torneo
-      0.0 → partido neutral, sin anfitrión (la mayoría del WC2026)
+      0.5 → partido neutral, home juega en su país anfitrión
+      0.0 → partido neutral, sin anfitrión en su país sede
+     -0.5 → partido neutral, away juega en su país anfitrión
     """
     home_team = str(row.get("home_team", ""))
     away_team = str(row.get("away_team", ""))
     home_conf = CONFEDERATION_MAP.get(home_team, "OTHER")
     away_conf = CONFEDERATION_MAP.get(away_team, "OTHER")
 
-    is_neutral   = bool(row.get("neutral", False) or row.get("is_neutral", False))
-    home_is_host = int(home_team in HOST_NATIONS)
-    away_is_host = int(away_team in HOST_NATIONS)
+    is_neutral = _safe_bool(row.get("neutral", False)) or _safe_bool(row.get("is_neutral", False))
+    venue_country = str(row.get("country", "") or "")
+    home_is_host = int(HOST_COUNTRY_BY_TEAM.get(home_team) == venue_country)
+    away_is_host = int(HOST_COUNTRY_BY_TEAM.get(away_team) == venue_country)
 
     if not is_neutral:
         effective_home_adv = 1.0
     elif home_is_host:
         effective_home_adv = 0.5
+    elif away_is_host:
+        effective_home_adv = -0.5
     else:
         effective_home_adv = 0.0
 
@@ -260,6 +269,14 @@ def _safe_diff(a, b):
         return np.nan if (np.isnan(fa) or np.isnan(fb)) else fa - fb
     except (TypeError, ValueError):
         return np.nan
+
+
+def _safe_bool(value) -> bool:
+    if value is None or pd.isna(value):
+        return False
+    if isinstance(value, str):
+        return value.strip().lower() in {"1", "true", "yes", "y"}
+    return bool(value)
 
 
 # ── Features del árbitro ──────────────────────────────────────────────────────
