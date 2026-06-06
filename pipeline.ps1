@@ -12,32 +12,23 @@ function Run-Step {
     Write-Host "OK" -ForegroundColor Green
 }
 
-Run-Step "1/9  Elo inicial anclado (eloratings.net)" `
+# Regenera unified.csv con los 314 partidos. Re-descarga StatsBomb,
+# asi que tarda unos minutos. Es el paso que mete Copa y AFCON en el dataset.
+Run-Step "1/5  Recoleccion + unificacion (lento, re-descarga StatsBomb)" `
+    "python data_collector.py"
+
+Run-Step "2/5  Elo inicial anclado" `
     "python -m src.data.elo_loader"
 
-Run-Step "2/9  Builder: fixtures + Elo + venue + distancia" `
+Run-Step "3/5  Builder: regenera matches_enriched.csv (de aqui lee features)" `
     "python -m src.data.builder"
 
-Run-Step "3/9  Referee rates (empirical-Bayes)" `
-    "python -m src.features.referee_rates --referees data/raw/referees_wc2026.csv --output data/processed/referees_with_stats.csv"
-
-Run-Step "4/9  Feature engineering" `
+Run-Step "4/5  Feature engineering (con los 314)" `
     "python src/features/feature_engineering.py"
 
-Run-Step "5/9  XGBoost (todos los mercados)" `
+Run-Step "5/5  XGBoost (incluye el mercado de corners)" `
     "python -m src.models.xgboost_model --features data/processed/features_train.csv --wc-features data/processed/features_wc2026.csv"
 
-Run-Step "6/9  Poisson (goles)" `
-    "python -m src.models.poisson_model --features data/processed/features_train.csv --wc-features data/processed/features_wc2026.csv"
-
-Run-Step "7/9  Odds converter XGBoost" `
-    "python -m src.evaluation.odds_converter --input outputs/wc2026_predictions.csv"
-
-Run-Step "8/9  Odds converter Poisson" `
-    "python -m src.evaluation.odds_converter --input outputs/wc2026_poisson_predictions.csv"
-
-Run-Step "9/9  Model comparison" `
-    "python -m src.evaluation.model_comparison"
-
 Write-Host ""
-Write-Host "Pipeline completo. Revisa outputs/model_comparison.csv" -ForegroundColor Yellow
+Write-Host "Listo. Abre outputs/wc2026_predictions.csv y mira la columna de corners." -ForegroundColor Yellow
+Write-Host "Antes predecia ~8; con los 314 deberia subir hacia ~10." -ForegroundColor Yellow

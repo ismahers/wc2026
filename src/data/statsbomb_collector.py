@@ -44,6 +44,13 @@ INTERNATIONAL_COMPETITIONS: tuple[StatsBombCompetition, ...] = (
     StatsBombCompetition(43, 106, "FIFA World Cup", "2022", "Qatar"),
     StatsBombCompetition(55, 43, "UEFA Euro", "2020", None),
     StatsBombCompetition(55, 282, "UEFA Euro", "2024", "Germany"),
+    # ── Nuevas (verificadas jun 2026) ──
+    StatsBombCompetition(223, 282, "Copa America", "2024", "United States"),
+    StatsBombCompetition(1267, 107, "African Cup of Nations", "2023", "Ivory Coast"),
+    # ── WC históricos sueltos (19 partidos). Descomenta los que quieras ──
+    # StatsBombCompetition(43, 272, "FIFA World Cup", "1970", None),
+    # StatsBombCompetition(43, 51, "FIFA World Cup", "1974", None),
+    # StatsBombCompetition(43, 54, "FIFA World Cup", "1986", None),
 )
 
 

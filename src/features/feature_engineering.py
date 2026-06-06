@@ -8,6 +8,7 @@ Para cada partido genera:
   - Features de contexto (fase, sede, confederación, neutral/host)
   - Features del árbitro
   - Rating compuesto WC2026 (valor mercado + Elo + racha)
+  - Media de córners por selección (todos sus partidos anteriores con dato)
   - Variables objetivo para cada mercado
 
 Optimización de rendimiento
@@ -16,6 +17,16 @@ La versión original era O(n²): para cada partido filtraba todo el DataFrame.
 Esta versión preconstruye un índice {equipo: [filas ordenadas por fecha]}
 y usa búsqueda binaria para encontrar los N partidos anteriores en O(log n).
 En un dataset de 32k partidos esto reduce el tiempo de ~20 min a ~30 seg.
+
+Media de córners por selección (sin data leakage)
+--------------------------------------------------
+La feature de forma "corners_for_10" se queda vacía para el Mundial porque las
+selecciones no tienen córners en su historial reciente (solo los 314 partidos de
+StatsBomb los tienen). En su lugar usamos la MEDIA de córners de cada selección
+sobre TODOS sus partidos anteriores con dato. Para selecciones sin historial de
+córners, se imputa desde el rating de ataque (recta ataque→córners ajustada con
+los equipos que sí tienen ambos), y como último recurso la media global.
+Todo estrictamente con partidos ANTERIORES a la fecha → sin leakage.
 
 Mundial = sede neutral
 ------------------------
@@ -26,7 +37,7 @@ son USA/México/Canadá cuando juegan en su país sede.
 
 import os
 import bisect
-from typing import Optional
+from typing import Optional, Callable
 
 import numpy as np
 import pandas as pd
@@ -148,6 +159,112 @@ def _get_team_history_fast(
     if not rows:
         return pd.DataFrame()
     return pd.DataFrame(rows)
+
+
+# ── Media de córners por selección (prefix sums, sin leakage) ─────────────────
+
+def build_corners_prefix(df: pd.DataFrame, index: dict[str, list]) -> dict[str, tuple]:
+    """
+    Para cada equipo, precomputa (dates, prefix_sum, prefix_cnt) de los córners
+    A FAVOR alineados con su historial ordenado por fecha.
+      - prefix_sum[k] = suma de córners-a-favor en los primeros k partidos
+      - prefix_cnt[k] = nº de esos partidos que tenían dato de córners
+    Permite la media de "todos los partidos antes de X" en O(log n) sin leakage.
+    """
+    prefix: dict[str, tuple] = {}
+    for team, entries in index.items():
+        dates = [e[0] for e in entries]
+        sums = [0.0]
+        cnts = [0]
+        for _, idx in entries:
+            row = df.iloc[idx]
+            if row["home_team"] == team:
+                c = row.get("corners_home", np.nan)
+            else:
+                c = row.get("corners_away", np.nan)
+            if pd.notna(c):
+                sums.append(sums[-1] + float(c))
+                cnts.append(cnts[-1] + 1)
+            else:
+                sums.append(sums[-1])
+                cnts.append(cnts[-1])
+        prefix[team] = (dates, sums, cnts)
+    return prefix
+
+
+def _global_corners_for(prefix: dict[str, tuple]) -> float:
+    """Media global de córners-a-favor por equipo-partido (fallback de último recurso)."""
+    tot, n = 0.0, 0
+    for _, (_, sums, cnts) in prefix.items():
+        tot += sums[-1]
+        n += cnts[-1]
+    return tot / n if n else 5.0
+
+
+def _build_attack_corners_model(prefix: dict[str, tuple], ratings: dict) -> Optional[tuple]:
+    """
+    Ajusta una recta córners-a-favor ~ attack_norm usando los equipos que tienen
+    AMBOS (media de córners sobre ≥3 partidos + rating de ataque WC2026).
+    Devuelve (slope, intercept) o None si no hay puntos suficientes.
+    """
+    xs, ys = [], []
+    for team, (_, sums, cnts) in prefix.items():
+        r = ratings.get(team)
+        if not r:
+            continue
+        att = r.get("attack_norm", np.nan)
+        if att is None or (isinstance(att, float) and np.isnan(att)):
+            continue
+        if cnts[-1] >= 3:  # mínimo de partidos para una media fiable
+            xs.append(att)
+            ys.append(sums[-1] / cnts[-1])
+    if len(xs) >= 5:
+        slope, intercept = np.polyfit(np.array(xs), np.array(ys), 1)
+        return float(slope), float(intercept)
+    return None
+
+
+def _make_corners_fallback(
+    ratings: dict,
+    attack_model: Optional[tuple],
+    global_val: float,
+) -> Callable[[str], float]:
+    """
+    Cascada de fallback para selecciones sin historial de córners:
+      1) si tiene rating de ataque → estimación por la recta ataque→córners
+      2) si no → media global
+    """
+    def fallback(team: str) -> float:
+        if attack_model is not None:
+            r = ratings.get(team)
+            if r:
+                att = r.get("attack_norm", np.nan)
+                if att is not None and not (isinstance(att, float) and np.isnan(att)):
+                    val = attack_model[0] * att + attack_model[1]
+                    return float(np.clip(val, 2.0, 8.0))  # rango sensato de córners/equipo
+        return global_val
+    return fallback
+
+
+def compute_corners_avg(
+    prefix: dict[str, tuple],
+    team: str,
+    before_date: pd.Timestamp,
+    fallback_fn: Callable[[str], float],
+) -> float:
+    """
+    Media de córners-a-favor del equipo en TODOS sus partidos anteriores a
+    before_date que tengan dato. Sin leakage (estrictamente < before_date).
+    Si no hay ninguno, usa la cascada de fallback.
+    """
+    p = prefix.get(team)
+    if not p:
+        return fallback_fn(team)
+    dates, sums, cnts = p
+    cut = bisect.bisect_left(dates, before_date)
+    if cnts[cut] > 0:
+        return sums[cut] / cnts[cut]
+    return fallback_fn(team)
 
 
 # ── Utilidades ────────────────────────────────────────────────────────────────
@@ -509,6 +626,16 @@ def build_feature_matrix(
     team_index = build_team_index(df)
     print(f"  → Índice listo: {len(team_index)} equipos")
 
+    # Media de córners por selección (prefix sums) + cascada de fallback
+    print("  Preparando medias de córners por selección...")
+    corners_prefix = build_corners_prefix(df, team_index)
+    global_corners_for = _global_corners_for(corners_prefix)
+    attack_model = _build_attack_corners_model(corners_prefix, ratings)
+    corners_fallback = _make_corners_fallback(ratings, attack_model, global_corners_for)
+    if attack_model is not None:
+        print(f"  → Recta ataque→córners: corners ≈ {attack_model[0]:.2f}·attack + {attack_model[1]:.2f}")
+    print(f"  → Media global córners-a-favor (último fallback): {global_corners_for:.2f}")
+
     rows = []
     total = len(df)
 
@@ -532,6 +659,10 @@ def build_feature_matrix(
             av = away_feats.get(f"away_{key}")
             diff_feats[f"diff_{key}"] = _safe_diff(hv, av)
 
+        # Media de córners por selección (todos los partidos anteriores con dato)
+        home_corners_avg = compute_corners_avg(corners_prefix, home_team, date, corners_fallback)
+        away_corners_avg = compute_corners_avg(corners_prefix, away_team, date, corners_fallback)
+
         ctx_feats = compute_context_features(row, ratings)
         ref_feats = compute_referee_features(row)
         targets   = compute_targets(row)
@@ -547,6 +678,10 @@ def build_feature_matrix(
             **home_feats,
             **away_feats,
             **diff_feats,
+            # Media de córners por selección (cobertura ~100%, sin leakage)
+            "home_corners_avg_all": home_corners_avg,
+            "away_corners_avg_all": away_corners_avg,
+            "corners_avg_all_sum":  home_corners_avg + away_corners_avg,
             **ctx_feats,
             **ref_feats,
             **targets,
@@ -605,9 +740,11 @@ if __name__ == "__main__":
         "altitude_m", "home_rest_days", "home_travel_km",
         "home_form_ppg_10", "diff_form_ppg_10",
         "rating_diff", "attack_diff", "midfield_diff", "defense_diff",
+        "home_corners_avg_all", "corners_avg_all_sum",
         "home_yellow_per_90", "home_goals_per_90", "home_avg_caps",
     ]
     for col in key_cols:
         if col in features.columns:
             pct = features[col].notna().mean() * 100
             print(f"  {col:<32} {pct:.0f}%")
+            

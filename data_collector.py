@@ -119,11 +119,19 @@ def fetch_kaggle_results() -> pd.DataFrame:
 # ── 2. StatsBomb Open Data — Stats avanzadas de Mundiales ───────────────────
 #
 # Repositorio público: https://github.com/statsbomb/open-data
-# Competiciones disponibles con datos completos de selecciones:
-#   - FIFA World Cup 2018: competition_id=43, season_id=3
-#   - FIFA World Cup 2022: competition_id=43, season_id=106
-#   - UEFA Euro 2020:      competition_id=55, season_id=43
-#   - UEFA Euro 2024:      competition_id=55, season_id=282
+# Competiciones masculinas senior disponibles (verificado en competitions.json,
+# jun 2026):
+#   - FIFA World Cup 2018:  competition_id=43,   season_id=3
+#   - FIFA World Cup 2022:  competition_id=43,   season_id=106
+#   - UEFA Euro 2020:       competition_id=55,   season_id=43
+#   - UEFA Euro 2024:       competition_id=55,   season_id=282
+#   - Copa America 2024:    competition_id=223,  season_id=282   (32 partidos)
+#   - AFCON 2023:           competition_id=1267, season_id=107   (52 partidos)
+#   - WC históricos sueltos: competition_id=43, season_id ∈
+#       {269(1958), 270(1962), 272(1970), 51(1974), 54(1986), 55(1990)}
+#       (19 partidos en total, con evento completo; córners parseables)
+#
+# NO existen en StatsBomb Open Data: Nations League ni Confederations Cup.
 #
 # Por cada partido se agregan desde los eventos:
 #   córners, tarjetas amarillas/rojas, tiros, xG, posesión estimada
@@ -131,10 +139,20 @@ def fetch_kaggle_results() -> pd.DataFrame:
 SB_BASE = "https://raw.githubusercontent.com/statsbomb/open-data/master/data"
 
 SB_COMPETITIONS = [
-    {"name": "World Cup 2018",  "competition_id": 43,  "season_id": 3},
-    {"name": "World Cup 2022",  "competition_id": 43,  "season_id": 106},
-    {"name": "Euro 2020",       "competition_id": 55,  "season_id": 43},
-    {"name": "Euro 2024",       "competition_id": 55,  "season_id": 282},
+    {"name": "World Cup 2018",    "competition_id": 43,   "season_id": 3},
+    {"name": "World Cup 2022",    "competition_id": 43,   "season_id": 106},
+    {"name": "Euro 2020",         "competition_id": 55,   "season_id": 43},
+    {"name": "Euro 2024",         "competition_id": 55,   "season_id": 282},
+    # ── Nuevas (verificadas jun 2026) ──
+    {"name": "Copa America 2024", "competition_id": 223,  "season_id": 282},
+    {"name": "AFCON 2023",        "competition_id": 1267, "season_id": 107},
+    # ── WC históricos sueltos (19 partidos). Descomenta los que quieras ──
+    # {"name": "World Cup 1970",  "competition_id": 43,   "season_id": 272},
+    # {"name": "World Cup 1974",  "competition_id": 43,   "season_id": 51},
+    # {"name": "World Cup 1986",  "competition_id": 43,   "season_id": 54},
+    # {"name": "World Cup 1958",  "competition_id": 43,   "season_id": 269},
+    # {"name": "World Cup 1962",  "competition_id": 43,   "season_id": 270},
+    # {"name": "World Cup 1990",  "competition_id": 43,   "season_id": 55},
 ]
 
 

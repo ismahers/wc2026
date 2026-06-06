@@ -126,6 +126,7 @@ EXTRA_FEATURES = [
 
 # Córners: añadidas features de ataque que ya generamos y antes no usábamos
 CORNERS_FEATURES = [
+    "home_corners_avg_all", "away_corners_avg_all", "corners_avg_all_sum",   # ← NUEVAS
     "home_form_corners_for_10", "away_form_corners_for_10",
     "diff_form_corners_for_10",
     "home_attack_norm", "away_attack_norm", "attack_diff",
@@ -538,6 +539,16 @@ class XGBBaselinePipeline:
                     for _, row in fi.iterrows():
                         log.info("    %-35s  %.4f", row["feature"], row["importance"])
 
+            # ── NUEVO: reentrenar con TODOS los datos para predecir WC2026 ──
+                full_df = df[df[config.target_col].notna()].copy()
+                refit_model = MarketModel(config)
+                refit_model.fit(full_df)
+                self.models[market_key] = refit_model
+                log.info(
+                    "  ↻ %s reentrenado con %d partidos (todos) para prediccion",
+                    config.name, len(full_df),
+                )
+
             except ValueError as e:
                 log.warning("  ⚠ %s: %s", config.name, e)
                 continue
@@ -701,3 +712,4 @@ if __name__ == "__main__":
             print(predictions.head(10).to_string())
     else:
         print(f"\n{wc_path} no encontrado — omitiendo predicciones WC2026")
+        
