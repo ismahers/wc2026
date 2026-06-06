@@ -1,11 +1,11 @@
 {
   "n_test": 4509,
-  "mae_home": 1.0434,
-  "mae_away": 0.838,
-  "rmse_home": 1.4074,
-  "rmse_away": 1.1283,
-  "mae_avg": 0.9407,
-  "accuracy_1x2": 0.6004,
-  "mean_lambda_home": 1.68,
-  "mean_lambda_away": 1.119
+  "mae_home": 1.0433,
+  "mae_away": 0.8361,
+  "rmse_home": 1.4081,
+  "rmse_away": 1.1275,
+  "mae_avg": 0.9397,
+  "accuracy_1x2": 0.6008,
+  "mean_lambda_home": 1.684,
+  "mean_lambda_away": 1.111
 }

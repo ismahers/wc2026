@@ -366,10 +366,11 @@ def compute_context_features(row: pd.Series, ratings: dict) -> dict:
     home_defense     = home_r.get("defense_norm",  np.nan)
     away_defense     = away_r.get("defense_norm",  np.nan)
 
-    rating_diff   = abs(_safe_diff(home_rating,   away_rating))   / 100.0 if not np.isnan(_safe_diff(home_rating, away_rating) or np.nan) else np.nan
-    attack_diff   = abs(_safe_diff(home_attack,   away_attack))
-    midfield_diff = abs(_safe_diff(home_midfield, away_midfield))
-    defense_diff  = abs(_safe_diff(home_defense,  away_defense))
+    rd = _safe_diff(home_rating, away_rating)
+    rating_diff = rd / 100.0 if not np.isnan(rd) else np.nan
+    attack_diff   = _safe_diff(home_attack,   away_attack)         
+    midfield_diff = _safe_diff(home_midfield, away_midfield)       
+    defense_diff  = _safe_diff(home_defense,  away_defense)        
 
     return {
         # Ventaja local

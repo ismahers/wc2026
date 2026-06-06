@@ -9,11 +9,7 @@ Mercados implementados:
   - Ambos equipos marcan (clasificación binaria)
   - Total de goles (regresión Poisson)
   - Córners totales (regresión Poisson)
-  - Tarjetas amarillas totales (regresión Poisson)
-
-Cada mercado tiene su propio modelo XGBoost con hiperparámetros dedicados.
-El split temporal es obligatorio: se entrena con partidos hasta 2022 y se
-valida con 2022-2026. Nunca se usa split aleatorio.
+  - Tarjetas amarillas totales (tasa analítica: propensión equipos × factor árbitro)
 
 Uso:
     python src/models/xgb_baseline.py
@@ -47,15 +43,54 @@ log = logging.getLogger(__name__)
 
 
 def _metric_float(value, ndigits: int = 4) -> float:
-    """Round sklearn/numpy metric values into JSON-safe Python floats."""
     return round(float(value), ndigits)
+
+
+# ---------------------------------------------------------------------------
+# Predicción analítica de amarillas
+# ---------------------------------------------------------------------------
+
+GLOBAL_YELLOW_MEAN = 4.27  # media real en partidos internacionales (StatsBomb)
+
+
+def predict_yellows_analytical(
+    home_yellow_per_90: float,
+    away_yellow_per_90: float,
+    ref_yellow_per_match: float,
+    minutes: float = 95.0,
+) -> float:
+    """
+    Amarillas esperadas = propensión_equipos × factor_árbitro.
+
+    Usa las stats de tarjetas por 90min de cada equipo (calculadas desde
+    miles de partidos de club en Transfermarkt) y el perfil histórico del
+    árbitro del partido. Mucho más fiable que el XGBoost entrenado con
+    solo ~116 partidos de StatsBomb.
+
+    Fallbacks:
+      - Sin datos de árbitro: usa solo la tasa de equipos.
+      - Sin datos de equipos: usa directamente el promedio del árbitro.
+      - Sin ninguno: devuelve la media global.
+    """
+    has_teams = not (np.isnan(home_yellow_per_90) or np.isnan(away_yellow_per_90))
+    has_ref   = not np.isnan(ref_yellow_per_match)
+
+    if has_teams and has_ref:
+        team_rate  = (home_yellow_per_90 + away_yellow_per_90) / 90.0 * minutes
+        ref_factor = ref_yellow_per_match / GLOBAL_YELLOW_MEAN
+        return round(team_rate * ref_factor, 2)
+    elif has_teams:
+        return round((home_yellow_per_90 + away_yellow_per_90) / 90.0 * minutes, 2)
+    elif has_ref:
+        return round(ref_yellow_per_match, 2)
+    else:
+        return round(GLOBAL_YELLOW_MEAN, 2)
 
 
 # ---------------------------------------------------------------------------
 # Configuración de features por mercado
 # ---------------------------------------------------------------------------
 
-# Features compartidas por todos los mercados (basadas en forma reciente)
 FORM_FEATURES = [
     "home_form_wins_10", "home_form_draws_10", "home_form_losses_10",
     "home_form_gf_10", "home_form_gc_10", "home_form_ppg_10",
@@ -67,18 +102,17 @@ FORM_FEATURES = [
     "diff_form_streak",
 ]
 
-# Features de contexto del partido
 CONTEXT_FEATURES = [
     "is_neutral", "home_is_host", "away_is_host", "effective_home_adv",
     "same_confederation", "stage_ordinal",
     "home_rest_days", "away_rest_days", "rest_days_diff",
 ]
 
-# Features adicionales (solo disponibles en WC2026 o parcialmente)
 EXTRA_FEATURES = [
     "altitude_m", "is_indoor",
     "home_travel_km", "away_travel_km", "travel_km_diff",
     "elo_diff",
+    "rating_diff",
     "home_form_neutral_wins_10", "away_form_neutral_wins_10",
     "diff_form_neutral_wins_10",
     "ref_yellow_per_match", "ref_red_per_match",
@@ -90,21 +124,26 @@ EXTRA_FEATURES = [
     "home_unique_clubs", "away_unique_clubs", "unique_clubs_diff",
 ]
 
-# Features específicas de córners y tarjetas
+# Córners: añadidas features de ataque que ya generamos y antes no usábamos
 CORNERS_FEATURES = [
     "home_form_corners_for_10", "away_form_corners_for_10",
     "diff_form_corners_for_10",
+    "home_attack_norm", "away_attack_norm", "attack_diff",
+    "home_goals_per_90", "away_goals_per_90", "goals_per_90_diff",
+    "elo_diff", "rating_diff",
+    "effective_home_adv", "stage_ordinal",
 ]
 
+# Tarjetas: añadidas propensión de equipos desde stats de club (Transfermarkt)
 CARDS_FEATURES = [
     "home_form_yellows_10", "away_form_yellows_10",
     "diff_form_yellows_10",
     "ref_yellow_per_match", "ref_red_per_match",
+    "home_yellow_per_90", "away_yellow_per_90", "yellow_per_90_diff",
 ]
 
 
 def _get_features_for_market(market: str) -> list[str]:
-    """Devuelve la lista de features disponible para cada mercado."""
     base = FORM_FEATURES + CONTEXT_FEATURES + EXTRA_FEATURES
     if market in ("corners", "over85c"):
         return list(dict.fromkeys(base + CORNERS_FEATURES))
@@ -121,7 +160,7 @@ def _get_features_for_market(market: str) -> list[str]:
 class MarketConfig:
     name: str
     target_col: str
-    task: str          # "multiclass", "binary", "poisson"
+    task: str
     eval_metric: str
     xgb_params: dict
     min_samples: int = 100
@@ -245,32 +284,23 @@ class MarketModel:
         self.metrics: dict = {}
 
     def _select_features(self, df: pd.DataFrame) -> list[str]:
-        """Selecciona features disponibles (no todo-NaN) del pool del mercado."""
         market_key = self.config.target_col.replace("target_", "")
         pool = _get_features_for_market(market_key)
         available = []
         for f in pool:
             if f in df.columns:
-                # Solo incluir si tiene al menos un 10% de datos
                 if df[f].notna().mean() > 0.10:
                     available.append(f)
         return available
 
-    def _prepare_data(
-        self,
-        df: pd.DataFrame,
-    ) -> tuple[np.ndarray, np.ndarray, list[str]]:
-        """Prepara X, y filtrando NaN en target y features."""
+    def _prepare_data(self, df: pd.DataFrame) -> tuple[np.ndarray, np.ndarray, list[str]]:
         target = self.config.target_col
 
-        # Verificar que la columna target existe
         if target not in df.columns:
             raise ValueError(
-                f"Columna '{target}' no encontrada en el dataset. "
-                f"Puede que los datos no cubran este mercado (ej: córners/tarjetas solo en StatsBomb)."
+                f"Columna '{target}' no encontrada en el dataset."
             )
 
-        # Filtrar filas con target disponible
         mask = df[target].notna()
         df_clean = df[mask].copy()
 
@@ -280,21 +310,17 @@ class MarketModel:
                 f"Mínimo requerido: {self.config.min_samples}"
             )
 
-        # Seleccionar features disponibles
         self.feature_cols = self._select_features(df_clean)
         if not self.feature_cols:
             raise ValueError(f"No hay features disponibles para '{self.config.name}'")
 
         X = df_clean[self.feature_cols].copy()
-
-        # Rellenar NaN restantes con mediana (safe default para tree models)
         for col in X.columns:
             if X[col].isna().any():
                 X[col] = X[col].fillna(X[col].median())
 
         y = df_clean[target].copy()
 
-        # Encode labels para multiclase
         if self.config.task == "multiclass":
             self.label_encoder = LabelEncoder()
             self.label_encoder.classes_ = np.array(["A", "D", "H"])
@@ -303,7 +329,6 @@ class MarketModel:
         return X.values.astype(np.float32), np.array(y, dtype=np.float32), self.feature_cols
 
     def fit(self, df_train: pd.DataFrame) -> "MarketModel":
-        """Entrena el modelo sobre el dataset de entrenamiento."""
         log.info("─── %s ───", self.config.name)
 
         X, y, features = self._prepare_data(df_train)
@@ -320,7 +345,7 @@ class MarketModel:
                 eval_metric=self.config.eval_metric,
                 **params,
             )
-        else:  # poisson / regresión
+        else:
             self.model = xgb.XGBRegressor(
                 n_estimators=n_estimators,
                 random_state=42,
@@ -333,7 +358,6 @@ class MarketModel:
         return self
 
     def evaluate(self, df_test: pd.DataFrame) -> dict:
-        """Evalúa el modelo en un set de test."""
         target = self.config.target_col
         mask = df_test[target].notna()
         df_clean = df_test[mask].copy()
@@ -367,13 +391,10 @@ class MarketModel:
             metrics["log_loss"] = _metric_float(
                 log_loss(y_true_enc, proba, labels=np.arange(len(self.label_encoder.classes_))),
             )
-
-            # Brier multiclase
             y_onehot = np.zeros_like(proba)
             y_onehot[np.arange(len(y_true_enc)), y_true_enc] = 1
             metrics["brier"] = _metric_float(np.mean(np.sum((proba - y_onehot) ** 2, axis=1)))
 
-            # Distribución predicha vs real
             for i, cls in enumerate(self.label_encoder.classes_):
                 metrics[f"pred_mean_{cls}"] = _metric_float(proba[:, i].mean())
                 metrics[f"actual_pct_{cls}"] = _metric_float((y_true == cls).mean())
@@ -397,7 +418,7 @@ class MarketModel:
             metrics["actual_mean"] = _metric_float(y_true_binary.mean())
             metrics["positive_count"] = int(y_true_binary.sum())
 
-        else:  # poisson
+        else:
             y_true_float = y_true.astype(float)
             preds = self.model.predict(X)
             metrics["mae"] = _metric_float(mean_absolute_error(y_true_float, preds))
@@ -409,7 +430,6 @@ class MarketModel:
         return metrics
 
     def predict_proba(self, df: pd.DataFrame) -> np.ndarray:
-        """Devuelve probabilidades predichas."""
         X = df[self.feature_cols].copy()
         for col in X.columns:
             if X[col].isna().any():
@@ -422,7 +442,6 @@ class MarketModel:
             return self.model.predict(X)
 
     def feature_importance(self, top_n: int = 15) -> pd.DataFrame:
-        """Top N features por importancia (gain)."""
         imp = self.model.feature_importances_
         fi = pd.DataFrame({
             "feature": self.feature_cols,
@@ -438,13 +457,7 @@ class MarketModel:
 class XGBBaselinePipeline:
     """
     Pipeline que entrena y evalúa un modelo XGBoost por mercado.
-
-    Split temporal obligatorio:
-      - Train: partidos hasta val_cutoff_year (excluido)
-      - Val:   partidos desde val_cutoff_year hasta test_cutoff_year
-      - Test:  partidos desde test_cutoff_year
-
-    Nunca se usa random split — en series temporales sería data leakage.
+    Las amarillas usan predicción analítica en WC2026 (propensión equipos × árbitro).
     """
 
     def __init__(
@@ -459,18 +472,7 @@ class XGBBaselinePipeline:
         self.models: dict[str, MarketModel] = {}
         self.all_metrics: list[dict] = []
 
-    def _split_for_market(
-        self,
-        df: pd.DataFrame,
-        config: MarketConfig,
-    ) -> tuple[pd.DataFrame, pd.DataFrame]:
-        """
-        Return train/validation splits for a market.
-
-        Most markets use the global temporal split. Sparse event markets such
-        as corners and cards only exist in recent StatsBomb tournaments, so they
-        hold out the latest target year instead of using `< train_cutoff`.
-        """
+    def _split_for_market(self, df: pd.DataFrame, config: MarketConfig) -> tuple[pd.DataFrame, pd.DataFrame]:
         if config.split_strategy == "latest_target_year":
             target_df = df[df[config.target_col].notna()].copy()
             if target_df.empty:
@@ -488,14 +490,12 @@ class XGBBaselinePipeline:
         return df_train, df_val
 
     def run(self, df: pd.DataFrame, output_dir: str = "./outputs") -> pd.DataFrame:
-        """Ejecuta el pipeline completo: train → evaluate → report."""
         os.makedirs(output_dir, exist_ok=True)
 
         df = df.copy()
         df["date"] = pd.to_datetime(df["date"], errors="coerce")
         df = df.sort_values("date").reset_index(drop=True)
 
-        # Split temporal global. Algunos mercados escasos usan split propio.
         df_train_global = df[df["date"].dt.year < self.train_cutoff].copy()
         df_val_global = df[
             (df["date"].dt.year >= self.train_cutoff) &
@@ -521,11 +521,7 @@ class XGBBaselinePipeline:
             val_target_n = df_val[config.target_col].notna().sum() if config.target_col in df_val else 0
             log.info(
                 "Split %s: train=%d (%d target), val=%d (%d target)",
-                config.split_strategy,
-                len(df_train),
-                train_target_n,
-                len(df_val),
-                val_target_n,
+                config.split_strategy, len(df_train), train_target_n, len(df_val), val_target_n,
             )
 
             try:
@@ -537,7 +533,6 @@ class XGBBaselinePipeline:
                     self.all_metrics.append(metrics)
                     self._print_metrics(metrics)
 
-                    # Feature importance
                     fi = model.feature_importance(top_n=10)
                     log.info("  Top features:")
                     for _, row in fi.iterrows():
@@ -547,11 +542,9 @@ class XGBBaselinePipeline:
                 log.warning("  ⚠ %s: %s", config.name, e)
                 continue
 
-        # Resumen
         summary = pd.DataFrame(self.all_metrics)
         if not summary.empty:
             self._print_summary(summary)
-
             summary_path = os.path.join(output_dir, "xgb_baseline_metrics.json")
             with open(summary_path, "w") as f:
                 json.dump(self.all_metrics, f, indent=2, default=str)
@@ -559,12 +552,11 @@ class XGBBaselinePipeline:
 
         return summary
 
-    def predict_wc2026(
-        self,
-        df_wc: pd.DataFrame,
-        output_dir: str = "./outputs",
-    ) -> pd.DataFrame:
-        """Genera predicciones para los partidos del WC2026."""
+    def predict_wc2026(self, df_wc: pd.DataFrame, output_dir: str = "./outputs") -> pd.DataFrame:
+        """
+        Genera predicciones para los partidos del WC2026.
+        Las amarillas usan la tasa analítica (propensión equipos × árbitro).
+        """
         if not self.models:
             log.error("No hay modelos entrenados. Ejecuta run() primero.")
             return pd.DataFrame()
@@ -579,6 +571,21 @@ class XGBBaselinePipeline:
             try:
                 pred_rows = df_wc[~placeholder_mask].copy()
                 if pred_rows.empty:
+                    continue
+
+                # ── Amarillas: tasa analítica en vez del XGBoost ──────────────
+                if market_key == "yellows":
+                    analytical_preds = []
+                    for _, row in pred_rows.iterrows():
+                        y = predict_yellows_analytical(
+                            float(row.get("home_yellow_per_90", np.nan)),
+                            float(row.get("away_yellow_per_90", np.nan)),
+                            float(row.get("ref_yellow_per_match", np.nan)),
+                        )
+                        analytical_preds.append(y)
+                    results["pred_yellows"] = pd.NA
+                    results.loc[~placeholder_mask, "pred_yellows"] = np.array(analytical_preds).round(2)
+                    log.info("  ✓ Amarillas: tasa analítica aplicada (%d partidos)", len(analytical_preds))
                     continue
 
                 preds = model.predict_proba(pred_rows)
@@ -597,7 +604,7 @@ class XGBBaselinePipeline:
                     results[f"prob_{col_name}"] = pd.NA
                     results.loc[~placeholder_mask, f"prob_{col_name}"] = preds[:, 1].round(4)
 
-                else:  # poisson
+                else:
                     col_name = config.target_col.replace("target_", "")
                     results[f"pred_{col_name}"] = pd.NA
                     results.loc[~placeholder_mask, f"pred_{col_name}"] = preds.round(2)
@@ -608,8 +615,7 @@ class XGBBaselinePipeline:
         n_placeholders = int(placeholder_mask.sum())
         if n_placeholders:
             log.info(
-                "WC2026: %d partidos de eliminatorias/slots se guardan sin predicción "
-                "hasta resolver equipos reales",
+                "WC2026: %d partidos de eliminatorias/slots sin predicción hasta resolver equipos reales",
                 n_placeholders,
             )
 
@@ -620,12 +626,6 @@ class XGBBaselinePipeline:
 
     @staticmethod
     def _placeholder_match_mask(df: pd.DataFrame) -> pd.Series:
-        """
-        Detect unresolved knockout slots.
-
-        Slots such as 1A, 3A/B/C/D/F, Winner 74, etc. have no Elo or recent
-        form. Producing model averages for them is more misleading than useful.
-        """
         required = ["elo_diff", "home_form_ppg_10", "away_form_ppg_10"]
         if not all(col in df.columns for col in required):
             return pd.Series(False, index=df.index)
@@ -674,12 +674,10 @@ if __name__ == "__main__":
     DATA_DIR = "./data"
     OUTPUT_DIR = "./outputs"
 
-    # Cargar features
     features_path = os.path.join(DATA_DIR, "processed", "features_train.csv")
     wc_path = os.path.join(DATA_DIR, "processed", "features_wc2026.csv")
 
     if not os.path.exists(features_path):
-        # Fallback al features.csv antiguo
         features_path = os.path.join(DATA_DIR, "features.csv")
 
     if not os.path.exists(features_path):
@@ -690,14 +688,9 @@ if __name__ == "__main__":
     df = pd.read_csv(features_path, parse_dates=["date"])
     print(f"  → {len(df)} partidos")
 
-    # Ejecutar pipeline
-    pipeline = XGBBaselinePipeline(
-        train_cutoff=2018,
-        val_cutoff=2023,
-    )
+    pipeline = XGBBaselinePipeline(train_cutoff=2018, val_cutoff=2023)
     summary = pipeline.run(df, output_dir=OUTPUT_DIR)
 
-    # Predicciones WC2026 si existe el archivo
     if os.path.exists(wc_path):
         print(f"\nCargando {wc_path}...")
         df_wc = pd.read_csv(wc_path, parse_dates=["date"])
@@ -708,4 +701,3 @@ if __name__ == "__main__":
             print(predictions.head(10).to_string())
     else:
         print(f"\n{wc_path} no encontrado — omitiendo predicciones WC2026")
-        

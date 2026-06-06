@@ -1,51 +1,53 @@
-referee_name,country,confederation,tournament
-Michael Oliver,England,UEFA,World Cup 2026
-Anthony Taylor,England,UEFA,World Cup 2026
-Francois Letexier,France,UEFA,World Cup 2026
-Clement Turpin,France,UEFA,World Cup 2026
-Felix Zwayer,Germany,UEFA,World Cup 2026
-Maurizio Mariani,Italy,UEFA,World Cup 2026
-Danny Makkelie,Netherlands,UEFA,World Cup 2026
-Espen Eskas,Norway,UEFA,World Cup 2026
-Szymon Marciniak,Poland,UEFA,World Cup 2026
-Joao Pinheiro,Portugal,UEFA,World Cup 2026
-Istvan Kovacs,Romania,UEFA,World Cup 2026
-Slavko Vincic,Slovenia,UEFA,World Cup 2026
-Alejandro Hernandez Hernandez,Spain,UEFA,World Cup 2026
-Glenn Nyberg,Sweden,UEFA,World Cup 2026
-Sandro Schaerer,Switzerland,UEFA,World Cup 2026
-Adham Makhadmeh,Jordan,AFC,World Cup 2026
-Ning Ma,China,AFC,World Cup 2026
-Alireza Faghani,Australia,AFC,World Cup 2026
-Yusuke Araki,Japan,AFC,World Cup 2026
-Abdulrahman Al Jassim,Qatar,AFC,World Cup 2026
-Khalid Al Turais,Saudi Arabia,AFC,World Cup 2026
-Ilgiz Tantashev,Uzbekistan,AFC,World Cup 2026
-Mustapha Ghorbal,Algeria,CAF,World Cup 2026
-Pierre Atcho,Gabon,CAF,World Cup 2026
-Amin Mohamed,Egypt,CAF,World Cup 2026
-Jalal Jayed,Morocco,CAF,World Cup 2026
-Dahane Beida,Mauritania,CAF,World Cup 2026
-Omar Abdulkadir Artan,Somalia,CAF,World Cup 2026
-Abongile Tom,South Africa,CAF,World Cup 2026
-Drew Fischer,Canada,CONCACAF,World Cup 2026
-Juan Calderon,Costa Rica,CONCACAF,World Cup 2026
-Said Martinez,Honduras,CONCACAF,World Cup 2026
-Oshane Nation,Mexico,CONCACAF,World Cup 2026
-Cesar Ramos,Mexico,CONCACAF,World Cup 2026
-Katia Garcia,Mexico,CONCACAF,World Cup 2026
-Ivan Barton,El Salvador,CONCACAF,World Cup 2026
-Ismail Elfath,United States,CONCACAF,World Cup 2026
-Tori Penso,United States,CONCACAF,World Cup 2026
-Yael Falcon Perez,Argentina,CONMEBOL,World Cup 2026
-Dario Herrera,Argentina,CONMEBOL,World Cup 2026
-Facundo Tello,Argentina,CONMEBOL,World Cup 2026
-Ramon Abatti,Brazil,CONMEBOL,World Cup 2026
-Raphael Claus,Brazil,CONMEBOL,World Cup 2026
-Wilton Sampaio,Brazil,CONMEBOL,World Cup 2026
-Cristian Garay,Chile,CONMEBOL,World Cup 2026
-Andres Rojas,Colombia,CONMEBOL,World Cup 2026
-Juan Gabriel Benitez,Paraguay,CONMEBOL,World Cup 2026
-Kevin Ortega,Peru,CONMEBOL,World Cup 2026
-Gustavo Tejera,Uruguay,CONMEBOL,World Cup 2026
-Jesus Valenzuela,Venezuela,CONMEBOL,World Cup 2026
+referee_name,country,confederation,tournament,matches,yellow_per_match,red_per_match
+Michael Oliver,England,UEFA,World Cup 2026,546.0,3.49,0.07
+Anthony Taylor,England,UEFA,World Cup 2026,561.0,3.78,0.1
+Francois Letexier,France,UEFA,World Cup 2026,285.0,3.99,0.18
+Clement Turpin,France,UEFA,World Cup 2026,435.0,3.36,0.19
+Felix Zwayer,Germany,UEFA,World Cup 2026,556.0,4.07,0.08
+Maurizio Mariani,Italy,UEFA,World Cup 2026,289.0,4.81,0.18
+Danny Makkelie,Netherlands,UEFA,World Cup 2026,506.0,3.4,0.09
+Espen Eskas,Norway,UEFA,World Cup 2026,166.0,3.43,0.08
+Szymon Marciniak,Poland,UEFA,World Cup 2026,510.0,4.29,0.1
+Joao Pinheiro,Portugal,UEFA,World Cup 2026,390.0,4.41,0.1
+Istvan Kovacs,Romania,UEFA,World Cup 2026,385.0,5.39,0.13
+Slavko Vincic,Slovenia,UEFA,World Cup 2026,330.0,4.13,0.1
+Alejandro Hernandez Hernandez,Spain,UEFA,World Cup 2026,178.0,5.15,0.22
+Glenn Nyberg,Sweden,UEFA,World Cup 2026,195.0,3.54,0.12
+Sandro Schaerer,Switzerland,UEFA,World Cup 2026,156.0,4.33,0.19
+Adham Makhadmeh,Jordan,AFC,World Cup 2026,18.0,4.44,0.22
+Ning Ma,China,AFC,World Cup 2026,127.0,4.39,0.34
+Alireza Faghani,Australia,AFC,World Cup 2026,132.0,4.26,0.21
+Yusuke Araki,Japan,AFC,World Cup 2026,131.0,2.87,0.16
+Abdulrahman Al Jassim,Qatar,AFC,World Cup 2026,23.0,5.17,0.19
+Khalid Al Turais,Saudi Arabia,AFC,World Cup 2026,27.0,4.52,0.11
+Ilgiz Tantashev,Uzbekistan,AFC,World Cup 2026,20.0,3.7,0.15
+Omar Al-Ali,UAE,AFC,World Cup 2026,23.0,3.91,0.3
+Mustapha Ghorbal,Algeria,CAF,World Cup 2026,15.0,3.27,0.07
+Pierre Atcho,Gabon,CAF,World Cup 2026,6.0,4.0,0.17
+Amin Mohamed,Egypt,CAF,World Cup 2026,9.0,2.22,0.44
+Jalal Jayed,Morocco,CAF,World Cup 2026,6.0,3.5,0.05
+Dahane Beida,Mauritania,CAF,World Cup 2026,11.0,3.27,0.27
+Omar Abdulkadir Artan,Somalia,CAF,World Cup 2026,7.0,2.43,0.14
+Abongile Tom,South Africa,CAF,World Cup 2026,93.0,3.89,0.27
+Drew Fischer,Canada,CONCACAF,World Cup 2026,141.0,3.27,0.18
+Juan Calderon,Costa Rica,CONCACAF,World Cup 2026,29.0,3.21,0.38
+Said Martinez,Honduras,CONCACAF,World Cup 2026,40.0,4.05,0.18
+Oshane Nation,Jamaica,CONCACAF,World Cup 2026,30.0,3.83,0.1
+Cesar Ramos,Mexico,CONCACAF,World Cup 2026,25.0,5.04,0.12
+Katia Garcia,Mexico,CONCACAF,World Cup 2026,34.0,4.47,0.12
+Ivan Barton,El Salvador,CONCACAF,World Cup 2026,50.0,4.84,0.40
+Ismail Elfath,United States,CONCACAF,World Cup 2026,112.0,4.34,0.24
+Tori Penso,United States,CONCACAF,World Cup 2026,78.0,3.86,0.09
+Yael Falcon Perez,Argentina,CONMEBOL,World Cup 2026,154.0,5.47,0.28
+Dario Herrera,Argentina,CONMEBOL,World Cup 2026,203.0,5.52,0.41
+Facundo Tello,Argentina,CONMEBOL,World Cup 2026,14.0,4.78,0.07
+Ramon Abatti,Brazil,CONMEBOL,World Cup 2026,153.0,4.67,0.29
+Raphael Claus,Brazil,CONMEBOL,World Cup 2026,212.0,4.13,0.2
+Wilton Sampaio,Brazil,CONMEBOL,World Cup 2026,211.0,5.1,0.24
+Cristian Garay,Chile,CONMEBOL,World Cup 2026,161.0,4.37,0.39
+Andres Rojas,Colombia,CONMEBOL,World Cup 2026,139.0,5.43,0.41
+Juan Gabriel Benitez,Paraguay,CONMEBOL,World Cup 2026,141.0,4.4,0.25
+Kevin Ortega,Peru,CONMEBOL,World Cup 2026,189.0,5.19,0.37
+Gustavo Tejera,Uruguay,CONMEBOL,World Cup 2026,209.0,4.98,0.3
+Jesus Valenzuela,Venezuela,CONMEBOL,World Cup 2026,98.0,4.99,0.26
+Campbell-Kirk Kawana-Waugh,New Zealand,OFC,World Cup 2026,7.0,3.14,0.14
