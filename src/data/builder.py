@@ -378,6 +378,10 @@ class MatchDatasetBuilder:
                  (df["_source"] == "wc2026").sum())
         from src.data.team_names import add_canonical_columns
         df = add_canonical_columns(df, ["home_team", "away_team"], suffix="")
+
+        # Forzar neutral=True para todos los partidos WC2026
+        df.loc[df["_source"] == "wc2026", "neutral"] = True
+        df["neutral"] = df["neutral"].fillna(False)
         return df
 
 

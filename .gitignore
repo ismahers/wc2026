@@ -1,6 +1,4 @@
-# Datos — no subir al repo
-/data/*
-!/data/raw/
+# Datos crudos grandes — no subir al repo
 /data/raw/*
 !/data/raw/venues.csv
 !/data/raw/referees_wc2026.csv
@@ -8,7 +6,40 @@
 !/data/raw/group_stage_wc2026.csv
 !/data/raw/knockout_wc2026.csv
 !/data/raw/squads_wc2026_final_official_corrected.csv
-/outputs/
+
+# Transfermarkt — el gordo no cabe en GitHub (157MB)
+/data/transfermarkt/player_performances.csv
+
+# Datos procesados grandes — generados por los scripts, no subir
+/data/processed/features.csv
+/data/processed/features_train.csv
+/data/processed/features_wc2026.csv
+/data/processed/matches_enriched.csv
+/data/processed/team_ratings.csv
+
+# Datos procesados ligeros — SÍ subir para que Dani los vea
+!/data/processed/
+!/data/processed/team_ratings_wc2026.csv
+!/data/processed/team_player_stats_wc2026.csv
+!/data/processed/players_wc2026.csv
+!/data/processed/teams_wc2026.csv
+!/data/processed/squad_summary_wc2026.csv
+
+# Histórico y StatsBomb — generados por data_collector.py
+/data/results.csv
+/data/results_raw.csv
+/data/unified.csv
+/data/statsbomb_matches.csv
+
+# Outputs del modelo — SÍ subir para que Dani los vea
+!/outputs/
+!/outputs/wc2026_predictions.csv
+!/outputs/wc2026_predictions_with_odds.csv
+!/outputs/wc2026_poisson_predictions.csv
+!/outputs/wc2026_poisson_predictions_with_odds.csv
+!/outputs/model_comparison.csv
+!/outputs/xgb_baseline_metrics.json
+!/outputs/poisson_metrics.json
 
 # Python
 __pycache__/

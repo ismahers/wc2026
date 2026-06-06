@@ -1,0 +1,53 @@
+referee_id,referee_name,nationality,confederation,tournament,matches,yellow_cards,red_cards,penalties_awarded,yellow_per_match,red_per_match,fouls_per_match,penalties_per_match,stats_source,yellow_per_match_model,red_per_match_model,rate_is_measured
+wc2026:referee:abdulrahman-al-jassim,Abdulrahman Al Jassim,Qatar,AFC,World Cup 2026,,,,,,,,,,4.26,0.21,0
+wc2026:referee:khalid-al-turais,Khalid Al Turais,Saudi Arabia,AFC,World Cup 2026,,,,,,,,,,4.26,0.21,0
+wc2026:referee:yusuke-araki,Yusuke Araki,Japan,AFC,World Cup 2026,,,,,,,,,,4.26,0.21,0
+wc2026:referee:omar-abdulkadir-artan,Omar Abdulkadir Artan,Somalia,CAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:pierre-atcho,Pierre Atcho,Gabon,CAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:ivan-barton,Ivan Barton,El Salvador,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:dahane-beida,Dahane Beida,Mauritania,CAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:juan-gabriel-benitez,Juan Gabriel Benitez,Paraguay,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:juan-calderon,Juan Calderon,Costa Rica,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:raphael-claus,Raphael Claus,Brazil,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:ismail-elfath,Ismail Elfath,United States,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:espen-eskas,Espen Eskas,Norway,UEFA,World Cup 2026,,,,,,,,,,4.036,0.113,0
+wc2026:referee:alireza-faghani,Alireza Faghani,Australia,AFC,World Cup 2026,132.0,,,,4.26,0.21,,0.29,worldreferee.com (intl),4.26,0.21,1
+wc2026:referee:yael-falcon-perez,Yael Falcon Perez,Argentina,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:drew-fischer,Drew Fischer,Canada,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:cristian-garay,Cristian Garay,Chile,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:katia-garcia,Katia Garcia,Mexico,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:mustapha-ghorbal,Mustapha Ghorbal,Algeria,CAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:alejandro-hernandez-hernandez,Alejandro Hernandez Hernandez,Spain,UEFA,World Cup 2026,,,,,,,,,,4.036,0.113,0
+wc2026:referee:dario-herrera,Dario Herrera,Argentina,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:jalal-jayed,Jalal Jayed,Morocco,CAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:campbell-kirk-kawana-waugh,Campbell-Kirk Kawana-Waugh,New Zealand,OFC,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:istvan-kovacs,Istvan Kovacs,Romania,UEFA,World Cup 2026,385.0,,,,5.39,0.13,,0.36,statshub.com,5.349,0.129,1
+wc2026:referee:francois-letexier,Francois Letexier,France,UEFA,World Cup 2026,285.0,,,,3.99,0.18,,0.44,statshub.com,3.992,0.177,1
+wc2026:referee:ning-ma,Ning Ma,China,AFC,World Cup 2026,,,,,,,,,,4.26,0.21,0
+wc2026:referee:adham-makhadmeh,Adham Makhadmeh,Jordan,AFC,World Cup 2026,,,,,,,,,,4.26,0.21,0
+wc2026:referee:danny-makkelie,Danny Makkelie,Netherlands,UEFA,World Cup 2026,506.0,,,,3.4,0.09,,0.32,statshub.com,3.415,0.091,1
+wc2026:referee:szymon-marciniak,Szymon Marciniak,Poland,UEFA,World Cup 2026,510.0,,,,4.29,0.1,,0.42,statshub.com,4.284,0.1,1
+wc2026:referee:maurizio-mariani,Maurizio Mariani,Italy,UEFA,World Cup 2026,289.0,,,,4.81,0.18,,0.37,statshub.com,4.779,0.177,1
+wc2026:referee:said-martinez,Said Martinez,Honduras,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:amin-mohamed,Amin Mohamed,Egypt,CAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:oshane-nation,Oshane Nation,Jamaica,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:glenn-nyberg,Glenn Nyberg,Sweden,UEFA,World Cup 2026,,,,,,,,,,4.036,0.113,0
+wc2026:referee:michael-oliver,Michael Oliver,England,UEFA,World Cup 2026,546.0,,,,3.49,0.07,,0.36,statshub.com,3.502,0.071,1
+wc2026:referee:omar-al-ali,Omar Al-Ali,United Arab Emirates,AFC,World Cup 2026,,,,,,,,,,4.26,0.21,0
+wc2026:referee:kevin-ortega,Kevin Ortega,Peru,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:tori-penso,Tori Penso,United States,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:joao-pinheiro,Joao Pinheiro,Portugal,UEFA,World Cup 2026,390.0,,,,4.41,0.1,,,playerstats.football,4.399,0.1,1
+wc2026:referee:ramon-abatti,Ramon Abatti,Brazil,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:cesar-ramos,Cesar Ramos,Mexico,CONCACAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:andres-rojas,Andres Rojas,Colombia,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:sandro-schaerer,Sandro Schaerer,Switzerland,UEFA,World Cup 2026,,,,,,,,,,4.036,0.113,0
+wc2026:referee:ilgiz-tantashev,Ilgiz Tantashev,Uzbekistan,AFC,World Cup 2026,,,,,,,,,,4.26,0.21,0
+wc2026:referee:anthony-taylor,Anthony Taylor,England,UEFA,World Cup 2026,561.0,,,,3.78,0.1,,0.33,statshub.com,3.785,0.1,1
+wc2026:referee:gustavo-tejera,Gustavo Tejera,Uruguay,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:facundo-tello,Facundo Tello,Argentina,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:abongile-tom,Abongile Tom,South Africa,CAF,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:clement-turpin,Clement Turpin,France,UEFA,World Cup 2026,435.0,,,,3.36,0.19,,0.42,statshub.com,3.378,0.188,1
+wc2026:referee:jesus-valenzuela,Jesus Valenzuela,Venezuela,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:slavko-vincic,Slavko Vincic,Slovenia,UEFA,World Cup 2026,330.0,,,,4.13,0.1,,0.26,statshub.com,4.127,0.1,1
+wc2026:referee:wilton-sampaio,Wilton Sampaio,Brazil,CONMEBOL,World Cup 2026,,,,,,,,,,4.042,0.116,0
+wc2026:referee:felix-zwayer,Felix Zwayer,Germany,UEFA,World Cup 2026,556.0,,,,4.07,0.08,,,playerstats.football,4.069,0.081,1

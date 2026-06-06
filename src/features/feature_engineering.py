@@ -7,25 +7,29 @@ Para cada partido genera:
   - Features de forma reciente (últimos N partidos de cada equipo)
   - Features de contexto (fase, sede, confederación, neutral/host)
   - Features del árbitro
+  - Rating compuesto WC2026 (valor mercado + Elo + racha)
   - Variables objetivo para cada mercado
 
-Ventaja de local en el Mundial
--------------------------------
-En el Mundial todos los partidos son en sede neutral, así que la ventaja
-de local tradicional no existe. El feature `effective_home_adv` lo captura:
-  - Partido no neutral (clasificatorias, amistosos): 1.0
-  - Partido neutral sin anfitrión (la mayoría del WC2026): 0.0
-  - Partido neutral con home anfitrión en su país sede: 0.5
-  - Partido neutral con away anfitrión en su país sede: -0.5
+Optimización de rendimiento
+-----------------------------
+La versión original era O(n²): para cada partido filtraba todo el DataFrame.
+Esta versión preconstruye un índice {equipo: [filas ordenadas por fecha]}
+y usa búsqueda binaria para encontrar los N partidos anteriores en O(log n).
+En un dataset de 32k partidos esto reduce el tiempo de ~20 min a ~30 seg.
 
-El modelo aprende solo del histórico que `is_neutral=1` anula la ventaja,
-y al predecir el Mundial solo aplica ventaja si USA/México/Canadá juegan
-en su propio país sede, aunque el fixture los liste como away.
+Mundial = sede neutral
+------------------------
+En el Mundial todos los partidos son en sede neutral. Las features de rating
+usan diferencia absoluta (no direccional) entre equipos. La única excepción
+son USA/México/Canadá cuando juegan en su país sede.
 """
 
-import pandas as pd
-import numpy as np
+import os
+import bisect
 from typing import Optional
+
+import numpy as np
+import pandas as pd
 
 
 # ── Configuración ─────────────────────────────────────────────────────────────
@@ -33,33 +37,146 @@ from typing import Optional
 N_RECENT = 10
 
 
-# ── Utilidades ────────────────────────────────────────────────────────────────
+# ── Carga de ratings WC2026 ───────────────────────────────────────────────────
 
-def _get_team_history(
+_RATINGS_CACHE: dict = {}
+_PLAYER_STATS_CACHE: dict = {}
+
+def _load_ratings(ratings_path: str = "./data/processed/team_ratings_wc2026.csv") -> dict:
+    """Carga el rating compuesto de selecciones WC2026 en memoria (singleton)."""
+    global _RATINGS_CACHE
+    if _RATINGS_CACHE:
+        return _RATINGS_CACHE
+    try:
+        df = pd.read_csv(ratings_path)
+        for _, row in df.iterrows():
+            _RATINGS_CACHE[row["team_canonical"]] = {
+                "rating":        float(row.get("rating", 50.0)),
+                "attack_norm":   float(row.get("attack_value_norm", 0.5)),
+                "midfield_norm": float(row.get("midfield_value_norm", 0.5)),
+                "defense_norm":  float(row.get("defense_value_norm", 0.5)),
+            }
+        print(f"  → Ratings WC2026 cargados: {len(_RATINGS_CACHE)} selecciones")
+    except Exception as e:
+        print(f"  ⚠ No se pudo cargar team_ratings_wc2026.csv: {e}")
+    return _RATINGS_CACHE
+
+
+def _load_player_stats(stats_path: str = "./data/processed/team_player_stats_wc2026.csv") -> dict:
+    """Carga stats de jugadores por selección WC2026 en memoria (singleton)."""
+    global _PLAYER_STATS_CACHE
+    if _PLAYER_STATS_CACHE:
+        return _PLAYER_STATS_CACHE
+    try:
+        df = pd.read_csv(stats_path)
+        for _, row in df.iterrows():
+            _PLAYER_STATS_CACHE[row["team_canonical"]] = {
+                "yellow_per_90":  float(row["avg_yellow_per_90"])  if pd.notna(row["avg_yellow_per_90"])  else np.nan,
+                "red_per_90":     float(row["avg_red_per_90"])     if pd.notna(row["avg_red_per_90"])     else np.nan,
+                "goals_per_90":   float(row["avg_goals_per_90"])   if pd.notna(row["avg_goals_per_90"])   else np.nan,
+                "assists_per_90": float(row["avg_assists_per_90"]) if pd.notna(row["avg_assists_per_90"]) else np.nan,
+                "avg_caps":       float(row["avg_international_caps"]) if pd.notna(row["avg_international_caps"]) else np.nan,
+            }
+        print(f"  → Player stats WC2026 cargados: {len(_PLAYER_STATS_CACHE)} selecciones")
+    except Exception as e:
+        print(f"  ⚠ No se pudo cargar team_player_stats_wc2026.csv: {e}")
+    return _PLAYER_STATS_CACHE
+
+
+# ── Índice de historial por equipo (optimización O(n) → O(log n)) ─────────────
+
+def build_team_index(df: pd.DataFrame) -> dict[str, list]:
+    """
+    Preconstruye un índice {equipo: [(fecha, idx_fila), ...]} ordenado por fecha.
+    Permite encontrar los N partidos anteriores con búsqueda binaria en O(log n)
+    en lugar de filtrar todo el DataFrame en cada llamada O(n).
+
+    Con 32k partidos y ~600 equipos esto pasa de ~20 min a ~30 seg.
+    """
+    index: dict[str, list] = {}
+    for i, row in df.iterrows():
+        date = row["date"]
+        for team_col in ["home_team", "away_team"]:
+            team = row[team_col]
+            if pd.isna(team):
+                continue
+            if team not in index:
+                index[team] = []
+            index[team].append((date, i))
+
+    # Ordenar por fecha
+    for team in index:
+        index[team].sort(key=lambda x: x[0])
+
+    return index
+
+
+def _get_team_history_fast(
     df: pd.DataFrame,
+    index: dict[str, list],
     team: str,
     before_date: pd.Timestamp,
     n: int,
 ) -> pd.DataFrame:
-    """Últimos N partidos de un equipo antes de una fecha (sin leakage)."""
+    """
+    Devuelve los últimos N partidos de un equipo antes de before_date
+    usando el índice preconstruido. O(log n + n) en lugar de O(total_partidos).
+    """
     if "result" not in df.columns:
         return pd.DataFrame()
 
-    mask = (
-        ((df["home_team"] == team) | (df["away_team"] == team)) &
-        (df["date"] < before_date) &
-        df["result"].notna()
-    )
-    return df[mask].sort_values("date", ascending=False).head(n)
+    entries = index.get(team, [])
+    if not entries:
+        return pd.DataFrame()
+
+    # Búsqueda binaria: encontrar el punto de corte antes de before_date
+    dates = [e[0] for e in entries]
+    cut = bisect.bisect_left(dates, before_date)
+
+    # Tomar los N anteriores al corte, de más reciente a más antiguo
+    recent_entries = entries[max(0, cut - n * 3): cut]  # coger más para filtrar result
+    recent_entries = list(reversed(recent_entries))
+
+    rows = []
+    for _, idx in recent_entries:
+        row = df.iloc[idx]
+        if pd.notna(row.get("result")):
+            rows.append(row)
+        if len(rows) >= n:
+            break
+
+    if not rows:
+        return pd.DataFrame()
+    return pd.DataFrame(rows)
 
 
-def _safe_nanmean(values: list[float]) -> float:
-    """Mean that stays quiet when a market has no historical coverage."""
+# ── Utilidades ────────────────────────────────────────────────────────────────
+
+def _safe_nanmean(values: list) -> float:
     arr = np.asarray(values, dtype=float)
     arr = arr[~np.isnan(arr)]
-    if len(arr) == 0:
+    return float(arr.mean()) if len(arr) > 0 else np.nan
+
+
+def _safe_diff(a, b):
+    if a is None or b is None:
         return np.nan
-    return float(arr.mean())
+    try:
+        fa, fb = float(a), float(b)
+        return np.nan if (np.isnan(fa) or np.isnan(fb)) else fa - fb
+    except (TypeError, ValueError):
+        return np.nan
+
+
+def _safe_bool(value) -> bool:
+    if value is None or (isinstance(value, float) and np.isnan(value)):
+        return False
+    if isinstance(value, str):
+        return value.strip().lower() in {"1", "true", "yes", "y"}
+    try:
+        return bool(value)
+    except Exception:
+        return False
 
 
 # ── Features de forma reciente ────────────────────────────────────────────────
@@ -69,25 +186,33 @@ def compute_recent_form(
     team: str,
     before_date: pd.Timestamp,
     n: int = N_RECENT,
+    index: Optional[dict] = None,
 ) -> dict:
     """
     Forma reciente de un equipo en los últimos N partidos.
-    Incluye win_rate en partidos neutrales para capturar rendimiento
-    en condiciones similares al Mundial.
+    Si se pasa index usa la versión rápida, si no usa filtro directo.
     """
-    history = _get_team_history(df, team, before_date, n)
+    if index is not None:
+        history = _get_team_history_fast(df, index, team, before_date, n)
+    else:
+        mask = (
+            ((df["home_team"] == team) | (df["away_team"] == team)) &
+            (df["date"] < before_date) &
+            df["result"].notna()
+        )
+        history = df[mask].sort_values("date", ascending=False).head(n)
 
     empty = {
-        f"form_wins_{n}":          np.nan,
-        f"form_draws_{n}":         np.nan,
-        f"form_losses_{n}":        np.nan,
-        f"form_gf_{n}":            np.nan,
-        f"form_gc_{n}":            np.nan,
-        f"form_ppg_{n}":           np.nan,
-        f"form_corners_for_{n}":   np.nan,
-        f"form_yellows_{n}":       np.nan,
-        f"form_streak":            0,
-        f"form_neutral_wins_{n}":  np.nan,
+        f"form_wins_{n}":         np.nan,
+        f"form_draws_{n}":        np.nan,
+        f"form_losses_{n}":       np.nan,
+        f"form_gf_{n}":           np.nan,
+        f"form_gc_{n}":           np.nan,
+        f"form_ppg_{n}":          np.nan,
+        f"form_corners_for_{n}":  np.nan,
+        f"form_yellows_{n}":      np.nan,
+        f"form_streak":           0,
+        f"form_neutral_wins_{n}": np.nan,
     }
     if history.empty:
         return empty
@@ -124,7 +249,6 @@ def compute_recent_form(
     draws  = results.count("D")
     losses = results.count("A")
 
-    # Racha actual (+ victorias consecutivas, - derrotas)
     streak = 0
     for r in results:
         if r == "H":
@@ -189,15 +313,12 @@ STAGE_ORDER = {
 }
 
 
-def compute_context_features(row: pd.Series) -> dict:
+def compute_context_features(row: pd.Series, ratings: dict) -> dict:
     """
-    Features de contexto del partido.
+    Features de contexto del partido, incluyendo rating WC2026.
 
-    effective_home_adv:
-      1.0 → partido no neutral (ventaja local real)
-      0.5 → partido neutral, home juega en su país anfitrión
-      0.0 → partido neutral, sin anfitrión en su país sede
-     -0.5 → partido neutral, away juega en su país anfitrión
+    En el Mundial todo es sede neutral — las features de rating
+    usan diferencia absoluta, no direccional.
     """
     home_team = str(row.get("home_team", ""))
     away_team = str(row.get("away_team", ""))
@@ -218,65 +339,92 @@ def compute_context_features(row: pd.Series) -> dict:
     else:
         effective_home_adv = 0.0
 
+    # Convocatorias
     squad_features = {}
-    for key in [
-        "squad_size", "goalkeepers", "defenders",
-        "midfielders", "forwards", "unique_clubs",
-    ]:
+    for key in ["squad_size", "goalkeepers", "defenders", "midfielders", "forwards", "unique_clubs"]:
         home_key = f"home_{key}"
         away_key = f"away_{key}"
-        squad_features[home_key] = row.get(home_key, np.nan)
-        squad_features[away_key] = row.get(away_key, np.nan)
-        squad_features[f"{key}_diff"] = _safe_diff(row.get(home_key), row.get(away_key))
+        squad_features[home_key]       = row.get(home_key, np.nan)
+        squad_features[away_key]       = row.get(away_key, np.nan)
+        squad_features[f"{key}_diff"]  = _safe_diff(row.get(home_key), row.get(away_key))
+
+    # Rating WC2026 — diferencia absoluta (campo neutral, no hay home/away real)
+    home_r = ratings.get(home_team, {})
+    away_r = ratings.get(away_team, {})
+
+    # Stats de jugadores WC2026
+    player_stats = _load_player_stats()
+    home_ps = player_stats.get(home_team, {})
+    away_ps = player_stats.get(away_team, {})
+
+    home_rating      = home_r.get("rating",        np.nan)
+    away_rating      = away_r.get("rating",        np.nan)
+    home_attack      = home_r.get("attack_norm",   np.nan)
+    away_attack      = away_r.get("attack_norm",   np.nan)
+    home_midfield    = home_r.get("midfield_norm", np.nan)
+    away_midfield    = away_r.get("midfield_norm", np.nan)
+    home_defense     = home_r.get("defense_norm",  np.nan)
+    away_defense     = away_r.get("defense_norm",  np.nan)
+
+    rating_diff   = abs(_safe_diff(home_rating,   away_rating))   / 100.0 if not np.isnan(_safe_diff(home_rating, away_rating) or np.nan) else np.nan
+    attack_diff   = abs(_safe_diff(home_attack,   away_attack))
+    midfield_diff = abs(_safe_diff(home_midfield, away_midfield))
+    defense_diff  = abs(_safe_diff(home_defense,  away_defense))
 
     return {
-        # Ventaja de local
-        "is_neutral":          int(is_neutral),
-        "home_is_host":        home_is_host,
-        "away_is_host":        away_is_host,
-        "effective_home_adv":  effective_home_adv,
+        # Ventaja local
+        "is_neutral":           int(is_neutral),
+        "home_is_host":         home_is_host,
+        "away_is_host":         away_is_host,
+        "effective_home_adv":   effective_home_adv,
         # Confederaciones
-        "same_confederation":  int(home_conf == away_conf),
-        "home_confederation":  home_conf,
-        "away_confederation":  away_conf,
-        # Fase del torneo
-        "stage_ordinal":       STAGE_ORDER.get(str(row.get("stage", "")), 0),
-        # Sede (solo WC2026)
-        "altitude_m":          row.get("altitude_m", np.nan),
-        "is_indoor":           int(str(row.get("roof_type", "")).lower() in {"fixed", "retractable"}),
+        "same_confederation":   int(home_conf == away_conf),
+        "home_confederation":   home_conf,
+        "away_confederation":   away_conf,
+        # Fase
+        "stage_ordinal":        STAGE_ORDER.get(str(row.get("stage", "")), 0),
+        # Sede
+        "altitude_m":           row.get("altitude_m", np.nan),
+        "is_indoor":            int(str(row.get("roof_type", "")).lower() in {"fixed", "retractable"}),
         # Descanso
-        "home_rest_days":      row.get("home_rest_days", np.nan),
-        "away_rest_days":      row.get("away_rest_days", np.nan),
-        "rest_days_diff":      _safe_diff(row.get("home_rest_days"), row.get("away_rest_days")),
-        # Viaje (solo WC2026)
-        "home_travel_km":      row.get("home_travel_km", np.nan),
-        "away_travel_km":      row.get("away_travel_km", np.nan),
-        "travel_km_diff":      _safe_diff(row.get("home_travel_km"), row.get("away_travel_km")),
-        # Fuerza relativa de equipo. No usar home_elo/away_elo separados
-        # como features del modelo en sede neutral: el lado home/away es
-        # administrativo salvo anfitriones.
-        "elo_diff":            row.get("elo_diff", np.nan),
-        # Convocatorias WC2026 (histórico queda NaN para evitar leakage)
+        "home_rest_days":       row.get("home_rest_days", np.nan),
+        "away_rest_days":       row.get("away_rest_days", np.nan),
+        "rest_days_diff":       _safe_diff(row.get("home_rest_days"), row.get("away_rest_days")),
+        # Viaje
+        "home_travel_km":       row.get("home_travel_km", np.nan),
+        "away_travel_km":       row.get("away_travel_km", np.nan),
+        "travel_km_diff":       _safe_diff(row.get("home_travel_km"), row.get("away_travel_km")),
+        # Elo
+        "elo_diff":             row.get("elo_diff", np.nan),
+        # Rating WC2026 (NaN para histórico, solo WC2026 tiene valores)
+        "home_rating":          home_rating,
+        "away_rating":          away_rating,
+        "rating_diff":          rating_diff,
+        "home_attack_norm":     home_attack,
+        "away_attack_norm":     away_attack,
+        "attack_diff":          attack_diff,
+        "home_midfield_norm":   home_midfield,
+        "away_midfield_norm":   away_midfield,
+        "midfield_diff":        midfield_diff,
+        "home_defense_norm":    home_defense,
+        "away_defense_norm":    away_defense,
+        "defense_diff":         defense_diff,
+        # Convocatorias
         **squad_features,
+        # Stats de jugadores WC2026 (NaN para histórico)
+        "home_yellow_per_90":   home_ps.get("yellow_per_90",  np.nan),
+        "away_yellow_per_90":   away_ps.get("yellow_per_90",  np.nan),
+        "yellow_per_90_diff":   abs(_safe_diff(home_ps.get("yellow_per_90"), away_ps.get("yellow_per_90"))),
+        "home_red_per_90":      home_ps.get("red_per_90",     np.nan),
+        "away_red_per_90":      away_ps.get("red_per_90",     np.nan),
+        "home_goals_per_90":    home_ps.get("goals_per_90",   np.nan),
+        "away_goals_per_90":    away_ps.get("goals_per_90",   np.nan),
+        "goals_per_90_diff":    abs(_safe_diff(home_ps.get("goals_per_90"), away_ps.get("goals_per_90"))),
+        "home_assists_per_90":  home_ps.get("assists_per_90", np.nan),
+        "away_assists_per_90":  away_ps.get("assists_per_90", np.nan),
+        "home_avg_caps":        home_ps.get("avg_caps",       np.nan),
+        "away_avg_caps":        away_ps.get("avg_caps",       np.nan),
     }
-
-
-def _safe_diff(a, b):
-    if a is None or b is None:
-        return np.nan
-    try:
-        fa, fb = float(a), float(b)
-        return np.nan if (np.isnan(fa) or np.isnan(fb)) else fa - fb
-    except (TypeError, ValueError):
-        return np.nan
-
-
-def _safe_bool(value) -> bool:
-    if value is None or pd.isna(value):
-        return False
-    if isinstance(value, str):
-        return value.strip().lower() in {"1", "true", "yes", "y"}
-    return bool(value)
 
 
 # ── Features del árbitro ──────────────────────────────────────────────────────
@@ -325,15 +473,20 @@ def build_feature_matrix(
     df: pd.DataFrame,
     n_recent: int = N_RECENT,
     require_result: bool = False,
+    ratings_path: str = "./data/processed/team_ratings_wc2026.csv",
 ) -> pd.DataFrame:
     """
     Construye la matriz de features completa sin data leakage.
 
+    Optimización: preconstruye índice por equipo para búsqueda O(log n)
+    en lugar de filtrar el DataFrame completo en cada iteración O(n²).
+
     Parámetros
     ----------
-    df : DataFrame de matches_enriched.csv (salida del builder)
-    n_recent : ventana de partidos recientes para forma
-    require_result : True para solo entrenamiento, False para incluir WC2026 futuro
+    df            : DataFrame de matches_enriched.csv
+    n_recent      : ventana de partidos recientes para forma
+    require_result: True para entrenamiento, False para incluir WC2026 futuro
+    ratings_path  : ruta al CSV de ratings WC2026
     """
     df = df.copy()
 
@@ -347,19 +500,27 @@ def build_feature_matrix(
     if require_result:
         df = df[df["result"].notna()].reset_index(drop=True)
 
+    # Cargar ratings WC2026
+    ratings = _load_ratings(ratings_path)
+
+    # Preconstruir índice de historial por equipo
+    print("  Construyendo índice de historial por equipo...")
+    team_index = build_team_index(df)
+    print(f"  → Índice listo: {len(team_index)} equipos")
+
     rows = []
     total = len(df)
 
     for i, row in df.iterrows():
-        if i % 1000 == 0:
+        if i % 2000 == 0:
             print(f"  Procesando {i+1}/{total}...")
 
         date      = row["date"]
         home_team = row["home_team"]
         away_team = row["away_team"]
 
-        home_form = compute_recent_form(df, home_team, date, n_recent)
-        away_form = compute_recent_form(df, away_team, date, n_recent)
+        home_form = compute_recent_form(df, home_team, date, n_recent, index=team_index)
+        away_form = compute_recent_form(df, away_team, date, n_recent, index=team_index)
 
         home_feats = {f"home_{k}": v for k, v in home_form.items()}
         away_feats = {f"away_{k}": v for k, v in away_form.items()}
@@ -370,7 +531,7 @@ def build_feature_matrix(
             av = away_feats.get(f"away_{key}")
             diff_feats[f"diff_{key}"] = _safe_diff(hv, av)
 
-        ctx_feats = compute_context_features(row)
+        ctx_feats = compute_context_features(row, ratings)
         ref_feats = compute_referee_features(row)
         targets   = compute_targets(row)
 
@@ -380,6 +541,8 @@ def build_feature_matrix(
             "away_team":  away_team,
             "tournament": row.get("tournament") or row.get("competition"),
             "_source":    row.get("_source", "historical"),
+            "home_score": row.get("home_score", np.nan),
+            "away_score": row.get("away_score", np.nan),
             **home_feats,
             **away_feats,
             **diff_feats,
@@ -396,8 +559,6 @@ def build_feature_matrix(
 # ── Script standalone ─────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    import os
-
     DATA_DIR = "./data"
     enriched_path = os.path.join(DATA_DIR, "processed", "matches_enriched.csv")
     unified_path  = os.path.join(DATA_DIR, "unified.csv")
@@ -436,13 +597,16 @@ if __name__ == "__main__":
     wc.to_csv(out_wc, index=False)
     print(f"WC2026: {out_wc}  ({len(wc)} partidos)")
 
-    # Resumen de features clave
+    # Resumen de cobertura
     print("\nCobertura de features:")
-    key = ["effective_home_adv", "is_neutral", "home_is_host",
-           "altitude_m", "home_rest_days", "home_travel_km",
-           "home_form_ppg_10", "diff_form_ppg_10"]
-    for col in key:
+    key_cols = [
+        "effective_home_adv", "is_neutral", "home_is_host",
+        "altitude_m", "home_rest_days", "home_travel_km",
+        "home_form_ppg_10", "diff_form_ppg_10",
+        "rating_diff", "attack_diff", "midfield_diff", "defense_diff",
+        "home_yellow_per_90", "home_goals_per_90", "home_avg_caps",
+    ]
+    for col in key_cols:
         if col in features.columns:
             pct = features[col].notna().mean() * 100
-            print(f"  {col:<30} {pct:.0f}%")
-            
+            print(f"  {col:<32} {pct:.0f}%")

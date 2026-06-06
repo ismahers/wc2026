@@ -1,0 +1,71 @@
+[
+  {
+    "market": "Resultado 1X2",
+    "target_col": "target_result",
+    "n_test": 4509,
+    "accuracy": 0.5944,
+    "log_loss": 0.8846,
+    "brier": 0.5196,
+    "pred_mean_A": 0.2802,
+    "actual_pct_A": 0.287,
+    "pred_mean_D": 0.2272,
+    "actual_pct_D": 0.2311,
+    "pred_mean_H": 0.4926,
+    "actual_pct_H": 0.4819
+  },
+  {
+    "market": "Over 2.5 Goles",
+    "target_col": "target_over25",
+    "n_test": 4509,
+    "accuracy": 0.5817,
+    "log_loss": 0.6685,
+    "brier": 0.2381,
+    "auc": 0.6103,
+    "f1": 0.4963,
+    "pred_mean": 0.4937,
+    "pred_std": 0.1116,
+    "actual_mean": 0.479,
+    "positive_count": 2160
+  },
+  {
+    "market": "Ambos Marcan (BTTS)",
+    "target_col": "target_btts",
+    "n_test": 4509,
+    "accuracy": 0.5817,
+    "log_loss": 0.6697,
+    "brier": 0.2387,
+    "auc": 0.5687,
+    "f1": 0.2462,
+    "pred_mean": 0.4279,
+    "pred_std": 0.0809,
+    "actual_mean": 0.4134,
+    "positive_count": 1864
+  },
+  {
+    "market": "Total Goles",
+    "target_col": "target_total_goals",
+    "n_test": 4509,
+    "mae": 1.4063,
+    "rmse": 1.7916,
+    "pred_mean": 2.7647,
+    "actual_mean": 2.6908
+  },
+  {
+    "market": "C\u00f3rners Totales",
+    "target_col": "target_corners",
+    "n_test": 49,
+    "mae": 3.4502,
+    "rmse": 4.3381,
+    "pred_mean": 8.0097,
+    "actual_mean": 10.0204
+  },
+  {
+    "market": "Tarjetas Amarillas",
+    "target_col": "target_yellows",
+    "n_test": 49,
+    "mae": 1.828,
+    "rmse": 2.5931,
+    "pred_mean": 2.9738,
+    "actual_mean": 4.2653
+  }
+]
