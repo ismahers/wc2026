@@ -26,6 +26,7 @@ Uso:
   python -m src.data.player_stats_aggregator
   python -m src.data.player_stats_aggregator --seasons 24/25 25/26
   python -m src.data.player_stats_aggregator --performances data/transfermarkt/player_performances.csv
+  python -m src.data.player_stats_aggregator --squads data/raw/squads_wc2026_fifa_official.csv
 """
 
 from __future__ import annotations
@@ -73,16 +74,16 @@ def _invert_name(s: str) -> str:
 # Carga de datos
 # ---------------------------------------------------------------------------
 
-def _load_squads(data_dir: Path) -> pd.DataFrame:
-    path = data_dir / "raw" / "squads_wc2026_final_official_corrected.csv"
+def _load_squads(data_dir: Path, squads_path: Path | None = None) -> pd.DataFrame:
+    path = squads_path or (data_dir / "raw" / "squads_wc2026_final_official_corrected.csv")
     if not path.exists():
         raise FileNotFoundError(f"No se encontró {path}")
     df = pd.read_csv(path)
     df["team_canonical"] = df["team_canonical"].map(canonicalize)
     df["name_norm"]      = df["player_name"].map(_norm_name)
     df["name_norm_inv"]  = df["name_norm"].map(_invert_name)
-    log.info("Convocados WC2026: %d jugadores de %d selecciones",
-             len(df), df["team_canonical"].nunique())
+    log.info("Convocados WC2026: %d jugadores de %d selecciones (%s)",
+             len(df), df["team_canonical"].nunique(), path)
     return df
 
 
@@ -286,6 +287,7 @@ def build_player_stats(
     data_dir: Path = DEFAULT_DATA_DIR,
     output_path: Path = DEFAULT_OUTPUT,
     seasons: list[str] = DEFAULT_SEASONS,
+    squads_path: Path | None = None,
 ) -> pd.DataFrame:
     log.info("=" * 60)
     log.info("Building WC2026 player stats by team")
@@ -295,7 +297,7 @@ def build_player_stats(
     tm_dir = data_dir / "transfermarkt"
 
     # Cargar fuentes
-    squads       = _load_squads(data_dir)
+    squads       = _load_squads(data_dir, squads_path)
     profiles     = _load_profiles(tm_dir)
     performances = _load_performances(tm_dir, seasons)
     national     = _load_national_performances(tm_dir)
@@ -347,6 +349,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
                         help="Temporadas a incluir, ej: 23/24 24/25 25/26")
     parser.add_argument("--performances",  default=None,
                         help="Ruta alternativa a player_performances.csv")
+    parser.add_argument("--squads",        default=None,
+                        help="CSV de convocatorias (por defecto el corrected).")
     return parser
 
 
@@ -361,9 +365,10 @@ def main() -> None:
         data_dir    = Path(args.data_dir),
         output_path = Path(args.output),
         seasons     = args.seasons,
+        squads_path = Path(args.squads) if args.squads else None,
     )
 
 
 if __name__ == "__main__":
     main()
-     
+    

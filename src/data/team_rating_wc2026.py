@@ -27,6 +27,7 @@ Fallbacks:
 Uso:
     python -m src.data.team_rating_wc2026
     python -m src.data.team_rating_wc2026 --results data/unified.csv
+    python -m src.data.team_rating_wc2026 --squads data/raw/squads_wc2026_fifa_official.csv
 """
 
 from __future__ import annotations
@@ -139,7 +140,7 @@ def _load_market_values(processed_dir: Path, squads_path: Path) -> pd.DataFrame:
         return _empty_market_values()
 
     if not squads_path.exists():
-        log.warning("squads_wc2026_final_official_corrected.csv no encontrado")
+        log.warning("%s no encontrado", squads_path.name)
         return _empty_market_values()
 
     log.info("Cargando perfiles de Transfermarkt...")
@@ -366,6 +367,7 @@ def build_team_ratings(
     processed_dir: Path = DEFAULT_PROCESSED_DIR,
     output_path: Path = DEFAULT_OUTPUT,
     n_racha: int = 10,
+    squads_path: Path | None = None,
 ) -> pd.DataFrame:
     """
     Construye el rating compuesto de las 48 selecciones WC2026.
@@ -376,12 +378,16 @@ def build_team_ratings(
       3. Cargar resultados históricos y calcular racha ponderada
       4. Normalizar cada componente min-max sobre las 48 selecciones
       5. Calcular rating final y guardar CSV
+
+    squads_path : CSV de convocatorias a usar. Si None, usa el corrected por defecto.
     """
     log.info("=" * 60)
     log.info("Building WC2026 team ratings")
     log.info("=" * 60)
 
-    squads_path = data_dir / "raw" / "squads_wc2026_final_official_corrected.csv"
+    if squads_path is None:
+        squads_path = data_dir / "raw" / "squads_wc2026_final_official_corrected.csv"
+    log.info("Convocatorias: %s", squads_path)
 
     # ── 1. Elo ────────────────────────────────────────────────────────────────
     elo_raw = _load_elo(processed_dir, data_dir)
@@ -542,6 +548,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--processed-dir",  default="data/processed",                   help="Directorio de datos procesados.")
     parser.add_argument("--output",         default="data/processed/team_ratings_wc2026.csv", help="Ruta del CSV de salida.")
     parser.add_argument("--n-racha",        type=int, default=10,                        help="Últimos N partidos para la racha.")
+    parser.add_argument("--squads",         default=None,                                help="CSV de convocatorias (por defecto el corrected).")
     return parser
 
 
@@ -557,9 +564,10 @@ def main() -> None:
         processed_dir = Path(args.processed_dir),
         output_path   = Path(args.output),
         n_racha       = args.n_racha,
+        squads_path   = Path(args.squads) if args.squads else None,
     )
 
 
 if __name__ == "__main__":
     main()
-           
+       

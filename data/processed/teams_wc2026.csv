@@ -1,49 +1,49 @@
 team_id,team_name,country_code,confederation,fifa_rank,elo_rating
-team_algeria,Algeria,,CAF,,1879.6276167052051
-team_argentina,Argentina,,CONMEBOL,,2192.2084041052235
-team_australia,Australia,,AFC,,1949.71296929339
-team_austria,Austria,,UEFA,,1886.916774167525
-team_belgium,Belgium,,UEFA,,1944.4394968074864
-team_bosnia_and_herzegovina,Bosnia and Herzegovina,,UEFA,,1659.4990814509297
-team_brazil,Brazil,,CONMEBOL,,2066.3841118950354
-team_canada,Canada,,CONCACAF,,1926.433058696964
-team_cape_verde,Cape Verde,,CAF,,1695.418506368729
-team_colombia,Colombia,,CONMEBOL,,2069.6814199631795
-team_croatia,Croatia,,UEFA,,1994.8615591993105
-team_curacao,Curacao,,CONCACAF,,1678.5047010899211
-team_czech_republic,Czech Republic,,UEFA,,1774.9067763231417
-team_dr_congo,DR Congo,,CAF,,1801.015693323218
-team_ecuador,Ecuador,,CONMEBOL,,2067.65536905096
-team_egypt,Egypt,,CAF,,1809.143382261284
-team_england,England,,UEFA,,2122.2620352799054
-team_france,France,,UEFA,,2156.8955019287155
-team_germany,Germany,,UEFA,,2007.3004253643903
-team_ghana,Ghana,,CAF,,1684.082831121933
-team_haiti,Haiti,,CONCACAF,,1746.8817773046649
-team_iran,Iran,,AFC,,1914.1381804344444
-team_iraq,Iraq,,AFC,,1797.4795386673577
-team_ivory_coast,Ivory Coast,,CAF,,1813.48712393826
-team_japan,Japan,,AFC,,2025.7962274630625
-team_jordan,Jordan,,AFC,,1826.597977974604
-team_mexico,Mexico,,CONCACAF,,1965.7529103426032
-team_morocco,Morocco,,CAF,,2013.11534654338
-team_netherlands,Netherlands,,UEFA,,2026.9009885695048
-team_new_zealand,New Zealand,,OFC,,1783.778516278326
-team_norway,Norway,,UEFA,,2016.5465969316908
-team_panama,Panama,,CONCACAF,,1878.766147432518
-team_paraguay,Paraguay,,CONMEBOL,,1977.381676537628
-team_portugal,Portugal,,UEFA,,2020.9146770675277
-team_qatar,Qatar,,AFC,,1604.6782328260697
-team_saudi_arabia,Saudi Arabia,,AFC,,1719.722823921149
-team_scotland,Scotland,,UEFA,,1859.4592510345492
-team_senegal,Senegal,,CAF,,1942.0152243960365
-team_south_africa,South Africa,,CAF,,1647.1700996694556
-team_south_korea,South Korea,,AFC,,1916.5469884596423
-team_spain,Spain,,UEFA,,2257.473778919188
-team_sweden,Sweden,,UEFA,,1766.105588208875
-team_switzerland,Switzerland,,UEFA,,1971.1827472922328
-team_tunisia,Tunisia,,CAF,,1812.06865665844
-team_turkey,Turkey,,UEFA,,2006.3087463218155
-team_united_states,United States,,CONCACAF,,1843.8882865829212
-team_uruguay,Uruguay,,CONMEBOL,,1991.4559273073437
-team_uzbekistan,Uzbekistan,,AFC,,1882.223047017212
+team_algeria,Algeria,,CAF,,1794.3396882345323
+team_argentina,Argentina,,CONMEBOL,,2117.603062818728
+team_australia,Australia,,AFC,,1814.863861746728
+team_austria,Austria,,UEFA,,1853.359033755111
+team_belgium,Belgium,,UEFA,,1923.4370433471515
+team_bosnia_and_herzegovina,Bosnia and Herzegovina,,UEFA,,1624.580098095202
+team_brazil,Brazil,,CONMEBOL,,1994.3913736363904
+team_canada,Canada,,CONCACAF,,1827.186414020548
+team_cape_verde,Cape Verde,,CAF,,1622.8432314116967
+team_colombia,Colombia,,CONMEBOL,,1991.3430828415324
+team_croatia,Croatia,,UEFA,,1929.577850154308
+team_curacao,Curacao,,CONCACAF,,1497.1827814205449
+team_czech_republic,Czech Republic,,UEFA,,1756.4465093233257
+team_dr_congo,DR Congo,,CAF,,1701.431837200779
+team_ecuador,Ecuador,,CONMEBOL,,1987.7111687095348
+team_egypt,Egypt,,CAF,,1717.6807009385536
+team_england,England,,UEFA,,2081.437836217332
+team_france,France,,UEFA,,2093.192172036466
+team_germany,Germany,,UEFA,,1969.8295937496691
+team_ghana,Ghana,,CAF,,1586.974344738787
+team_haiti,Haiti,,CONCACAF,,1587.102361114833
+team_iran,Iran,,AFC,,1808.392914047447
+team_iraq,Iraq,,AFC,,1680.315312389158
+team_ivory_coast,Ivory Coast,,CAF,,1732.3468939154468
+team_japan,Japan,,AFC,,1921.16821181539
+team_jordan,Jordan,,AFC,,1699.4597227840688
+team_mexico,Mexico,,CONCACAF,,1881.8847119978311
+team_morocco,Morocco,,CAF,,1926.6870942214744
+team_netherlands,Netherlands,,UEFA,,1969.3695683701608
+team_new_zealand,New Zealand,,OFC,,1585.4692231083802
+team_norway,Norway,,UEFA,,1984.8224849128717
+team_panama,Panama,,CONCACAF,,1743.7280833525735
+team_paraguay,Paraguay,,CONMEBOL,,1897.928805879964
+team_portugal,Portugal,,UEFA,,1978.0486343889663
+team_qatar,Qatar,,AFC,,1475.0361677270164
+team_saudi_arabia,Saudi Arabia,,AFC,,1600.4142310125044
+team_scotland,Scotland,,UEFA,,1822.7923892695835
+team_senegal,Senegal,,CAF,,1842.3485715387144
+team_south_africa,South Africa,,CAF,,1542.5693166823626
+team_south_korea,South Korea,,AFC,,1805.643313027544
+team_spain,Spain,,UEFA,,2207.402963914368
+team_sweden,Sweden,,UEFA,,1724.3041438876755
+team_switzerland,Switzerland,,UEFA,,1936.8863611773984
+team_tunisia,Tunisia,,CAF,,1706.3809477145398
+team_turkey,Turkey,,UEFA,,1971.5651699348737
+team_united_states,United States,,CONCACAF,,1753.4364317773682
+team_uruguay,Uruguay,,CONMEBOL,,1909.7181898370509
+team_uzbekistan,Uzbekistan,,AFC,,1750.2086622778916

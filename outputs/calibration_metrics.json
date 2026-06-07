@@ -1,0 +1,32 @@
+[
+  {
+    "market": "1X2 Visitante (A)",
+    "n": 4509,
+    "brier": 0.1536,
+    "ece": 0.0133
+  },
+  {
+    "market": "1X2 Empate (D)",
+    "n": 4509,
+    "brier": 0.173,
+    "ece": 0.011
+  },
+  {
+    "market": "1X2 Local (H)",
+    "n": 4509,
+    "brier": 0.1887,
+    "ece": 0.0149
+  },
+  {
+    "market": "Over 2.5",
+    "n": 4509,
+    "brier": 0.2372,
+    "ece": 0.0171
+  },
+  {
+    "market": "BTTS",
+    "n": 4509,
+    "brier": 0.2384,
+    "ece": 0.0207
+  }
+]

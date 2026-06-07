@@ -1,49 +1,49 @@
 team_id,team_name,squad_size,goalkeepers,defenders,midfielders,forwards,unique_clubs
-team_algeria,Algeria,26,3,9,8,6,26
-team_argentina,Argentina,26,3,8,11,4,20
-team_australia,Australia,26,3,10,7,6,23
-team_austria,Austria,26,3,9,11,3,21
-team_belgium,Belgium,26,3,9,6,8,19
-team_bosnia_and_herzegovina,Bosnia and Herzegovina,26,3,8,10,5,24
+team_algeria,Algeria,26,3,9,7,7,24
+team_argentina,Argentina,26,3,8,8,7,18
+team_australia,Australia,26,3,10,5,8,22
+team_austria,Austria,26,3,8,11,4,21
+team_belgium,Belgium,26,3,9,8,6,18
+team_bosnia_and_herzegovina,Bosnia and Herzegovina,26,3,8,8,7,24
 team_brazil,Brazil,26,3,9,5,9,20
-team_canada,Canada,26,3,10,9,4,23
-team_cape_verde,Cape Verde,26,3,9,6,8,26
-team_colombia,Colombia,26,3,8,10,5,24
-team_croatia,Croatia,26,3,7,10,6,24
-team_curacao,Curacao,26,3,8,7,8,23
-team_czech_republic,Czech Republic,26,3,9,9,5,11
-team_dr_congo,DR Congo,26,3,9,9,5,24
-team_ecuador,Ecuador,26,3,8,9,6,24
-team_egypt,Egypt,26,4,8,8,6,18
+team_canada,Canada,26,3,9,8,6,22
+team_cape_verde,Cape Verde,26,3,8,12,3,26
+team_colombia,Colombia,26,3,9,8,6,24
+team_croatia,Croatia,26,3,8,9,6,24
+team_curacao,Curacao,26,3,8,7,8,22
+team_czech_republic,Czech Republic,26,3,9,7,7,11
+team_dr_congo,DR Congo,26,3,8,8,7,24
+team_ecuador,Ecuador,26,3,8,8,7,23
+team_egypt,Egypt,26,4,8,7,7,14
 team_england,England,26,3,9,7,7,16
-team_france,France,26,3,9,5,9,18
-team_germany,Germany,26,3,7,9,7,13
-team_ghana,Ghana,26,3,8,8,7,25
+team_france,France,26,3,9,7,7,18
+team_germany,Germany,26,3,8,11,4,13
+team_ghana,Ghana,26,3,9,6,8,23
 team_haiti,Haiti,26,3,8,6,9,25
-team_iran,Iran,26,3,8,7,8,18
-team_iraq,Iraq,26,3,9,10,4,21
+team_iran,Iran,26,3,9,8,6,14
+team_iraq,Iraq,26,3,9,7,7,20
 team_ivory_coast,Ivory Coast,26,3,8,6,9,25
-team_japan,Japan,26,3,8,7,8,24
-team_jordan,Jordan,26,3,9,9,5,14
-team_mexico,Mexico,26,3,6,10,7,21
-team_morocco,Morocco,26,3,8,7,8,24
-team_netherlands,Netherlands,26,3,7,8,8,20
-team_new_zealand,New Zealand,26,3,9,6,8,19
-team_norway,Norway,26,3,9,7,7,24
-team_panama,Panama,26,3,10,9,4,24
-team_paraguay,Paraguay,26,3,8,7,8,24
-team_portugal,Portugal,26,3,8,8,7,18
-team_qatar,Qatar,26,3,8,7,8,11
-team_saudi_arabia,Saudi Arabia,26,3,8,8,7,8
-team_scotland,Scotland,26,3,10,8,5,21
-team_senegal,Senegal,26,3,8,8,7,24
-team_south_africa,South Africa,26,3,8,7,8,15
-team_south_korea,South Korea,26,3,9,8,6,23
+team_japan,Japan,26,3,9,10,4,23
+team_jordan,Jordan,26,3,9,7,7,15
+team_mexico,Mexico,26,3,7,8,8,21
+team_morocco,Morocco,26,3,9,9,5,23
+team_netherlands,Netherlands,26,3,8,8,7,20
+team_new_zealand,New Zealand,26,3,9,10,4,20
+team_norway,Norway,26,3,8,10,5,22
+team_panama,Panama,26,3,11,8,4,23
+team_paraguay,Paraguay,26,3,8,9,6,22
+team_portugal,Portugal,26,3,9,6,8,17
+team_qatar,Qatar,26,3,9,5,9,8
+team_saudi_arabia,Saudi Arabia,26,3,10,6,7,9
+team_scotland,Scotland,26,3,10,6,7,22
+team_senegal,Senegal,26,3,8,7,8,22
+team_south_africa,South Africa,26,3,10,5,8,12
+team_south_korea,South Korea,26,3,9,11,3,22
 team_spain,Spain,26,3,8,7,8,13
-team_sweden,Sweden,26,3,10,7,6,26
-team_switzerland,Switzerland,26,3,8,8,7,25
-team_tunisia,Tunisia,26,3,9,7,7,24
-team_turkey,Turkey,26,3,8,8,7,17
-team_united_states,United States,26,3,8,8,7,24
-team_uruguay,Uruguay,26,3,8,11,4,22
-team_uzbekistan,Uzbekistan,26,3,8,9,6,19
+team_sweden,Sweden,26,3,11,7,5,26
+team_switzerland,Switzerland,26,3,8,8,7,24
+team_tunisia,Tunisia,26,3,10,8,5,24
+team_turkey,Turkey,26,3,9,5,9,16
+team_united_states,United States,26,3,10,6,7,24
+team_uruguay,Uruguay,26,3,7,11,5,22
+team_uzbekistan,Uzbekistan,26,3,10,10,3,16
