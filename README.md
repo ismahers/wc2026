@@ -20,6 +20,10 @@ wc2026/
 │   │   └── player_national_performances.csv  # Stats en selección
 │   │   # player_performances.csv (157MB) — descargar manualmente, no está en Git
 │   └── processed/                   # Generados por los scripts
+│       ├── players_master.csv       # Claves internas estables de jugadores
+│       ├── player_source_matches.csv # Puente FBref/Transfermarkt/StatsBomb
+│       ├── transfermarkt_player_profiles.csv # Perfiles enlazados
+│       ├── transfermarkt_match_review.csv # Casos para revisión manual
 │       ├── team_ratings_wc2026.csv  # Rating compuesto por selección (Elo+mercado+racha)
 │       ├── team_player_stats_wc2026.csv  # Stats de jugadores agregadas por selección
 │       ├── players_wc2026.csv       # Jugadores normalizados
@@ -45,13 +49,15 @@ wc2026/
 │   └── evaluation/
 │       ├── betting.py               # Cálculo de VE y ROI
 │       ├── odds_converter.py        # Convierte probabilidades a cuotas decimales
-│       └── model_comparison.py      # Compara XGBoost vs Poisson con nivel de confianza
+│       ├── model_comparison.py      # Compara XGBoost vs Poisson con nivel de confianza
+│       └── model_ensemble.py        # Combina XGBoost+Poisson en una cuota final
 │
 ├── outputs/                         # Predicciones y métricas (subidas a Git)
 │   ├── wc2026_predictions.csv       # Predicciones XGBoost (prob + cuotas)
 │   ├── wc2026_predictions_with_odds.csv
 │   ├── wc2026_poisson_predictions.csv  # Predicciones Poisson (lambdas + marcadores)
 │   ├── wc2026_poisson_predictions_with_odds.csv
+│   ├── wc2026_ensemble_predictions.csv # Predicción final con una cuota por mercado
 │   ├── model_comparison.csv         # Comparación XGBoost vs Poisson con confianza
 │   ├── xgb_baseline_metrics.json    # Métricas de evaluación XGBoost
 │   └── poisson_metrics.json         # Métricas de evaluación Poisson
@@ -75,7 +81,9 @@ pip install -r requirements.txt
 # 1. Recolectar datos históricos (Kaggle + StatsBomb)
 python data_collector.py
 
-# 2. Normalizar convocatorias y calcular Elo
+# 2. Construir identidad de jugadores, normalizar convocatorias y calcular Elo
+python -m src.data.player_master
+python -m src.data.match_transfermarkt
 python -m src.data.normalize_squads
 python -m src.data.elo_loader
 
@@ -110,7 +118,13 @@ python -m src.evaluation.odds_converter --input outputs/wc2026_poisson_predictio
 
 # 9. Comparar modelos y ver nivel de confianza
 python -m src.evaluation.model_comparison
+
+# 10. Generar predicción final combinada
+python -m src.evaluation.model_ensemble
 ```
+
+La política completa de CSVs versionados e ignorados está en
+`docs/data_inventory.md`.
 
 ## Rating compuesto de selecciones
 
@@ -140,8 +154,8 @@ Output: `data/processed/team_ratings_wc2026.csv` con rating 0-100 y desglose por
 | Over 2.5 goles | Binario | acc=0.582, AUC=0.610 |
 | BTTS | Binario | acc=0.582, AUC=0.569 |
 | Total goles | Poisson | MAE=1.406 |
-| Córners totales | Poisson | MAE=3.450 (solo 165 partidos) |
-| Tarjetas amarillas | Poisson | MAE=1.828 (solo 165 partidos) |
+| Córners totales | Poisson | MAE=3.064 (314 partidos StatsBomb) |
+| Tarjetas amarillas | Analítico / pendiente | Depende de árbitros y tasas de equipo |
 
 Split temporal obligatorio: train < 2018, val 2018-2022. Sin random split.
 
@@ -164,6 +178,23 @@ Calcula la diferencia porcentual relativa entre cuotas XGBoost y Poisson:
 - **ALTA confianza** (diff < 10%): ambos modelos coinciden → apostar con más seguridad
 - **MEDIA confianza** (diff 10-25%): divergencia moderada → revisar antes de apostar
 - **BAJA confianza** (diff > 25%): modelos divergen → no apostar hasta tener más información
+
+### Ensemble final
+
+```bash
+python -m src.evaluation.model_ensemble
+```
+
+Genera `outputs/wc2026_ensemble_predictions.csv`, que es el archivo recomendado
+para comparar contra cuotas de casas. El peso de Poisson sube cuando la
+diferencia entre selecciones es grande; XGBoost pesa más en partidos parejos.
+El output incluye:
+
+- `final_prob_H`, `final_prob_D`, `final_prob_A`
+- `final_odds_H`, `final_odds_D`, `final_odds_A`
+- `final_prob_over25`, `final_odds_over25`
+- `final_prob_btts`, `final_odds_btts`
+- `model_regime`: `xgb_lean`, `blend` o `poisson_lean`
 
 ## Datos de Transfermarkt
 

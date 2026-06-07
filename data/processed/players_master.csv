@@ -1,0 +1,1249 @@
+player_key,team_id,team_canonical,player_name,player_name_normalized,club_from_squad,club_normalized,position_broad,fbref_url,transfermarkt_url,statsbomb_player_id,needs_manual_review,source
+algeria_adam_zorgane,team_algeria,Algeria,Adam Zorgane,adam zorgane,Union Saint-Gilloise,union saint gilloise,Midfielder,,,,False,wc2026_official_squad_corrected
+algeria_adel_boulbina,team_algeria,Algeria,Adel Boulbina,adel boulbina,Al-Duhail,al duhail,Forward,,,,False,wc2026_official_squad_corrected
+algeria_ahmed_kendouci,team_algeria,Algeria,Ahmed Kendouci,ahmed kendouci,Ceramica Cleopatra,ceramica cleopatra,Midfielder,,,,False,wc2026_official_squad_corrected
+algeria_amine_gouiri,team_algeria,Algeria,Amine Gouiri,amine gouiri,Olympique de Marseille,olympique de marseille,Forward,,,,False,wc2026_official_squad_corrected
+algeria_anis_hadj_moussa,team_algeria,Algeria,Anis Hadj Moussa,anis hadj moussa,Feyenoord Rotterdam,feyenoord rotterdam,Forward,,,,False,wc2026_official_squad_corrected
+algeria_anthony_mandrea,team_algeria,Algeria,Anthony Mandrea,anthony mandrea,SM Caen,sm caen,Goalkeeper,,,,False,wc2026_official_squad_corrected
+algeria_aissa_mandi,team_algeria,Algeria,Aïssa Mandi,aissa mandi,Lille,lille,Defender,,,,False,wc2026_official_squad_corrected
+algeria_baghdad_bounedjah,team_algeria,Algeria,Baghdad Bounedjah,baghdad bounedjah,Al-Shamal,al shamal,Forward,,,,False,wc2026_official_squad_corrected
+algeria_fares_chaibi,team_algeria,Algeria,Farès Chaïbi,fares chaibi,Eintracht Frankfurt,eintracht frankfurt,Midfielder,,,,False,wc2026_official_squad_corrected
+algeria_hicham_boudaoui,team_algeria,Algeria,Hicham Boudaoui,hicham boudaoui,Nice,nice,Midfielder,,,,False,wc2026_official_squad_corrected
+algeria_houssem_aouar,team_algeria,Algeria,Houssem Aouar,houssem aouar,Al Ittihad,al ittihad,Midfielder,,,,False,wc2026_official_squad_corrected
+algeria_ibrahim_maza,team_algeria,Algeria,Ibrahim Maza,ibrahim maza,Bayer Leverkusen,bayer leverkusen,Midfielder,,,,False,wc2026_official_squad_corrected
+algeria_ismael_bennacer,team_algeria,Algeria,Ismaël Bennacer,ismael bennacer,Dinamo Zagreb,dinamo zagreb,Midfielder,,,,False,wc2026_official_squad_corrected
+algeria_jaouen_hadjam,team_algeria,Algeria,Jaouen Hadjam,jaouen hadjam,Young Boys Bern,young boys bern,Defender,,,,False,wc2026_official_squad_corrected
+algeria_luca_zidane,team_algeria,Algeria,Luca Zidane,luca zidane,Granada,granada,Goalkeeper,,,,False,wc2026_official_squad_corrected
+algeria_mehdi_dorval,team_algeria,Algeria,Mehdi Dorval,mehdi dorval,SSC Bari,ssc bari,Defender,,,,False,wc2026_official_squad_corrected
+algeria_mohamed_amine_tougai,team_algeria,Algeria,Mohamed Amine Tougai,mohamed amine tougai,Esperance,esperance,Defender,,,,False,wc2026_official_squad_corrected
+algeria_mohamed_amoura,team_algeria,Algeria,Mohamed Amoura,mohamed amoura,VfL Wolfsburg,vfl wolfsburg,Forward,,,,False,wc2026_official_squad_corrected
+algeria_oussama_benbot,team_algeria,Algeria,Oussama Benbot,oussama benbot,USM Alger,usm alger,Goalkeeper,,,,False,wc2026_official_squad_corrected
+algeria_rafiq_belghali,team_algeria,Algeria,Rafiq Belghali,rafiq belghali,Hellas Verona,hellas verona,Defender,,,,False,wc2026_official_squad_corrected
+algeria_ramiz_zerrouki,team_algeria,Algeria,Ramiz Zerrouki,ramiz zerrouki,FC Twente,fc twente,Midfielder,,,,False,wc2026_official_squad_corrected
+algeria_ramy_bensebaini,team_algeria,Algeria,Ramy Bensebaini,ramy bensebaini,Borussia Dortmund,borussia dortmund,Defender,,,,False,wc2026_official_squad_corrected
+algeria_rayan_ait_nouri,team_algeria,Algeria,Rayan Ait Nouri,rayan ait nouri,Manchester City,manchester city,Defender,,,,False,wc2026_official_squad_corrected
+algeria_riyad_mahrez,team_algeria,Algeria,Riyad Mahrez,riyad mahrez,Al-Ahli,al ahli,Forward,,,,False,wc2026_official_squad_corrected
+algeria_youcef_atal,team_algeria,Algeria,Youcef Atal,youcef atal,Al-Sadd SC,al sadd sc,Defender,,,,False,wc2026_official_squad_corrected
+algeria_zineddine_belaid,team_algeria,Algeria,Zineddine Belaïd,zineddine belaid,JS Kabylie,js kabylie,Defender,,,,False,wc2026_official_squad_corrected
+argentina_alexis_mac_allister,team_argentina,Argentina,Alexis Mac Allister,alexis mac allister,Liverpool,liverpool,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_cristian_romero,team_argentina,Argentina,Cristian Romero,cristian romero,Tottenham,tottenham,Defender,,,,False,wc2026_official_squad_corrected
+argentina_emiliano_martinez,team_argentina,Argentina,Emiliano Martínez,emiliano martinez,Aston Villa,aston villa,Goalkeeper,,,,False,wc2026_official_squad_corrected
+argentina_enzo_fernandez,team_argentina,Argentina,Enzo Fernández,enzo fernandez,Chelsea,chelsea,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_exequiel_palacios,team_argentina,Argentina,Exequiel Palacios,exequiel palacios,Bayer Leverkusen,bayer leverkusen,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_ezequiel_fernandez,team_argentina,Argentina,Ezequiel Fernández,ezequiel fernandez,Bayer Leverkusen (Alemania),bayer leverkusen alemania,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_facundo_medina,team_argentina,Argentina,Facundo Medina,facundo medina,Marseille,marseille,Defender,,,,False,wc2026_official_squad_corrected
+argentina_geronimo_rulli,team_argentina,Argentina,Gerónimo Rulli,geronimo rulli,Marseille,marseille,Goalkeeper,,,,False,wc2026_official_squad_corrected
+argentina_giovani_lo_celso,team_argentina,Argentina,Giovani Lo Celso,giovani lo celso,Real Betis,real betis,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_gonzalo_montiel,team_argentina,Argentina,Gonzalo Montiel,gonzalo montiel,River Plate,river plate,Defender,,,,False,wc2026_official_squad_corrected
+argentina_jose_manuel_lopez,team_argentina,Argentina,Jose Manuel López,jose manuel lopez,Palmeiras,palmeiras,Forward,,,,False,wc2026_official_squad_corrected
+argentina_juan_musso,team_argentina,Argentina,Juan Musso,juan musso,Atlético Madrid,atletico madrid,Goalkeeper,,,,False,wc2026_official_squad_corrected
+argentina_julian_alvarez,team_argentina,Argentina,Julián Álvarez,julian alvarez,Atlético Madrid,atletico madrid,Forward,,,,False,wc2026_official_squad_corrected
+argentina_lautaro_martinez,team_argentina,Argentina,Lautaro Martínez,lautaro martinez,Internazionale,internazionale,Forward,,,,False,wc2026_official_squad_corrected
+argentina_leandro_paredes,team_argentina,Argentina,Leandro Paredes,leandro paredes,Boca Juniors,boca juniors,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_leonardo_balerdi,team_argentina,Argentina,Leonardo Balerdi,leonardo balerdi,Marseille,marseille,Defender,,,,False,wc2026_official_squad_corrected
+argentina_lionel_messi,team_argentina,Argentina,Lionel Messi,lionel messi,Inter Miami,inter miami,Forward,,,,False,wc2026_official_squad_corrected
+argentina_lisandro_martinez,team_argentina,Argentina,Lisandro Martínez,lisandro martinez,Manchester United,manchester united,Defender,,,,False,wc2026_official_squad_corrected
+argentina_nahuel_molina,team_argentina,Argentina,Nahuel Molina,nahuel molina,Atlético Madrid,atletico madrid,Defender,,,,False,wc2026_official_squad_corrected
+argentina_nicolas_gonzalez,team_argentina,Argentina,Nicolás González,nicolas gonzalez,Atlético de Madrid (España),atletico de madrid espana,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_nicolas_otamendi,team_argentina,Argentina,Nicolás Otamendi,nicolas otamendi,Benfica,benfica,Defender,,,,False,wc2026_official_squad_corrected
+argentina_nicolas_paz,team_argentina,Argentina,Nicolás Paz,nicolas paz,Como (Italia),como italia,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_nicolas_tagliafico,team_argentina,Argentina,Nicolás Tagliafico,nicolas tagliafico,Lyon,lyon,Defender,,,,False,wc2026_official_squad_corrected
+argentina_rodrigo_de_paul,team_argentina,Argentina,Rodrigo De Paul,rodrigo de paul,Inter Miami,inter miami,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_thiago_almada,team_argentina,Argentina,Thiago Almada,thiago almada,Atlético de Madrid (España),atletico de madrid espana,Midfielder,,,,False,wc2026_official_squad_corrected
+argentina_valentin_barco,team_argentina,Argentina,Valentín Barco,valentin barco,Strasbourg,strasbourg,Midfielder,,,,False,wc2026_official_squad_corrected
+australia_aiden_o_neill,team_australia,Australia,Aiden O’Neill,aiden o neill,New York City,new york city,Midfielder,,,,False,wc2026_official_squad_corrected
+australia_ajdin_hrustic,team_australia,Australia,Ajdin Hrustic,ajdin hrustic,Heracles Almelo,heracles almelo,Midfielder,,,,False,wc2026_official_squad_corrected
+australia_alessandro_circati,team_australia,Australia,Alessandro Circati,alessandro circati,Parma Calcio 1913,parma calcio 1913,Defender,,,,False,wc2026_official_squad_corrected
+australia_awer_mabil,team_australia,Australia,Awer Mabil,awer mabil,CD Castellón,cd castellon,Forward,,,,False,wc2026_official_squad_corrected
+australia_aziz_behich,team_australia,Australia,Aziz Behich,aziz behich,Melbourne City,melbourne city,Defender,,,,False,wc2026_official_squad_corrected
+australia_cameron_burgess,team_australia,Australia,Cameron Burgess,cameron burgess,Swansea City,swansea city,Defender,,,,False,wc2026_official_squad_corrected
+australia_cameron_devlin,team_australia,Australia,Cameron Devlin,cameron devlin,Hearts,hearts,Midfielder,,,,False,wc2026_official_squad_corrected
+australia_connor_metcalfe,team_australia,Australia,Connor Metcalfe,connor metcalfe,St Pauli FC,st pauli fc,Midfielder,,,,False,wc2026_official_squad_corrected
+australia_cristian_volpato,team_australia,Australia,Cristian Volpato,cristian volpato,Sassuolo,sassuolo,Midfielder,,,,False,wc2026_official_squad_corrected
+australia_harry_souttar,team_australia,Australia,Harry Souttar,harry souttar,Leicester City,leicester city,Defender,,,,False,wc2026_official_squad_corrected
+australia_jackson_irvine,team_australia,Australia,Jackson Irvine,jackson irvine,St Pauli,st pauli,Midfielder,,,,False,wc2026_official_squad_corrected
+australia_jacob_italiano,team_australia,Australia,Jacob Italiano,jacob italiano,Grazer AK,grazer ak,Defender,,,,False,wc2026_official_squad_corrected
+australia_jason_geria,team_australia,Australia,Jason Geria,jason geria,Albirex Niigata,albirex niigata,Defender,,,,False,wc2026_official_squad_corrected
+australia_jordan_bos,team_australia,Australia,Jordan Bos,jordan bos,Feyenoord,feyenoord,Defender,,,,False,wc2026_official_squad_corrected
+australia_kai_trewin,team_australia,Australia,Kai Trewin,kai trewin,New York City,new york city,Defender,,,,False,wc2026_official_squad_corrected
+australia_lucas_herrington,team_australia,Australia,Lucas Herrington,lucas herrington,Colorado Rapids,colorado rapids,Defender,,,,False,wc2026_official_squad_corrected
+australia_mathew_leckie,team_australia,Australia,Mathew Leckie,mathew leckie,Melbourne City,melbourne city,Forward,,,,False,wc2026_official_squad_corrected
+australia_matthew_ryan,team_australia,Australia,Matthew Ryan,matthew ryan,Levante,levante,Goalkeeper,,,,False,wc2026_official_squad_corrected
+australia_milos_degenek,team_australia,Australia,Milos Degenek,milos degenek,Apoel FC,apoel fc,Defender,,,,False,wc2026_official_squad_corrected
+australia_mohamed_toure,team_australia,Australia,Mohamed Toure,mohamed toure,Norwich City,norwich city,Forward,,,,False,wc2026_official_squad_corrected
+australia_nestory_irankunda,team_australia,Australia,Nestory Irankunda,nestory irankunda,Watford,watford,Forward,,,,False,wc2026_official_squad_corrected
+australia_nishan_velupillay,team_australia,Australia,Nishan Velupillay,nishan velupillay,Melbourne Victory,melbourne victory,Forward,,,,False,wc2026_official_squad_corrected
+australia_patrick_beach,team_australia,Australia,Patrick Beach,patrick beach,Melbourne City,melbourne city,Goalkeeper,,,,False,wc2026_official_squad_corrected
+australia_paul_izzo,team_australia,Australia,Paul Izzo,paul izzo,Randers FC,randers fc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+australia_paul_okon,team_australia,Australia,Paul Okon,paul okon,Sydney FC,sydney fc,Midfielder,,,,False,wc2026_official_squad_corrected
+australia_tete_yengi,team_australia,Australia,Tete Yengi,tete yengi,Machida Zelvia,machida zelvia,Forward,,,,False,wc2026_official_squad_corrected
+austria_alessandro_schopf,team_austria,Austria,Alessandro Schopf,alessandro schopf,Wolfsberger AC,wolfsberger ac,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_alexander_prass,team_austria,Austria,Alexander Prass,alexander prass,TSG Hoffenheim,tsg hoffenheim,Defender,,,,False,wc2026_official_squad_corrected
+austria_alexander_schlager,team_austria,Austria,Alexander Schlager,alexander schlager,RB Salzburg,rb salzburg,Goalkeeper,,,,False,wc2026_official_squad_corrected
+austria_carney_chukwuemeka,team_austria,Austria,Carney Chukwuemeka,carney chukwuemeka,Borussia Dortmund,borussia dortmund,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_christoph_baumgartner,team_austria,Austria,Christoph Baumgartner,christoph baumgartner,RB Leipzig,rb leipzig,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_david_affengruber,team_austria,Austria,David Affengruber,david affengruber,Elche,elche,Defender,,,,False,wc2026_official_squad_corrected
+austria_david_alaba,team_austria,Austria,David Alaba,david alaba,Real Madrid,real madrid,Defender,,,,False,wc2026_official_squad_corrected
+austria_florian_grillitsch,team_austria,Austria,Florian Grillitsch,florian grillitsch,Braga,braga,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_florian_wiegele,team_austria,Austria,Florian Wiegele,florian wiegele,Viktoria Plzen,viktoria plzen,Goalkeeper,,,,False,wc2026_official_squad_corrected
+austria_kevin_danso,team_austria,Austria,Kevin Danso,kevin danso,Tottehham,tottehham,Defender,,,,False,wc2026_official_squad_corrected
+austria_konrad_laimer,team_austria,Austria,Konrad Laimer,konrad laimer,Bayern Munich,bayern munich,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_marcel_sabitzer,team_austria,Austria,Marcel Sabitzer,marcel sabitzer,Borussia Dortmund,borussia dortmund,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_marco_friedl,team_austria,Austria,Marco Friedl,marco friedl,Werder Bremen,werder bremen,Defender,,,,False,wc2026_official_squad_corrected
+austria_marko_arnautovic,team_austria,Austria,Marko Arnautovic,marko arnautovic,Red Star Belgrade,red star belgrade,Forward,,,,False,wc2026_official_squad_corrected
+austria_michael_gregoritsch,team_austria,Austria,Michael Gregoritsch,michael gregoritsch,FC Augsburg,fc augsburg,Forward,,,,False,wc2026_official_squad_corrected
+austria_michael_svoboda,team_austria,Austria,Michael Svoboda,michael svoboda,Venezia,venezia,Defender,,,,False,wc2026_official_squad_corrected
+austria_nicolas_seiwald,team_austria,Austria,Nicolas Seiwald,nicolas seiwald,RB Leipzig,rb leipzig,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_patrick_pentz,team_austria,Austria,Patrick Pentz,patrick pentz,Brondby,brondby,Goalkeeper,,,,False,wc2026_official_squad_corrected
+austria_patrick_wimmer,team_austria,Austria,Patrick Wimmer,patrick wimmer,Wolfsburg,wolfsburg,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_paul_wanner,team_austria,Austria,Paul Wanner,paul wanner,PSV Eindhoven,psv eindhoven,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_philipp_lienhart,team_austria,Austria,Philipp Lienhart,philipp lienhart,SC Freiburg,sc freiburg,Defender,,,,False,wc2026_official_squad_corrected
+austria_philipp_mwene,team_austria,Austria,Philipp Mwene,philipp mwene,Mainz 05,mainz 05,Defender,,,,False,wc2026_official_squad_corrected
+austria_romano_schmid,team_austria,Austria,Romano Schmid,romano schmid,Werder Bremen,werder bremen,Midfielder,,,,False,wc2026_official_squad_corrected
+austria_sasa_kalajdzic,team_austria,Austria,Sasa Kalajdzic,sasa kalajdzic,LASK Linz,lask linz,Forward,,,,False,wc2026_official_squad_corrected
+austria_stefan_posch,team_austria,Austria,Stefan Posch,stefan posch,Mainz 05,mainz 05,Defender,,,,False,wc2026_official_squad_corrected
+austria_xaver_schlager,team_austria,Austria,Xaver Schlager,xaver schlager,RB Leipzig,rb leipzig,Midfielder,,,,False,wc2026_official_squad_corrected
+belgium_alexis_saelemaekers,team_belgium,Belgium,Alexis Saelemaekers,alexis saelemaekers,AC Milan,ac milan,Forward,,,,False,wc2026_official_squad_corrected
+belgium_amadou_onana,team_belgium,Belgium,Amadou Onana,amadou onana,Aston Villa,aston villa,Midfielder,,,,False,wc2026_official_squad_corrected
+belgium_arthur_theate,team_belgium,Belgium,Arthur Theate,arthur theate,Eintracht Frankfurt,eintracht frankfurt,Defender,,,,False,wc2026_official_squad_corrected
+belgium_axel_witsel,team_belgium,Belgium,Axel Witsel,axel witsel,Girona,girona,Midfielder,,,,False,wc2026_official_squad_corrected
+belgium_brandon_mechele,team_belgium,Belgium,Brandon Mechele,brandon mechele,Club Brugge,club brugge,Defender,,,,False,wc2026_official_squad_corrected
+belgium_charles_de_ketelaere,team_belgium,Belgium,Charles De Ketelaere,charles de ketelaere,Atalanta,atalanta,Forward,,,,False,wc2026_official_squad_corrected
+belgium_diego_moreira,team_belgium,Belgium,Diego Moreira,diego moreira,Strasbourg,strasbourg,Forward,,,,False,wc2026_official_squad_corrected
+belgium_dodi_lukebakio,team_belgium,Belgium,Dodi Lukebakio,dodi lukebakio,Benfica,benfica,Forward,,,,False,wc2026_official_squad_corrected
+belgium_hans_vanaken,team_belgium,Belgium,Hans Vanaken,hans vanaken,Club Brugge,club brugge,Midfielder,,,,False,wc2026_official_squad_corrected
+belgium_joaquin_seys,team_belgium,Belgium,Joaquin Seys,joaquin seys,Club Brugge,club brugge,Defender,,,,False,wc2026_official_squad_corrected
+belgium_jeremy_doku,team_belgium,Belgium,Jérémy Doku,jeremy doku,Manchester City,manchester city,Forward,,,,False,wc2026_official_squad_corrected
+belgium_kevin_de_bruyne,team_belgium,Belgium,Kevin De Bruyne,kevin de bruyne,Napoli,napoli,Midfielder,,,,False,wc2026_official_squad_corrected
+belgium_koni_de_winter,team_belgium,Belgium,Koni De Winter,koni de winter,AC Milan,ac milan,Defender,,,,False,wc2026_official_squad_corrected
+belgium_leandro_trossard,team_belgium,Belgium,Leandro Trossard,leandro trossard,Arsenal,arsenal,Forward,,,,False,wc2026_official_squad_corrected
+belgium_matias_fernandez_pardo,team_belgium,Belgium,Matias Fernandez-Pardo,matias fernandez pardo,Lille,lille,Forward,,,,False,wc2026_official_squad_corrected
+belgium_maxim_de_cuyper,team_belgium,Belgium,Maxim De Cuyper,maxim de cuyper,Brighton & Hove Albion,brighton hove albion,Defender,,,,False,wc2026_official_squad_corrected
+belgium_mike_penders,team_belgium,Belgium,Mike Penders,mike penders,Chelsea,chelsea,Goalkeeper,,,,False,wc2026_official_squad_corrected
+belgium_nathan_ngoy,team_belgium,Belgium,Nathan Ngoy,nathan ngoy,Lille,lille,Defender,,,,False,wc2026_official_squad_corrected
+belgium_nicolas_raskin,team_belgium,Belgium,Nicolas Raskin,nicolas raskin,Rangers,rangers,Midfielder,,,,False,wc2026_official_squad_corrected
+belgium_romelu_lukaku,team_belgium,Belgium,Romelu Lukaku,romelu lukaku,Napoli,napoli,Forward,,,,False,wc2026_official_squad_corrected
+belgium_senne_lammens,team_belgium,Belgium,Senne Lammens,senne lammens,Manchester United,manchester united,Goalkeeper,,,,False,wc2026_official_squad_corrected
+belgium_thibaut_courtois,team_belgium,Belgium,Thibaut Courtois,thibaut courtois,Real Madrid,real madrid,Goalkeeper,,,,False,wc2026_official_squad_corrected
+belgium_thomas_meunier,team_belgium,Belgium,Thomas Meunier,thomas meunier,Lille,lille,Defender,,,,False,wc2026_official_squad_corrected
+belgium_timothy_castagne,team_belgium,Belgium,Timothy Castagne,timothy castagne,Fulham,fulham,Defender,,,,False,wc2026_official_squad_corrected
+belgium_youri_tielemans,team_belgium,Belgium,Youri Tielemans,youri tielemans,Aston Villa,aston villa,Midfielder,,,,False,wc2026_official_squad_corrected
+belgium_zeno_debast,team_belgium,Belgium,Zeno Debast,zeno debast,Sporting CP,sporting cp,Defender,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_amar_dedic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Amar Dedic,amar dedic,Benfica,benfica,Defender,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_amar_memic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Amar Memic,amar memic,Viktoria Plzen,viktoria plzen,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_amir_hadziahmetovic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Amir Hadziahmetovic,amir hadziahmetovic,Hull City,hull city,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_armin_gigovic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Armin Gigovic,armin gigovic,Young Boys,young boys,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_benjamin_tahirovic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Benjamin Tahirovic,benjamin tahirovic,Brondby,brondby,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_dennis_hadzikadunic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Dennis Hadzikadunic,dennis hadzikadunic,Sampdoria,sampdoria,Defender,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_dzenis_burnic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Dzenis Burnic,dzenis burnic,Karlsruher SC,karlsruher sc,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_edin_dzeko,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Edin Dzeko,edin dzeko,Schalke 04,schalke 04,Forward,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_ermedin_demirovic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Ermedin Demirovic,ermedin demirovic,VfB Stuttgart,vfb stuttgart,Forward,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_ermin_mahmic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Ermin Mahmic,ermin mahmic,Slovan Liberec,slovan liberec,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_esmir_bajraktarevic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Esmir Bajraktarevic,esmir bajraktarevic,PSV Eindhoven,psv eindhoven,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_haris_tabakovic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Haris Tabakovic,haris tabakovic,Borussia Moenchengladbach,borussia moenchengladbach,Forward,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_ivan_basic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Ivan Basic,ivan basic,Astana,astana,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_ivan_sunjic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Ivan Sunjic,ivan sunjic,Pafos,pafos,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_jovo_lukic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Jovo Lukic,jovo lukic,Universitatea Cluj,universitatea cluj,Forward,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_kerim_alajbegovic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Kerim Alajbegovic,kerim alajbegovic,RB Salzburg,rb salzburg,Midfielder,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_martin_zlomislic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Martin Zlomislic,martin zlomislic,Rijeka,rijeka,Goalkeeper,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_nidal_celik,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Nidal Celik,nidal celik,Lens,lens,Defender,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_nihad_mujakic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Nihad Mujakic,nihad mujakic,Gaziantep,gaziantep,Defender,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_nikola_katic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Nikola Katic,nikola katic,Schalke 04,schalke 04,Defender,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_nikola_vasilj,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Nikola Vasilj,nikola vasilj,St Pauli,st pauli,Goalkeeper,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_osman_hadzikic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Osman Hadzikic,osman hadzikic,Slaven Belupo,slaven belupo,Goalkeeper,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_samed_bazdar,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Samed Bazdar,samed bazdar,Jagiellonia Bialystok,jagiellonia bialystok,Forward,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_sead_kolasinac,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Sead Kolasinac,sead kolasinac,Atalanta,atalanta,Defender,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_stjepan_radeljic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Stjepan Radeljic,stjepan radeljic,Rijeka,rijeka,Defender,,,,False,wc2026_official_squad_corrected
+bosnia_and_herzegovina_tarik_muharemovic,team_bosnia_and_herzegovina,Bosnia and Herzegovina,Tarik Muharemovic,tarik muharemovic,Sassuolo,sassuolo,Defender,,,,False,wc2026_official_squad_corrected
+brazil_alex_sandro,team_brazil,Brazil,Alex Sandro,alex sandro,Flamengo,flamengo,Defender,,,,False,wc2026_official_squad_corrected
+brazil_alisson_becker,team_brazil,Brazil,Alisson Becker,alisson becker,Liverpool,liverpool,Goalkeeper,,,,False,wc2026_official_squad_corrected
+brazil_bremer,team_brazil,Brazil,Bremer,bremer,Juventus,juventus,Defender,,,,False,wc2026_official_squad_corrected
+brazil_bruno_guimaraes,team_brazil,Brazil,Bruno Guimarães,bruno guimaraes,Newcastle United,newcastle united,Midfielder,,,,False,wc2026_official_squad_corrected
+brazil_casemiro,team_brazil,Brazil,Casemiro,casemiro,Manchester United,manchester united,Midfielder,,,,False,wc2026_official_squad_corrected
+brazil_danilo,team_brazil,Brazil,Danilo,danilo,Flamengo,flamengo,Defender,,,,False,wc2026_official_squad_corrected
+brazil_danilo_santos,team_brazil,Brazil,Danilo Santos,danilo santos,Botafogo,botafogo,Midfielder,,,,False,wc2026_official_squad_corrected
+brazil_douglas_santos,team_brazil,Brazil,Douglas Santos,douglas santos,Zenit St. Petersburg,zenit st petersburg,Defender,,,,False,wc2026_official_squad_corrected
+brazil_endrick,team_brazil,Brazil,Endrick,endrick,Lyon,lyon,Forward,,,,False,wc2026_official_squad_corrected
+brazil_fabinho,team_brazil,Brazil,Fabinho,fabinho,Al Ittihad,al ittihad,Midfielder,,,,False,wc2026_official_squad_corrected
+brazil_gabriel_magalhaes,team_brazil,Brazil,Gabriel Magalhães,gabriel magalhaes,Arsenal,arsenal,Defender,,,,False,wc2026_official_squad_corrected
+brazil_gabriel_martinelli,team_brazil,Brazil,Gabriel Martinelli,gabriel martinelli,Arsenal,arsenal,Forward,,,,False,wc2026_official_squad_corrected
+brazil_igor_thiago,team_brazil,Brazil,Igor Thiago,igor thiago,Brentford,brentford,Forward,,,,False,wc2026_official_squad_corrected
+brazil_lucas_paqueta,team_brazil,Brazil,Lucas Paquetá,lucas paqueta,Flamengo,flamengo,Midfielder,,,,False,wc2026_official_squad_corrected
+brazil_luiz_henrique,team_brazil,Brazil,Luiz Henrique,luiz henrique,Zenit St. Petersburg,zenit st petersburg,Forward,,,,False,wc2026_official_squad_corrected
+brazil_leo_pereira,team_brazil,Brazil,Léo Pereira,leo pereira,Flamengo,flamengo,Defender,,,,False,wc2026_official_squad_corrected
+brazil_marquinhos,team_brazil,Brazil,Marquinhos,marquinhos,Paris Saint-Germain,paris saint germain,Defender,,,,False,wc2026_official_squad_corrected
+brazil_matheus_cunha,team_brazil,Brazil,Matheus Cunha,matheus cunha,Manchester United,manchester united,Forward,,,,False,wc2026_official_squad_corrected
+brazil_neymar_jr,team_brazil,Brazil,Neymar Jr.,neymar jr,Santos FC,santos fc,Forward,,,,False,wc2026_official_squad_corrected
+brazil_raphinha,team_brazil,Brazil,Raphinha,raphinha,Barcelona,barcelona,Forward,,,,False,wc2026_official_squad_corrected
+brazil_rayan,team_brazil,Brazil,Rayan,rayan,Bournemouth,bournemouth,Forward,,,,False,wc2026_official_squad_corrected
+brazil_roger_ibanez,team_brazil,Brazil,Roger Ibañez,roger ibanez,Al Ahli,al ahli,Defender,,,,False,wc2026_official_squad_corrected
+brazil_vinicius_junior,team_brazil,Brazil,Vinícius Júnior,vinicius junior,Real Madrid,real madrid,Forward,,,,False,wc2026_official_squad_corrected
+brazil_wesley_franca,team_brazil,Brazil,Wesley França,wesley franca,AS Roma,as roma,Defender,,,,False,wc2026_official_squad_corrected
+brazil_weverton,team_brazil,Brazil,Weverton,weverton,Grêmio,gremio,Goalkeeper,,,,False,wc2026_official_squad_corrected
+brazil_ederson,team_brazil,Brazil,Éderson,ederson,Fenerbahce,fenerbahce,Goalkeeper,,,,False,wc2026_official_squad_corrected
+canada_alfie_jones,team_canada,Canada,Alfie Jones,alfie jones,Middlesbrough FC,middlesbrough fc,Defender,,,,False,wc2026_official_squad_corrected
+canada_ali_ahmed,team_canada,Canada,Ali Ahmed,ali ahmed,Norwich City FC,norwich city fc,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_alistair_johnston,team_canada,Canada,Alistair Johnston,alistair johnston,Celtic FC,celtic fc,Defender,,,,False,wc2026_official_squad_corrected
+canada_alphonso_davies,team_canada,Canada,Alphonso Davies,alphonso davies,Bayern Munich,bayern munich,Defender,,,,False,wc2026_official_squad_corrected
+canada_cyle_larin,team_canada,Canada,Cyle Larin,cyle larin,RCD Mallorca,rcd mallorca,Forward,,,,False,wc2026_official_squad_corrected
+canada_dayne_st_clair,team_canada,Canada,Dayne St. Clair,dayne st clair,Inter Miami FC,inter miami fc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+canada_derek_cornelius,team_canada,Canada,Derek Cornelius,derek cornelius,Olympique de Marseille,olympique de marseille,Defender,,,,False,wc2026_official_squad_corrected
+canada_ismael_kone,team_canada,Canada,Ismaël Koné,ismael kone,U.S. Sassuolo Calcio,u s sassuolo calcio,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_jacob_shaffelburg,team_canada,Canada,Jacob Shaffelburg,jacob shaffelburg,LAFC,lafc,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_joel_waterman,team_canada,Canada,Joel Waterman,joel waterman,Chicago Fire FC,chicago fire fc,Defender,,,,False,wc2026_official_squad_corrected
+canada_jonathan_david,team_canada,Canada,Jonathan David,jonathan david,Juventus FC,juventus fc,Forward,,,,False,wc2026_official_squad_corrected
+canada_jonathan_osorio,team_canada,Canada,Jonathan Osorio,jonathan osorio,Toronto FC,toronto fc,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_kamal_miller,team_canada,Canada,Kamal Miller,kamal miller,Portland Timbers,portland timbers,Defender,,,,False,wc2026_official_squad_corrected
+canada_liam_millar,team_canada,Canada,Liam Millar,liam millar,Hull City FC,hull city fc,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_luc_de_fougerolles,team_canada,Canada,Luc de Fougerolles,luc de fougerolles,Fulham FC,fulham fc,Defender,,,,False,wc2026_official_squad_corrected
+canada_marcelo_flores,team_canada,Canada,Marcelo Flores,marcelo flores,Tigres UANL,tigres uanl,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_mathieu_choiniere,team_canada,Canada,Mathieu Choinière,mathieu choiniere,LAFC,lafc,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_maxime_crepeau,team_canada,Canada,Maxime Crépeau,maxime crepeau,Orlando City SC,orlando city sc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+canada_moise_bombito,team_canada,Canada,Moïse Bombito,moise bombito,OGC Nice,ogc nice,Defender,,,,False,wc2026_official_squad_corrected
+canada_niko_sigur,team_canada,Canada,Niko Sigur,niko sigur,Hadjuk Split,hadjuk split,Defender,,,,False,wc2026_official_squad_corrected
+canada_owen_goodman,team_canada,Canada,Owen Goodman,owen goodman,Barnsley FC,barnsley fc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+canada_promise_david,team_canada,Canada,Promise David,promise david,Royale Union Saint-Gilloise,royale union saint gilloise,Forward,,,,False,wc2026_official_squad_corrected
+canada_richie_laryea,team_canada,Canada,Richie Laryea,richie laryea,Toronto FC,toronto fc,Defender,,,,False,wc2026_official_squad_corrected
+canada_stephen_eustaquio,team_canada,Canada,Stephen Eustáquio,stephen eustaquio,FC Porto,fc porto,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_tajon_buchanan,team_canada,Canada,Tajon Buchanan,tajon buchanan,Villarreal CF,villarreal cf,Midfielder,,,,False,wc2026_official_squad_corrected
+canada_tani_oluwaseyi,team_canada,Canada,Tani Oluwaseyi,tani oluwaseyi,Villarreal CF,villarreal cf,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_carlos_santos,team_cape_verde,Cape Verde,Carlos Santos,carlos santos,San Diego,san diego,Goalkeeper,,,,False,wc2026_official_squad_corrected
+cape_verde_dailon_livramento,team_cape_verde,Cape Verde,Dailon Livramento,dailon livramento,Casa Pia,casa pia,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_deroy_duarte,team_cape_verde,Cape Verde,Deroy Duarte,deroy duarte,Ludogorets Razgrad,ludogorets razgrad,Midfielder,,,,False,wc2026_official_squad_corrected
+cape_verde_edilson_borges,team_cape_verde,Cape Verde,Edilson Borges,edilson borges,Al-Bataeh CSC,al bataeh csc,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_garry_rodrigues,team_cape_verde,Cape Verde,Garry Rodrigues,garry rodrigues,Apollon Limassol,apollon limassol,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_gilson_benchimol,team_cape_verde,Cape Verde,Gilson Benchimol,gilson benchimol,Akron Tolyatti,akron tolyatti,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_helio_varela,team_cape_verde,Cape Verde,Helio Varela,helio varela,Maccabi Tel Aviv,maccabi tel aviv,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_ianique_tavares,team_cape_verde,Cape Verde,Ianique Tavares,ianique tavares,Torreense,torreense,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_jamiro_monteiro,team_cape_verde,Cape Verde,Jamiro Monteiro,jamiro monteiro,PEC Zwolle,pec zwolle,Midfielder,,,,False,wc2026_official_squad_corrected
+cape_verde_josimar_dias,team_cape_verde,Cape Verde,Josimar Dias,josimar dias,Chaves,chaves,Goalkeeper,,,,False,wc2026_official_squad_corrected
+cape_verde_jovane_cabral,team_cape_verde,Cape Verde,Jovane Cabral,jovane cabral,Estrela Amadora,estrela amadora,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_joao_paulo_fernandes,team_cape_verde,Cape Verde,João Paulo Fernandes,joao paulo fernandes,FCSB,fcsb,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_kelvin_pires,team_cape_verde,Cape Verde,Kelvin Pires,kelvin pires,SJK,sjk,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_kevin_pina,team_cape_verde,Cape Verde,Kevin Pina,kevin pina,Krasnodar,krasnodar,Midfielder,,,,False,wc2026_official_squad_corrected
+cape_verde_laros_duarte,team_cape_verde,Cape Verde,Laros Duarte,laros duarte,Puskas Akademia,puskas akademia,Midfielder,,,,False,wc2026_official_squad_corrected
+cape_verde_logan_costa,team_cape_verde,Cape Verde,Logan Costa,logan costa,Villarreal,villarreal,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_marcio_da_rosa,team_cape_verde,Cape Verde,Márcio da Rosa,marcio da rosa,Montana,montana,Goalkeeper,,,,False,wc2026_official_squad_corrected
+cape_verde_nuno_da_costa,team_cape_verde,Cape Verde,Nuno da Costa,nuno da costa,Istanbul Basaksehir,istanbul basaksehir,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_roberto_lopes,team_cape_verde,Cape Verde,Roberto Lopes,roberto lopes,Shamrock Rovers,shamrock rovers,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_ryan_mendes,team_cape_verde,Cape Verde,Ryan Mendes,ryan mendes,Igdir,igdir,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_sidny_lopes_cabral,team_cape_verde,Cape Verde,Sidny Lopes Cabral,sidny lopes cabral,Benfica,benfica,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_steven_moreira,team_cape_verde,Cape Verde,Steven Moreira,steven moreira,Columbus Crew,columbus crew,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_telmo_arcanjo,team_cape_verde,Cape Verde,Telmo Arcanjo,telmo arcanjo,Vitoria Guimaraes,vitoria guimaraes,Midfielder,,,,False,wc2026_official_squad_corrected
+cape_verde_wagner_pina,team_cape_verde,Cape Verde,Wagner Pina,wagner pina,Trabzonspor,trabzonspor,Defender,,,,False,wc2026_official_squad_corrected
+cape_verde_willy_semedo,team_cape_verde,Cape Verde,Willy Semedo,willy semedo,Omonia,omonia,Forward,,,,False,wc2026_official_squad_corrected
+cape_verde_yannick_semedo,team_cape_verde,Cape Verde,Yannick Semedo,yannick semedo,Farense,farense,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_camilo_vargas,team_colombia,Colombia,Camilo Vargas,camilo vargas,Atlas-MEX,atlas mex,Goalkeeper,,,,False,wc2026_official_squad_corrected
+colombia_carlos_andres_gomez,team_colombia,Colombia,Carlos Andrés Gómez,carlos andres gomez,Vasco Da Gama-BRA,vasco da gama bra,Forward,,,,False,wc2026_official_squad_corrected
+colombia_daniel_munoz,team_colombia,Colombia,Daniel Muñoz,daniel munoz,Crystal Palace-GBR,crystal palace gbr,Defender,,,,False,wc2026_official_squad_corrected
+colombia_david_ospina,team_colombia,Colombia,David Ospina,david ospina,Atlético Nacional,atletico nacional,Goalkeeper,,,,False,wc2026_official_squad_corrected
+colombia_davinson_sanchez,team_colombia,Colombia,Davinson Sánchez,davinson sanchez,Galatasaray-TUR,galatasaray tur,Defender,,,,False,wc2026_official_squad_corrected
+colombia_deiver_machado,team_colombia,Colombia,Deiver Machado,deiver machado,Nantes-FRA,nantes fra,Defender,,,,False,wc2026_official_squad_corrected
+colombia_gustavo_puerta,team_colombia,Colombia,Gustavo Puerta,gustavo puerta,Racing-ESP,racing esp,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_james_rodriguez,team_colombia,Colombia,James Rodríguez,james rodriguez,Minnesota United-USA,minnesota united usa,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_jaminton_campaz,team_colombia,Colombia,Jaminton Campaz,jaminton campaz,Rosario Central-ARG,rosario central arg,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_jefferson_lerma,team_colombia,Colombia,Jefferson Lerma,jefferson lerma,Crystal Palace-GBR,crystal palace gbr,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_jhon_arias,team_colombia,Colombia,Jhon Arias,jhon arias,Palmeiras-BRA,palmeiras bra,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_jhon_cordoba,team_colombia,Colombia,Jhon Córdoba,jhon cordoba,Krasnodar-RUS,krasnodar rus,Forward,,,,False,wc2026_official_squad_corrected
+colombia_jhon_lucumi,team_colombia,Colombia,Jhon Lucumí,jhon lucumi,Bologna-ITA,bologna ita,Defender,,,,False,wc2026_official_squad_corrected
+colombia_johan_mojica,team_colombia,Colombia,Johan Mojica,johan mojica,Mallorca-ESP,mallorca esp,Defender,,,,False,wc2026_official_squad_corrected
+colombia_jorge_carrascal,team_colombia,Colombia,Jorge Carrascal,jorge carrascal,Flamengo-BRA,flamengo bra,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_juan_camilo_cucho_hernandez,team_colombia,Colombia,"Juan Camilo ""Cucho"" Hernández",juan camilo cucho hernandez,Real Betis,real betis,Forward,,,,False,wc2026_official_squad_corrected
+colombia_juan_camilo_portilla,team_colombia,Colombia,Juan Camilo Portilla,juan camilo portilla,Athletico Paranaense-BRA,athletico paranaense bra,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_juan_fernando_quintero,team_colombia,Colombia,Juan Fernando Quintero,juan fernando quintero,River Plate-ARG,river plate arg,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_kevin_castano,team_colombia,Colombia,Kevin Castaño,kevin castano,River Plate-ARG,river plate arg,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_luis_diaz,team_colombia,Colombia,Luis Díaz,luis diaz,Bayern Munich-GER,bayern munich ger,Forward,,,,False,wc2026_official_squad_corrected
+colombia_luis_javier_suarez,team_colombia,Colombia,Luis Javier Suárez,luis javier suarez,Sporting CP,sporting cp,Forward,,,,False,wc2026_official_squad_corrected
+colombia_richard_rios,team_colombia,Colombia,Richard Ríos,richard rios,Benfica-POR,benfica por,Midfielder,,,,False,wc2026_official_squad_corrected
+colombia_santiago_arias,team_colombia,Colombia,Santiago Arias,santiago arias,Independiente-ARG,independiente arg,Defender,,,,False,wc2026_official_squad_corrected
+colombia_willer_ditta,team_colombia,Colombia,Willer Ditta,willer ditta,Cruz Azul-MEX,cruz azul mex,Defender,,,,False,wc2026_official_squad_corrected
+colombia_yerry_mina,team_colombia,Colombia,Yerry Mina,yerry mina,Cagliari-ITA,cagliari ita,Defender,,,,False,wc2026_official_squad_corrected
+colombia_alvaro_montero,team_colombia,Colombia,Álvaro Montero,alvaro montero,Vélez Sarsfield-ARG,velez sarsfield arg,Goalkeeper,,,,False,wc2026_official_squad_corrected
+croatia_andrej_kramaric,team_croatia,Croatia,Andrej Kramaric,andrej kramaric,Hoffenheim,hoffenheim,Forward,,,,False,wc2026_official_squad_corrected
+croatia_ante_budimir,team_croatia,Croatia,Ante Budimir,ante budimir,Osasuna,osasuna,Forward,,,,False,wc2026_official_squad_corrected
+croatia_dominic_livakovic,team_croatia,Croatia,Dominic Livakovic,dominic livakovic,Dinamo,dinamo,Goalkeeper,,,,False,wc2026_official_squad_corrected
+croatia_dominik_kotarski,team_croatia,Croatia,Dominik Kotarski,dominik kotarski,Kobenhavn,kobenhavn,Goalkeeper,,,,False,wc2026_official_squad_corrected
+croatia_duje_caleta_car,team_croatia,Croatia,Duje Caleta-Car,duje caleta car,Real Sociedad,real sociedad,Defender,,,,False,wc2026_official_squad_corrected
+croatia_igor_matanovic,team_croatia,Croatia,Igor Matanovic,igor matanovic,Freiburg,freiburg,Forward,,,,False,wc2026_official_squad_corrected
+croatia_ivan_perisic,team_croatia,Croatia,Ivan Perisic,ivan perisic,PSV Eindhoven,psv eindhoven,Forward,,,,False,wc2026_official_squad_corrected
+croatia_ivor_pandur,team_croatia,Croatia,Ivor Pandur,ivor pandur,Hull City,hull city,Goalkeeper,,,,False,wc2026_official_squad_corrected
+croatia_josip_stanisic,team_croatia,Croatia,Josip Stanisic,josip stanisic,Bayern Munich,bayern munich,Defender,,,,False,wc2026_official_squad_corrected
+croatia_josip_sutalo,team_croatia,Croatia,Josip Sutalo,josip sutalo,Ajax,ajax,Defender,,,,False,wc2026_official_squad_corrected
+croatia_josko_gvardiol,team_croatia,Croatia,Josko Gvardiol,josko gvardiol,Manchester City,manchester city,Defender,,,,False,wc2026_official_squad_corrected
+croatia_kristijan_jakic,team_croatia,Croatia,Kristijan Jakic,kristijan jakic,Augsburg,augsburg,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_luka_modric,team_croatia,Croatia,Luka Modric,luka modric,AC Milan,ac milan,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_luka_sucic,team_croatia,Croatia,Luka Sucic,luka sucic,Real Sociedad,real sociedad,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_luka_vuskovic,team_croatia,Croatia,Luka Vuskovic,luka vuskovic,Hamburg,hamburg,Defender,,,,False,wc2026_official_squad_corrected
+croatia_marco_pasalic,team_croatia,Croatia,Marco Pasalic,marco pasalic,Orlando City,orlando city,Forward,,,,False,wc2026_official_squad_corrected
+croatia_marin_pongracic,team_croatia,Croatia,Marin Pongracic,marin pongracic,Fiorentina,fiorentina,Defender,,,,False,wc2026_official_squad_corrected
+croatia_mario_pasalic,team_croatia,Croatia,Mario Pasalic,mario pasalic,Atalanta,atalanta,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_martin_baturina,team_croatia,Croatia,Martin Baturina,martin baturina,Como,como,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_martin_erlic,team_croatia,Croatia,Martin Erlic,martin erlic,Midtjylland,midtjylland,Defender,,,,False,wc2026_official_squad_corrected
+croatia_mateo_kovacic,team_croatia,Croatia,Mateo Kovacic,mateo kovacic,Manchester City,manchester city,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_nikola_moro,team_croatia,Croatia,Nikola Moro,nikola moro,Bologna,bologna,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_nikola_vlasic,team_croatia,Croatia,Nikola Vlasic,nikola vlasic,Torino,torino,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_petar_musa,team_croatia,Croatia,Petar Musa,petar musa,FC Dallas,fc dallas,Forward,,,,False,wc2026_official_squad_corrected
+croatia_petar_sucic,team_croatia,Croatia,Petar Sucic,petar sucic,Inter Milan,inter milan,Midfielder,,,,False,wc2026_official_squad_corrected
+croatia_toni_fruk,team_croatia,Croatia,Toni Fruk,toni fruk,Rijeka,rijeka,Midfielder,,,,False,wc2026_official_squad_corrected
+curacao_ar_jany_martha,team_curacao,Curacao,Ar'jany Martha,ar jany martha,Rotherham United,rotherham united,Midfielder,,,,False,wc2026_official_squad_corrected
+curacao_armando_obispo,team_curacao,Curacao,Armando Obispo,armando obispo,PSV Eindhoven,psv eindhoven,Defender,,,,False,wc2026_official_squad_corrected
+curacao_brandley_kuwas,team_curacao,Curacao,Brandley Kuwas,brandley kuwas,Volendam,volendam,Forward,,,,False,wc2026_official_squad_corrected
+curacao_deveron_fonville,team_curacao,Curacao,Deveron Fonville,deveron fonville,NEC Nijmegen,nec nijmegen,Defender,,,,False,wc2026_official_squad_corrected
+curacao_eloy_room,team_curacao,Curacao,Eloy Room,eloy room,Miami FC,miami fc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+curacao_gervane_kastaneer,team_curacao,Curacao,Gervane Kastaneer,gervane kastaneer,Terengganu,terengganu,Forward,,,,False,wc2026_official_squad_corrected
+curacao_godfried_roemeratoe,team_curacao,Curacao,Godfried Roemeratoe,godfried roemeratoe,RKC Waalwijk,rkc waalwijk,Midfielder,,,,False,wc2026_official_squad_corrected
+curacao_jearl_margaritha,team_curacao,Curacao,Jearl Margaritha,jearl margaritha,Beveren,beveren,Forward,,,,False,wc2026_official_squad_corrected
+curacao_jeremy_antonisse,team_curacao,Curacao,Jeremy Antonisse,jeremy antonisse,Kifisia,kifisia,Forward,,,,False,wc2026_official_squad_corrected
+curacao_joshua_brenet,team_curacao,Curacao,Joshua Brenet,joshua brenet,Kayserispor,kayserispor,Defender,,,,False,wc2026_official_squad_corrected
+curacao_juninho_bacuna,team_curacao,Curacao,Juninho Bacuna,juninho bacuna,Volendam,volendam,Midfielder,,,,False,wc2026_official_squad_corrected
+curacao_jurien_gaari,team_curacao,Curacao,Juriën Gaari,jurien gaari,Abha,abha,Defender,,,,False,wc2026_official_squad_corrected
+curacao_jurgen_locadia,team_curacao,Curacao,Jürgen Locadia,jurgen locadia,Miami FC,miami fc,Forward,,,,False,wc2026_official_squad_corrected
+curacao_kenji_gorre,team_curacao,Curacao,Kenji Gorré,kenji gorre,Maccabi Haifa,maccabi haifa,Forward,,,,False,wc2026_official_squad_corrected
+curacao_kevin_felida,team_curacao,Curacao,Kevin Felida,kevin felida,Den Bosch,den bosch,Midfielder,,,,False,wc2026_official_squad_corrected
+curacao_leandro_bacuna,team_curacao,Curacao,Leandro Bacuna,leandro bacuna,Igdir,igdir,Midfielder,,,,False,wc2026_official_squad_corrected
+curacao_livano_comenencia,team_curacao,Curacao,Livano Comenencia,livano comenencia,Zurich,zurich,Midfielder,,,,False,wc2026_official_squad_corrected
+curacao_riechedly_bazoer,team_curacao,Curacao,Riechedly Bazoer,riechedly bazoer,Konyaspor,konyaspor,Defender,,,,False,wc2026_official_squad_corrected
+curacao_roshon_van_eijma,team_curacao,Curacao,Roshon van Eijma,roshon van eijma,RKC Waalwijk,rkc waalwijk,Defender,,,,False,wc2026_official_squad_corrected
+curacao_sherel_floranus,team_curacao,Curacao,Sherel Floranus,sherel floranus,PEC Zwolle,pec zwolle,Defender,,,,False,wc2026_official_squad_corrected
+curacao_shurandy_sambo,team_curacao,Curacao,Shurandy Sambo,shurandy sambo,Sparta Rotterdam,sparta rotterdam,Defender,,,,False,wc2026_official_squad_corrected
+curacao_sontje_hansen,team_curacao,Curacao,Sontje Hansen,sontje hansen,Middlesbrough,middlesbrough,Forward,,,,False,wc2026_official_squad_corrected
+curacao_tahith_chong,team_curacao,Curacao,Tahith Chong,tahith chong,Sheffield United,sheffield united,Forward,,,,False,wc2026_official_squad_corrected
+curacao_trevor_doornbusch,team_curacao,Curacao,Trevor Doornbusch,trevor doornbusch,VVV Venlo,vvv venlo,Goalkeeper,,,,False,wc2026_official_squad_corrected
+curacao_tyrese_noslin,team_curacao,Curacao,Tyrese Noslin,tyrese noslin,Telstar,telstar,Midfielder,,,,False,wc2026_official_squad_corrected
+curacao_tyrick_bodack,team_curacao,Curacao,Tyrick Bodack,tyrick bodack,SC Telstar,sc telstar,Goalkeeper,,,,False,wc2026_official_squad_corrected
+czech_republic_adam_hlozek,team_czech_republic,Czech Republic,Adam Hlozek,adam hlozek,Hoffenheim,hoffenheim,Forward,,,,False,wc2026_official_squad_corrected
+czech_republic_alexandr_sojka,team_czech_republic,Czech Republic,Alexandr Sojka,alexandr sojka,Viktoria Plzen,viktoria plzen,Midfielder,,,,False,wc2026_official_squad_corrected
+czech_republic_david_doudera,team_czech_republic,Czech Republic,David Doudera,david doudera,Slavia Prague,slavia prague,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_david_jurasek,team_czech_republic,Czech Republic,David Jurásek,david jurasek,Slavia Prague,slavia prague,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_david_zima,team_czech_republic,Czech Republic,David Zima,david zima,Slavia Prague,slavia prague,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_denis_visinsky,team_czech_republic,Czech Republic,Denis Visinsky,denis visinsky,Viktoria Plzen,viktoria plzen,Midfielder,,,,False,wc2026_official_squad_corrected
+czech_republic_hugo_sochurek,team_czech_republic,Czech Republic,Hugo Sochurek,hugo sochurek,Sparta Prague,sparta prague,Midfielder,,,,False,wc2026_official_squad_corrected
+czech_republic_jan_kuchta,team_czech_republic,Czech Republic,Jan Kuchta,jan kuchta,Sparta Prague,sparta prague,Forward,,,,False,wc2026_official_squad_corrected
+czech_republic_jaroslav_zeleny,team_czech_republic,Czech Republic,Jaroslav Zeleny,jaroslav zeleny,Sparta Prague,sparta prague,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_jindrich_stanek,team_czech_republic,Czech Republic,Jindrich Stanek,jindrich stanek,Slavia Prague,slavia prague,Goalkeeper,,,,False,wc2026_official_squad_corrected
+czech_republic_ladislav_krejci,team_czech_republic,Czech Republic,Ladislav Krejcí,ladislav krejci,Wolverhampton,wolverhampton,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_lukas_cerv,team_czech_republic,Czech Republic,Lukás Cerv,lukas cerv,Viktoria Plzen,viktoria plzen,Midfielder,,,,False,wc2026_official_squad_corrected
+czech_republic_lukas_hornicek,team_czech_republic,Czech Republic,Lukás Hornícek,lukas hornicek,Braga,braga,Goalkeeper,,,,False,wc2026_official_squad_corrected
+czech_republic_lukas_provod,team_czech_republic,Czech Republic,Lukás Provod,lukas provod,Slavia Prague,slavia prague,Midfielder,,,,False,wc2026_official_squad_corrected
+czech_republic_matej_kovar,team_czech_republic,Czech Republic,Matej Kovár,matej kovar,PSV Eindhoven,psv eindhoven,Goalkeeper,,,,False,wc2026_official_squad_corrected
+czech_republic_michal_sadilek,team_czech_republic,Czech Republic,Michal Sadílek,michal sadilek,Slavia Prague,slavia prague,Midfielder,,,,False,wc2026_official_squad_corrected
+czech_republic_mojmir_chytil,team_czech_republic,Czech Republic,Mojmír Chytil,mojmir chytil,Slavia Prague,slavia prague,Forward,,,,False,wc2026_official_squad_corrected
+czech_republic_patrik_schick,team_czech_republic,Czech Republic,Patrik Schick,patrik schick,Bayer Leverkusen,bayer leverkusen,Forward,,,,False,wc2026_official_squad_corrected
+czech_republic_pavel_sulc,team_czech_republic,Czech Republic,Pavel Sulc,pavel sulc,Lyon,lyon,Midfielder,,,,False,wc2026_official_squad_corrected
+czech_republic_robin_hranac,team_czech_republic,Czech Republic,Robin Hranác,robin hranac,Hoffenheim,hoffenheim,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_stepan_chaloupek,team_czech_republic,Czech Republic,Stepán Chaloupek,stepan chaloupek,Slavia Prague,slavia prague,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_tomas_chory,team_czech_republic,Czech Republic,Tomás Chory,tomas chory,Slavia Prague,slavia prague,Forward,,,,False,wc2026_official_squad_corrected
+czech_republic_tomas_holes,team_czech_republic,Czech Republic,Tomás Holes,tomas holes,Slavia Prague,slavia prague,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_tomas_soucek,team_czech_republic,Czech Republic,Tomás Soucek,tomas soucek,West Ham,west ham,Midfielder,,,,False,wc2026_official_squad_corrected
+czech_republic_vladimir_coufal,team_czech_republic,Czech Republic,Vladimír Coufal,vladimir coufal,Hoffenheim,hoffenheim,Defender,,,,False,wc2026_official_squad_corrected
+czech_republic_vladimir_darida,team_czech_republic,Czech Republic,Vladimír Darida,vladimir darida,Hradec Králové,hradec kralove,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_aaron_wan_bissaka,team_dr_congo,DR Congo,Aaron Wan-Bissaka,aaron wan bissaka,West Ham United,west ham united,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_arthur_masuaku,team_dr_congo,DR Congo,Arthur Masuaku,arthur masuaku,Lens,lens,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_axel_tuanzebe,team_dr_congo,DR Congo,Axel Tuanzebe,axel tuanzebe,Burnley,burnley,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_brian_cipenga,team_dr_congo,DR Congo,Brian Cipenga,brian cipenga,Castellón,castellon,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_chancel_mbemba,team_dr_congo,DR Congo,Chancel Mbemba,chancel mbemba,Lille,lille,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_charles_pickel,team_dr_congo,DR Congo,Charles Pickel,charles pickel,Espanyol,espanyol,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_cedric_bakambu,team_dr_congo,DR Congo,Cédric Bakambu,cedric bakambu,Real Betis,real betis,Forward,,,,False,wc2026_official_squad_corrected
+dr_congo_dylan_batubinsika,team_dr_congo,DR Congo,Dylan Batubinsika,dylan batubinsika,AEL,ael,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_edo_kayembe,team_dr_congo,DR Congo,Edo Kayembe,edo kayembe,Watford,watford,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_fiston_mayele,team_dr_congo,DR Congo,Fiston Mayele,fiston mayele,Pyramids FC,pyramids fc,Forward,,,,False,wc2026_official_squad_corrected
+dr_congo_gael_kakuta,team_dr_congo,DR Congo,Gaël Kakuta,gael kakuta,AEL,ael,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_gedeon_kalulu,team_dr_congo,DR Congo,Gedeon Kalulu,gedeon kalulu,Aris Limassol,aris limassol,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_joris_kayembe,team_dr_congo,DR Congo,Joris Kayembe,joris kayembe,Genk,genk,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_lionel_mpasi,team_dr_congo,DR Congo,Lionel Mpasi,lionel mpasi,Le Havre,le havre,Goalkeeper,,,,False,wc2026_official_squad_corrected
+dr_congo_matthieu_epolo,team_dr_congo,DR Congo,Matthieu Epolo,matthieu epolo,Standard Liege,standard liege,Goalkeeper,,,,False,wc2026_official_squad_corrected
+dr_congo_meschack_elia,team_dr_congo,DR Congo,Meschack Elia,meschack elia,Alanyaspor,alanyaspor,Forward,,,,False,wc2026_official_squad_corrected
+dr_congo_nathanael_mbuku,team_dr_congo,DR Congo,Nathanaël Mbuku,nathanael mbuku,Montpellier,montpellier,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_ngal_ayel_mukau,team_dr_congo,DR Congo,Ngal'ayel Mukau,ngal ayel mukau,Lille,lille,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_noah_sadiki,team_dr_congo,DR Congo,Noah Sadiki,noah sadiki,Sunderland,sunderland,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_rocky_bushiri,team_dr_congo,DR Congo,Rocky Bushiri,rocky bushiri,Hibernian FC,hibernian fc,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_samuel_moutoussamy,team_dr_congo,DR Congo,Samuel Moutoussamy,samuel moutoussamy,Atromitos,atromitos,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_simon_banza,team_dr_congo,DR Congo,Simon Banza,simon banza,Al Jazira,al jazira,Forward,,,,False,wc2026_official_squad_corrected
+dr_congo_steve_kapuadi,team_dr_congo,DR Congo,Steve Kapuadi,steve kapuadi,Widzew Łódź,widzew odz,Defender,,,,False,wc2026_official_squad_corrected
+dr_congo_theo_bongonda,team_dr_congo,DR Congo,Théo Bongonda,theo bongonda,Spartak Moscow,spartak moscow,Midfielder,,,,False,wc2026_official_squad_corrected
+dr_congo_timothy_fayulu,team_dr_congo,DR Congo,Timothy Fayulu,timothy fayulu,FC Noah,fc noah,Goalkeeper,,,,False,wc2026_official_squad_corrected
+dr_congo_yoane_wissa,team_dr_congo,DR Congo,Yoane Wissa,yoane wissa,Newcastle United,newcastle united,Forward,,,,False,wc2026_official_squad_corrected
+ecuador_alan_franco,team_ecuador,Ecuador,Alan Franco,alan franco,Atlético Mineiro,atletico mineiro,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_alan_minda,team_ecuador,Ecuador,Alan Minda,alan minda,Cercle Brugge,cercle brugge,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_anthony_valencia,team_ecuador,Ecuador,Anthony Valencia,anthony valencia,Royal Antwerp,royal antwerp,Forward,,,,False,wc2026_official_squad_corrected
+ecuador_denil_castillo,team_ecuador,Ecuador,Denil Castillo,denil castillo,Midtjylland,midtjylland,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_enner_valencia,team_ecuador,Ecuador,Enner Valencia,enner valencia,Pachuca,pachuca,Forward,,,,False,wc2026_official_squad_corrected
+ecuador_felix_torres,team_ecuador,Ecuador,Félix Torres,felix torres,Internacional,internacional,Defender,,,,False,wc2026_official_squad_corrected
+ecuador_gonzalo_plata,team_ecuador,Ecuador,Gonzalo Plata,gonzalo plata,CR Flamengo,cr flamengo,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_gonzalo_valle,team_ecuador,Ecuador,Gonzalo Valle,gonzalo valle,LDU Quito,ldu quito,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ecuador_hernan_galindez,team_ecuador,Ecuador,Hernán Galíndez,hernan galindez,Huracán,huracan,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ecuador_jackson_porozo,team_ecuador,Ecuador,Jackson Porozo,jackson porozo,Club Tijuana,club tijuana,Defender,,,,False,wc2026_official_squad_corrected
+ecuador_jeremy_arevalo,team_ecuador,Ecuador,Jeremy Arévalo,jeremy arevalo,Stuttgart,stuttgart,Forward,,,,False,wc2026_official_squad_corrected
+ecuador_joel_ordonez,team_ecuador,Ecuador,Joel Ordóñez,joel ordonez,Club Brugge,club brugge,Defender,,,,False,wc2026_official_squad_corrected
+ecuador_john_yeboah,team_ecuador,Ecuador,John Yeboah,john yeboah,Venezia FC,venezia fc,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_jordy_alcivar,team_ecuador,Ecuador,Jordy Alcívar,jordy alcivar,Independiente,independiente,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_jordy_caicedo,team_ecuador,Ecuador,Jordy Caicedo,jordy caicedo,Huracán,huracan,Forward,,,,False,wc2026_official_squad_corrected
+ecuador_kendry_paez,team_ecuador,Ecuador,Kendry Páez,kendry paez,River Plate,river plate,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_kevin_rodriguez,team_ecuador,Ecuador,Kevin Rodríguez,kevin rodriguez,Union Saint-Gilloise,union saint gilloise,Forward,,,,False,wc2026_official_squad_corrected
+ecuador_moises_caicedo,team_ecuador,Ecuador,Moisés Caicedo,moises caicedo,Chelsea,chelsea,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_moises_ramirez,team_ecuador,Ecuador,Moisés Ramírez,moises ramirez,AE Kifisias,ae kifisias,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ecuador_nilson_angulo,team_ecuador,Ecuador,Nilson Angulo,nilson angulo,Sunderland,sunderland,Forward,,,,False,wc2026_official_squad_corrected
+ecuador_pedro_vite,team_ecuador,Ecuador,Pedro Vite,pedro vite,Pumas UNAM,pumas unam,Midfielder,,,,False,wc2026_official_squad_corrected
+ecuador_pervis_estupinan,team_ecuador,Ecuador,Pervis Estupiñán,pervis estupinan,AC Milan,ac milan,Defender,,,,False,wc2026_official_squad_corrected
+ecuador_piero_hincapie,team_ecuador,Ecuador,Piero Hincapié,piero hincapie,Arsenal,arsenal,Defender,,,,False,wc2026_official_squad_corrected
+ecuador_willian_pacho,team_ecuador,Ecuador,Willian Pacho,willian pacho,PSG,psg,Defender,,,,False,wc2026_official_squad_corrected
+ecuador_yaimar_medina,team_ecuador,Ecuador,Yaimar Medina,yaimar medina,KRC Genk,krc genk,Defender,,,,False,wc2026_official_squad_corrected
+ecuador_angelo_preciado,team_ecuador,Ecuador,Ángelo Preciado,angelo preciado,Atlético Mineiro,atletico mineiro,Defender,,,,False,wc2026_official_squad_corrected
+egypt_ahmed_fatouh,team_egypt,Egypt,Ahmed Fatouh,ahmed fatouh,Zamalek,zamalek,Defender,,,,False,wc2026_official_squad_corrected
+egypt_ahmed_sayed_zizo,team_egypt,Egypt,"Ahmed Sayed ""Zizo""",ahmed sayed zizo,Al Ahly SC,al ahly sc,Midfielder,,,,False,wc2026_official_squad_corrected
+egypt_el_mahdy_soliman,team_egypt,Egypt,El Mahdy Soliman,el mahdy soliman,Zamalek SC,zamalek sc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+egypt_emam_ashour,team_egypt,Egypt,Emam Ashour,emam ashour,Al Ahly,al ahly,Midfielder,,,,False,wc2026_official_squad_corrected
+egypt_haitham_hassan,team_egypt,Egypt,Haitham Hassan,haitham hassan,Real Oviedo,real oviedo,Forward,,,,False,wc2026_official_squad_corrected
+egypt_hamdy_fathy,team_egypt,Egypt,Hamdy Fathy,hamdy fathy,Al-Wakrah SC,al wakrah sc,Midfielder,,,,False,wc2026_official_squad_corrected
+egypt_hamza_abdelkarim,team_egypt,Egypt,Hamza Abdelkarim,hamza abdelkarim,Barcelona,barcelona,Forward,,,,False,wc2026_official_squad_corrected
+egypt_hossam_abdelmaguid,team_egypt,Egypt,Hossam Abdelmaguid,hossam abdelmaguid,Zamalek,zamalek,Defender,,,,False,wc2026_official_squad_corrected
+egypt_ibrahim_adel,team_egypt,Egypt,Ibrahim Adel,ibrahim adel,FC Nordsjælland,fc nordsj lland,Forward,,,,False,wc2026_official_squad_corrected
+egypt_karim_hafez,team_egypt,Egypt,Karim Hafez,karim hafez,Pyramids,pyramids,Defender,,,,False,wc2026_official_squad_corrected
+egypt_mahmoud_hassan_trezeguet,team_egypt,Egypt,"Mahmoud Hassan ""Trézéguet""",mahmoud hassan trezeguet,Al Ahly SC,al ahly sc,Midfielder,,,,False,wc2026_official_squad_corrected
+egypt_mahmoud_saber,team_egypt,Egypt,Mahmoud Saber,mahmoud saber,Zed,zed,Midfielder,,,,False,wc2026_official_squad_corrected
+egypt_marwan_attia,team_egypt,Egypt,Marwan Attia,marwan attia,Al Ahly SC,al ahly sc,Midfielder,,,,False,wc2026_official_squad_corrected
+egypt_mohamed_abdelmonem,team_egypt,Egypt,Mohamed Abdelmonem,mohamed abdelmonem,OGC Niza,ogc niza,Defender,,,,False,wc2026_official_squad_corrected
+egypt_mohamed_alaa,team_egypt,Egypt,Mohamed Alaa,mohamed alaa,El Gouna,el gouna,Goalkeeper,,,,False,wc2026_official_squad_corrected
+egypt_mohamed_el_shenawy,team_egypt,Egypt,Mohamed El Shenawy,mohamed el shenawy,Al Ahly,al ahly,Goalkeeper,,,,False,wc2026_official_squad_corrected
+egypt_mohamed_hany,team_egypt,Egypt,Mohamed Hany,mohamed hany,Al Ahly,al ahly,Defender,,,,False,wc2026_official_squad_corrected
+egypt_mohamed_salah,team_egypt,Egypt,Mohamed Salah,mohamed salah,Liverpool,liverpool,Forward,,,,False,wc2026_official_squad_corrected
+egypt_mohannad_lasheen,team_egypt,Egypt,Mohannad Lasheen,mohannad lasheen,Pyramids FC,pyramids fc,Midfielder,,,,False,wc2026_official_squad_corrected
+egypt_mostafa_abdelraouf_ziko,team_egypt,Egypt,"Mostafa Abdelraouf ""Ziko""",mostafa abdelraouf ziko,ZED FC,zed fc,Forward,,,,False,wc2026_official_squad_corrected
+egypt_mostafa_shobeir,team_egypt,Egypt,Mostafa Shobeir,mostafa shobeir,Al Ahly,al ahly,Goalkeeper,,,,False,wc2026_official_squad_corrected
+egypt_nabil_emad_donga,team_egypt,Egypt,"Nabil Emad ""Donga""",nabil emad donga,Al Najmah,al najmah,Midfielder,,,,False,wc2026_official_squad_corrected
+egypt_omar_marmoush,team_egypt,Egypt,Omar Marmoush,omar marmoush,Manchester City,manchester city,Forward,,,,False,wc2026_official_squad_corrected
+egypt_rami_rabia,team_egypt,Egypt,Rami Rabia,rami rabia,Al Ain,al ain,Defender,,,,False,wc2026_official_squad_corrected
+egypt_tarek_alaa,team_egypt,Egypt,Tarek Alaa,tarek alaa,Zed,zed,Defender,,,,False,wc2026_official_squad_corrected
+egypt_yasser_ibrahim,team_egypt,Egypt,Yasser Ibrahim,yasser ibrahim,Al Ahly,al ahly,Defender,,,,False,wc2026_official_squad_corrected
+england_anthony_gordon,team_england,England,Anthony Gordon,anthony gordon,Newcastle United,newcastle united,Forward,,,,False,wc2026_official_squad_corrected
+england_bukayo_saka,team_england,England,Bukayo Saka,bukayo saka,Arsenal,arsenal,Forward,,,,False,wc2026_official_squad_corrected
+england_dan_burn,team_england,England,Dan Burn,dan burn,Newcastle United,newcastle united,Defender,,,,False,wc2026_official_squad_corrected
+england_dean_henderson,team_england,England,Dean Henderson,dean henderson,Crystal Palace,crystal palace,Goalkeeper,,,,False,wc2026_official_squad_corrected
+england_declan_rice,team_england,England,Declan Rice,declan rice,Arsenal,arsenal,Midfielder,,,,False,wc2026_official_squad_corrected
+england_djed_spence,team_england,England,Djed Spence,djed spence,Tottenham Hotspur,tottenham hotspur,Defender,,,,False,wc2026_official_squad_corrected
+england_eberechi_eze,team_england,England,Eberechi Eze,eberechi eze,Arsenal,arsenal,Midfielder,,,,False,wc2026_official_squad_corrected
+england_elliot_anderson,team_england,England,Elliot Anderson,elliot anderson,Nottingham Forest,nottingham forest,Midfielder,,,,False,wc2026_official_squad_corrected
+england_ezri_konsa,team_england,England,Ezri Konsa,ezri konsa,Aston Villa,aston villa,Defender,,,,False,wc2026_official_squad_corrected
+england_harry_kane,team_england,England,Harry Kane,harry kane,Bayern Munich,bayern munich,Forward,,,,False,wc2026_official_squad_corrected
+england_ivan_toney,team_england,England,Ivan Toney,ivan toney,Al-Ahli,al ahli,Forward,,,,False,wc2026_official_squad_corrected
+england_james_trafford,team_england,England,James Trafford,james trafford,Manchester City,manchester city,Goalkeeper,,,,False,wc2026_official_squad_corrected
+england_jarell_quansah,team_england,England,Jarell Quansah,jarell quansah,Bayer Leverkusen,bayer leverkusen,Defender,,,,False,wc2026_official_squad_corrected
+england_john_stones,team_england,England,John Stones,john stones,Manchester City,manchester city,Defender,,,,False,wc2026_official_squad_corrected
+england_jordan_henderson,team_england,England,Jordan Henderson,jordan henderson,Brentford,brentford,Midfielder,,,,False,wc2026_official_squad_corrected
+england_jordan_pickford,team_england,England,Jordan Pickford,jordan pickford,Everton,everton,Goalkeeper,,,,False,wc2026_official_squad_corrected
+england_jude_bellingham,team_england,England,Jude Bellingham,jude bellingham,Real Madrid,real madrid,Midfielder,,,,False,wc2026_official_squad_corrected
+england_kobbie_mainoo,team_england,England,Kobbie Mainoo,kobbie mainoo,Manchester United,manchester united,Midfielder,,,,False,wc2026_official_squad_corrected
+england_marc_guehi,team_england,England,Marc Guéhi,marc guehi,Manchester City,manchester city,Defender,,,,False,wc2026_official_squad_corrected
+england_marcus_rashford,team_england,England,Marcus Rashford,marcus rashford,Barcelona,barcelona,Forward,,,,False,wc2026_official_squad_corrected
+england_morgan_rogers,team_england,England,Morgan Rogers,morgan rogers,Aston Villa,aston villa,Midfielder,,,,False,wc2026_official_squad_corrected
+england_nico_o_reilly,team_england,England,Nico O'Reilly,nico o reilly,Manchester City,manchester city,Defender,,,,False,wc2026_official_squad_corrected
+england_noni_madueke,team_england,England,Noni Madueke,noni madueke,Arsenal,arsenal,Forward,,,,False,wc2026_official_squad_corrected
+england_ollie_watkins,team_england,England,Ollie Watkins,ollie watkins,Aston Villa,aston villa,Forward,,,,False,wc2026_official_squad_corrected
+england_reece_james,team_england,England,Reece James,reece james,Chelsea,chelsea,Defender,,,,False,wc2026_official_squad_corrected
+england_tino_livramento,team_england,England,Tino Livramento,tino livramento,Newcastle United,newcastle united,Defender,,,,False,wc2026_official_squad_corrected
+france_adrien_rabiot,team_france,France,Adrien Rabiot,adrien rabiot,AC Milan,ac milan,Midfielder,,,,False,wc2026_official_squad_corrected
+france_aurelien_tchouameni,team_france,France,Aurélien Tchouaméni,aurelien tchouameni,Real Madrid,real madrid,Midfielder,,,,False,wc2026_official_squad_corrected
+france_bradley_barcola,team_france,France,Bradley Barcola,bradley barcola,Paris Saint-Germain,paris saint germain,Forward,,,,False,wc2026_official_squad_corrected
+france_brice_samba,team_france,France,Brice Samba,brice samba,Rennes,rennes,Goalkeeper,,,,False,wc2026_official_squad_corrected
+france_dayot_upamecano,team_france,France,Dayot Upamecano,dayot upamecano,Bayern Munich,bayern munich,Defender,,,,False,wc2026_official_squad_corrected
+france_desire_doue,team_france,France,Desiré Doué,desire doue,Paris Saint-Germain,paris saint germain,Forward,,,,False,wc2026_official_squad_corrected
+france_ibrahima_konate,team_france,France,Ibrahima Konaté,ibrahima konate,Liverpool,liverpool,Defender,,,,False,wc2026_official_squad_corrected
+france_jean_philippe_mateta,team_france,France,Jean-Philippe Mateta,jean philippe mateta,Crystal Palace,crystal palace,Forward,,,,False,wc2026_official_squad_corrected
+france_jules_kounde,team_france,France,Jules Koundé,jules kounde,Barcelona,barcelona,Defender,,,,False,wc2026_official_squad_corrected
+france_kylian_mbappe,team_france,France,Kylian Mbappé,kylian mbappe,Real Madrid,real madrid,Forward,,,,False,wc2026_official_squad_corrected
+france_lucas_digne,team_france,France,Lucas Digne,lucas digne,Aston Villa,aston villa,Defender,,,,False,wc2026_official_squad_corrected
+france_lucas_hernandez,team_france,France,Lucas Hernández,lucas hernandez,Paris Saint-Germain,paris saint germain,Defender,,,,False,wc2026_official_squad_corrected
+france_maghnes_akliouche,team_france,France,Maghnes Akliouche,maghnes akliouche,AS Monaco,as monaco,Forward,,,,False,wc2026_official_squad_corrected
+france_malo_gusto,team_france,France,Malo Gusto,malo gusto,Chelsea,chelsea,Defender,,,,False,wc2026_official_squad_corrected
+france_manu_kone,team_france,France,Manu Koné,manu kone,AS Roma,as roma,Midfielder,,,,False,wc2026_official_squad_corrected
+france_marcus_thuram,team_france,France,Marcus Thuram,marcus thuram,Internazionale,internazionale,Forward,,,,False,wc2026_official_squad_corrected
+france_maxence_lacroix,team_france,France,Maxence Lacroix,maxence lacroix,Crystal Palace,crystal palace,Defender,,,,False,wc2026_official_squad_corrected
+france_michael_olise,team_france,France,Michael Olise,michael olise,Bayern Munich,bayern munich,Forward,,,,False,wc2026_official_squad_corrected
+france_mike_maignan,team_france,France,Mike Maignan,mike maignan,AC Milan,ac milan,Goalkeeper,,,,False,wc2026_official_squad_corrected
+france_n_golo_kante,team_france,France,N'Golo Kanté,n golo kante,Fenerbahçe,fenerbahce,Midfielder,,,,False,wc2026_official_squad_corrected
+france_ousmane_dembele,team_france,France,Ousmane Dembélé,ousmane dembele,Paris Saint-Germain,paris saint germain,Forward,,,,False,wc2026_official_squad_corrected
+france_rayan_cherki,team_france,France,Rayan Cherki,rayan cherki,Manchester City,manchester city,Forward,,,,False,wc2026_official_squad_corrected
+france_robin_risser,team_france,France,Robin Risser,robin risser,Lens,lens,Goalkeeper,,,,False,wc2026_official_squad_corrected
+france_theo_hernandez,team_france,France,Theo Hernández,theo hernandez,Al Hilal,al hilal,Defender,,,,False,wc2026_official_squad_corrected
+france_warren_zaire_emery,team_france,France,Warren Zaïre-Emery,warren zaire emery,Paris Saint-Germain,paris saint germain,Midfielder,,,,False,wc2026_official_squad_corrected
+france_william_saliba,team_france,France,William Saliba,william saliba,Arsenal,arsenal,Defender,,,,False,wc2026_official_squad_corrected
+germany_aleksandar_pavlovic,team_germany,Germany,Aleksandar Pavlovic,aleksandar pavlovic,Bayern Munich,bayern munich,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_alexander_nubel,team_germany,Germany,Alexander Nübel,alexander nubel,Stuttgart,stuttgart,Goalkeeper,,,,False,wc2026_official_squad_corrected
+germany_angelo_stiller,team_germany,Germany,Angelo Stiller,angelo stiller,Stuttgart,stuttgart,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_antonio_rudiger,team_germany,Germany,Antonio Rüdiger,antonio rudiger,Real Madrid,real madrid,Defender,,,,False,wc2026_official_squad_corrected
+germany_david_raum,team_germany,Germany,David Raum,david raum,RB Leipzig,rb leipzig,Defender,,,,False,wc2026_official_squad_corrected
+germany_deniz_undav,team_germany,Germany,Deniz Undav,deniz undav,Stuttgart,stuttgart,Forward,,,,False,wc2026_official_squad_corrected
+germany_felix_nmecha,team_germany,Germany,Felix Nmecha,felix nmecha,Borussia Dortmund,borussia dortmund,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_florian_wirtz,team_germany,Germany,Florian Wirtz,florian wirtz,Nottingham Forest,nottingham forest,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_jamal_musiala,team_germany,Germany,Jamal Musiala,jamal musiala,Bayern Munich,bayern munich,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_jamie_leweling,team_germany,Germany,Jamie Leweling,jamie leweling,Stuttgart,stuttgart,Forward,,,,False,wc2026_official_squad_corrected
+germany_jonathan_tah,team_germany,Germany,Jonathan Tah,jonathan tah,Bayern Munich,bayern munich,Defender,,,,False,wc2026_official_squad_corrected
+germany_joshua_kimmich,team_germany,Germany,Joshua Kimmich,joshua kimmich,Bayern Munich,bayern munich,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_kai_havertz,team_germany,Germany,Kai Havertz,kai havertz,Arsenal,arsenal,Forward,,,,False,wc2026_official_squad_corrected
+germany_lennart_karl,team_germany,Germany,Lennart Karl,lennart karl,Bayern Munich,bayern munich,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_leon_goretzka,team_germany,Germany,Leon Goretzka,leon goretzka,Bayern Munich,bayern munich,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_leroy_sane,team_germany,Germany,Leroy Sané,leroy sane,Galatasaray,galatasaray,Forward,,,,False,wc2026_official_squad_corrected
+germany_malick_thiaw,team_germany,Germany,Malick Thiaw,malick thiaw,Newcastle,newcastle,Defender,,,,False,wc2026_official_squad_corrected
+germany_manuel_neuer,team_germany,Germany,Manuel Neuer,manuel neuer,Bayern Munich,bayern munich,Goalkeeper,,,,False,wc2026_official_squad_corrected
+germany_maximilian_beier,team_germany,Germany,Maximilian Beier,maximilian beier,Borussia Dortmund,borussia dortmund,Forward,,,,False,wc2026_official_squad_corrected
+germany_nadiem_amiri,team_germany,Germany,Nadiem Amiri,nadiem amiri,Mainz 05,mainz 05,Forward,,,,False,wc2026_official_squad_corrected
+germany_nathaniel_brown,team_germany,Germany,Nathaniel Brown,nathaniel brown,Eintracht Frankfurt,eintracht frankfurt,Defender,,,,False,wc2026_official_squad_corrected
+germany_nick_woltemade,team_germany,Germany,Nick Woltemade,nick woltemade,Newcastle,newcastle,Forward,,,,False,wc2026_official_squad_corrected
+germany_nico_schlotterbeck,team_germany,Germany,Nico Schlotterbeck,nico schlotterbeck,Borussia Dortmund,borussia dortmund,Defender,,,,False,wc2026_official_squad_corrected
+germany_oliver_baumann,team_germany,Germany,Oliver Baumann,oliver baumann,Hoffenheim,hoffenheim,Goalkeeper,,,,False,wc2026_official_squad_corrected
+germany_pascal_gross,team_germany,Germany,Pascal Groß,pascal gross,Brighton,brighton,Midfielder,,,,False,wc2026_official_squad_corrected
+germany_waldemar_anton,team_germany,Germany,Waldemar Anton,waldemar anton,Borussia Dortmund,borussia dortmund,Defender,,,,False,wc2026_official_squad_corrected
+ghana_abdul_fatawu_issahaku,team_ghana,Ghana,Abdul Fatawu Issahaku,abdul fatawu issahaku,Leicester City,leicester city,Forward,,,,False,wc2026_official_squad_corrected
+ghana_alexander_djiku,team_ghana,Ghana,Alexander Djiku,alexander djiku,Spartak Moscow,spartak moscow,Defender,,,,False,wc2026_official_squad_corrected
+ghana_alidu_seidu,team_ghana,Ghana,Alidu Seidu,alidu seidu,Rennes,rennes,Defender,,,,False,wc2026_official_squad_corrected
+ghana_antoine_semenyo,team_ghana,Ghana,Antoine Semenyo,antoine semenyo,Manchester City,manchester city,Forward,,,,False,wc2026_official_squad_corrected
+ghana_baba_rahman,team_ghana,Ghana,Baba Rahman,baba rahman,PAOK Salónica,paok salonica,Defender,,,,False,wc2026_official_squad_corrected
+ghana_benjamin_asare,team_ghana,Ghana,Benjamin Asare,benjamin asare,Accra Hearts of Oak,accra hearts of oak,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ghana_christopher_bonsu_baah,team_ghana,Ghana,Christopher Bonsu Baah,christopher bonsu baah,KRC Genk,krc genk,Midfielder,,,,False,wc2026_official_squad_corrected
+ghana_daniel_amartey,team_ghana,Ghana,Daniel Amartey,daniel amartey,Beşiktaş,besiktas,Defender,,,,False,wc2026_official_squad_corrected
+ghana_elisha_owusu,team_ghana,Ghana,Elisha Owusu,elisha owusu,AJ Auxerre,aj auxerre,Midfielder,,,,False,wc2026_official_squad_corrected
+ghana_ernest_nuamah,team_ghana,Ghana,Ernest Nuamah,ernest nuamah,Olympique de Lyon,olympique de lyon,Midfielder,,,,False,wc2026_official_squad_corrected
+ghana_forson_amankwah,team_ghana,Ghana,Forson Amankwah,forson amankwah,RB Salzburg,rb salzburg,Midfielder,,,,False,wc2026_official_squad_corrected
+ghana_gideon_mensah,team_ghana,Ghana,Gideon Mensah,gideon mensah,Auxerre,auxerre,Defender,,,,False,wc2026_official_squad_corrected
+ghana_iddrisu_baba,team_ghana,Ghana,Iddrisu Baba,iddrisu baba,UD Almería,ud almeria,Midfielder,,,,False,wc2026_official_squad_corrected
+ghana_inaki_williams,team_ghana,Ghana,Iñaki Williams,inaki williams,Athletic Bilbao,athletic bilbao,Forward,,,,False,wc2026_official_squad_corrected
+ghana_jordan_ayew,team_ghana,Ghana,Jordan Ayew,jordan ayew,Leicester City,leicester city,Forward,,,,False,wc2026_official_squad_corrected
+ghana_joseph_anang,team_ghana,Ghana,Joseph Anang,joseph anang,St. Patrick's Athletic,st patrick s athletic,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ghana_joseph_paintsil,team_ghana,Ghana,Joseph Paintsil,joseph paintsil,LA Galaxy,la galaxy,Forward,,,,False,wc2026_official_squad_corrected
+ghana_kamaldeen_sulemana,team_ghana,Ghana,Kamaldeen Sulemana,kamaldeen sulemana,Southampton FC,southampton fc,Forward,,,,False,wc2026_official_squad_corrected
+ghana_lawrence_ati_zigi,team_ghana,Ghana,Lawrence Ati-Zigi,lawrence ati zigi,St. Gallen,st gallen,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ghana_majeed_ashimeru,team_ghana,Ghana,Majeed Ashimeru,majeed ashimeru,RSC Anderlecht,rsc anderlecht,Midfielder,,,,False,wc2026_official_squad_corrected
+ghana_mohammed_salisu,team_ghana,Ghana,Mohammed Salisu,mohammed salisu,AS Monaco,as monaco,Defender,,,,False,wc2026_official_squad_corrected
+ghana_osman_bukari,team_ghana,Ghana,Osman Bukari,osman bukari,Austin FC,austin fc,Forward,,,,False,wc2026_official_squad_corrected
+ghana_salis_abdul_samed,team_ghana,Ghana,Salis Abdul Samed,salis abdul samed,RC Lens,rc lens,Midfielder,,,,False,wc2026_official_squad_corrected
+ghana_stephan_ambrosius,team_ghana,Ghana,Stephan Ambrosius,stephan ambrosius,FC St. Gallen,fc st gallen,Defender,,,,False,wc2026_official_squad_corrected
+ghana_tariq_lamptey,team_ghana,Ghana,Tariq Lamptey,tariq lamptey,Brighton & Hove Albion,brighton hove albion,Defender,,,,False,wc2026_official_squad_corrected
+ghana_thomas_partey,team_ghana,Ghana,Thomas Partey,thomas partey,Villarreal,villarreal,Midfielder,,,,False,wc2026_official_squad_corrected
+haiti_alexandre_pierre,team_haiti,Haiti,Alexandre Pierre,alexandre pierre,Sochaux,sochaux,Goalkeeper,,,,False,wc2026_official_squad_corrected
+haiti_carl_sainte,team_haiti,Haiti,Carl Sainté,carl sainte,El Paso Locomotive FC,el paso locomotive fc,Midfielder,,,,False,wc2026_official_squad_corrected
+haiti_carlens_arcus,team_haiti,Haiti,Carlens Arcus,carlens arcus,Angers,angers,Defender,,,,False,wc2026_official_squad_corrected
+haiti_danley_jean_jacques,team_haiti,Haiti,Danley Jean Jacques,danley jean jacques,Philadelphia Union,philadelphia union,Midfielder,,,,False,wc2026_official_squad_corrected
+haiti_derrick_etienne_jr,team_haiti,Haiti,Derrick Etienne Jr.,derrick etienne jr,Toronto FC,toronto fc,Forward,,,,False,wc2026_official_squad_corrected
+haiti_dominique_simon,team_haiti,Haiti,Dominique Simon,dominique simon,FC Tatran Prešov,fc tatran presov,Midfielder,,,,False,wc2026_official_squad_corrected
+haiti_duckens_nazon,team_haiti,Haiti,Duckens Nazon,duckens nazon,Esteghlal,esteghlal,Forward,,,,False,wc2026_official_squad_corrected
+haiti_duke_lacroix,team_haiti,Haiti,Duke Lacroix,duke lacroix,Colorado Springs Switchbacks,colorado springs switchbacks,Defender,,,,False,wc2026_official_squad_corrected
+haiti_frantzdy_pierrot,team_haiti,Haiti,Frantzdy Pierrot,frantzdy pierrot,Çaykur Rizespor,caykur rizespor,Forward,,,,False,wc2026_official_squad_corrected
+haiti_hannes_delcroix,team_haiti,Haiti,Hannes Delcroix,hannes delcroix,Lugano,lugano,Defender,,,,False,wc2026_official_squad_corrected
+haiti_jean_kevin_duverne,team_haiti,Haiti,Jean-Kévin Duverne,jean kevin duverne,Gent,gent,Defender,,,,False,wc2026_official_squad_corrected
+haiti_jean_ricner_bellegarde,team_haiti,Haiti,Jean-Ricner Bellegarde,jean ricner bellegarde,Wolverhampton Wanderers,wolverhampton wanderers,Midfielder,,,,False,wc2026_official_squad_corrected
+haiti_johny_placide,team_haiti,Haiti,Johny Placide,johny placide,Bastia,bastia,Goalkeeper,,,,False,wc2026_official_squad_corrected
+haiti_josue_duverger,team_haiti,Haiti,Josue Duverger,josue duverger,Cosmos Koblenz,cosmos koblenz,Goalkeeper,,,,False,wc2026_official_squad_corrected
+haiti_josue_casimir,team_haiti,Haiti,Josué Casimir,josue casimir,Auxerre,auxerre,Forward,,,,False,wc2026_official_squad_corrected
+haiti_keeto_thermoncy,team_haiti,Haiti,Keeto Thermoncy,keeto thermoncy,Young Boys,young boys,Defender,,,,False,wc2026_official_squad_corrected
+haiti_lenny_joseph,team_haiti,Haiti,Lenny Joseph,lenny joseph,Ferencváros,ferencvaros,Forward,,,,False,wc2026_official_squad_corrected
+haiti_leverton_pierre,team_haiti,Haiti,Leverton Pierre,leverton pierre,Vizela,vizela,Midfielder,,,,False,wc2026_official_squad_corrected
+haiti_louicius_deedson,team_haiti,Haiti,Louicius Deedson,louicius deedson,FC Dallas,fc dallas,Forward,,,,False,wc2026_official_squad_corrected
+haiti_martin_experience,team_haiti,Haiti,Martin Expérience,martin experience,Nancy,nancy,Defender,,,,False,wc2026_official_squad_corrected
+haiti_ricardo_ade,team_haiti,Haiti,Ricardo Adé,ricardo ade,LDU Quito,ldu quito,Defender,,,,False,wc2026_official_squad_corrected
+haiti_ruben_providence,team_haiti,Haiti,Ruben Providence,ruben providence,Almere,almere,Forward,,,,False,wc2026_official_squad_corrected
+haiti_wilguens_paugain,team_haiti,Haiti,Wilguens Paugain,wilguens paugain,Zulte Waregem,zulte waregem,Defender,,,,False,wc2026_official_squad_corrected
+haiti_wilson_isidor,team_haiti,Haiti,Wilson Isidor,wilson isidor,Sunderland,sunderland,Forward,,,,False,wc2026_official_squad_corrected
+haiti_woodensky_pierre,team_haiti,Haiti,Woodensky Pierre,woodensky pierre,Violette,violette,Midfielder,,,,False,wc2026_official_squad_corrected
+haiti_yassin_fortune,team_haiti,Haiti,Yassin Fortuné,yassin fortune,Vizela,vizela,Forward,,,,False,wc2026_official_squad_corrected
+iran_ali_alipour,team_iran,Iran,Ali Alipour,ali alipour,Persepolis,persepolis,Forward,,,,False,wc2026_official_squad_corrected
+iran_ali_nemati,team_iran,Iran,Ali Nemati,ali nemati,Persepolis FC (Irán),persepolis fc iran,Defender,,,,False,wc2026_official_squad_corrected
+iran_alireza_beiranvand,team_iran,Iran,Alireza Beiranvand,alireza beiranvand,Tractor,tractor,Goalkeeper,,,,False,wc2026_official_squad_corrected
+iran_alireza_jahanbakhsh,team_iran,Iran,Alireza Jahanbakhsh,alireza jahanbakhsh,Dender,dender,Midfielder,,,,False,wc2026_official_squad_corrected
+iran_amirhossein_hosseinzadeh,team_iran,Iran,Amirhossein Hosseinzadeh,amirhossein hosseinzadeh,Tractor,tractor,Forward,,,,False,wc2026_official_squad_corrected
+iran_amirmohammad_razzaghinia,team_iran,Iran,Amirmohammad Razzaghinia,amirmohammad razzaghinia,Esteghlal F.C.,esteghlal f c,Midfielder,,,,False,wc2026_official_squad_corrected
+iran_arya_yousefi,team_iran,Iran,Arya Yousefi,arya yousefi,Sepahan S.C.,sepahan s c,Midfielder,,,,False,wc2026_official_squad_corrected
+iran_danial_iri,team_iran,Iran,Danial Iri,danial iri,Zob Ahan,zob ahan,Defender,,,,False,wc2026_official_squad_corrected
+iran_denis_eckert_dargahi,team_iran,Iran,Denis Eckert Dargahi,denis eckert dargahi,Standard de Liège,standard de liege,Forward,,,,False,wc2026_official_squad_corrected
+iran_ehsan_hajsafi,team_iran,Iran,Ehsan Hajsafi,ehsan hajsafi,Sepahan,sepahan,Defender,,,,False,wc2026_official_squad_corrected
+iran_mehdi_ghayedi,team_iran,Iran,Mehdi Ghayedi,mehdi ghayedi,Kalba FC,kalba fc,Forward,,,,False,wc2026_official_squad_corrected
+iran_mehdi_taremi,team_iran,Iran,Mehdi Taremi,mehdi taremi,Inter de Milán,inter de milan,Forward,,,,False,wc2026_official_squad_corrected
+iran_mehdi_torabi,team_iran,Iran,Mehdi Torabi,mehdi torabi,Tractor S.C.,tractor s c,Forward,,,,False,wc2026_official_squad_corrected
+iran_milad_mohammadi,team_iran,Iran,Milad Mohammadi,milad mohammadi,Persepolis,persepolis,Defender,,,,False,wc2026_official_squad_corrected
+iran_mohammad_ghorbani,team_iran,Iran,Mohammad Ghorbani,mohammad ghorbani,Al-Wahda,al wahda,Midfielder,,,,False,wc2026_official_squad_corrected
+iran_mohammad_hossein_kanaanizadegan,team_iran,Iran,Mohammad Hossein Kanaanizadegan,mohammad hossein kanaanizadegan,Persepolis,persepolis,Defender,,,,False,wc2026_official_squad_corrected
+iran_mohammad_mohebi,team_iran,Iran,Mohammad Mohebi,mohammad mohebi,FC Rostov,fc rostov,Forward,,,,False,wc2026_official_squad_corrected
+iran_payam_niazmand,team_iran,Iran,Payam Niazmand,payam niazmand,Persepolis,persepolis,Goalkeeper,,,,False,wc2026_official_squad_corrected
+iran_ramin_rezaeian,team_iran,Iran,Ramin Rezaeian,ramin rezaeian,Foolad,foolad,Defender,,,,False,wc2026_official_squad_corrected
+iran_rouzbeh_cheshmi,team_iran,Iran,Rouzbeh Cheshmi,rouzbeh cheshmi,Esteghlal,esteghlal,Midfielder,,,,False,wc2026_official_squad_corrected
+iran_saeid_ezatolahi,team_iran,Iran,Saeid Ezatolahi,saeid ezatolahi,Shabab Al-Ahli,shabab al ahli,Midfielder,,,,False,wc2026_official_squad_corrected
+iran_saleh_hardani,team_iran,Iran,Saleh Hardani,saleh hardani,Esteghlal,esteghlal,Defender,,,,False,wc2026_official_squad_corrected
+iran_saman_ghoddos,team_iran,Iran,Saman Ghoddos,saman ghoddos,Kalba,kalba,Midfielder,,,,False,wc2026_official_squad_corrected
+iran_seyed_hossein_hosseini,team_iran,Iran,Seyed Hossein Hosseini,seyed hossein hosseini,Sepahan S.C.,sepahan s c,Goalkeeper,,,,False,wc2026_official_squad_corrected
+iran_shahriyar_moghanlou,team_iran,Iran,Shahriyar Moghanlou,shahriyar moghanlou,Kalba FC,kalba fc,Forward,,,,False,wc2026_official_squad_corrected
+iran_shojae_khalilzadeh,team_iran,Iran,Shojae Khalilzadeh,shojae khalilzadeh,Tractor S.C.,tractor s c,Defender,,,,False,wc2026_official_squad_corrected
+iraq_ahmed_basil,team_iraq,Iraq,Ahmed Basil,ahmed basil,Al-Shorta,al shorta,Goalkeeper,,,,False,wc2026_official_squad_corrected
+iraq_ahmed_qasem,team_iraq,Iraq,Ahmed Qasem,ahmed qasem,Nashville SC,nashville sc,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_ahmed_yahya,team_iraq,Iraq,Ahmed Yahya,ahmed yahya,Al-Shorta SC (Irak),al shorta sc irak,Defender,,,,False,wc2026_official_squad_corrected
+iraq_aimar_sher,team_iraq,Iraq,Aimar Sher,aimar sher,Sarpsborg,sarpsborg,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_akam_hashim,team_iraq,Iraq,Akam Hashim,akam hashim,Al-Zawraa,al zawraa,Defender,,,,False,wc2026_official_squad_corrected
+iraq_ali_al_hamadi,team_iraq,Iraq,Ali Al-Hamadi,ali al hamadi,Ipswich,ipswich,Forward,,,,False,wc2026_official_squad_corrected
+iraq_ali_jasim,team_iraq,Iraq,Ali Jasim,ali jasim,Al-Najma,al najma,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_ali_yousif,team_iraq,Iraq,Ali Yousif,ali yousif,Al-Talaba,al talaba,Forward,,,,False,wc2026_official_squad_corrected
+iraq_amir_al_ammari,team_iraq,Iraq,Amir Al-Ammari,amir al ammari,Cracovia,cracovia,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_aymen_hussein,team_iraq,Iraq,Aymen Hussein,aymen hussein,Al-Karma,al karma,Forward,,,,False,wc2026_official_squad_corrected
+iraq_fahad_talib,team_iraq,Iraq,Fahad Talib,fahad talib,Al-Talaba,al talaba,Goalkeeper,,,,False,wc2026_official_squad_corrected
+iraq_frans_putros,team_iraq,Iraq,Frans Putros,frans putros,Persib,persib,Defender,,,,False,wc2026_official_squad_corrected
+iraq_hussein_ali,team_iraq,Iraq,Hussein Ali,hussein ali,Pogon Szczecin,pogon szczecin,Defender,,,,False,wc2026_official_squad_corrected
+iraq_ibrahim_bayesh,team_iraq,Iraq,Ibrahim Bayesh,ibrahim bayesh,Al-Dhafra,al dhafra,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_jalal_hassan,team_iraq,Iraq,Jalal Hassan,jalal hassan,Al-Zawraa,al zawraa,Goalkeeper,,,,False,wc2026_official_squad_corrected
+iraq_kevin_yakob,team_iraq,Iraq,Kevin Yakob,kevin yakob,Aarhus GF,aarhus gf,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_manaf_younis,team_iraq,Iraq,Manaf Younis,manaf younis,Al-Shorta SC (Irak),al shorta sc irak,Defender,,,,False,wc2026_official_squad_corrected
+iraq_marko_farji,team_iraq,Iraq,Marko Farji,marko farji,Venezia,venezia,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_merchas_doski,team_iraq,Iraq,Merchas Doski,merchas doski,Viktoria Plzen,viktoria plzen,Defender,,,,False,wc2026_official_squad_corrected
+iraq_mohanad_ali,team_iraq,Iraq,Mohanad Ali,mohanad ali,Dibba,dibba,Forward,,,,False,wc2026_official_squad_corrected
+iraq_mustafa_saadoon,team_iraq,Iraq,Mustafa Saadoon,mustafa saadoon,Al-Shorta,al shorta,Defender,,,,False,wc2026_official_squad_corrected
+iraq_rebin_sulaka,team_iraq,Iraq,Rebin Sulaka,rebin sulaka,Port,port,Defender,,,,False,wc2026_official_squad_corrected
+iraq_youssef_amyn,team_iraq,Iraq,Youssef Amyn,youssef amyn,AEK Larnaca,aek larnaca,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_zaid_ismail,team_iraq,Iraq,Zaid Ismail,zaid ismail,Al-Talaba,al talaba,Midfielder,,,,False,wc2026_official_squad_corrected
+iraq_zaid_tahseen,team_iraq,Iraq,Zaid Tahseen,zaid tahseen,Pakhtakor,pakhtakor,Defender,,,,False,wc2026_official_squad_corrected
+iraq_zidane_iqbal,team_iraq,Iraq,Zidane Iqbal,zidane iqbal,Utrecht,utrecht,Midfielder,,,,False,wc2026_official_squad_corrected
+ivory_coast_alban_lafont,team_ivory_coast,Ivory Coast,Alban Lafont,alban lafont,Panathinaikos,panathinaikos,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ivory_coast_amad_diallo,team_ivory_coast,Ivory Coast,Amad Diallo,amad diallo,Manchester United,manchester united,Forward,,,,False,wc2026_official_squad_corrected
+ivory_coast_ange_yoan_bonny,team_ivory_coast,Ivory Coast,Ange-Yoan Bonny,ange yoan bonny,Internazionale,internazionale,Forward,,,,False,wc2026_official_squad_corrected
+ivory_coast_bazoumana_toure,team_ivory_coast,Ivory Coast,Bazoumana Touré,bazoumana toure,Hoffenheim,hoffenheim,Forward,,,,False,wc2026_official_squad_corrected
+ivory_coast_christ_inao_oulai,team_ivory_coast,Ivory Coast,Christ Inao Oulaï,christ inao oulai,Trabzonspor,trabzonspor,Midfielder,,,,False,wc2026_official_squad_corrected
+ivory_coast_christopher_operi,team_ivory_coast,Ivory Coast,Christopher Opéri,christopher operi,İstanbul Başakşehir,istanbul basaksehir,Defender,,,,False,wc2026_official_squad_corrected
+ivory_coast_elye_wahi,team_ivory_coast,Ivory Coast,Elye Wahi,elye wahi,Nice,nice,Forward,,,,False,wc2026_official_squad_corrected
+ivory_coast_emmanuel_agbadou,team_ivory_coast,Ivory Coast,Emmanuel Agbadou,emmanuel agbadou,Beşiktaş,besiktas,Defender,,,,False,wc2026_official_squad_corrected
+ivory_coast_evan_ndicka,team_ivory_coast,Ivory Coast,Evan Ndicka,evan ndicka,AS Roma,as roma,Defender,,,,False,wc2026_official_squad_corrected
+ivory_coast_evann_guessand,team_ivory_coast,Ivory Coast,Evann Guessand,evann guessand,Aston Villa,aston villa,Forward,,,,False,wc2026_official_squad_corrected
+ivory_coast_franck_kessie,team_ivory_coast,Ivory Coast,Franck Kessié,franck kessie,Al Ahli,al ahli,Midfielder,,,,False,wc2026_official_squad_corrected
+ivory_coast_ghislain_konan,team_ivory_coast,Ivory Coast,Ghislain Konan,ghislain konan,Gil Vicente,gil vicente,Defender,,,,False,wc2026_official_squad_corrected
+ivory_coast_guela_doue,team_ivory_coast,Ivory Coast,Guela Doué,guela doue,Strasbourg,strasbourg,Defender,,,,False,wc2026_official_squad_corrected
+ivory_coast_ibrahim_sangare,team_ivory_coast,Ivory Coast,Ibrahim Sangaré,ibrahim sangare,Nottingham Forest,nottingham forest,Midfielder,,,,False,wc2026_official_squad_corrected
+ivory_coast_jean_michael_seri,team_ivory_coast,Ivory Coast,Jean Michaël Seri,jean michael seri,NK Maribor,nk maribor,Midfielder,,,,False,wc2026_official_squad_corrected
+ivory_coast_mohamed_kone,team_ivory_coast,Ivory Coast,Mohamed Koné,mohamed kone,Charleroi,charleroi,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ivory_coast_nicolas_pepe,team_ivory_coast,Ivory Coast,Nicolas Pépé,nicolas pepe,Villarreal,villarreal,Forward,,,,False,wc2026_official_squad_corrected
+ivory_coast_odilon_kossounou,team_ivory_coast,Ivory Coast,Odilon Kossounou,odilon kossounou,Atalanta,atalanta,Defender,,,,False,wc2026_official_squad_corrected
+ivory_coast_oumar_diakite,team_ivory_coast,Ivory Coast,Oumar Diakité,oumar diakite,Cercle Brugge,cercle brugge,Forward,,,,False,wc2026_official_squad_corrected
+ivory_coast_ousmane_diomande,team_ivory_coast,Ivory Coast,Ousmane Diomande,ousmane diomande,Sporting CP,sporting cp,Defender,,,,False,wc2026_official_squad_corrected
+ivory_coast_parfait_guiagon,team_ivory_coast,Ivory Coast,Parfait Guiagon,parfait guiagon,Charleroi,charleroi,Midfielder,,,,False,wc2026_official_squad_corrected
+ivory_coast_seko_fofana,team_ivory_coast,Ivory Coast,Seko Fofana,seko fofana,Porto,porto,Midfielder,,,,False,wc2026_official_squad_corrected
+ivory_coast_simon_adingra,team_ivory_coast,Ivory Coast,Simon Adingra,simon adingra,AS Monaco,as monaco,Forward,,,,False,wc2026_official_squad_corrected
+ivory_coast_wilfried_singo,team_ivory_coast,Ivory Coast,Wilfried Singo,wilfried singo,Galatasaray,galatasaray,Defender,,,,False,wc2026_official_squad_corrected
+ivory_coast_yahia_fofana,team_ivory_coast,Ivory Coast,Yahia Fofana,yahia fofana,Rizespor,rizespor,Goalkeeper,,,,False,wc2026_official_squad_corrected
+ivory_coast_yan_diomande,team_ivory_coast,Ivory Coast,Yan Diomande,yan diomande,RB Leipzig,rb leipzig,Forward,,,,False,wc2026_official_squad_corrected
+japan_ao_tanaka,team_japan,Japan,Ao Tanaka,ao tanaka,Leeds United,leeds united,Midfielder,,,,False,wc2026_official_squad_corrected
+japan_ayase_ueda,team_japan,Japan,Ayase Ueda,ayase ueda,Feyenoord,feyenoord,Forward,,,,False,wc2026_official_squad_corrected
+japan_daichi_kamada,team_japan,Japan,Daichi Kamada,daichi kamada,Crystal Palace,crystal palace,Midfielder,,,,False,wc2026_official_squad_corrected
+japan_daiki_hashioka,team_japan,Japan,Daiki Hashioka,daiki hashioka,Luton Town,luton town,Defender,,,,False,wc2026_official_squad_corrected
+japan_daizen_maeda,team_japan,Japan,Daizen Maeda,daizen maeda,Celtic,celtic,Forward,,,,False,wc2026_official_squad_corrected
+japan_hidemasa_morita,team_japan,Japan,Hidemasa Morita,hidemasa morita,Sporting CP,sporting cp,Midfielder,,,,False,wc2026_official_squad_corrected
+japan_hiroki_ito,team_japan,Japan,Hiroki Ito,hiroki ito,Bayern Munich,bayern munich,Defender,,,,False,wc2026_official_squad_corrected
+japan_junya_ito,team_japan,Japan,Junya Ito,junya ito,Stade de Reims,stade de reims,Forward,,,,False,wc2026_official_squad_corrected
+japan_kaoru_mitoma,team_japan,Japan,Kaoru Mitoma,kaoru mitoma,Brighton & Hove Albion,brighton hove albion,Forward,,,,False,wc2026_official_squad_corrected
+japan_keisuke_osako,team_japan,Japan,Keisuke Osako,keisuke osako,Sanfrecce Hiroshima,sanfrecce hiroshima,Goalkeeper,,,,False,wc2026_official_squad_corrected
+japan_keito_nakamura,team_japan,Japan,Keito Nakamura,keito nakamura,Stade de Reims,stade de reims,Forward,,,,False,wc2026_official_squad_corrected
+japan_ko_itakura,team_japan,Japan,Ko Itakura,ko itakura,Ajax,ajax,Defender,,,,False,wc2026_official_squad_corrected
+japan_koki_machida,team_japan,Japan,Koki Machida,koki machida,Royale Union Saint-Gilloise,royale union saint gilloise,Defender,,,,False,wc2026_official_squad_corrected
+japan_koki_ogawa,team_japan,Japan,Koki Ogawa,koki ogawa,NEC Nijmegen,nec nijmegen,Forward,,,,False,wc2026_official_squad_corrected
+japan_kosei_tani,team_japan,Japan,Kosei Tani,kosei tani,Gamba Osaka,gamba osaka,Goalkeeper,,,,False,wc2026_official_squad_corrected
+japan_reo_hatate,team_japan,Japan,Reo Hatate,reo hatate,Celtic FC,celtic fc,Midfielder,,,,False,wc2026_official_squad_corrected
+japan_ritsu_doan,team_japan,Japan,Ritsu Doan,ritsu doan,SC Friburgo,sc friburgo,Forward,,,,False,wc2026_official_squad_corrected
+japan_seiya_maikuma,team_japan,Japan,Seiya Maikuma,seiya maikuma,AZ Alkmaar,az alkmaar,Defender,,,,False,wc2026_official_squad_corrected
+japan_shogo_taniguchi,team_japan,Japan,Shogo Taniguchi,shogo taniguchi,Sint-Truiden,sint truiden,Defender,,,,False,wc2026_official_squad_corrected
+japan_shuto_machino,team_japan,Japan,Shuto Machino,shuto machino,Holstein Kiel,holstein kiel,Forward,,,,False,wc2026_official_squad_corrected
+japan_takefusa_kubo,team_japan,Japan,Takefusa Kubo,takefusa kubo,Real Sociedad,real sociedad,Midfielder,,,,False,wc2026_official_squad_corrected
+japan_takehiro_tomiyasu,team_japan,Japan,Takehiro Tomiyasu,takehiro tomiyasu,Ajax,ajax,Defender,,,,False,wc2026_official_squad_corrected
+japan_takumi_minamino,team_japan,Japan,Takumi Minamino,takumi minamino,AS Monaco,as monaco,Midfielder,,,,False,wc2026_official_squad_corrected
+japan_wataru_endo,team_japan,Japan,Wataru Endo,wataru endo,Liverpool,liverpool,Midfielder,,,,False,wc2026_official_squad_corrected
+japan_yukinari_sugawara,team_japan,Japan,Yukinari Sugawara,yukinari sugawara,Werder Bremen,werder bremen,Defender,,,,False,wc2026_official_squad_corrected
+japan_zion_suzuki,team_japan,Japan,Zion Suzuki,zion suzuki,Parma,parma,Goalkeeper,,,,False,wc2026_official_squad_corrected
+jordan_abdallah_al_fakhouri,team_jordan,Jordan,Abdallah Al-Fakhouri,abdallah al fakhouri,Al-Wehdat,al wehdat,Goalkeeper,,,,False,wc2026_official_squad_corrected
+jordan_abdallah_nasib,team_jordan,Jordan,Abdallah Nasib,abdallah nasib,Al-Zawraa,al zawraa,Defender,,,,False,wc2026_official_squad_corrected
+jordan_ahmad_al_juaidi,team_jordan,Jordan,Ahmad Al-Juaidi,ahmad al juaidi,Shabab Al-Ordon,shabab al ordon,Goalkeeper,,,,False,wc2026_official_squad_corrected
+jordan_ali_olwan,team_jordan,Jordan,Ali Olwan,ali olwan,Al-Sailiaya,al sailiaya,Forward,,,,False,wc2026_official_squad_corrected
+jordan_anas_al_awadat,team_jordan,Jordan,Anas Al-Awadat,anas al awadat,Al-Wehdat,al wehdat,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_aref_al_haj,team_jordan,Jordan,Aref Al-Haj,aref al haj,Al-Faisaly,al faisaly,Forward,,,,False,wc2026_official_squad_corrected
+jordan_bara_marei,team_jordan,Jordan,Bara' Marei,bara marei,Al-Faisaly,al faisaly,Defender,,,,False,wc2026_official_squad_corrected
+jordan_feras_shelbaieh,team_jordan,Jordan,Feras Shelbaieh,feras shelbaieh,Al-Wehdat,al wehdat,Defender,,,,False,wc2026_official_squad_corrected
+jordan_hussam_abu_dahab,team_jordan,Jordan,Hussam Abu Dahab,hussam abu dahab,Al-Faisaly,al faisaly,Defender,,,,False,wc2026_official_squad_corrected
+jordan_ibrahim_sabra,team_jordan,Jordan,Ibrahim Sabra,ibrahim sabra,Lokomotiva Zagreb,lokomotiva zagreb,Forward,,,,False,wc2026_official_squad_corrected
+jordan_ibrahim_sadeh,team_jordan,Jordan,Ibrahim Sadeh,ibrahim sadeh,Al-Karma,al karma,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_ihsan_haddad,team_jordan,Jordan,Ihsan Haddad,ihsan haddad,Al-Hussein Irbid,al hussein irbid,Defender,,,,False,wc2026_official_squad_corrected
+jordan_mahmoud_al_mardi,team_jordan,Jordan,Mahmoud Al-Mardi,mahmoud al mardi,Al-Hussein Irbid,al hussein irbid,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_mohammad_abu_hasheesh,team_jordan,Jordan,Mohammad Abu Hasheesh,mohammad abu hasheesh,Al-Hussein Irbid,al hussein irbid,Defender,,,,False,wc2026_official_squad_corrected
+jordan_mohammad_abu_zrayq_sharara,team_jordan,Jordan,"Mohammad Abu Zrayq ""Sharara""",mohammad abu zrayq sharara,Al-Wehdat,al wehdat,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_mohannad_abu_taha,team_jordan,Jordan,Mohannad Abu Taha,mohannad abu taha,Al-Wehdat,al wehdat,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_musa_al_taamari,team_jordan,Jordan,Musa Al-Taamari,musa al taamari,Montpellier HSC,montpellier hsc,Forward,,,,False,wc2026_official_squad_corrected
+jordan_nizar_al_rashdan,team_jordan,Jordan,Nizar Al-Rashdan,nizar al rashdan,Qatar SC,qatar sc,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_noor_al_rawabdeh,team_jordan,Jordan,Noor Al-Rawabdeh,noor al rawabdeh,Selangor,selangor,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_rajaei_ayed,team_jordan,Jordan,Rajaei Ayed,rajaei ayed,Al-Hussein,al hussein,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_saed_al_rosan,team_jordan,Jordan,Saed Al-Rosan,saed al rosan,Al-Hussein Irbid,al hussein irbid,Defender,,,,False,wc2026_official_squad_corrected
+jordan_saleh_ratib,team_jordan,Jordan,Saleh Ratib,saleh ratib,Al-Wehdat,al wehdat,Midfielder,,,,False,wc2026_official_squad_corrected
+jordan_salem_al_ajalin,team_jordan,Jordan,Salem Al-Ajalin,salem al ajalin,Al-Faisaly,al faisaly,Defender,,,,False,wc2026_official_squad_corrected
+jordan_yazan_al_arab,team_jordan,Jordan,Yazan Al-Arab,yazan al arab,FC Seoul,fc seoul,Defender,,,,False,wc2026_official_squad_corrected
+jordan_yazan_al_naimat,team_jordan,Jordan,Yazan Al-Naimat,yazan al naimat,Al-Ahli SC,al ahli sc,Forward,,,,False,wc2026_official_squad_corrected
+jordan_yazeed_abulaila,team_jordan,Jordan,Yazeed Abulaila,yazeed abulaila,Al-Hussein Irbid,al hussein irbid,Goalkeeper,,,,False,wc2026_official_squad_corrected
+mexico_alexis_vega,team_mexico,Mexico,Alexis Vega,alexis vega,Toluca,toluca,Forward,,,,False,wc2026_official_squad_corrected
+mexico_armando_gonzalez,team_mexico,Mexico,Armando González,armando gonzalez,Chivas,chivas,Forward,,,,False,wc2026_official_squad_corrected
+mexico_brian_gutierrez,team_mexico,Mexico,Brian Gutiérrez,brian gutierrez,Chivas,chivas,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_carlos_acevedo,team_mexico,Mexico,Carlos Acevedo,carlos acevedo,Santos Laguna,santos laguna,Goalkeeper,,,,False,wc2026_official_squad_corrected
+mexico_cesar_huerta,team_mexico,Mexico,César Huerta,cesar huerta,Anderlecht,anderlecht,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_cesar_montes,team_mexico,Mexico,César Montes,cesar montes,Lokomotiv Moscow,lokomotiv moscow,Defender,,,,False,wc2026_official_squad_corrected
+mexico_edson_alvarez,team_mexico,Mexico,Edson Álvarez,edson alvarez,Fenerbahce,fenerbahce,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_erik_lira,team_mexico,Mexico,Erik Lira,erik lira,Cruz Azul,cruz azul,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_gilberto_mora,team_mexico,Mexico,Gilberto Mora,gilberto mora,Tijuana,tijuana,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_guillermo_martinez,team_mexico,Mexico,Guillermo Martínez,guillermo martinez,Pumas,pumas,Forward,,,,False,wc2026_official_squad_corrected
+mexico_guillermo_ochoa,team_mexico,Mexico,Guillermo Ochoa,guillermo ochoa,AEL Limassol,ael limassol,Goalkeeper,,,,False,wc2026_official_squad_corrected
+mexico_israel_reyes,team_mexico,Mexico,Israel Reyes,israel reyes,América,america,Defender,,,,False,wc2026_official_squad_corrected
+mexico_jesus_gallardo,team_mexico,Mexico,Jesús Gallardo,jesus gallardo,Toluca,toluca,Defender,,,,False,wc2026_official_squad_corrected
+mexico_johan_vasquez,team_mexico,Mexico,Johan Vásquez,johan vasquez,Genoa,genoa,Defender,,,,False,wc2026_official_squad_corrected
+mexico_jorge_sanchez,team_mexico,Mexico,Jorge Sánchez,jorge sanchez,PAOK,paok,Defender,,,,False,wc2026_official_squad_corrected
+mexico_julian_quinones,team_mexico,Mexico,Julián Quiñones,julian quinones,Al-Qadisiyah,al qadisiyah,Forward,,,,False,wc2026_official_squad_corrected
+mexico_luis_chavez,team_mexico,Mexico,Luis Chávez,luis chavez,Dinamo Moscu,dinamo moscu,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_luis_romo,team_mexico,Mexico,Luis Romo,luis romo,Chivas,chivas,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_mateo_chavez,team_mexico,Mexico,Mateo Chávez,mateo chavez,AZ Alkmaar,az alkmaar,Defender,,,,False,wc2026_official_squad_corrected
+mexico_obed_vargas,team_mexico,Mexico,Obed Vargas,obed vargas,Atlético de Madrid,atletico de madrid,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_orbelin_pineda,team_mexico,Mexico,Orbelín Pineda,orbelin pineda,AEK,aek,Midfielder,,,,False,wc2026_official_squad_corrected
+mexico_raul_jimenez,team_mexico,Mexico,Raúl Jiménez,raul jimenez,Fulham,fulham,Forward,,,,False,wc2026_official_squad_corrected
+mexico_raul_rangel,team_mexico,Mexico,Raúl Rangel,raul rangel,Chivas,chivas,Goalkeeper,,,,False,wc2026_official_squad_corrected
+mexico_roberto_alvarado,team_mexico,Mexico,Roberto Alvarado,roberto alvarado,Chivas,chivas,Forward,,,,False,wc2026_official_squad_corrected
+mexico_santiago_gimenez,team_mexico,Mexico,Santiago Gimenez,santiago gimenez,Milan,milan,Forward,,,,False,wc2026_official_squad_corrected
+mexico_alvaro_fidalgo,team_mexico,Mexico,Álvaro Fidalgo,alvaro fidalgo,Real Betis,real betis,Midfielder,,,,False,wc2026_official_squad_corrected
+morocco_abde_ezzalzouli,team_morocco,Morocco,Abde Ezzalzouli,abde ezzalzouli,Betis,betis,Forward,,,,False,wc2026_official_squad_corrected
+morocco_abdelkabir_abqar,team_morocco,Morocco,Abdelkabir Abqar,abdelkabir abqar,Deportivo Alavés,deportivo alaves,Defender,,,,False,wc2026_official_squad_corrected
+morocco_achraf_dari,team_morocco,Morocco,Achraf Dari,achraf dari,Al Ahly SC,al ahly sc,Defender,,,,False,wc2026_official_squad_corrected
+morocco_achraf_hakimi,team_morocco,Morocco,Achraf Hakimi,achraf hakimi,PSG,psg,Defender,,,,False,wc2026_official_squad_corrected
+morocco_adam_aznou,team_morocco,Morocco,Adam Aznou,adam aznou,Bayern Múnich,bayern munich,Defender,,,,False,wc2026_official_squad_corrected
+morocco_amine_adli,team_morocco,Morocco,Amine Adli,amine adli,Bayer 04 Leverkusen,bayer 04 leverkusen,Forward,,,,False,wc2026_official_squad_corrected
+morocco_amir_richardson,team_morocco,Morocco,Amir Richardson,amir richardson,ACF Fiorentina,acf fiorentina,Midfielder,,,,False,wc2026_official_squad_corrected
+morocco_ayoub_el_kaabi,team_morocco,Morocco,Ayoub El Kaabi,ayoub el kaabi,Olympiakos,olympiakos,Forward,,,,False,wc2026_official_squad_corrected
+morocco_azzedine_ounahi,team_morocco,Morocco,Azzedine Ounahi,azzedine ounahi,Girona,girona,Midfielder,,,,False,wc2026_official_squad_corrected
+morocco_bilal_el_khannouss,team_morocco,Morocco,Bilal El Khannouss,bilal el khannouss,Leicester City,leicester city,Midfielder,,,,False,wc2026_official_squad_corrected
+morocco_brahim_diaz,team_morocco,Morocco,Brahim Díaz,brahim diaz,Real Madrid,real madrid,Midfielder,,,,False,wc2026_official_squad_corrected
+morocco_chadi_riad,team_morocco,Morocco,Chadi Riad,chadi riad,Crystal Palace,crystal palace,Defender,,,,False,wc2026_official_squad_corrected
+morocco_el_mehdi_benabid,team_morocco,Morocco,El Mehdi Benabid,el mehdi benabid,AS FAR,as far,Goalkeeper,,,,False,wc2026_official_squad_corrected
+morocco_eliesse_ben_seghir,team_morocco,Morocco,Eliesse Ben Seghir,eliesse ben seghir,AS Monaco,as monaco,Forward,,,,False,wc2026_official_squad_corrected
+morocco_hakim_ziyech,team_morocco,Morocco,Hakim Ziyech,hakim ziyech,Galatasaray,galatasaray,Forward,,,,False,wc2026_official_squad_corrected
+morocco_ilias_akhomach,team_morocco,Morocco,Ilias Akhomach,ilias akhomach,Villarreal CF,villarreal cf,Forward,,,,False,wc2026_official_squad_corrected
+morocco_ismael_saibari,team_morocco,Morocco,Ismael Saibari,ismael saibari,PSV Einhoven,psv einhoven,Midfielder,,,,False,wc2026_official_squad_corrected
+morocco_munir_mohamedi,team_morocco,Morocco,Munir Mohamedi,munir mohamedi,RS Berkane,rs berkane,Goalkeeper,,,,False,wc2026_official_squad_corrected
+morocco_nayef_aguerd,team_morocco,Morocco,Nayef Aguerd,nayef aguerd,OM,om,Defender,,,,False,wc2026_official_squad_corrected
+morocco_noussair_mazraoui,team_morocco,Morocco,Noussair Mazraoui,noussair mazraoui,Manchester United,manchester united,Defender,,,,False,wc2026_official_squad_corrected
+morocco_oussama_el_azzouzi,team_morocco,Morocco,Oussama El Azzouzi,oussama el azzouzi,Bologna FC,bologna fc,Midfielder,,,,False,wc2026_official_squad_corrected
+morocco_sofyan_amrabat,team_morocco,Morocco,Sofyan Amrabat,sofyan amrabat,Betis,betis,Midfielder,,,,False,wc2026_official_squad_corrected
+morocco_soufiane_rahimi,team_morocco,Morocco,Soufiane Rahimi,soufiane rahimi,Al-Ain,al ain,Forward,,,,False,wc2026_official_squad_corrected
+morocco_yahya_attiat_allah,team_morocco,Morocco,Yahya Attiat-Allah,yahya attiat allah,Al Ahly SC,al ahly sc,Defender,,,,False,wc2026_official_squad_corrected
+morocco_yassine_bounou,team_morocco,Morocco,Yassine Bounou,yassine bounou,Al-Hilal,al hilal,Goalkeeper,,,,False,wc2026_official_squad_corrected
+morocco_youssef_en_nesyri,team_morocco,Morocco,Youssef En-Nesyri,youssef en nesyri,Fenerbahçe,fenerbahce,Forward,,,,False,wc2026_official_squad_corrected
+netherlands_bart_verbruggen,team_netherlands,Netherlands,Bart Verbruggen,bart verbruggen,Brighton,brighton,Goalkeeper,,,,False,wc2026_official_squad_corrected
+netherlands_brian_brobbey,team_netherlands,Netherlands,Brian Brobbey,brian brobbey,Sunderland,sunderland,Forward,,,,False,wc2026_official_squad_corrected
+netherlands_cody_gakpo,team_netherlands,Netherlands,Cody Gakpo,cody gakpo,Liverpool,liverpool,Forward,,,,False,wc2026_official_squad_corrected
+netherlands_crysencio_summerville,team_netherlands,Netherlands,Crysencio Summerville,crysencio summerville,West Ham,west ham,Forward,,,,False,wc2026_official_squad_corrected
+netherlands_denzel_dumfries,team_netherlands,Netherlands,Denzel Dumfries,denzel dumfries,Inter Milan,inter milan,Defender,,,,False,wc2026_official_squad_corrected
+netherlands_donyell_malen,team_netherlands,Netherlands,Donyell Malen,donyell malen,Roma,roma,Forward,,,,False,wc2026_official_squad_corrected
+netherlands_frenkie_de_jong,team_netherlands,Netherlands,Frenkie de Jong,frenkie de jong,Barcelona,barcelona,Midfielder,,,,False,wc2026_official_squad_corrected
+netherlands_guus_til,team_netherlands,Netherlands,Guus Til,guus til,PSV,psv,Midfielder,,,,False,wc2026_official_squad_corrected
+netherlands_jan_paul_van_hecke,team_netherlands,Netherlands,Jan Paul van Hecke,jan paul van hecke,Brighton,brighton,Defender,,,,False,wc2026_official_squad_corrected
+netherlands_jorrel_hato,team_netherlands,Netherlands,Jorrel Hato,jorrel hato,Chelsea,chelsea,Defender,,,,False,wc2026_official_squad_corrected
+netherlands_jurrien_timber,team_netherlands,Netherlands,Jurriën Timber,jurrien timber,Arsenal,arsenal,Defender,,,,False,wc2026_official_squad_corrected
+netherlands_justin_kluivert,team_netherlands,Netherlands,Justin Kluivert,justin kluivert,Bournemouth,bournemouth,Midfielder,,,,False,wc2026_official_squad_corrected
+netherlands_mark_flekken,team_netherlands,Netherlands,Mark Flekken,mark flekken,Bayer Leverkusen,bayer leverkusen,Goalkeeper,,,,False,wc2026_official_squad_corrected
+netherlands_marten_de_roon,team_netherlands,Netherlands,Marten de Roon,marten de roon,Atalanta,atalanta,Midfielder,,,,False,wc2026_official_squad_corrected
+netherlands_mats_wieffer,team_netherlands,Netherlands,Mats Wieffer,mats wieffer,Brighton,brighton,Midfielder,,,,False,wc2026_official_squad_corrected
+netherlands_memphis_depay,team_netherlands,Netherlands,Memphis Depay,memphis depay,Corinthians,corinthians,Forward,,,,False,wc2026_official_squad_corrected
+netherlands_micky_van_de_ven,team_netherlands,Netherlands,Micky van de Ven,micky van de ven,Tottenham,tottenham,Defender,,,,False,wc2026_official_squad_corrected
+netherlands_nathan_ake,team_netherlands,Netherlands,Nathan Aké,nathan ake,Manchester City,manchester city,Defender,,,,False,wc2026_official_squad_corrected
+netherlands_noa_lang,team_netherlands,Netherlands,Noa Lang,noa lang,Galatasaray,galatasaray,Forward,,,,False,wc2026_official_squad_corrected
+netherlands_quinten_timber,team_netherlands,Netherlands,Quinten Timber,quinten timber,Marseille,marseille,Midfielder,,,,False,wc2026_official_squad_corrected
+netherlands_robin_roefs,team_netherlands,Netherlands,Robin Roefs,robin roefs,Sunderland,sunderland,Goalkeeper,,,,False,wc2026_official_squad_corrected
+netherlands_ryan_gravenberch,team_netherlands,Netherlands,Ryan Gravenberch,ryan gravenberch,Liverpool,liverpool,Midfielder,,,,False,wc2026_official_squad_corrected
+netherlands_teun_koopmeiners,team_netherlands,Netherlands,Teun Koopmeiners,teun koopmeiners,Juventus,juventus,Midfielder,,,,False,wc2026_official_squad_corrected
+netherlands_tijjani_reijnders,team_netherlands,Netherlands,Tijjani Reijnders,tijjani reijnders,Manchester City,manchester city,Forward,,,,False,wc2026_official_squad_corrected
+netherlands_virgil_van_dijk,team_netherlands,Netherlands,Virgil van Dijk,virgil van dijk,Liverpool,liverpool,Defender,,,,False,wc2026_official_squad_corrected
+netherlands_wout_weghorst,team_netherlands,Netherlands,Wout Weghorst,wout weghorst,Ajax,ajax,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_alex_paulsen,team_new_zealand,New Zealand,Alex Paulsen,alex paulsen,Lechia Gdańsk,lechia gdansk,Goalkeeper,,,,False,wc2026_official_squad_corrected
+new_zealand_alex_rufer,team_new_zealand,New Zealand,Alex Rufer,alex rufer,Wellington Phoenix,wellington phoenix,Midfielder,,,,False,wc2026_official_squad_corrected
+new_zealand_ben_old,team_new_zealand,New Zealand,Ben Old,ben old,Saint-Etienne,saint etienne,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_ben_waine,team_new_zealand,New Zealand,Ben Waine,ben waine,Port Vale,port vale,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_callan_elliot,team_new_zealand,New Zealand,Callan Elliot,callan elliot,Auckland FC,auckland fc,Defender,,,,False,wc2026_official_squad_corrected
+new_zealand_callum_mccowatt,team_new_zealand,New Zealand,Callum McCowatt,callum mccowatt,Silkeborg IF,silkeborg if,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_chris_wood,team_new_zealand,New Zealand,Chris Wood,chris wood,Nottingham Forest,nottingham forest,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_eli_just,team_new_zealand,New Zealand,Eli Just,eli just,Motherwell,motherwell,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_finn_surman,team_new_zealand,New Zealand,Finn Surman,finn surman,Portland Timbers,portland timbers,Defender,,,,False,wc2026_official_squad_corrected
+new_zealand_francis_de_vries,team_new_zealand,New Zealand,Francis De Vries,francis de vries,Auckland FC,auckland fc,Defender,,,,False,wc2026_official_squad_corrected
+new_zealand_jesse_randall,team_new_zealand,New Zealand,Jesse Randall,jesse randall,Auckland FC,auckland fc,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_joe_bell,team_new_zealand,New Zealand,Joe Bell,joe bell,Viking FK,viking fk,Midfielder,,,,False,wc2026_official_squad_corrected
+new_zealand_kosta_barbarouses,team_new_zealand,New Zealand,Kosta Barbarouses,kosta barbarouses,Western Sydney Wanderers,western sydney wanderers,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_lachlan_bayliss,team_new_zealand,New Zealand,Lachlan Bayliss,lachlan bayliss,Newcastle Jets,newcastle jets,Forward,,,,False,wc2026_official_squad_corrected
+new_zealand_liberato_cacace,team_new_zealand,New Zealand,Liberato Cacace,liberato cacace,Wrexham,wrexham,Defender,,,,False,wc2026_official_squad_corrected
+new_zealand_marko_stamenic,team_new_zealand,New Zealand,Marko Stamenic,marko stamenic,Swansea City,swansea city,Midfielder,,,,False,wc2026_official_squad_corrected
+new_zealand_matt_garbett,team_new_zealand,New Zealand,Matt Garbett,matt garbett,Peterborough United,peterborough united,Midfielder,,,,False,wc2026_official_squad_corrected
+new_zealand_max_crocombe,team_new_zealand,New Zealand,Max Crocombe,max crocombe,Millwall,millwall,Goalkeeper,,,,False,wc2026_official_squad_corrected
+new_zealand_michael_boxall,team_new_zealand,New Zealand,Michael Boxall,michael boxall,Minnesota United,minnesota united,Defender,,,,False,wc2026_official_squad_corrected
+new_zealand_michael_woud,team_new_zealand,New Zealand,Michael Woud,michael woud,Auckland FC,auckland fc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+new_zealand_nando_pijnaker,team_new_zealand,New Zealand,Nando Pijnaker,nando pijnaker,Auckland FC,auckland fc,Defender,,,,False,wc2026_official_squad_corrected
+new_zealand_ryan_thomas,team_new_zealand,New Zealand,Ryan Thomas,ryan thomas,PEC Zwolle,pec zwolle,Midfielder,,,,False,wc2026_official_squad_corrected
+new_zealand_sarpreet_singh,team_new_zealand,New Zealand,Sarpreet Singh,sarpreet singh,Wellington Phoenix,wellington phoenix,Midfielder,,,,False,wc2026_official_squad_corrected
+new_zealand_tim_payne,team_new_zealand,New Zealand,Tim Payne,tim payne,Wellington Phoenix,wellington phoenix,Defender,,,,False,wc2026_official_squad_corrected
+new_zealand_tommy_smith,team_new_zealand,New Zealand,Tommy Smith,tommy smith,Braintree Town,braintree town,Defender,,,,False,wc2026_official_squad_corrected
+new_zealand_tyler_bindon,team_new_zealand,New Zealand,Tyler Bindon,tyler bindon,Nottingham Forest,nottingham forest,Defender,,,,False,wc2026_official_squad_corrected
+norway_alexander_s_rloth,team_norway,Norway,Alexander Sørloth,alexander s rloth,Atlético Madrid,atletico madrid,Forward,,,,False,wc2026_official_squad_corrected
+norway_andreas_hanche_olsen,team_norway,Norway,Andreas Hanche-Olsen,andreas hanche olsen,1. FSV Mainz 05,1 fsv mainz 05,Defender,,,,False,wc2026_official_squad_corrected
+norway_andreas_schjelderup,team_norway,Norway,Andreas Schjelderup,andreas schjelderup,SL Benfica,sl benfica,Forward,,,,False,wc2026_official_squad_corrected
+norway_antonio_nusa,team_norway,Norway,Antonio Nusa,antonio nusa,RB Leipzig,rb leipzig,Forward,,,,False,wc2026_official_squad_corrected
+norway_david_m_ller_wolfe,team_norway,Norway,David Møller Wolfe,david m ller wolfe,Wolverhampton Wanderers,wolverhampton wanderers,Defender,,,,False,wc2026_official_squad_corrected
+norway_egil_selvik,team_norway,Norway,Egil Selvik,egil selvik,Watford,watford,Goalkeeper,,,,False,wc2026_official_squad_corrected
+norway_erling_haaland,team_norway,Norway,Erling Haaland,erling haaland,Manchester City,manchester city,Forward,,,,False,wc2026_official_squad_corrected
+norway_fredrik_andre_bj_rkan,team_norway,Norway,Fredrik André Bjørkan,fredrik andre bj rkan,Bodø/Glimt,bod glimt,Defender,,,,False,wc2026_official_squad_corrected
+norway_hugo_vetlesen,team_norway,Norway,Hugo Vetlesen,hugo vetlesen,Club Brugge,club brugge,Midfielder,,,,False,wc2026_official_squad_corrected
+norway_jens_petter_hauge,team_norway,Norway,Jens Petter Hauge,jens petter hauge,FK Bodø/Glimt,fk bod glimt,Forward,,,,False,wc2026_official_squad_corrected
+norway_jesper_daland,team_norway,Norway,Jesper Daland,jesper daland,Cardiff City,cardiff city,Defender,,,,False,wc2026_official_squad_corrected
+norway_julian_ryerson,team_norway,Norway,Julian Ryerson,julian ryerson,Borussia Dortmund,borussia dortmund,Defender,,,,False,wc2026_official_squad_corrected
+norway_j_rgen_strand_larsen,team_norway,Norway,Jørgen Strand Larsen,j rgen strand larsen,Crystal Palace,crystal palace,Forward,,,,False,wc2026_official_squad_corrected
+norway_kristian_thorstvedt,team_norway,Norway,Kristian Thorstvedt,kristian thorstvedt,Sassuolo,sassuolo,Midfielder,,,,False,wc2026_official_squad_corrected
+norway_kristoffer_ajer,team_norway,Norway,Kristoffer Ajer,kristoffer ajer,Brentford,brentford,Defender,,,,False,wc2026_official_squad_corrected
+norway_leo_stigard,team_norway,Norway,Leo Østigard,leo stigard,Genoa,genoa,Defender,,,,False,wc2026_official_squad_corrected
+norway_marcus_holmgren_pedersen,team_norway,Norway,Marcus Holmgren Pedersen,marcus holmgren pedersen,Torino FC,torino fc,Defender,,,,False,wc2026_official_squad_corrected
+norway_markus_solbakken,team_norway,Norway,Markus Solbakken,markus solbakken,AC Sparta Praga,ac sparta praga,Midfielder,,,,False,wc2026_official_squad_corrected
+norway_martin_degaard,team_norway,Norway,Martin Ødegaard,martin degaard,Arsenal,arsenal,Midfielder,,,,False,wc2026_official_squad_corrected
+norway_mathias_dyngeland,team_norway,Norway,Mathias Dyngeland,mathias dyngeland,SK Brann,sk brann,Goalkeeper,,,,False,wc2026_official_squad_corrected
+norway_morten_thorsby,team_norway,Norway,Morten Thorsby,morten thorsby,Cremonese,cremonese,Midfielder,,,,False,wc2026_official_squad_corrected
+norway_oscar_bobb,team_norway,Norway,Oscar Bobb,oscar bobb,Manchester City,manchester city,Forward,,,,False,wc2026_official_squad_corrected
+norway_patrick_berg,team_norway,Norway,Patrick Berg,patrick berg,Bodø/Glimt,bod glimt,Midfielder,,,,False,wc2026_official_squad_corrected
+norway_sander_berge,team_norway,Norway,Sander Berge,sander berge,Fulham,fulham,Midfielder,,,,False,wc2026_official_squad_corrected
+norway_stian_gregersen,team_norway,Norway,Stian Gregersen,stian gregersen,Atlanta United,atlanta united,Defender,,,,False,wc2026_official_squad_corrected
+norway_rjan_nyland,team_norway,Norway,Ørjan Nyland,rjan nyland,Sevilla,sevilla,Goalkeeper,,,,False,wc2026_official_squad_corrected
+panama_adalberto_carrasquilla,team_panama,Panama,Adalberto Carrasquilla,adalberto carrasquilla,Pumas UNAM,pumas unam,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_alberto_quintero,team_panama,Panama,Alberto Quintero,alberto quintero,Plaza Amador,plaza amador,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_amir_murillo,team_panama,Panama,Amir Murillo,amir murillo,Beşiktaş,besiktas,Defender,,,,False,wc2026_official_squad_corrected
+panama_andres_andrade,team_panama,Panama,Andrés Andrade,andres andrade,LASK,lask,Defender,,,,False,wc2026_official_squad_corrected
+panama_anibal_godoy,team_panama,Panama,Aníbal Godoy,anibal godoy,San Diego FC,san diego fc,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_azarias_londono,team_panama,Panama,Azarias Londoño,azarias londono,Universidad Católica,universidad catolica,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_carlos_harvey,team_panama,Panama,Carlos Harvey,carlos harvey,Minnesota United,minnesota united,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_cecilio_waterman,team_panama,Panama,Cecilio Waterman,cecilio waterman,Alianza Lima (Perú),alianza lima peru,Forward,,,,False,wc2026_official_squad_corrected
+panama_cristian_martinez,team_panama,Panama,Cristian Martínez,cristian martinez,Ironi Kiryat Shmona,ironi kiryat shmona,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_cesar_blackman,team_panama,Panama,César Blackman,cesar blackman,Slovan Bratislava,slovan bratislava,Defender,,,,False,wc2026_official_squad_corrected
+panama_cesar_samudio,team_panama,Panama,César Samudio,cesar samudio,Marathón,marathon,Goalkeeper,,,,False,wc2026_official_squad_corrected
+panama_cesar_yanis,team_panama,Panama,César Yanis,cesar yanis,Cobresal,cobresal,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_edgardo_farina,team_panama,Panama,Edgardo Fariña,edgardo farina,Pari Nizhny Novgorod,pari nizhny novgorod,Defender,,,,False,wc2026_official_squad_corrected
+panama_fidel_escobar,team_panama,Panama,Fidel Escobar,fidel escobar,Saprissa,saprissa,Defender,,,,False,wc2026_official_squad_corrected
+panama_ismael_diaz,team_panama,Panama,Ismael Díaz,ismael diaz,Universidad Católica (Ecuador),universidad catolica ecuador,Forward,,,,False,wc2026_official_squad_corrected
+panama_jiovany_ramos,team_panama,Panama,Jiovany Ramos,jiovany ramos,Puerto Cabello,puerto cabello,Defender,,,,False,wc2026_official_squad_corrected
+panama_jorge_gutierrez,team_panama,Panama,Jorge Gutiérrez,jorge gutierrez,Deportivo La Guaira,deportivo la guaira,Defender,,,,False,wc2026_official_squad_corrected
+panama_jose_cordoba,team_panama,Panama,José Córdoba,jose cordoba,Norwich City,norwich city,Defender,,,,False,wc2026_official_squad_corrected
+panama_jose_fajardo,team_panama,Panama,José Fajardo,jose fajardo,Universidad Católica (Ecuador),universidad catolica ecuador,Forward,,,,False,wc2026_official_squad_corrected
+panama_jose_luis_rodriguez,team_panama,Panama,José Luis Rodríguez,jose luis rodriguez,Juárez,juarez,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_luis_mejia,team_panama,Panama,Luis Mejía,luis mejia,Nacional,nacional,Goalkeeper,,,,False,wc2026_official_squad_corrected
+panama_orlando_mosquera,team_panama,Panama,Orlando Mosquera,orlando mosquera,Al Fayha,al fayha,Goalkeeper,,,,False,wc2026_official_squad_corrected
+panama_roderick_miller,team_panama,Panama,Roderick Miller,roderick miller,Turan Tovuz,turan tovuz,Defender,,,,False,wc2026_official_squad_corrected
+panama_tomas_rodriguez,team_panama,Panama,Tomás Rodríguez,tomas rodriguez,Monagas SC (Venezuela),monagas sc venezuela,Forward,,,,False,wc2026_official_squad_corrected
+panama_yoel_barcenas,team_panama,Panama,Yoel Bárcenas,yoel barcenas,Mazatlán,mazatlan,Midfielder,,,,False,wc2026_official_squad_corrected
+panama_eric_davis,team_panama,Panama,Éric Davis,eric davis,Plaza Amador,plaza amador,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_adam_bareiro,team_paraguay,Paraguay,Adam Bareiro,adam bareiro,River Plate,river plate,Forward,,,,False,wc2026_official_squad_corrected
+paraguay_agustin_sandez,team_paraguay,Paraguay,Agustín Sández,agustin sandez,Rosario Central,rosario central,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_alejandro_romero_gamarra_kaku,team_paraguay,Paraguay,Alejandro Romero Gamarra 'Kaku',alejandro romero gamarra kaku,Al Ain,al ain,Midfielder,,,,False,wc2026_official_squad_corrected
+paraguay_alex_arce,team_paraguay,Paraguay,Alex Arce,alex arce,Independiente Rivadavia,independiente rivadavia,Forward,,,,False,wc2026_official_squad_corrected
+paraguay_andres_cubas,team_paraguay,Paraguay,Andrés Cubas,andres cubas,Vancouver Whitecaps,vancouver whitecaps,Midfielder,,,,False,wc2026_official_squad_corrected
+paraguay_antonio_sanabria,team_paraguay,Paraguay,Antonio Sanabria,antonio sanabria,Cremonese,cremonese,Forward,,,,False,wc2026_official_squad_corrected
+paraguay_carlos_coronel,team_paraguay,Paraguay,Carlos Coronel,carlos coronel,New York Red Bulls,new york red bulls,Goalkeeper,,,,False,wc2026_official_squad_corrected
+paraguay_damian_bobadilla,team_paraguay,Paraguay,Damián Bobadilla,damian bobadilla,Sao Paulo,sao paulo,Midfielder,,,,False,wc2026_official_squad_corrected
+paraguay_diego_gomez,team_paraguay,Paraguay,Diego Gómez,diego gomez,Brighton & Hove Albion,brighton hove albion,Midfielder,,,,False,wc2026_official_squad_corrected
+paraguay_fabian_balbuena,team_paraguay,Paraguay,Fabián Balbuena,fabian balbuena,Gremio,gremio,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_fabrizio_peralta,team_paraguay,Paraguay,Fabrizio Peralta,fabrizio peralta,Cruzeiro,cruzeiro,Midfielder,,,,False,wc2026_official_squad_corrected
+paraguay_gustavo_gomez,team_paraguay,Paraguay,Gustavo Gómez,gustavo gomez,Palmeiras,palmeiras,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_gustavo_velazquez,team_paraguay,Paraguay,Gustavo Velázquez,gustavo velazquez,Cerro Porteño,cerro porteno,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_isidro_pitta,team_paraguay,Paraguay,Isidro Pitta,isidro pitta,Red Bull Bragantino,red bull bragantino,Forward,,,,False,wc2026_official_squad_corrected
+paraguay_juan_espinola,team_paraguay,Paraguay,Juan Espínola,juan espinola,Belgrano,belgrano,Goalkeeper,,,,False,wc2026_official_squad_corrected
+paraguay_juan_jose_caceres,team_paraguay,Paraguay,Juan José Cáceres,juan jose caceres,CA Lanús,ca lanus,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_julio_enciso,team_paraguay,Paraguay,Julio Enciso,julio enciso,Strasbourg,strasbourg,Forward,,,,False,wc2026_official_squad_corrected
+paraguay_junior_alonso,team_paraguay,Paraguay,Júnior Alonso,junior alonso,Atlético Mineiro,atletico mineiro,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_mateo_gamarra,team_paraguay,Paraguay,Mateo Gamarra,mateo gamarra,Athletico Paranaense,athletico paranaense,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_mathias_villasanti,team_paraguay,Paraguay,Mathías Villasanti,mathias villasanti,Grêmio,gremio,Midfielder,,,,False,wc2026_official_squad_corrected
+paraguay_matias_galarza,team_paraguay,Paraguay,Matías Galarza,matias galarza,Atlanta United,atlanta united,Midfielder,,,,False,wc2026_official_squad_corrected
+paraguay_miguel_almiron,team_paraguay,Paraguay,Miguel Almirón,miguel almiron,Atlanta United,atlanta united,Forward,,,,False,wc2026_official_squad_corrected
+paraguay_omar_alderete,team_paraguay,Paraguay,Omar Alderete,omar alderete,Sunderland,sunderland,Defender,,,,False,wc2026_official_squad_corrected
+paraguay_ramon_sosa,team_paraguay,Paraguay,Ramón Sosa,ramon sosa,Palmeiras,palmeiras,Forward,,,,False,wc2026_official_squad_corrected
+paraguay_roberto_gatito_fernandez,team_paraguay,Paraguay,"Roberto ""Gatito"" Fernández",roberto gatito fernandez,Botafogo,botafogo,Goalkeeper,,,,False,wc2026_official_squad_corrected
+paraguay_angel_romero,team_paraguay,Paraguay,Ángel Romero,angel romero,Corinthians,corinthians,Forward,,,,False,wc2026_official_squad_corrected
+portugal_antonio_silva,team_portugal,Portugal,António Silva,antonio silva,SL Benfica,sl benfica,Defender,,,,False,wc2026_official_squad_corrected
+portugal_bernardo_silva,team_portugal,Portugal,Bernardo Silva,bernardo silva,Manchester City,manchester city,Midfielder,,,,False,wc2026_official_squad_corrected
+portugal_bruno_fernandes,team_portugal,Portugal,Bruno Fernandes,bruno fernandes,Manchester United,manchester united,Midfielder,,,,False,wc2026_official_squad_corrected
+portugal_cristiano_ronaldo,team_portugal,Portugal,Cristiano Ronaldo,cristiano ronaldo,Al Nassr,al nassr,Forward,,,,False,wc2026_official_squad_corrected
+portugal_diogo_costa,team_portugal,Portugal,Diogo Costa,diogo costa,Porto,porto,Goalkeeper,,,,False,wc2026_official_squad_corrected
+portugal_diogo_dalot,team_portugal,Portugal,Diogo Dalot,diogo dalot,Manchester United,manchester united,Defender,,,,False,wc2026_official_squad_corrected
+portugal_diogo_jota,team_portugal,Portugal,Diogo Jota,diogo jota,Liverpool FC,liverpool fc,Forward,,,,False,wc2026_official_squad_corrected
+portugal_francisco_conceicao,team_portugal,Portugal,Francisco Conceição,francisco conceicao,Juventus,juventus,Forward,,,,False,wc2026_official_squad_corrected
+portugal_goncalo_inacio,team_portugal,Portugal,Gonçalo Inacio,goncalo inacio,Sporting Lisbon,sporting lisbon,Defender,,,,False,wc2026_official_squad_corrected
+portugal_goncalo_ramos,team_portugal,Portugal,Gonçalo Ramos,goncalo ramos,PSG,psg,Forward,,,,False,wc2026_official_squad_corrected
+portugal_jose_sa,team_portugal,Portugal,José Sá,jose sa,Wolverhampton Wanderers,wolverhampton wanderers,Goalkeeper,,,,False,wc2026_official_squad_corrected
+portugal_joao_cancelo,team_portugal,Portugal,João Cancelo,joao cancelo,Barcelona,barcelona,Defender,,,,False,wc2026_official_squad_corrected
+portugal_joao_felix,team_portugal,Portugal,João Félix,joao felix,Al Nassr,al nassr,Forward,,,,False,wc2026_official_squad_corrected
+portugal_joao_neves,team_portugal,Portugal,João Neves,joao neves,PSG,psg,Midfielder,,,,False,wc2026_official_squad_corrected
+portugal_joao_palhinha,team_portugal,Portugal,João Palhinha,joao palhinha,Bayern Múnich,bayern munich,Midfielder,,,,False,wc2026_official_squad_corrected
+portugal_matheus_nunes,team_portugal,Portugal,Matheus Nunes,matheus nunes,Manchester City,manchester city,Midfielder,,,,False,wc2026_official_squad_corrected
+portugal_nuno_mendes,team_portugal,Portugal,Nuno Mendes,nuno mendes,Paris Saint-Germain,paris saint germain,Defender,,,,False,wc2026_official_squad_corrected
+portugal_otavio,team_portugal,Portugal,Otávio,otavio,Al-Nassr,al nassr,Midfielder,,,,False,wc2026_official_squad_corrected
+portugal_pedro_neto,team_portugal,Portugal,Pedro Neto,pedro neto,Chelsea,chelsea,Forward,,,,False,wc2026_official_squad_corrected
+portugal_rafael_leao,team_portugal,Portugal,Rafael Leão,rafael leao,AC Milan,ac milan,Forward,,,,False,wc2026_official_squad_corrected
+portugal_raphael_guerreiro,team_portugal,Portugal,Raphaël Guerreiro,raphael guerreiro,Bayern Múnich,bayern munich,Defender,,,,False,wc2026_official_squad_corrected
+portugal_rui_silva,team_portugal,Portugal,Rui Silva,rui silva,Sporting Lisbon,sporting lisbon,Goalkeeper,,,,False,wc2026_official_squad_corrected
+portugal_ruben_dias,team_portugal,Portugal,Rúben Dias,ruben dias,Manchester City,manchester city,Defender,,,,False,wc2026_official_squad_corrected
+portugal_ruben_neves,team_portugal,Portugal,Rúben Neves,ruben neves,Al Hilal,al hilal,Midfielder,,,,False,wc2026_official_squad_corrected
+portugal_tiago_djalo,team_portugal,Portugal,Tiago Djaló,tiago djalo,FC Porto,fc porto,Defender,,,,False,wc2026_official_squad_corrected
+portugal_vitinha,team_portugal,Portugal,Vitinha,vitinha,PSG,psg,Midfielder,,,,False,wc2026_official_squad_corrected
+qatar_abdulaziz_hatem,team_qatar,Qatar,Abdulaziz Hatem,abdulaziz hatem,Al Rayyan,al rayyan,Midfielder,,,,False,wc2026_official_squad_corrected
+qatar_abdullah_al_ahrak,team_qatar,Qatar,Abdullah Al-Ahrak,abdullah al ahrak,Qatar SC,qatar sc,Midfielder,,,,False,wc2026_official_squad_corrected
+qatar_ahmed_al_rawi,team_qatar,Qatar,Ahmed Al-Rawi,ahmed al rawi,Al-Rayyan SC,al rayyan sc,Forward,,,,False,wc2026_official_squad_corrected
+qatar_ahmed_alaaeldin,team_qatar,Qatar,Ahmed Alaaeldin,ahmed alaaeldin,Al-Gharafa SC,al gharafa sc,Forward,,,,False,wc2026_official_squad_corrected
+qatar_ahmed_fathy,team_qatar,Qatar,Ahmed Fathy,ahmed fathy,Al-Arabi SC,al arabi sc,Midfielder,,,,False,wc2026_official_squad_corrected
+qatar_akram_afif,team_qatar,Qatar,Akram Afif,akram afif,Al Sadd,al sadd,Forward,,,,False,wc2026_official_squad_corrected
+qatar_ali_assadalla,team_qatar,Qatar,Ali Assadalla,ali assadalla,Al-Sadd SC,al sadd sc,Midfielder,,,,False,wc2026_official_squad_corrected
+qatar_almahdi_ali_mukhtar,team_qatar,Qatar,Almahdi Ali Mukhtar,almahdi ali mukhtar,Al-Wakrah SC,al wakrah sc,Defender,,,,False,wc2026_official_squad_corrected
+qatar_almoez_ali,team_qatar,Qatar,Almoez Ali,almoez ali,Al Duhail,al duhail,Forward,,,,False,wc2026_official_squad_corrected
+qatar_bassam_al_rawi,team_qatar,Qatar,Bassam Al-Rawi,bassam al rawi,Al-Rayyan SC,al rayyan sc,Defender,,,,False,wc2026_official_squad_corrected
+qatar_boualem_khoukhi,team_qatar,Qatar,Boualem Khoukhi,boualem khoukhi,Al-Sadd SC,al sadd sc,Defender,,,,False,wc2026_official_squad_corrected
+qatar_homam_ahmed,team_qatar,Qatar,Homam Ahmed,homam ahmed,Al-Gharafa SC,al gharafa sc,Defender,,,,False,wc2026_official_squad_corrected
+qatar_ismaeel_mohammad,team_qatar,Qatar,Ismaeel Mohammad,ismaeel mohammad,Al-Duhail SC,al duhail sc,Forward,,,,False,wc2026_official_squad_corrected
+qatar_jassem_gaber,team_qatar,Qatar,Jassem Gaber,jassem gaber,Al-Arabi SC,al arabi sc,Midfielder,,,,False,wc2026_official_squad_corrected
+qatar_khalid_muneer,team_qatar,Qatar,Khalid Muneer,khalid muneer,Al-Wakrah SC,al wakrah sc,Forward,,,,False,wc2026_official_squad_corrected
+qatar_lucas_mendes,team_qatar,Qatar,Lucas Mendes,lucas mendes,Al Wakrah,al wakrah,Defender,,,,False,wc2026_official_squad_corrected
+qatar_meshaal_barsham,team_qatar,Qatar,Meshaal Barsham,meshaal barsham,Al Sadd,al sadd,Goalkeeper,,,,False,wc2026_official_squad_corrected
+qatar_mohammed_waad,team_qatar,Qatar,Mohammed Waad,mohammed waad,Al-Sadd SC,al sadd sc,Midfielder,,,,False,wc2026_official_squad_corrected
+qatar_mostafa_meshaal,team_qatar,Qatar,Mostafa Meshaal,mostafa meshaal,Al-Sadd SC,al sadd sc,Midfielder,,,,False,wc2026_official_squad_corrected
+qatar_pedro_miguel_ro_ro,team_qatar,Qatar,"Pedro Miguel ""Ró-Ró""",pedro miguel ro ro,Al-Sadd SC,al sadd sc,Defender,,,,False,wc2026_official_squad_corrected
+qatar_saad_al_sheeb,team_qatar,Qatar,Saad Al-Sheeb,saad al sheeb,Al-Sadd SC,al sadd sc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+qatar_salah_zakaria,team_qatar,Qatar,Salah Zakaria,salah zakaria,Al Duhail,al duhail,Goalkeeper,,,,False,wc2026_official_squad_corrected
+qatar_sultan_al_brake,team_qatar,Qatar,Sultan Al Brake,sultan al brake,Al Duhail,al duhail,Defender,,,,False,wc2026_official_squad_corrected
+qatar_tameem_al_abdullah,team_qatar,Qatar,Tameem Al-Abdullah,tameem al abdullah,Al-Rayyan SC,al rayyan sc,Forward,,,,False,wc2026_official_squad_corrected
+qatar_tarek_salman,team_qatar,Qatar,Tarek Salman,tarek salman,Al-Sadd SC,al sadd sc,Defender,,,,False,wc2026_official_squad_corrected
+qatar_yusuf_abdurisag,team_qatar,Qatar,Yusuf Abdurisag,yusuf abdurisag,Al Wakrah,al wakrah,Forward,,,,False,wc2026_official_squad_corrected
+saudi_arabia_abdulellah_al_malki,team_saudi_arabia,Saudi Arabia,Abdulellah Al-Malki,abdulellah al malki,Al-Ettifaq,al ettifaq,Midfielder,,,,False,wc2026_official_squad_corrected
+saudi_arabia_abdullah_al_khaibari,team_saudi_arabia,Saudi Arabia,Abdullah Al Khaibari,abdullah al khaibari,Al-Nassr,al nassr,Midfielder,,,,False,wc2026_official_squad_corrected
+saudi_arabia_abdullah_radif,team_saudi_arabia,Saudi Arabia,Abdullah Radif,abdullah radif,Al-Ettifaq,al ettifaq,Forward,,,,False,wc2026_official_squad_corrected
+saudi_arabia_abdulrahman_ghareeb,team_saudi_arabia,Saudi Arabia,Abdulrahman Ghareeb,abdulrahman ghareeb,Al-Nassr,al nassr,Forward,,,,False,wc2026_official_squad_corrected
+saudi_arabia_ahmed_al_kassar,team_saudi_arabia,Saudi Arabia,Ahmed Al-Kassar,ahmed al kassar,Al-Qadsiah,al qadsiah,Goalkeeper,,,,False,wc2026_official_squad_corrected
+saudi_arabia_ali_al_bulaihi,team_saudi_arabia,Saudi Arabia,Ali Al-Bulaihi,ali al bulaihi,Al-Hilal,al hilal,Defender,,,,False,wc2026_official_squad_corrected
+saudi_arabia_ali_lajami,team_saudi_arabia,Saudi Arabia,Ali Lajami,ali lajami,Al-Hilal,al hilal,Defender,,,,False,wc2026_official_squad_corrected
+saudi_arabia_ayman_yahya,team_saudi_arabia,Saudi Arabia,Ayman Yahya,ayman yahya,Al-Nassr,al nassr,Forward,,,,False,wc2026_official_squad_corrected
+saudi_arabia_faisal_al_ghamdi,team_saudi_arabia,Saudi Arabia,Faisal Al-Ghamdi,faisal al ghamdi,Beerschot VA,beerschot va,Midfielder,,,,False,wc2026_official_squad_corrected
+saudi_arabia_firas_al_buraikan,team_saudi_arabia,Saudi Arabia,Firas Al-Buraikan,firas al buraikan,Al-Ahli,al ahli,Forward,,,,False,wc2026_official_squad_corrected
+saudi_arabia_hassan_al_tambakti,team_saudi_arabia,Saudi Arabia,Hassan Al-Tambakti,hassan al tambakti,Al-Hilal,al hilal,Defender,,,,False,wc2026_official_squad_corrected
+saudi_arabia_hassan_kadesh,team_saudi_arabia,Saudi Arabia,Hassan Kadesh,hassan kadesh,Al-Ittihad,al ittihad,Defender,,,,False,wc2026_official_squad_corrected
+saudi_arabia_marwan_al_sahafi,team_saudi_arabia,Saudi Arabia,Marwan Al-Sahafi,marwan al sahafi,Beerschot VA,beerschot va,Forward,,,,False,wc2026_official_squad_corrected
+saudi_arabia_mohamed_kanno,team_saudi_arabia,Saudi Arabia,Mohamed Kanno,mohamed kanno,Al-Hilal,al hilal,Midfielder,,,,False,wc2026_official_squad_corrected
+saudi_arabia_mohammed_al_owais,team_saudi_arabia,Saudi Arabia,Mohammed Al-Owais,mohammed al owais,Al-Hilal,al hilal,Goalkeeper,,,,False,wc2026_official_squad_corrected
+saudi_arabia_mukhtar_ali,team_saudi_arabia,Saudi Arabia,Mukhtar Ali,mukhtar ali,Al-Nassr,al nassr,Midfielder,,,,False,wc2026_official_squad_corrected
+saudi_arabia_musab_al_juwayr,team_saudi_arabia,Saudi Arabia,Musab Al Juwayr,musab al juwayr,Al-Qadsiah,al qadsiah,Midfielder,,,,False,wc2026_official_squad_corrected
+saudi_arabia_nasser_al_dawsari,team_saudi_arabia,Saudi Arabia,Nasser Al Dawsari,nasser al dawsari,Al-Hilal,al hilal,Midfielder,,,,False,wc2026_official_squad_corrected
+saudi_arabia_raghed_al_najjar,team_saudi_arabia,Saudi Arabia,Raghed Al-Najjar,raghed al najjar,Al-Nassr,al nassr,Goalkeeper,,,,False,wc2026_official_squad_corrected
+saudi_arabia_rayan_hamid,team_saudi_arabia,Saudi Arabia,Rayan Hamid,rayan hamid,Al-Ahli,al ahli,Defender,,,,False,wc2026_official_squad_corrected
+saudi_arabia_saleh_al_shehri,team_saudi_arabia,Saudi Arabia,Saleh Al Shehri,saleh al shehri,Al-Ittihad,al ittihad,Forward,,,,False,wc2026_official_squad_corrected
+saudi_arabia_salem_al_dawsari,team_saudi_arabia,Saudi Arabia,Salem Al Dawsari,salem al dawsari,Al-Hilal,al hilal,Forward,,,,False,wc2026_official_squad_corrected
+saudi_arabia_sami_al_najei,team_saudi_arabia,Saudi Arabia,Sami Al-Najei,sami al najei,Al-Nassr,al nassr,Midfielder,,,,False,wc2026_official_squad_corrected
+saudi_arabia_saud_abdulhamid,team_saudi_arabia,Saudi Arabia,Saud Abdulhamid,saud abdulhamid,Lens,lens,Defender,,,,False,wc2026_official_squad_corrected
+saudi_arabia_sultan_al_ghannam,team_saudi_arabia,Saudi Arabia,Sultan Al-Ghannam,sultan al ghannam,Al-Nassr,al nassr,Defender,,,,False,wc2026_official_squad_corrected
+saudi_arabia_yasser_al_shahrani,team_saudi_arabia,Saudi Arabia,Yasser Al-Shahrani,yasser al shahrani,Al-Hilal,al hilal,Defender,,,,False,wc2026_official_squad_corrected
+scotland_aaron_hickey,team_scotland,Scotland,Aaron Hickey,aaron hickey,Brentford,brentford,Defender,,,,False,wc2026_official_squad_corrected
+scotland_andy_robertson,team_scotland,Scotland,Andy Robertson,andy robertson,Liverpool,liverpool,Defender,,,,False,wc2026_official_squad_corrected
+scotland_angus_gunn,team_scotland,Scotland,Angus Gunn,angus gunn,Nottingham Forest,nottingham forest,Goalkeeper,,,,False,wc2026_official_squad_corrected
+scotland_anthony_ralston,team_scotland,Scotland,Anthony Ralston,anthony ralston,Celtic,celtic,Defender,,,,False,wc2026_official_squad_corrected
+scotland_ben_gannon_doak,team_scotland,Scotland,Ben Gannon-Doak,ben gannon doak,Bournemouth,bournemouth,Midfielder,,,,False,wc2026_official_squad_corrected
+scotland_billy_gilmour,team_scotland,Scotland,Billy Gilmour,billy gilmour,Napoli,napoli,Midfielder,,,,False,wc2026_official_squad_corrected
+scotland_che_adams,team_scotland,Scotland,Ché Adams,che adams,Torino,torino,Forward,,,,False,wc2026_official_squad_corrected
+scotland_craig_gordon,team_scotland,Scotland,Craig Gordon,craig gordon,Hearts,hearts,Goalkeeper,,,,False,wc2026_official_squad_corrected
+scotland_dom_hyam,team_scotland,Scotland,Dom Hyam,dom hyam,Wrexham,wrexham,Defender,,,,False,wc2026_official_squad_corrected
+scotland_findlay_curtis,team_scotland,Scotland,Findlay Curtis,findlay curtis,Kilmarnock,kilmarnock,Midfielder,,,,False,wc2026_official_squad_corrected
+scotland_george_hirst,team_scotland,Scotland,George Hirst,george hirst,Ipswich,ipswich,Forward,,,,False,wc2026_official_squad_corrected
+scotland_grant_hanley,team_scotland,Scotland,Grant Hanley,grant hanley,Hibernian,hibernian,Defender,,,,False,wc2026_official_squad_corrected
+scotland_jack_hendry,team_scotland,Scotland,Jack Hendry,jack hendry,Al Etiffaq,al etiffaq,Defender,,,,False,wc2026_official_squad_corrected
+scotland_john_mcginn,team_scotland,Scotland,John McGinn,john mcginn,Aston Villa,aston villa,Midfielder,,,,False,wc2026_official_squad_corrected
+scotland_john_souttar,team_scotland,Scotland,John Souttar,john souttar,Rangers,rangers,Defender,,,,False,wc2026_official_squad_corrected
+scotland_kenny_mclean,team_scotland,Scotland,Kenny McLean,kenny mclean,Norwich,norwich,Midfielder,,,,False,wc2026_official_squad_corrected
+scotland_kieran_tierney,team_scotland,Scotland,Kieran Tierney,kieran tierney,Celtic,celtic,Defender,,,,False,wc2026_official_squad_corrected
+scotland_lawrence_shankland,team_scotland,Scotland,Lawrence Shankland,lawrence shankland,Hearts,hearts,Forward,,,,False,wc2026_official_squad_corrected
+scotland_lewis_ferguson,team_scotland,Scotland,Lewis Ferguson,lewis ferguson,Bologna,bologna,Midfielder,,,,False,wc2026_official_squad_corrected
+scotland_liam_kelly,team_scotland,Scotland,Liam Kelly,liam kelly,Rangers,rangers,Goalkeeper,,,,False,wc2026_official_squad_corrected
+scotland_lyndon_dykes,team_scotland,Scotland,Lyndon Dykes,lyndon dykes,Charlton Athletic,charlton athletic,Forward,,,,False,wc2026_official_squad_corrected
+scotland_nathan_patterson,team_scotland,Scotland,Nathan Patterson,nathan patterson,Everton,everton,Defender,,,,False,wc2026_official_squad_corrected
+scotland_ross_stewart,team_scotland,Scotland,Ross Stewart,ross stewart,Southampton,southampton,Forward,,,,False,wc2026_official_squad_corrected
+scotland_ryan_christie,team_scotland,Scotland,Ryan Christie,ryan christie,Bournemouth,bournemouth,Midfielder,,,,False,wc2026_official_squad_corrected
+scotland_scott_mckenna,team_scotland,Scotland,Scott McKenna,scott mckenna,Dinamo Zagreb,dinamo zagreb,Defender,,,,False,wc2026_official_squad_corrected
+scotland_scott_mctominay,team_scotland,Scotland,Scott McTominay,scott mctominay,Napoli,napoli,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_abdallah_sima,team_senegal,Senegal,Abdallah Sima,abdallah sima,Stade Brestois,stade brestois,Forward,,,,False,wc2026_official_squad_corrected
+senegal_abdou_diallo,team_senegal,Senegal,Abdou Diallo,abdou diallo,Al-Arabi SC,al arabi sc,Defender,,,,False,wc2026_official_squad_corrected
+senegal_abdoulaye_seck,team_senegal,Senegal,Abdoulaye Seck,abdoulaye seck,Maccabi Haifa,maccabi haifa,Defender,,,,False,wc2026_official_squad_corrected
+senegal_arouna_sangante,team_senegal,Senegal,Arouna Sangante,arouna sangante,Le Havre AC,le havre ac,Defender,,,,False,wc2026_official_squad_corrected
+senegal_boulaye_dia,team_senegal,Senegal,Boulaye Dia,boulaye dia,SS Lazio,ss lazio,Forward,,,,False,wc2026_official_squad_corrected
+senegal_cheikhou_kouyate,team_senegal,Senegal,Cheikhou Kouyaté,cheikhou kouyate,Nottingham Forest,nottingham forest,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_dion_lopy,team_senegal,Senegal,Dion Lopy,dion lopy,UD Almería,ud almeria,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_fode_ballo_toure,team_senegal,Senegal,Fodé Ballo-Touré,fode ballo toure,AC Milan,ac milan,Defender,,,,False,wc2026_official_squad_corrected
+senegal_formose_mendy,team_senegal,Senegal,Formose Mendy,formose mendy,FC Lorient,fc lorient,Defender,,,,False,wc2026_official_squad_corrected
+senegal_habib_diallo,team_senegal,Senegal,Habib Diallo,habib diallo,Al-Shabab,al shabab,Forward,,,,False,wc2026_official_squad_corrected
+senegal_habib_diarra,team_senegal,Senegal,Habib Diarra,habib diarra,Sunderland,sunderland,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_idrissa_gana_gueye,team_senegal,Senegal,Idrissa Gana Gueye,idrissa gana gueye,Everton,everton,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_iliman_ndiaye,team_senegal,Senegal,Iliman Ndiaye,iliman ndiaye,Everton,everton,Forward,,,,False,wc2026_official_squad_corrected
+senegal_ismail_jakobs,team_senegal,Senegal,Ismail Jakobs,ismail jakobs,Galatasaray,galatasaray,Defender,,,,False,wc2026_official_squad_corrected
+senegal_ismaila_sarr,team_senegal,Senegal,Ismaïla Sarr,ismaila sarr,Crystal Palace,crystal palace,Forward,,,,False,wc2026_official_squad_corrected
+senegal_kalidou_koulibaly,team_senegal,Senegal,Kalidou Koulibaly,kalidou koulibaly,Al Ahli,al ahli,Defender,,,,False,wc2026_official_squad_corrected
+senegal_lamine_camara,team_senegal,Senegal,Lamine Camara,lamine camara,Mónaco,monaco,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_mory_diaw,team_senegal,Senegal,Mory Diaw,mory diaw,Le Havre,le havre,Goalkeeper,,,,False,wc2026_official_squad_corrected
+senegal_moussa_niakhate,team_senegal,Senegal,Moussa Niakhaté,moussa niakhate,O. Lyon,o lyon,Defender,,,,False,wc2026_official_squad_corrected
+senegal_nampalys_mendy,team_senegal,Senegal,Nampalys Mendy,nampalys mendy,RC Lens,rc lens,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_nicolas_jackson,team_senegal,Senegal,Nicolas Jackson,nicolas jackson,Bayern,bayern,Forward,,,,False,wc2026_official_squad_corrected
+senegal_pape_gueye,team_senegal,Senegal,Pape Gueye,pape gueye,Villarreal,villarreal,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_pape_matar_sarr,team_senegal,Senegal,Pape Matar Sarr,pape matar sarr,Tottenham,tottenham,Midfielder,,,,False,wc2026_official_squad_corrected
+senegal_sadio_mane,team_senegal,Senegal,Sadio Mané,sadio mane,Al Nassr,al nassr,Forward,,,,False,wc2026_official_squad_corrected
+senegal_seny_dieng,team_senegal,Senegal,Seny Dieng,seny dieng,Middlesbrough FC,middlesbrough fc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+senegal_edouard_mendy,team_senegal,Senegal,Édouard Mendy,edouard mendy,Al Ahli,al ahli,Goalkeeper,,,,False,wc2026_official_squad_corrected
+south_africa_aubrey_modiba,team_south_africa,South Africa,Aubrey Modiba,aubrey modiba,Mamelodi Sundowns FC,mamelodi sundowns fc,Defender,,,,False,wc2026_official_squad_corrected
+south_africa_bathusi_aubaas,team_south_africa,South Africa,Bathusi Aubaas,bathusi aubaas,Mamelodi Sundowns,mamelodi sundowns,Midfielder,,,,False,wc2026_official_squad_corrected
+south_africa_bongokuhle_hlongwane,team_south_africa,South Africa,Bongokuhle Hlongwane,bongokuhle hlongwane,Minnesota United,minnesota united,Forward,,,,False,wc2026_official_squad_corrected
+south_africa_evidence_makgopa,team_south_africa,South Africa,Evidence Makgopa,evidence makgopa,Orlando Pirates FC,orlando pirates fc,Forward,,,,False,wc2026_official_squad_corrected
+south_africa_grant_kekana,team_south_africa,South Africa,Grant Kekana,grant kekana,Mamelodi Sundowns,mamelodi sundowns,Defender,,,,False,wc2026_official_squad_corrected
+south_africa_grant_margeman,team_south_africa,South Africa,Grant Margeman,grant margeman,SuperSport United,supersport united,Midfielder,,,,False,wc2026_official_squad_corrected
+south_africa_iqraam_rayners,team_south_africa,South Africa,Iqraam Rayners,iqraam rayners,Mamelodi Sundowns FC,mamelodi sundowns fc,Forward,,,,False,wc2026_official_squad_corrected
+south_africa_jayden_adams,team_south_africa,South Africa,Jayden Adams,jayden adams,Mamelodi Sundowns FC,mamelodi sundowns fc,Midfielder,,,,False,wc2026_official_squad_corrected
+south_africa_khuliso_mudau,team_south_africa,South Africa,Khuliso Mudau,khuliso mudau,Mamelodi Sundowns FC,mamelodi sundowns fc,Defender,,,,False,wc2026_official_squad_corrected
+south_africa_luke_le_roux,team_south_africa,South Africa,Luke Le Roux,luke le roux,IFK Värnamo,ifk varnamo,Midfielder,,,,False,wc2026_official_squad_corrected
+south_africa_lyle_foster,team_south_africa,South Africa,Lyle Foster,lyle foster,Burnley FC,burnley fc,Forward,,,,False,wc2026_official_squad_corrected
+south_africa_mihlali_mayambela,team_south_africa,South Africa,Mihlali Mayambela,mihlali mayambela,Aris Limassol,aris limassol,Forward,,,,False,wc2026_official_squad_corrected
+south_africa_mothobi_mvala,team_south_africa,South Africa,Mothobi Mvala,mothobi mvala,Mamelodi Sundowns,mamelodi sundowns,Defender,,,,False,wc2026_official_squad_corrected
+south_africa_nkosinathi_sibisi,team_south_africa,South Africa,Nkosinathi Sibisi,nkosinathi sibisi,Orlando Pirates,orlando pirates,Defender,,,,False,wc2026_official_squad_corrected
+south_africa_oswin_appollis,team_south_africa,South Africa,Oswin Appollis,oswin appollis,Orlando Pirates FC,orlando pirates fc,Forward,,,,False,wc2026_official_squad_corrected
+south_africa_percy_tau,team_south_africa,South Africa,Percy Tau,percy tau,Al Ahly SC,al ahly sc,Forward,,,,False,wc2026_official_squad_corrected
+south_africa_ricardo_goss,team_south_africa,South Africa,Ricardo Goss,ricardo goss,Siwelele FC,siwelele fc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+south_africa_ronwen_williams,team_south_africa,South Africa,Ronwen Williams,ronwen williams,Mamelodi Sundowns C,mamelodi sundowns c,Goalkeeper,,,,False,wc2026_official_squad_corrected
+south_africa_siyanda_xulu,team_south_africa,South Africa,Siyanda Xulu,siyanda xulu,SuperSport United,supersport united,Defender,,,,False,wc2026_official_squad_corrected
+south_africa_sphephelo_sithole,team_south_africa,South Africa,Sphephelo Sithole,sphephelo sithole,CD Tondela,cd tondela,Midfielder,,,,False,wc2026_official_squad_corrected
+south_africa_teboho_mokoena,team_south_africa,South Africa,Teboho Mokoena,teboho mokoena,Mamelodi Sundowns FC,mamelodi sundowns fc,Midfielder,,,,False,wc2026_official_squad_corrected
+south_africa_terrence_mashego,team_south_africa,South Africa,Terrence Mashego,terrence mashego,Mamelodi Sundowns,mamelodi sundowns,Defender,,,,False,wc2026_official_squad_corrected
+south_africa_thapelo_maseko,team_south_africa,South Africa,Thapelo Maseko,thapelo maseko,AEL Limassol,ael limassol,Forward,,,,False,wc2026_official_squad_corrected
+south_africa_thapelo_morena,team_south_africa,South Africa,Thapelo Morena,thapelo morena,Mamelodi Sundowns,mamelodi sundowns,Defender,,,,False,wc2026_official_squad_corrected
+south_africa_themba_zwane,team_south_africa,South Africa,Themba Zwane,themba zwane,Mamelodi Sundowns,mamelodi sundowns,Midfielder,,,,False,wc2026_official_squad_corrected
+south_africa_veli_mothwa,team_south_africa,South Africa,Veli Mothwa,veli mothwa,AmaZulu FC,amazulu fc,Goalkeeper,,,,False,wc2026_official_squad_corrected
+south_korea_bae_jun_ho,team_south_korea,South Korea,Bae Jun-Ho,bae jun ho,Stoke City,stoke city,Midfielder,,,,False,wc2026_official_squad_corrected
+south_korea_cho_gue_sung,team_south_korea,South Korea,Cho Gue-sung,cho gue sung,FC Midtjylland,fc midtjylland,Forward,,,,False,wc2026_official_squad_corrected
+south_korea_cho_yu_min,team_south_korea,South Korea,Cho Yu-min,cho yu min,Sharjah FC,sharjah fc,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_hong_hyun_seok,team_south_korea,South Korea,Hong Hyun-seok,hong hyun seok,1. FSV Mainz 05,1 fsv mainz 05,Midfielder,,,,False,wc2026_official_squad_corrected
+south_korea_hwang_hee_chan,team_south_korea,South Korea,Hwang Hee-chan,hwang hee chan,Wolverhampton Wanderers,wolverhampton wanderers,Forward,,,,False,wc2026_official_squad_corrected
+south_korea_hwang_in_beom,team_south_korea,South Korea,Hwang In-Beom,hwang in beom,Feyenoord,feyenoord,Midfielder,,,,False,wc2026_official_squad_corrected
+south_korea_hwang_jae_won,team_south_korea,South Korea,Hwang Jae-won,hwang jae won,Daegu FC,daegu fc,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_jeong_woo_yeong,team_south_korea,South Korea,Jeong Woo-yeong,jeong woo yeong,1. FC Union Berlin,1 fc union berlin,Midfielder,,,,False,wc2026_official_squad_corrected
+south_korea_jo_hyeon_woo,team_south_korea,South Korea,Jo Hyeon-woo,jo hyeon woo,Ulsan HD,ulsan hd,Goalkeeper,,,,False,wc2026_official_squad_corrected
+south_korea_joo_min_kyu,team_south_korea,South Korea,Joo Min-kyu,joo min kyu,Ulsan HD,ulsan hd,Forward,,,,False,wc2026_official_squad_corrected
+south_korea_jung_seung_hyun,team_south_korea,South Korea,Jung Seung-hyun,jung seung hyun,Al-Wasl,al wasl,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_kim_jin_su,team_south_korea,South Korea,Kim Jin-su,kim jin su,Jeonbuk Hyundai Motors,jeonbuk hyundai motors,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_kim_min_jae,team_south_korea,South Korea,Kim Min-Jae,kim min jae,Bayern Munich,bayern munich,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_kim_moon_hwan,team_south_korea,South Korea,Kim Moon-Hwan,kim moon hwan,Daejeon Hana,daejeon hana,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_kim_seung_gyu,team_south_korea,South Korea,Kim Seung-Gyu,kim seung gyu,FC Tokyo,fc tokyo,Goalkeeper,,,,False,wc2026_official_squad_corrected
+south_korea_kim_young_gwon,team_south_korea,South Korea,Kim Young-gwon,kim young gwon,Ulsan HD,ulsan hd,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_lee_jae_sung,team_south_korea,South Korea,Lee Jae-Sung,lee jae sung,Mainz,mainz,Midfielder,,,,False,wc2026_official_squad_corrected
+south_korea_lee_kang_in,team_south_korea,South Korea,Lee Kang-In,lee kang in,Paris Saint-Germain,paris saint germain,Midfielder,,,,False,wc2026_official_squad_corrected
+south_korea_lee_myung_jae,team_south_korea,South Korea,Lee Myung-jae,lee myung jae,Ulsan HD,ulsan hd,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_oh_hyeon_gyu,team_south_korea,South Korea,Oh Hyeon-gyu,oh hyeon gyu,KRC Genk,krc genk,Forward,,,,False,wc2026_official_squad_corrected
+south_korea_paik_seung_ho,team_south_korea,South Korea,Paik Seung-Ho,paik seung ho,Birmingham City,birmingham city,Midfielder,,,,False,wc2026_official_squad_corrected
+south_korea_park_yong_woo,team_south_korea,South Korea,Park Yong-woo,park yong woo,Al-Ain,al ain,Midfielder,,,,False,wc2026_official_squad_corrected
+south_korea_seol_young_woo,team_south_korea,South Korea,Seol Young-Woo,seol young woo,Red Star Belgrade,red star belgrade,Defender,,,,False,wc2026_official_squad_corrected
+south_korea_son_heung_min,team_south_korea,South Korea,Son Heung-Min,son heung min,LAFC,lafc,Forward,,,,False,wc2026_official_squad_corrected
+south_korea_song_bum_keun,team_south_korea,South Korea,Song Bum-Keun,song bum keun,Jeonbuk Hyundai,jeonbuk hyundai,Goalkeeper,,,,False,wc2026_official_squad_corrected
+south_korea_yang_min_hyeok,team_south_korea,South Korea,Yang Min-hyeok,yang min hyeok,Tottenham Hotspur,tottenham hotspur,Forward,,,,False,wc2026_official_squad_corrected
+spain_alejandro_grimaldo,team_spain,Spain,Alejandro Grimaldo,alejandro grimaldo,Bayer 04 Leverkusen,bayer 04 leverkusen,Defender,,,,False,wc2026_official_squad_corrected
+spain_aymeric_laporte,team_spain,Spain,Aymeric Laporte,aymeric laporte,Athletic Club,athletic club,Defender,,,,False,wc2026_official_squad_corrected
+spain_borja_iglesias,team_spain,Spain,Borja Iglesias,borja iglesias,Celta Vigo,celta vigo,Forward,,,,False,wc2026_official_squad_corrected
+spain_dani_olmo,team_spain,Spain,Dani Olmo,dani olmo,Barcelona,barcelona,Forward,,,,False,wc2026_official_squad_corrected
+spain_david_raya,team_spain,Spain,David Raya,david raya,Arsenal,arsenal,Goalkeeper,,,,False,wc2026_official_squad_corrected
+spain_eric_garcia,team_spain,Spain,Eric García,eric garcia,Barcelona,barcelona,Defender,,,,False,wc2026_official_squad_corrected
+spain_fabian_ruiz,team_spain,Spain,Fabián Ruiz,fabian ruiz,PSG,psg,Midfielder,,,,False,wc2026_official_squad_corrected
+spain_ferran_torres,team_spain,Spain,Ferran Torres,ferran torres,Barcelona,barcelona,Forward,,,,False,wc2026_official_squad_corrected
+spain_gavi,team_spain,Spain,Gavi,gavi,Barcelona,barcelona,Midfielder,,,,False,wc2026_official_squad_corrected
+spain_lamine_yamal,team_spain,Spain,Lamine Yamal,lamine yamal,Barcelona,barcelona,Forward,,,,False,wc2026_official_squad_corrected
+spain_marc_cucurella,team_spain,Spain,Marc Cucurella,marc cucurella,Chelsea,chelsea,Defender,,,,False,wc2026_official_squad_corrected
+spain_marc_pubill,team_spain,Spain,Marc Pubill,marc pubill,Atlético Madrid,atletico madrid,Defender,,,,False,wc2026_official_squad_corrected
+spain_marcos_llorente,team_spain,Spain,Marcos Llorente,marcos llorente,Atlético Madrid,atletico madrid,Defender,,,,False,wc2026_official_squad_corrected
+spain_martin_zubimendi,team_spain,Spain,Martín Zubimendi,martin zubimendi,Arsenal,arsenal,Midfielder,,,,False,wc2026_official_squad_corrected
+spain_mikel_merino,team_spain,Spain,Mikel Merino,mikel merino,Arsenal,arsenal,Midfielder,,,,False,wc2026_official_squad_corrected
+spain_mikel_oyarzabal,team_spain,Spain,Mikel Oyarzabal,mikel oyarzabal,Real Sociedad,real sociedad,Forward,,,,False,wc2026_official_squad_corrected
+spain_nico_williams,team_spain,Spain,Nico Williams,nico williams,Athletic Club,athletic club,Forward,,,,False,wc2026_official_squad_corrected
+spain_pau_cubarsi,team_spain,Spain,Pau Cubarsí,pau cubarsi,Barcelona,barcelona,Defender,,,,False,wc2026_official_squad_corrected
+spain_pedri,team_spain,Spain,Pedri,pedri,Barcelona,barcelona,Midfielder,,,,False,wc2026_official_squad_corrected
+spain_pedro_porro,team_spain,Spain,Pedro Porro,pedro porro,Tottenham Hotspur,tottenham hotspur,Defender,,,,False,wc2026_official_squad_corrected
+spain_rodri,team_spain,Spain,Rodri,rodri,Manchester City,manchester city,Midfielder,,,,False,wc2026_official_squad_corrected
+spain_unai_simon,team_spain,Spain,Unai Simón,unai simon,Athletic Club,athletic club,Goalkeeper,,,,False,wc2026_official_squad_corrected
+spain_victor_munoz,team_spain,Spain,Víctor Muñoz,victor munoz,Osasuna,osasuna,Forward,,,,False,wc2026_official_squad_corrected
+spain_yeremy_pino,team_spain,Spain,Yéremy Pino,yeremy pino,Crystal Palace,crystal palace,Forward,,,,False,wc2026_official_squad_corrected
+spain_alex_baena,team_spain,Spain,Álex Baena,alex baena,Atlético Madrid,atletico madrid,Midfielder,,,,False,wc2026_official_squad_corrected
+spain_alex_remiro,team_spain,Spain,Álex Remiro,alex remiro,Real Sociedad,real sociedad,Goalkeeper,,,,False,wc2026_official_squad_corrected
+sweden_alexander_bernhardsson,team_sweden,Sweden,Alexander Bernhardsson,alexander bernhardsson,Holstein Kiel,holstein kiel,Forward,,,,False,wc2026_official_squad_corrected
+sweden_alexander_isak,team_sweden,Sweden,Alexander Isak,alexander isak,Liverpool,liverpool,Forward,,,,False,wc2026_official_squad_corrected
+sweden_anthony_elanga,team_sweden,Sweden,Anthony Elanga,anthony elanga,Newcastle United,newcastle united,Forward,,,,False,wc2026_official_squad_corrected
+sweden_benjamin_nygren,team_sweden,Sweden,Benjamin Nygren,benjamin nygren,Celtic,celtic,Midfielder,,,,False,wc2026_official_squad_corrected
+sweden_besfort_zeneli,team_sweden,Sweden,Besfort Zeneli,besfort zeneli,Union St-Gilloise,union st gilloise,Midfielder,,,,False,wc2026_official_squad_corrected
+sweden_carl_starfelt,team_sweden,Sweden,Carl Starfelt,carl starfelt,Celta Vigo,celta vigo,Defender,,,,False,wc2026_official_squad_corrected
+sweden_daniel_svensson,team_sweden,Sweden,Daniel Svensson,daniel svensson,Borussia Dortmund,borussia dortmund,Defender,,,,False,wc2026_official_squad_corrected
+sweden_elliot_stroud,team_sweden,Sweden,Elliot Stroud,elliot stroud,Mjallby,mjallby,Defender,,,,False,wc2026_official_squad_corrected
+sweden_emil_holm,team_sweden,Sweden,Emil Holm,emil holm,Juventus,juventus,Defender,,,,False,wc2026_official_squad_corrected
+sweden_eric_smith,team_sweden,Sweden,Eric Smith,eric smith,St. Pauli,st pauli,Defender,,,,False,wc2026_official_squad_corrected
+sweden_gabriel_gudmundsson,team_sweden,Sweden,Gabriel Gudmundsson,gabriel gudmundsson,Leeds United,leeds united,Defender,,,,False,wc2026_official_squad_corrected
+sweden_gustaf_lagerbielke,team_sweden,Sweden,Gustaf Lagerbielke,gustaf lagerbielke,Braga,braga,Defender,,,,False,wc2026_official_squad_corrected
+sweden_gustaf_nilsson,team_sweden,Sweden,Gustaf Nilsson,gustaf nilsson,Club Brugge,club brugge,Forward,,,,False,wc2026_official_squad_corrected
+sweden_hjalmar_ekdal,team_sweden,Sweden,Hjalmar Ekdal,hjalmar ekdal,Burnley,burnley,Defender,,,,False,wc2026_official_squad_corrected
+sweden_isak_hien,team_sweden,Sweden,Isak Hien,isak hien,Atalanta,atalanta,Defender,,,,False,wc2026_official_squad_corrected
+sweden_jacob_widell_zetterstrom,team_sweden,Sweden,Jacob Widell Zetterstrom,jacob widell zetterstrom,Derby County,derby county,Goalkeeper,,,,False,wc2026_official_squad_corrected
+sweden_jesper_karlstrom,team_sweden,Sweden,Jesper Karlström,jesper karlstrom,Udinese,udinese,Midfielder,,,,False,wc2026_official_squad_corrected
+sweden_ken_sema,team_sweden,Sweden,Ken Sema,ken sema,Pafos,pafos,Midfielder,,,,False,wc2026_official_squad_corrected
+sweden_kristoffer_nordfeldt,team_sweden,Sweden,Kristoffer Nordfeldt,kristoffer nordfeldt,AIK,aik,Goalkeeper,,,,False,wc2026_official_squad_corrected
+sweden_lucas_bergvall,team_sweden,Sweden,Lucas Bergvall,lucas bergvall,Tottenham,tottenham,Midfielder,,,,False,wc2026_official_squad_corrected
+sweden_mattias_svanberg,team_sweden,Sweden,Mattias Svanberg,mattias svanberg,Wolfsburg,wolfsburg,Midfielder,,,,False,wc2026_official_squad_corrected
+sweden_taha_ali,team_sweden,Sweden,Taha Ali,taha ali,Malmö,malmo,Forward,,,,False,wc2026_official_squad_corrected
+sweden_victor_nilsson_lindelof,team_sweden,Sweden,Victor Nilsson Lindelöf,victor nilsson lindelof,Aston Villa,aston villa,Defender,,,,False,wc2026_official_squad_corrected
+sweden_viktor_gyokeres,team_sweden,Sweden,Viktor Gyökeres,viktor gyokeres,Arsenal,arsenal,Forward,,,,False,wc2026_official_squad_corrected
+sweden_viktor_johansson,team_sweden,Sweden,Viktor Johansson,viktor johansson,Stoke City,stoke city,Goalkeeper,,,,False,wc2026_official_squad_corrected
+sweden_yasin_ayari,team_sweden,Sweden,Yasin Ayari,yasin ayari,Brighton,brighton,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_andi_zeqiri,team_switzerland,Switzerland,Andi Zeqiri,andi zeqiri,KRC Genk,krc genk,Forward,,,,False,wc2026_official_squad_corrected
+switzerland_ardon_jashari,team_switzerland,Switzerland,Ardon Jashari,ardon jashari,AC Milan,ac milan,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_breel_embolo,team_switzerland,Switzerland,Breel Embolo,breel embolo,Rennes,rennes,Forward,,,,False,wc2026_official_squad_corrected
+switzerland_cedric_zesiger,team_switzerland,Switzerland,Cédric Zesiger,cedric zesiger,VfL Wolfsburg,vfl wolfsburg,Defender,,,,False,wc2026_official_squad_corrected
+switzerland_dan_ndoye,team_switzerland,Switzerland,Dan Ndoye,dan ndoye,Nottingham Forest,nottingham forest,Forward,,,,False,wc2026_official_squad_corrected
+switzerland_denis_zakaria,team_switzerland,Switzerland,Denis Zakaria,denis zakaria,Monaco,monaco,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_djibril_sow,team_switzerland,Switzerland,Djibril Sow,djibril sow,Sevilla,sevilla,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_fabian_rieder,team_switzerland,Switzerland,Fabian Rieder,fabian rieder,Augsburg,augsburg,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_fabian_schar,team_switzerland,Switzerland,Fabian Schär,fabian schar,Newcastle United,newcastle united,Defender,,,,False,wc2026_official_squad_corrected
+switzerland_granit_xhaka,team_switzerland,Switzerland,Granit Xhaka,granit xhaka,Sunderland,sunderland,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_gregor_kobel,team_switzerland,Switzerland,Gregor Kobel,gregor kobel,Borussia Dortmund,borussia dortmund,Goalkeeper,,,,False,wc2026_official_squad_corrected
+switzerland_jonas_omlin,team_switzerland,Switzerland,Jonas Omlin,jonas omlin,Borussia Mönchengladbach,borussia monchengladbach,Goalkeeper,,,,False,wc2026_official_squad_corrected
+switzerland_kwadwo_duah,team_switzerland,Switzerland,Kwadwo Duah,kwadwo duah,Ludogorets Razgrad,ludogorets razgrad,Forward,,,,False,wc2026_official_squad_corrected
+switzerland_leonidas_stergiou,team_switzerland,Switzerland,Leonidas Stergiou,leonidas stergiou,VfB Stuttgart,vfb stuttgart,Defender,,,,False,wc2026_official_squad_corrected
+switzerland_manuel_akanji,team_switzerland,Switzerland,Manuel Akanji,manuel akanji,Inter Milan,inter milan,Defender,,,,False,wc2026_official_squad_corrected
+switzerland_michel_aebischer,team_switzerland,Switzerland,Michel Aebischer,michel aebischer,Pisa,pisa,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_nico_elvedi,team_switzerland,Switzerland,Nico Elvedi,nico elvedi,Borussia Mönchengladbach,borussia monchengladbach,Defender,,,,False,wc2026_official_squad_corrected
+switzerland_noah_okafor,team_switzerland,Switzerland,Noah Okafor,noah okafor,Leeds,leeds,Forward,,,,False,wc2026_official_squad_corrected
+switzerland_philipp_kohn,team_switzerland,Switzerland,Philipp Köhn,philipp kohn,AS Monaco,as monaco,Goalkeeper,,,,False,wc2026_official_squad_corrected
+switzerland_remo_freuler,team_switzerland,Switzerland,Remo Freuler,remo freuler,Bologna,bologna,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_ricardo_rodriguez,team_switzerland,Switzerland,Ricardo Rodríguez,ricardo rodriguez,Real Betis,real betis,Defender,,,,False,wc2026_official_squad_corrected
+switzerland_ruben_vargas,team_switzerland,Switzerland,Ruben Vargas,ruben vargas,FC Augsburg,fc augsburg,Forward,,,,False,wc2026_official_squad_corrected
+switzerland_silvan_widmer,team_switzerland,Switzerland,Silvan Widmer,silvan widmer,Mainz,mainz,Defender,,,,False,wc2026_official_squad_corrected
+switzerland_ulisses_garcia,team_switzerland,Switzerland,Ulisses Garcia,ulisses garcia,Olympique de Marsella,olympique de marsella,Defender,,,,False,wc2026_official_squad_corrected
+switzerland_vincent_sierro,team_switzerland,Switzerland,Vincent Sierro,vincent sierro,Toulouse FC,toulouse fc,Midfielder,,,,False,wc2026_official_squad_corrected
+switzerland_zeki_amdouni,team_switzerland,Switzerland,Zeki Amdouni,zeki amdouni,Burnley,burnley,Forward,,,,False,wc2026_official_squad_corrected
+tunisia_alaa_ghram,team_tunisia,Tunisia,Alaa Ghram,alaa ghram,Shakhtar Donetsk,shakhtar donetsk,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_ali_abdi,team_tunisia,Tunisia,Ali Abdi,ali abdi,Nice,nice,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_amanallah_memmiche,team_tunisia,Tunisia,Amanallah Memmiche,amanallah memmiche,Espérance de Tunis,esperance de tunis,Goalkeeper,,,,False,wc2026_official_squad_corrected
+tunisia_aymen_dahmen,team_tunisia,Tunisia,Aymen Dahmen,aymen dahmen,CS Sfaxien,cs sfaxien,Goalkeeper,,,,False,wc2026_official_squad_corrected
+tunisia_aissa_laidouni,team_tunisia,Tunisia,Aïssa Laïdouni,aissa laidouni,Al-Wakrah,al wakrah,Midfielder,,,,False,wc2026_official_squad_corrected
+tunisia_bechir_ben_said,team_tunisia,Tunisia,Bechir Ben Said,bechir ben said,US Monastir,us monastir,Goalkeeper,,,,False,wc2026_official_squad_corrected
+tunisia_dylan_bronn,team_tunisia,Tunisia,Dylan Bronn,dylan bronn,Servette,servette,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_elias_achouri,team_tunisia,Tunisia,Elias Achouri,elias achouri,Copenhagen,copenhagen,Forward,,,,False,wc2026_official_squad_corrected
+tunisia_elias_saad,team_tunisia,Tunisia,Elias Saad,elias saad,Hannover 96,hannover 96,Forward,,,,False,wc2026_official_squad_corrected
+tunisia_ellyes_skhiri,team_tunisia,Tunisia,Ellyes Skhiri,ellyes skhiri,Eintracht Frankfurt,eintracht frankfurt,Midfielder,,,,False,wc2026_official_squad_corrected
+tunisia_hamza_mathlouthi,team_tunisia,Tunisia,Hamza Mathlouthi,hamza mathlouthi,Zamalek SC,zamalek sc,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_hamza_rafia,team_tunisia,Tunisia,Hamza Rafia,hamza rafia,US Lecce,us lecce,Midfielder,,,,False,wc2026_official_squad_corrected
+tunisia_hannibal_mejbri,team_tunisia,Tunisia,Hannibal Mejbri,hannibal mejbri,Burnley,burnley,Midfielder,,,,False,wc2026_official_squad_corrected
+tunisia_haythem_jouini,team_tunisia,Tunisia,Haythem Jouini,haythem jouini,Stade Tunisien,stade tunisien,Forward,,,,False,wc2026_official_squad_corrected
+tunisia_issam_jebali,team_tunisia,Tunisia,Issam Jebali,issam jebali,Gamba Osaka,gamba osaka,Forward,,,,False,wc2026_official_squad_corrected
+tunisia_mohamed_ali_ben_romdhane,team_tunisia,Tunisia,Mohamed Ali Ben Romdhane,mohamed ali ben romdhane,Ferencvárosi TC,ferencvarosi tc,Midfielder,,,,False,wc2026_official_squad_corrected
+tunisia_montassar_talbi,team_tunisia,Tunisia,Montassar Talbi,montassar talbi,Lorient,lorient,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_nader_ghandri,team_tunisia,Tunisia,Nader Ghandri,nader ghandri,Akhmat Grozny,akhmat grozny,Midfielder,,,,False,wc2026_official_squad_corrected
+tunisia_oussama_haddadi,team_tunisia,Tunisia,Oussama Haddadi,oussama haddadi,SpVgg Greuther Fürth,spvgg greuther furth,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_samy_chouchane,team_tunisia,Tunisia,Samy Chouchane,samy chouchane,Brighton & Hove Albion,brighton hove albion,Midfielder,,,,False,wc2026_official_squad_corrected
+tunisia_sayfallah_ltaief,team_tunisia,Tunisia,Sayfallah Ltaief,sayfallah ltaief,FC Twente,fc twente,Forward,,,,False,wc2026_official_squad_corrected
+tunisia_seifeddine_jaziri,team_tunisia,Tunisia,Seifeddine Jaziri,seifeddine jaziri,Zamalek SC,zamalek sc,Forward,,,,False,wc2026_official_squad_corrected
+tunisia_wajdi_kechrida,team_tunisia,Tunisia,Wajdi Kechrida,wajdi kechrida,Atromitos FC,atromitos fc,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_yan_valery,team_tunisia,Tunisia,Yan Valery,yan valery,Young Boys,young boys,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_yassine_meriah,team_tunisia,Tunisia,Yassine Meriah,yassine meriah,Espérance de Tunis,esperance de tunis,Defender,,,,False,wc2026_official_squad_corrected
+tunisia_youssef_msakni,team_tunisia,Tunisia,Youssef Msakni,youssef msakni,Al-Arabi SC,al arabi sc,Forward,,,,False,wc2026_official_squad_corrected
+turkey_abdulkerim_bardakc,team_turkey,Turkey,Abdülkerim Bardakcı,abdulkerim bardakc,Galatasaray,galatasaray,Defender,,,,False,wc2026_official_squad_corrected
+turkey_ahmetcan_kaplan,team_turkey,Turkey,Ahmetcan Kaplan,ahmetcan kaplan,NEC Nijmegen,nec nijmegen,Defender,,,,False,wc2026_official_squad_corrected
+turkey_altay_bay_nd_r,team_turkey,Turkey,Altay Bayındır,altay bay nd r,Manchester United,manchester united,Goalkeeper,,,,False,wc2026_official_squad_corrected
+turkey_arda_guler,team_turkey,Turkey,Arda Güler,arda guler,Real Madrid,real madrid,Midfielder,,,,False,wc2026_official_squad_corrected
+turkey_bar_s_alper_y_lmaz,team_turkey,Turkey,Barış Alper Yılmaz,bar s alper y lmaz,Galatasaray,galatasaray,Forward,,,,False,wc2026_official_squad_corrected
+turkey_bertug_y_ld_r_m,team_turkey,Turkey,Bertuğ Yıldırım,bertug y ld r m,Getafe CF,getafe cf,Forward,,,,False,wc2026_official_squad_corrected
+turkey_caglar_soyuncu,team_turkey,Turkey,Caglar Söyüncü,caglar soyuncu,Fenerbahçe,fenerbahce,Defender,,,,False,wc2026_official_squad_corrected
+turkey_can_uzun,team_turkey,Turkey,Can Uzun,can uzun,Eintracht Fráncfort,eintracht francfort,Midfielder,,,,False,wc2026_official_squad_corrected
+turkey_enes_unal,team_turkey,Turkey,Enes Ünal,enes unal,AFC Bournemouth,afc bournemouth,Forward,,,,False,wc2026_official_squad_corrected
+turkey_ferdi_kad_oglu,team_turkey,Turkey,Ferdi Kadıoğlu,ferdi kad oglu,Brighton & Hove Albion,brighton hove albion,Defender,,,,False,wc2026_official_squad_corrected
+turkey_hakan_calhanoglu,team_turkey,Turkey,Hakan Çalhanoglu,hakan calhanoglu,Inter de Milán,inter de milan,Midfielder,,,,False,wc2026_official_squad_corrected
+turkey_ismail_yuksek,team_turkey,Turkey,Ismail Yüksek,ismail yuksek,Fenerbahçe,fenerbahce,Midfielder,,,,False,wc2026_official_squad_corrected
+turkey_kaan_ayhan,team_turkey,Turkey,Kaan Ayhan,kaan ayhan,Galatasaray,galatasaray,Defender,,,,False,wc2026_official_squad_corrected
+turkey_kenan_y_ld_z,team_turkey,Turkey,Kenan Yıldız,kenan y ld z,Juventus,juventus,Forward,,,,False,wc2026_official_squad_corrected
+turkey_kerem_akturkoglu,team_turkey,Turkey,Kerem Aktürkoğlu,kerem akturkoglu,SL Benfica,sl benfica,Forward,,,,False,wc2026_official_squad_corrected
+turkey_merih_demiral,team_turkey,Turkey,Merih Demiral,merih demiral,Al-Ahli Saudi,al ahli saudi,Defender,,,,False,wc2026_official_squad_corrected
+turkey_mert_gunok,team_turkey,Turkey,Mert Günok,mert gunok,Fenerbahçe,fenerbahce,Goalkeeper,,,,False,wc2026_official_squad_corrected
+turkey_mert_muldur,team_turkey,Turkey,Mert Müldür,mert muldur,Fenerbahçe,fenerbahce,Defender,,,,False,wc2026_official_squad_corrected
+turkey_okay_yokuslu,team_turkey,Turkey,Okay Yokuşlu,okay yokuslu,Trabzonspor,trabzonspor,Midfielder,,,,False,wc2026_official_squad_corrected
+turkey_orkun_kokcu,team_turkey,Turkey,Orkun Kökçü,orkun kokcu,Beşiktaş,besiktas,Midfielder,,,,False,wc2026_official_squad_corrected
+turkey_salih_ozcan,team_turkey,Turkey,Salih Özcan,salih ozcan,Borussia Dortmund,borussia dortmund,Midfielder,,,,False,wc2026_official_squad_corrected
+turkey_semih_k_l_csoy,team_turkey,Turkey,Semih Kılıçsoy,semih k l csoy,Beşiktaş,besiktas,Forward,,,,False,wc2026_official_squad_corrected
+turkey_ugurcan_cak_r,team_turkey,Turkey,Uğurcan Çakır,ugurcan cak r,Trabzonspor,trabzonspor,Goalkeeper,,,,False,wc2026_official_squad_corrected
+turkey_yunus_akgun,team_turkey,Turkey,Yunus Akgün,yunus akgun,Galatasaray,galatasaray,Forward,,,,False,wc2026_official_squad_corrected
+turkey_zeki_celik,team_turkey,Turkey,Zeki Çelik,zeki celik,AS Roma,as roma,Defender,,,,False,wc2026_official_squad_corrected
+turkey_irfan_can_kahveci,team_turkey,Turkey,İrfan Can Kahveci,irfan can kahveci,Fenerbahçe,fenerbahce,Midfielder,,,,False,wc2026_official_squad_corrected
+united_states_aidan_morris,team_united_states,United States,Aidan Morris,aidan morris,Middlesbrough FC,middlesbrough fc,Midfielder,,,,False,wc2026_official_squad_corrected
+united_states_antonee_robinson,team_united_states,United States,Antonee Robinson,antonee robinson,Fulham,fulham,Defender,,,,False,wc2026_official_squad_corrected
+united_states_brenden_aaronson,team_united_states,United States,Brenden Aaronson,brenden aaronson,Leeds United,leeds united,Midfielder,,,,False,wc2026_official_squad_corrected
+united_states_cameron_carter_vickers,team_united_states,United States,Cameron Carter-Vickers,cameron carter vickers,Celtic FC,celtic fc,Defender,,,,False,wc2026_official_squad_corrected
+united_states_chris_richards,team_united_states,United States,Chris Richards,chris richards,Crystal Palace,crystal palace,Defender,,,,False,wc2026_official_squad_corrected
+united_states_christian_pulisic,team_united_states,United States,Christian Pulisic,christian pulisic,AC Milan,ac milan,Forward,,,,False,wc2026_official_squad_corrected
+united_states_ethan_horvath,team_united_states,United States,Ethan Horvath,ethan horvath,Cardiff City,cardiff city,Goalkeeper,,,,False,wc2026_official_squad_corrected
+united_states_folarin_balogun,team_united_states,United States,Folarin Balogun,folarin balogun,AS Monaco,as monaco,Forward,,,,False,wc2026_official_squad_corrected
+united_states_giovanni_reyna,team_united_states,United States,Giovanni Reyna,giovanni reyna,Borussia Dortmund,borussia dortmund,Midfielder,,,,False,wc2026_official_squad_corrected
+united_states_haji_wright,team_united_states,United States,Haji Wright,haji wright,Coventry City,coventry city,Forward,,,,False,wc2026_official_squad_corrected
+united_states_joe_scally,team_united_states,United States,Joe Scally,joe scally,Borussia Mönchengladbach,borussia monchengladbach,Defender,,,,False,wc2026_official_squad_corrected
+united_states_johnny_cardoso,team_united_states,United States,Johnny Cardoso,johnny cardoso,Real Betis,real betis,Midfielder,,,,False,wc2026_official_squad_corrected
+united_states_josh_sargent,team_united_states,United States,Josh Sargent,josh sargent,Norwich City,norwich city,Forward,,,,False,wc2026_official_squad_corrected
+united_states_kevin_paredes,team_united_states,United States,Kevin Paredes,kevin paredes,VfL Wolfsburg,vfl wolfsburg,Forward,,,,False,wc2026_official_squad_corrected
+united_states_malik_tillman,team_united_states,United States,Malik Tillman,malik tillman,Bayer Leverkusen,bayer leverkusen,Midfielder,,,,False,wc2026_official_squad_corrected
+united_states_mark_mckenzie,team_united_states,United States,Mark McKenzie,mark mckenzie,Toulouse,toulouse,Defender,,,,False,wc2026_official_squad_corrected
+united_states_matt_turner,team_united_states,United States,Matt Turner,matt turner,New England Revolution,new england revolution,Goalkeeper,,,,False,wc2026_official_squad_corrected
+united_states_miles_robinson,team_united_states,United States,Miles Robinson,miles robinson,FC Cincinnati,fc cincinnati,Defender,,,,False,wc2026_official_squad_corrected
+united_states_patrick_schulte,team_united_states,United States,Patrick Schulte,patrick schulte,Columbus Crew,columbus crew,Goalkeeper,,,,False,wc2026_official_squad_corrected
+united_states_ricardo_pepi,team_united_states,United States,Ricardo Pepi,ricardo pepi,PSV Eindhoven,psv eindhoven,Forward,,,,False,wc2026_official_squad_corrected
+united_states_sergino_dest,team_united_states,United States,Sergiño Dest,sergino dest,PSV,psv,Defender,,,,False,wc2026_official_squad_corrected
+united_states_tim_ream,team_united_states,United States,Tim Ream,tim ream,Charlotte FC,charlotte fc,Defender,,,,False,wc2026_official_squad_corrected
+united_states_timothy_weah,team_united_states,United States,Timothy Weah,timothy weah,Juventus,juventus,Forward,,,,False,wc2026_official_squad_corrected
+united_states_tyler_adams,team_united_states,United States,Tyler Adams,tyler adams,AFC Bournemouth,afc bournemouth,Midfielder,,,,False,wc2026_official_squad_corrected
+united_states_weston_mckennie,team_united_states,United States,Weston McKennie,weston mckennie,Juventus,juventus,Midfielder,,,,False,wc2026_official_squad_corrected
+united_states_yunus_musah,team_united_states,United States,Yunus Musah,yunus musah,AC Milan,ac milan,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_agustin_canobbio,team_uruguay,Uruguay,Agustín Canobbio,agustin canobbio,Fluminense,fluminense,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_brian_rodriguez,team_uruguay,Uruguay,Brian Rodríguez,brian rodriguez,América,america,Forward,,,,False,wc2026_official_squad_corrected
+uruguay_darwin_nunez,team_uruguay,Uruguay,Darwin Núñez,darwin nunez,Al-Hilal,al hilal,Forward,,,,False,wc2026_official_squad_corrected
+uruguay_emiliano_martinez,team_uruguay,Uruguay,Emiliano Martínez,emiliano martinez,Palmeiras,palmeiras,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_facundo_pellistri,team_uruguay,Uruguay,Facundo Pellistri,facundo pellistri,Panathinaikos,panathinaikos,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_federico_valverde,team_uruguay,Uruguay,Federico Valverde,federico valverde,Real Madrid,real madrid,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_federico_vinas,team_uruguay,Uruguay,Federico Viñas,federico vinas,Real Oviedo,real oviedo,Forward,,,,False,wc2026_official_squad_corrected
+uruguay_fernando_muslera,team_uruguay,Uruguay,Fernando Muslera,fernando muslera,Estudiantes de La Plata,estudiantes de la plata,Goalkeeper,,,,False,wc2026_official_squad_corrected
+uruguay_giorgian_de_arrascaeta,team_uruguay,Uruguay,Giorgian De Arrascaeta,giorgian de arrascaeta,Flamengo,flamengo,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_guillermo_varela,team_uruguay,Uruguay,Guillermo Varela,guillermo varela,Flamengo,flamengo,Defender,,,,False,wc2026_official_squad_corrected
+uruguay_joaquin_piquerez,team_uruguay,Uruguay,Joaquín Piquerez,joaquin piquerez,Palmeiras,palmeiras,Defender,,,,False,wc2026_official_squad_corrected
+uruguay_jose_maria_gimenez,team_uruguay,Uruguay,José María Giménez,jose maria gimenez,Atlético Madrid,atletico madrid,Defender,,,,False,wc2026_official_squad_corrected
+uruguay_juan_manuel_sanabria,team_uruguay,Uruguay,Juan Manuel Sanabria,juan manuel sanabria,Real Salt Lake,real salt lake,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_manuel_ugarte,team_uruguay,Uruguay,Manuel Ugarte,manuel ugarte,Manchester United,manchester united,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_mathias_olivera,team_uruguay,Uruguay,Mathías Olivera,mathias olivera,Napoli,napoli,Defender,,,,False,wc2026_official_squad_corrected
+uruguay_matias_vina,team_uruguay,Uruguay,Matías Viña,matias vina,River Plate,river plate,Defender,,,,False,wc2026_official_squad_corrected
+uruguay_maximiliano_araujo,team_uruguay,Uruguay,Maximiliano Araújo,maximiliano araujo,Sporting de Lisboa,sporting de lisboa,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_nicolas_de_la_cruz,team_uruguay,Uruguay,Nicolás De La Cruz,nicolas de la cruz,Flamengo,flamengo,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_rodrigo_aguirre,team_uruguay,Uruguay,Rodrigo Aguirre,rodrigo aguirre,Tigres,tigres,Forward,,,,False,wc2026_official_squad_corrected
+uruguay_rodrigo_bentancur,team_uruguay,Uruguay,Rodrigo Bentancur,rodrigo bentancur,Tottenham Hotspur,tottenham hotspur,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_rodrigo_zalazar,team_uruguay,Uruguay,Rodrigo Zalazar,rodrigo zalazar,Sporting de Lisboa,sporting de lisboa,Midfielder,,,,False,wc2026_official_squad_corrected
+uruguay_ronald_araujo,team_uruguay,Uruguay,Ronald Araújo,ronald araujo,Barcelona,barcelona,Defender,,,,False,wc2026_official_squad_corrected
+uruguay_santiago_bueno,team_uruguay,Uruguay,Santiago Bueno,santiago bueno,Wolverhampton Wanderers,wolverhampton wanderers,Defender,,,,False,wc2026_official_squad_corrected
+uruguay_santiago_mele,team_uruguay,Uruguay,Santiago Mele,santiago mele,Monterrey,monterrey,Goalkeeper,,,,False,wc2026_official_squad_corrected
+uruguay_sebastian_caceres,team_uruguay,Uruguay,Sebastián Cáceres,sebastian caceres,Club América,club america,Defender,,,,False,wc2026_official_squad_corrected
+uruguay_sergio_rochet,team_uruguay,Uruguay,Sergio Rochet,sergio rochet,Internacional de Porto Alegre,internacional de porto alegre,Goalkeeper,,,,False,wc2026_official_squad_corrected
+uzbekistan_abbosbek_fayzullaev,team_uzbekistan,Uzbekistan,Abbosbek Fayzullaev,abbosbek fayzullaev,CSKA Moscú,cska moscu,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_abdukodir_khusanov,team_uzbekistan,Uzbekistan,Abdukodir Khusanov,abdukodir khusanov,Manchester City,manchester city,Defender,,,,False,wc2026_official_squad_corrected
+uzbekistan_abdulla_abdullaev,team_uzbekistan,Uzbekistan,Abdulla Abdullaev,abdulla abdullaev,Dibba Al Fujairah,dibba al fujairah,Defender,,,,False,wc2026_official_squad_corrected
+uzbekistan_abduvohid_nematov,team_uzbekistan,Uzbekistan,Abduvohid Nematov,abduvohid nematov,Nasaf,nasaf,Goalkeeper,,,,False,wc2026_official_squad_corrected
+uzbekistan_azizbek_amonov,team_uzbekistan,Uzbekistan,Azizbek Amonov,azizbek amonov,Buxoro,buxoro,Forward,,,,False,wc2026_official_squad_corrected
+uzbekistan_azizbek_turgunboev,team_uzbekistan,Uzbekistan,Azizbek Turgunboev,azizbek turgunboev,Sivasspor,sivasspor,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_bobur_abdikholikov,team_uzbekistan,Uzbekistan,Bobur Abdikholikov,bobur abdikholikov,Nasaf,nasaf,Forward,,,,False,wc2026_official_squad_corrected
+uzbekistan_botirali_ergashev,team_uzbekistan,Uzbekistan,Botirali Ergashev,botirali ergashev,AGMK,agmk,Goalkeeper,,,,False,wc2026_official_squad_corrected
+uzbekistan_diyor_kholmatov,team_uzbekistan,Uzbekistan,Diyor Kholmatov,diyor kholmatov,Pakhtakor,pakhtakor,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_eldor_shomurodov,team_uzbekistan,Uzbekistan,Eldor Shomurodov,eldor shomurodov,Istanbul Basaksehir,istanbul basaksehir,Forward,,,,False,wc2026_official_squad_corrected
+uzbekistan_farrukh_sayfiev,team_uzbekistan,Uzbekistan,Farrukh Sayfiev,farrukh sayfiev,Neftchi,neftchi,Defender,,,,False,wc2026_official_squad_corrected
+uzbekistan_husayin_norchaev,team_uzbekistan,Uzbekistan,Husayin Norchaev,husayin norchaev,Neftchi,neftchi,Forward,,,,False,wc2026_official_squad_corrected
+uzbekistan_husniddin_aliqulov,team_uzbekistan,Uzbekistan,Husniddin Aliqulov,husniddin aliqulov,Çaykur Rizespor,caykur rizespor,Defender,,,,False,wc2026_official_squad_corrected
+uzbekistan_igor_sergeev,team_uzbekistan,Uzbekistan,Igor Sergeev,igor sergeev,Persepolis,persepolis,Forward,,,,False,wc2026_official_squad_corrected
+uzbekistan_jaloliddin_masharipov,team_uzbekistan,Uzbekistan,Jaloliddin Masharipov,jaloliddin masharipov,Esteghlal,esteghlal,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_jamshid_iskanderov,team_uzbekistan,Uzbekistan,Jamshid Iskanderov,jamshid iskanderov,Neftchi,neftchi,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_jasurbek_yakhshiboev,team_uzbekistan,Uzbekistan,Jasurbek Yakhshiboev,jasurbek yakhshiboev,Ordabasy,ordabasy,Forward,,,,False,wc2026_official_squad_corrected
+uzbekistan_khojimat_erkinov,team_uzbekistan,Uzbekistan,Khojimat Erkinov,khojimat erkinov,Al Wahda,al wahda,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_odiljon_hamrobekov,team_uzbekistan,Uzbekistan,Odiljon Hamrobekov,odiljon hamrobekov,Navbahor,navbahor,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_oston_urunov,team_uzbekistan,Uzbekistan,Oston Urunov,oston urunov,Persepolis,persepolis,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_otabek_shukurov,team_uzbekistan,Uzbekistan,Otabek Shukurov,otabek shukurov,Baniyas,baniyas,Midfielder,,,,False,wc2026_official_squad_corrected
+uzbekistan_rustam_ashurmatov,team_uzbekistan,Uzbekistan,Rustam Ashurmatov,rustam ashurmatov,Rubin Kazán,rubin kazan,Defender,,,,False,wc2026_official_squad_corrected
+uzbekistan_sherzod_nasrullaev,team_uzbekistan,Uzbekistan,Sherzod Nasrullaev,sherzod nasrullaev,Nasaf,nasaf,Defender,,,,False,wc2026_official_squad_corrected
+uzbekistan_umar_eshmurodov,team_uzbekistan,Uzbekistan,Umar Eshmurodov,umar eshmurodov,Selangor FC,selangor fc,Defender,,,,False,wc2026_official_squad_corrected
+uzbekistan_utkir_yusupov,team_uzbekistan,Uzbekistan,Utkir Yusupov,utkir yusupov,Navbahor,navbahor,Goalkeeper,,,,False,wc2026_official_squad_corrected
+uzbekistan_zafarmurod_abdurakhmatov,team_uzbekistan,Uzbekistan,Zafarmurod Abdurakhmatov,zafarmurod abdurakhmatov,Nasaf,nasaf,Defender,,,,False,wc2026_official_squad_corrected

@@ -24,6 +24,13 @@
 !/data/processed/players_wc2026.csv
 !/data/processed/teams_wc2026.csv
 !/data/processed/squad_summary_wc2026.csv
+!/data/processed/players_master.csv
+!/data/processed/player_source_matches.csv
+!/data/processed/transfermarkt_player_profiles.csv
+!/data/processed/transfermarkt_match_review.csv
+
+# Odds actuales/históricas — snapshots regenerables con API y timestamp
+/data/processed/odds_current*.csv
 
 # Histórico y StatsBomb — generados por data_collector.py
 /data/results.csv
@@ -38,8 +45,12 @@
 !/outputs/wc2026_poisson_predictions.csv
 !/outputs/wc2026_poisson_predictions_with_odds.csv
 !/outputs/model_comparison.csv
+!/outputs/wc2026_ensemble_predictions.csv
 !/outputs/xgb_baseline_metrics.json
 !/outputs/poisson_metrics.json
+
+# Diagnósticos temporales de runs parciales
+/outputs/*_check/
 
 # Python
 __pycache__/
