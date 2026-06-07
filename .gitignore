@@ -6,6 +6,7 @@
 !/data/raw/group_stage_wc2026.csv
 !/data/raw/knockout_wc2026.csv
 !/data/raw/squads_wc2026_final_official_corrected.csv
+!/data/raw/squads_wc2026_fifa_official.csv
 
 # Transfermarkt — el gordo no cabe en GitHub (157MB)
 /data/transfermarkt/player_performances.csv
@@ -28,6 +29,8 @@
 !/data/processed/player_source_matches.csv
 !/data/processed/transfermarkt_player_profiles.csv
 !/data/processed/transfermarkt_match_review.csv
+!/data/processed/fifa_squad_diff.csv
+!/data/processed/fifa_squad_summary.csv
 
 # Odds actuales/históricas — snapshots regenerables con API y timestamp
 /data/processed/odds_current*.csv

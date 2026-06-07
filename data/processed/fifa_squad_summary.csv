@@ -1,0 +1,7 @@
+issue,rows
+club_mismatch,856
+left_only,309
+right_only,309
+club_and_position_mismatch,72
+match,10
+position_mismatch,1

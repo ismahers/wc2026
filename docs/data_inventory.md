@@ -16,6 +16,8 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `data/raw/group_stage_wc2026.csv` | Calendario de fase de grupos. |
 | `data/raw/knockout_wc2026.csv` | Slots de eliminatorias. |
 | `data/raw/squads_wc2026_final_official_corrected.csv` | Convocatorias oficiales corregidas. Es fuente base, no se sobreescribe. |
+| `data/raw/squads_wc2026_fifa_official.csv` | Convocatorias extraidas del PDF oficial de FIFA. Candidata a sustituir la fuente base tras revision. |
+| `docs/SquadLists-English.pdf` | PDF oficial de FIFA usado como fuente auditable. |
 
 ### Identidad y agregados de jugadores
 
@@ -32,6 +34,8 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `data/processed/team_ratings_wc2026.csv` | `python -m src.data.team_rating_wc2026` | Rating compuesto para WC2026. |
 | `data/processed/referees_with_stats.csv` | `src.features.referee_rates` / carga manual | Tasas de arbitros usadas por features. |
 | `data/processed/name_coverage.csv` | `python scripts/check_name_coverage.py` | Reporte de cobertura de nombres canonicos. |
+| `data/processed/fifa_squad_diff.csv` | `python -m src.data.fifa_squads_pdf` | Diferencias entre el CSV actual y el PDF FIFA. |
+| `data/processed/fifa_squad_summary.csv` | `python -m src.data.fifa_squads_pdf` | Resumen por tipo de diferencia. |
 
 ### Outputs versionados
 
@@ -70,6 +74,7 @@ Orden recomendado cuando cambian datos base:
 
 ```bash
 python -m src.data.player_master
+python -m src.data.fifa_squads_pdf
 python -m src.data.match_transfermarkt
 python -m src.data.normalize_squads
 python -m src.data.elo_loader

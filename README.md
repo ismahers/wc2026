@@ -13,7 +13,8 @@ wc2026/
 │   │   ├── base_camps_wc2026.csv    # Campamentos base de las 48 selecciones
 │   │   ├── group_stage_wc2026.csv   # 72 partidos de fase de grupos
 │   │   ├── knockout_wc2026.csv      # 32 partidos eliminatorios
-│   │   └── squads_wc2026_final_official_corrected.csv  # Convocatorias oficiales
+│   │   ├── squads_wc2026_final_official_corrected.csv  # Convocatorias oficiales corregidas
+│   │   └── squads_wc2026_fifa_official.csv  # Extraído del PDF oficial FIFA
 │   ├── transfermarkt/               # Datos de jugadores (descargar de Kaggle)
 │   │   ├── player_profiles.csv      # Perfiles: nombre, posición, nacionalidad
 │   │   ├── player_latest_market_value.csv  # Valor de mercado más reciente
@@ -82,6 +83,7 @@ pip install -r requirements.txt
 python data_collector.py
 
 # 2. Construir identidad de jugadores, normalizar convocatorias y calcular Elo
+python -m src.data.fifa_squads_pdf
 python -m src.data.player_master
 python -m src.data.match_transfermarkt
 python -m src.data.normalize_squads
