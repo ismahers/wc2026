@@ -563,6 +563,20 @@ def unify_datasets(
         df = add_canonical_columns(df, ["home_team", "away_team"], suffix="_merge")
         sb_sub = add_canonical_columns(sb_sub, ["home_team", "away_team"], suffix="_merge")
 
+        # StatsBomb usa fecha UTC en algunas competiciones y el histórico base
+        # suele usar fecha local. En Copa America 2024 eso desplaza muchos
+        # partidos un día y el merge exacto pierde córners/tarjetas. Creamos
+        # candidatos exacto, -1 y +1 día, manteniendo siempre el exacto primero.
+        df["date_merge"] = df["date"].dt.normalize()
+        sb_sub["statsbomb_date"] = sb_sub["date"].dt.normalize()
+        sb_candidates = []
+        for priority, offset_days in enumerate((0, -1, 1)):
+            candidate = sb_sub.copy()
+            candidate["date_merge"] = candidate["statsbomb_date"] + pd.to_timedelta(offset_days, unit="D")
+            candidate["date_merge_priority"] = priority
+            sb_candidates.append(candidate)
+        sb_sub = pd.concat(sb_candidates, ignore_index=True, sort=False)
+
         swap_cols = [
             ("home_team_merge", "away_team_merge"),
             ("corners_home", "corners_away"),
@@ -578,13 +592,20 @@ def unify_datasets(
                 sb_swapped[[left, right]] = sb_swapped[[right, left]].to_numpy()
 
         sb_merge = pd.concat([sb_sub, sb_swapped], ignore_index=True, sort=False)
-        sb_merge = sb_merge.drop_duplicates(["date", "home_team_merge", "away_team_merge"], keep="first")
+        sb_merge = sb_merge.sort_values("date_merge_priority")
+        sb_merge = sb_merge.drop_duplicates(["date_merge", "home_team_merge", "away_team_merge"], keep="first")
         df = df.merge(
-            sb_merge.drop(columns=["home_team", "away_team"]),
-            on=["date", "home_team_merge", "away_team_merge"],
+            sb_merge.drop(columns=["date", "home_team", "away_team"]),
+            on=["date_merge", "home_team_merge", "away_team_merge"],
             how="left",
         )
-        df = df.drop(columns=["home_team_merge", "away_team_merge"])
+        df = df.drop(
+            columns=[
+                "home_team_merge", "away_team_merge", "date_merge",
+                "statsbomb_date", "date_merge_priority",
+            ],
+            errors="ignore",
+        )
         n_matched = df["xg_home"].notna().sum()
         log.info(f"  → StatsBomb enriqueció {n_matched} partidos con stats avanzadas")
 

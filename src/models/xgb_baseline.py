@@ -126,9 +126,10 @@ EXTRA_FEATURES = [
 
 # Córners: añadidas features de ataque que ya generamos y antes no usábamos
 CORNERS_FEATURES = [
-    "home_corners_avg_all", "away_corners_avg_all", "corners_avg_all_sum",   # ← NUEVAS
-    "home_form_corners_for_10", "away_form_corners_for_10",
-    "diff_form_corners_for_10",
+    "home_corners_avg_all", "away_corners_avg_all", "corners_avg_all_sum",
+    # Las rolling features de corners tienen 0% de cobertura en WC2026.
+    # Usar la media histórica por selección evita que el modelo aprenda una
+    # señal que desaparece justo en predicción.
     "home_attack_norm", "away_attack_norm", "attack_diff",
     "home_goals_per_90", "away_goals_per_90", "goals_per_90_diff",
     "elo_diff", "rating_diff",
@@ -283,6 +284,7 @@ class MarketModel:
         self.model: Optional[xgb.XGBClassifier | xgb.XGBRegressor] = None
         self.label_encoder: Optional[LabelEncoder] = None
         self.metrics: dict = {}
+        self.feature_fill_values: dict[str, float] = {}
 
     def _select_features(self, df: pd.DataFrame) -> list[str]:
         market_key = self.config.target_col.replace("target_", "")
@@ -317,8 +319,16 @@ class MarketModel:
 
         X = df_clean[self.feature_cols].copy()
         for col in X.columns:
+            X[col] = pd.to_numeric(X[col], errors="coerce")
+
+        self.feature_fill_values = {}
+        for col in X.columns:
+            fill_value = X[col].median()
+            if pd.isna(fill_value):
+                fill_value = 0.0
+            self.feature_fill_values[col] = float(fill_value)
             if X[col].isna().any():
-                X[col] = X[col].fillna(X[col].median())
+                X[col] = X[col].fillna(fill_value)
 
         y = df_clean[target].copy()
 
@@ -328,6 +338,17 @@ class MarketModel:
             y = self.label_encoder.transform(y.values)
 
         return X.values.astype(np.float32), np.array(y, dtype=np.float32), self.feature_cols
+
+    def _build_feature_matrix(self, df: pd.DataFrame) -> np.ndarray:
+        """Build a numeric matrix using training-time feature order and medians."""
+        X = pd.DataFrame(index=df.index)
+        for col in self.feature_cols:
+            if col in df.columns:
+                values = pd.to_numeric(df[col], errors="coerce")
+            else:
+                values = pd.Series(np.nan, index=df.index)
+            X[col] = values.fillna(self.feature_fill_values.get(col, 0.0))
+        return X.values.astype(np.float32)
 
     def fit(self, df_train: pd.DataFrame) -> "MarketModel":
         log.info("─── %s ───", self.config.name)
@@ -367,13 +388,7 @@ class MarketModel:
             log.warning("  Sin datos de test con target '%s'", target)
             return {}
 
-        X = df_clean[self.feature_cols].copy()
-        for col in X.columns:
-            if col not in self.feature_cols:
-                X[col] = 0
-            if X[col].isna().any():
-                X[col] = X[col].fillna(X[col].median())
-        X = X.values.astype(np.float32)
+        X = self._build_feature_matrix(df_clean)
 
         y_true = df_clean[target].values
 
@@ -431,11 +446,7 @@ class MarketModel:
         return metrics
 
     def predict_proba(self, df: pd.DataFrame) -> np.ndarray:
-        X = df[self.feature_cols].copy()
-        for col in X.columns:
-            if X[col].isna().any():
-                X[col] = X[col].fillna(X[col].median())
-        X = X.values.astype(np.float32)
+        X = self._build_feature_matrix(df)
 
         if self.config.task in ("multiclass", "binary"):
             return self.model.predict_proba(X)
@@ -712,4 +723,3 @@ if __name__ == "__main__":
             print(predictions.head(10).to_string())
     else:
         print(f"\n{wc_path} no encontrado — omitiendo predicciones WC2026")
-        
