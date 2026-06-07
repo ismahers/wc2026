@@ -185,6 +185,8 @@ class PoissonGoalModel:
         self.model_away  = None
         self.feats_home: list[str] = []
         self.feats_away: list[str] = []
+        self.fill_home: dict[str, float] = {}
+        self.fill_away: dict[str, float] = {}
 
     def _select_features(self, df: pd.DataFrame, candidates: list[str]) -> list[str]:
         """Selecciona features disponibles con al menos 10% de cobertura."""
@@ -207,16 +209,24 @@ class PoissonGoalModel:
             raise ValueError(f"Solo {len(clean)} muestras con target '{target}'")
 
         X = clean[feats].copy()
+        fill_values = {}
         for col in feats:
+            X[col] = pd.to_numeric(X[col], errors="coerce")
+            fill_value = X[col].median()
+            if pd.isna(fill_value):
+                fill_value = 0.0
+            fill_values[col] = float(fill_value)
             if X[col].isna().any():
-                X[col] = X[col].fillna(X[col].median())
+                X[col] = X[col].fillna(fill_value)
 
         y = clean[target].values.astype(np.float32)
-        return X.values.astype(np.float32), y, feats
+        return X.values.astype(np.float32), y, feats, fill_values
 
     def fit(self, df_train: pd.DataFrame) -> "PoissonGoalModel":
         log.info("Entrenando modelo Poisson — lambda_home...")
-        X_h, y_h, self.feats_home = self._prepare(df_train, "target_home_goals", HOME_ATTACK_FEATURES)
+        X_h, y_h, self.feats_home, self.fill_home = self._prepare(
+            df_train, "target_home_goals", HOME_ATTACK_FEATURES
+        )
         n_est = self.params.pop("n_estimators", 300)
         params = {k: v for k, v in self.params.items()}
 
@@ -225,7 +235,9 @@ class PoissonGoalModel:
         log.info("  ✓ lambda_home: %d muestras, %d features", len(X_h), len(self.feats_home))
 
         log.info("Entrenando modelo Poisson — lambda_away...")
-        X_a, y_a, self.feats_away = self._prepare(df_train, "target_away_goals", AWAY_ATTACK_FEATURES)
+        X_a, y_a, self.feats_away, self.fill_away = self._prepare(
+            df_train, "target_away_goals", AWAY_ATTACK_FEATURES
+        )
         self.model_away = xgb.XGBRegressor(n_estimators=n_est, **params)
         self.model_away.fit(X_a, y_a)
         log.info("  ✓ lambda_away: %d muestras, %d features", len(X_a), len(self.feats_away))
@@ -233,19 +245,25 @@ class PoissonGoalModel:
         self.params["n_estimators"] = n_est
         return self
 
+    @staticmethod
+    def _build_feature_matrix(df: pd.DataFrame, feats: list[str], fill_values: dict[str, float]) -> np.ndarray:
+        """Build a numeric matrix using training-time feature order and medians."""
+        X = pd.DataFrame(index=df.index)
+        for col in feats:
+            if col in df.columns:
+                values = pd.to_numeric(df[col], errors="coerce")
+            else:
+                values = pd.Series(np.nan, index=df.index)
+            X[col] = values.fillna(fill_values.get(col, 0.0))
+        return X.values.astype(np.float32)
+
     def predict_lambdas(self, df: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
         """Predice lambda_home y lambda_away para cada partido."""
-        X_h = df[self.feats_home].copy()
-        X_a = df[self.feats_away].copy()
-        for col in self.feats_home:
-            if X_h[col].isna().any():
-                X_h[col] = X_h[col].fillna(X_h[col].median())
-        for col in self.feats_away:
-            if X_a[col].isna().any():
-                X_a[col] = X_a[col].fillna(X_a[col].median())
+        X_h = self._build_feature_matrix(df, self.feats_home, self.fill_home)
+        X_a = self._build_feature_matrix(df, self.feats_away, self.fill_away)
 
-        lambda_home = np.clip(self.model_home.predict(X_h.values.astype(np.float32)), 0.01, 15)
-        lambda_away = np.clip(self.model_away.predict(X_a.values.astype(np.float32)), 0.01, 15)
+        lambda_home = np.clip(self.model_home.predict(X_h), 0.01, 15)
+        lambda_away = np.clip(self.model_away.predict(X_a), 0.01, 15)
         return lambda_home, lambda_away
 
     def predict_markets(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -509,4 +527,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-    
