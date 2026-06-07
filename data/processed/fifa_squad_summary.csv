@@ -1,7 +1,11 @@
 issue,rows
-club_mismatch,856
-left_only,309
-right_only,309
-club_and_position_mismatch,72
-match,10
-position_mismatch,1
+club_suffix_only,568
+left_only,183
+right_only,183
+accent_diff,163
+club_mismatch,158
+position_mismatch,60
+name_fuzzy_match,43
+name_format_diff,34
+club_and_position_mismatch,26
+name_partial,13

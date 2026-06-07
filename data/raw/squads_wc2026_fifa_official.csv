@@ -200,7 +200,7 @@ Canada,Dayne St. Clair,Inter Miami CF (USA),Goalkeeper
 Canada,Maxime Crepeau,Orlando City SC (USA),Goalkeeper
 Canada,Owen Goodman,Barnsley (ENG),Goalkeeper
 Canada,Ismael Kone,US Sassuolo (ITA),Midfielder
-Canada,Jacob Shaffelburg,LAFC (USA),Midfielder
+Canada,JacobJacob Everett Shaffelburg,LAFC (USA),Midfielder
 Canada,Jonathan Osorio,Toronto FC (CAN),Midfielder
 Canada,Liam Millar,Hull City FC (ENG),Midfielder
 Canada,Marcelo Flores,Tigres UANL (MEX),Midfielder
@@ -352,7 +352,7 @@ DR Congo,Gael Kakuta,AEL FC (GRE),Forward
 DR Congo,Meschack Elia,Alanyaspor (TUR),Forward
 DR Congo,Simon Banza,Al Jazira (UAE),Forward
 DR Congo,Yoane Wissa,Newcastle United FC (ENG),Forward
-DR Congo,Lionel Mp Asi,Le Havre AC (FRA),Goalkeeper
+DR Congo,Lionel Mpasi,Le Havre AC (FRA),Goalkeeper
 DR Congo,Matthieu Epolo,Standard Liège (BEL),Goalkeeper
 DR Congo,Timothy Fayulu,FC Noah (ARM),Goalkeeper
 DR Congo,Aaron Tshibola,Kilmarnock FC (SCO),Midfielder
@@ -389,10 +389,10 @@ Ecuador,Jordy Alcivar,Independiente Del Valle (ECU),Midfielder
 Ecuador,Kendry Paez,CA River Plate (ARG),Midfielder
 Ecuador,Moises Caicedo,Chelsea FC (ENG),Midfielder
 Ecuador,Pedro Vite,Pumas UNAM (MEX),Midfielder
+Egypt,ABDELMONEIMMohamed Abdelmoneim Elsayed M Mohamed,OGC Nice (FRA),Defender
 Egypt,Ahmed Fatouh,Zamalek SC (EGY),Defender
 Egypt,Hossam Abdelmaguid,Zamalek SC (EGY),Defender
 Egypt,Karim Hafez,Pyramids FC (EGY),Defender
-Egypt,Mohamed Abdelmoneim,OGC Nice (FRA),Defender
 Egypt,Mohamed Hany,Al Ahly FC (EGY),Defender
 Egypt,Ramy Rabia,Al Ain FC (UAE),Defender
 Egypt,Tarek Alaa,ZED FC (EGY),Defender
@@ -550,7 +550,7 @@ Iran,Arya Yousefi,Sepahan SC (IRN),Defender
 Iran,Danial Iri,Malavan Anzali FC (IRN),Defender
 Iran,Ehsan Hajisafi,Sepahan SC (IRN),Defender
 Iran,Hossein Kanani,Persepolis FC (IRN),Defender
-Iran,Milad Mohamm Adi,Persepolis FC (IRN),Defender
+Iran,Milad Mohammadi,Persepolis FC (IRN),Defender
 Iran,Ramin Rezaeian,Foolad Khuzestan FC (IRN),Defender
 Iran,Saleh Hardani,Esteghlal Tehran FC (IRN),Defender
 Iran,Shoja Khalilzadeh,Tractor Sazi Tabriz FC (IRN),Defender
@@ -591,7 +591,7 @@ Iraq,Ahmed Basil,Al Shorta SC (IRQ),Goalkeeper
 Iraq,Fahad Talib,Al Talaba SC (IRQ),Goalkeeper
 Iraq,Jalal Hassan,Al Zawra'a SC (IRQ),Goalkeeper
 Iraq,Aimar Sher,Sarpsborg 08 FF (NOR),Midfielder
-Iraq,Amir Alamm Ari,KS Cracovia (POL),Midfielder
+Iraq,Amir Alammari,KS Cracovia (POL),Midfielder
 Iraq,Ibrahim Bayesh,Al Dhafra SCC (UAE),Midfielder
 Iraq,Kevin Yakob,Aarhus GF (DEN),Midfielder
 Iraq,Youssef Amyn,AEK Larnaca FC (CYP),Midfielder
@@ -653,8 +653,8 @@ Jordan,Abdallah Nasib,Al Zawra'a SC (IRQ),Defender
 Jordan,Anas Badawi,Al Faisaly SC (JOR),Defender
 Jordan,Ehsan Haddad,Al Hussein SC (JOR),Defender
 Jordan,Husam Abudahab,Al Faisaly SC (JOR),Defender
-Jordan,Mohamm Ad Abualnadi,Selangor FC (MAS),Defender
-Jordan,Mohamm Ad Abuhasheesh,Al Karma SC (IRQ),Defender
+Jordan,Mohammad Abualnadi,Selangor FC (MAS),Defender
+Jordan,Mohammad Abuhasheesh,Al Karma SC (IRQ),Defender
 Jordan,Saed Alrosan,Al Hussein SC (JOR),Defender
 Jordan,Saleem Obaid,Al Hussein SC (JOR),Defender
 Jordan,Yazan Alarab,FC Seoul (KOR),Defender
@@ -662,7 +662,7 @@ Jordan,Ali Azaizeh,Al Shabab FC (KSA),Forward
 Jordan,Ali Olwan,Al Sailiya SC (QAT),Forward
 Jordan,Ibrahim Sabra,NK Lokomotiva Zagreb (CRO),Forward
 Jordan,Mahmoud Almardi,Al Hussein SC (JOR),Forward
-Jordan,Mohamm Ad Abuzraiq,Raja Casablanca (MAR),Forward
+Jordan,Mohammad Abuzraiq,Raja Casablanca (MAR),Forward
 Jordan,Mousa Altamari,Stade Rennais FC (FRA),Forward
 Jordan,Odeh Fakhoury,Pyramids FC (EGY),Forward
 Jordan,Abdallah Alfakhori,Al Wahdat SC (JOR),Goalkeeper
@@ -670,7 +670,7 @@ Jordan,Nour Baniateyah,Al Faisaly SC (JOR),Goalkeeper
 Jordan,Yazeed Abulaila,Al Hussein SC (JOR),Goalkeeper
 Jordan,Amer Jamous,Al Zawra'a SC (IRQ),Midfielder
 Jordan,Ibrahim Sadeh,Al Karma SC (IRQ),Midfielder
-Jordan,Mohamm Ad Aldaoud,Al Wahdat SC (JOR),Midfielder
+Jordan,Mohammad Aldaoud,Al Wahdat SC (JOR),Midfielder
 Jordan,Mohannad Abutaha,Al-Quwa Al-Jawiya (IRQ),Midfielder
 Jordan,Nizar Alrashdan,Qatar SC (QAT),Midfielder
 Jordan,Noor Alrawabdeh,Selangor FC (MAS),Midfielder
@@ -708,7 +708,7 @@ Morocco,Issa Diop,Fulham FC (ENG),Defender
 Morocco,Nayef Aguerd,Olympique Marseille (FRA),Defender
 Morocco,Noussair Mazraoui,Manchester United FC (ENG),Defender
 Morocco,Redouane Halhal,KV Mechelen (BEL),Defender
-Morocco,Youssef Belamm Ari,Al Ahly FC (EGY),Defender
+Morocco,Youssef Belammari,Al Ahly FC (EGY),Defender
 Morocco,Zakaria el Ouahdi,KRC Genk (BEL),Defender
 Morocco,Abde Ezzalzouli,Real Betis (ESP),Forward
 Morocco,Ayoub el Kaabi,Olympiacos FC (GRE),Forward
@@ -968,7 +968,7 @@ Senegal,Kalidou Koulibaly,Al Hilal SC (KSA),Defender
 Senegal,Krepin Diatta,AS Monaco (FRA),Defender
 Senegal,Mamadou Sarr,Chelsea FC (ENG),Defender
 Senegal,Moussa Niakhate,Olympique Lyonnais (FRA),Defender
-Senegal,el Hadji MalickEl Hadji Malick Diouf,West Ham United FC (ENG),Defender
+Senegal,el Hadji Malick Diouf,West Ham United FC (ENG),Defender
 Senegal,Assane Diao,Como (ITA),Forward
 Senegal,Bamba Dieng,FC Lorient (FRA),Forward
 Senegal,Cherif Ndiaye,Samsunspor (TUR),Forward
@@ -1108,7 +1108,7 @@ Switzerland,Ruben Vargas,Sevilla FC (ESP),Forward
 Switzerland,Zeki Amdouni,Burnley FC (ENG),Forward
 Switzerland,Gregor Kobel,Borussia Dortmund (GER),Goalkeeper
 Switzerland,Marvin Keller,BSC Young Boys (SUI),Goalkeeper
-Switzerland,Yvon Mv Ogo,FC Lorient (FRA),Goalkeeper
+Switzerland,Yvon Mvogo,FC Lorient (FRA),Goalkeeper
 Switzerland,Ardon Jashari,AC Milan (ITA),Midfielder
 Switzerland,Denis Zakaria,AS Monaco (FRA),Midfielder
 Switzerland,Djibril Sow,Sevilla FC (ESP),Midfielder
