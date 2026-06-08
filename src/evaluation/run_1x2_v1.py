@@ -71,6 +71,9 @@ def run(args: argparse.Namespace) -> None:
         signals,
         tracker_path=args.tracker_output,
         seen_at_utc=args.seen_at_utc,
+        bankroll_units=args.bankroll_units,
+        core_stake_units=args.core_stake_units,
+        refresh_candidate_stakes=not args.no_refresh_candidate_stakes,
     )
     tracker_summary = bet_tracker.summarize_tracker(tracker)
 
@@ -122,6 +125,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--review-summary", default=DEFAULT_REVIEW_SUMMARY)
     parser.add_argument("--tracker-output", default=DEFAULT_TRACKER_OUTPUT)
     parser.add_argument("--seen-at-utc", default=None)
+    parser.add_argument("--bankroll-units", type=float, default=100.0)
+    parser.add_argument("--core-stake-units", type=float, default=0.5)
+    parser.add_argument("--no-refresh-candidate-stakes", action="store_true")
     return parser
 
 

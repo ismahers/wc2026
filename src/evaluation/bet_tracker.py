@@ -19,6 +19,8 @@ import pandas as pd
 DEFAULT_CORE_INPUT = "outputs/wc2026_ev_h2h_shortlist.csv"
 DEFAULT_REVIEW_INPUT = "outputs/wc2026_ev_h2h_manual_review.csv"
 DEFAULT_TRACKER_OUTPUT = "data/tracking/wc2026_bet_tracker.csv"
+DEFAULT_BANKROLL_UNITS = 100.0
+DEFAULT_CORE_STAKE_UNITS = 0.5
 
 TRACKER_COLUMNS = [
     "signal_id",
@@ -40,8 +42,12 @@ TRACKER_COLUMNS = [
     "ev_pct",
     "fiabilidad_pct",
     "fiabilidad_nivel",
+    "recommended_stake_units",
     "stake_units",
+    "bankroll_units",
+    "stake_method",
     "bet_status",
+    "risk_notes",
     "closing_odds",
     "clv_pct",
     "result",
@@ -120,11 +126,46 @@ def _compute_clv(row: pd.Series) -> object:
     return round((first / closing - 1.0) * 100.0, 2)
 
 
+def _stake_policy(
+    recommended_action: object,
+    *,
+    bankroll_units: float,
+    core_stake_units: float,
+) -> dict[str, object]:
+    action = str(recommended_action or "").strip()
+    if action == "core_candidate":
+        return {
+            "recommended_stake_units": core_stake_units,
+            "stake_units": core_stake_units,
+            "bankroll_units": bankroll_units,
+            "stake_method": f"fixed_{core_stake_units:g}u_core",
+            "risk_notes": "Core 1X2: cuota 1.50-2.50, EV moderado, stake pequeno.",
+        }
+    if action == "manual_check":
+        return {
+            "recommended_stake_units": 0.0,
+            "stake_units": 0.0,
+            "bankroll_units": bankroll_units,
+            "stake_method": "manual_approval_required",
+            "risk_notes": "Revisar manualmente antes de apostar; por defecto stake 0.",
+        }
+    return {
+        "recommended_stake_units": 0.0,
+        "stake_units": 0.0,
+        "bankroll_units": bankroll_units,
+        "stake_method": "paper_only",
+        "risk_notes": "Solo seguimiento/CLV; no apostar dinero real.",
+    }
+
+
 def update_tracker(
     signals: pd.DataFrame,
     *,
     tracker_path: str = DEFAULT_TRACKER_OUTPUT,
     seen_at_utc: str | None = None,
+    bankroll_units: float = DEFAULT_BANKROLL_UNITS,
+    core_stake_units: float = DEFAULT_CORE_STAKE_UNITS,
+    refresh_candidate_stakes: bool = True,
 ) -> pd.DataFrame:
     seen_at_utc = seen_at_utc or _now_utc()
     if os.path.exists(tracker_path):
@@ -133,6 +174,12 @@ def update_tracker(
         tracker = _empty_tracker()
 
     tracker = tracker.copy()
+    for col in [
+        "stake_method", "risk_notes", "bet_status", "result",
+        "profit_units", "notes", "recommended_action", "review_reason",
+    ]:
+        if col in tracker.columns:
+            tracker[col] = tracker[col].astype("object")
     tracker = tracker.set_index("signal_id", drop=False) if not tracker.empty else tracker
     new_rows: list[dict[str, object]] = []
     existing_ids = set(tracker.index) if not tracker.empty else set()
@@ -142,10 +189,15 @@ def update_tracker(
         if signal_id not in existing_ids:
             row = {col: pd.NA for col in TRACKER_COLUMNS}
             row.update(signal.to_dict())
+            stake_policy = _stake_policy(
+                signal.get("recommended_action"),
+                bankroll_units=bankroll_units,
+                core_stake_units=core_stake_units,
+            )
+            row.update(stake_policy)
             row["first_seen_utc"] = seen_at_utc
             row["last_seen_utc"] = seen_at_utc
             row["first_odds"] = signal.get("latest_odds")
-            row["stake_units"] = 0.0
             row["bet_status"] = "candidate"
             row["closing_odds"] = pd.NA
             row["clv_pct"] = pd.NA
@@ -163,6 +215,17 @@ def update_tracker(
         for col in signal.index:
             if col not in preserve_cols:
                 tracker.at[signal_id, col] = signal[col]
+        stake_policy = _stake_policy(
+            signal.get("recommended_action"),
+            bankroll_units=bankroll_units,
+            core_stake_units=core_stake_units,
+        )
+        for col in ["recommended_stake_units", "bankroll_units", "stake_method", "risk_notes"]:
+            tracker.at[signal_id, col] = stake_policy[col]
+        if refresh_candidate_stakes and str(tracker.at[signal_id, "bet_status"]) == "candidate":
+            current_stake = pd.to_numeric(tracker.at[signal_id, "stake_units"], errors="coerce")
+            if pd.isna(current_stake) or current_stake == 0:
+                tracker.at[signal_id, "stake_units"] = stake_policy["stake_units"]
         tracker.at[signal_id, "last_seen_utc"] = seen_at_utc
 
     if new_rows:
@@ -190,6 +253,7 @@ def summarize_tracker(tracker: pd.DataFrame) -> pd.DataFrame:
         "manual_review": int(tracker["recommended_action"].eq("manual_check").sum()),
         "paper_only": int(tracker["recommended_action"].eq("paper_only").sum()),
         "candidates": int(tracker["bet_status"].eq("candidate").sum()),
+        "stake_units_total": round(float(pd.to_numeric(tracker["stake_units"], errors="coerce").fillna(0).sum()), 3),
     }])
 
 
@@ -199,13 +263,23 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--review-input", default=DEFAULT_REVIEW_INPUT)
     parser.add_argument("--tracker-output", default=DEFAULT_TRACKER_OUTPUT)
     parser.add_argument("--seen-at-utc", default=None)
+    parser.add_argument("--bankroll-units", type=float, default=DEFAULT_BANKROLL_UNITS)
+    parser.add_argument("--core-stake-units", type=float, default=DEFAULT_CORE_STAKE_UNITS)
+    parser.add_argument("--no-refresh-candidate-stakes", action="store_true")
     return parser
 
 
 def main() -> None:
     args = build_arg_parser().parse_args()
     signals = load_current_signals(args.core_input, args.review_input)
-    tracker = update_tracker(signals, tracker_path=args.tracker_output, seen_at_utc=args.seen_at_utc)
+    tracker = update_tracker(
+        signals,
+        tracker_path=args.tracker_output,
+        seen_at_utc=args.seen_at_utc,
+        bankroll_units=args.bankroll_units,
+        core_stake_units=args.core_stake_units,
+        refresh_candidate_stakes=not args.no_refresh_candidate_stakes,
+    )
     print(summarize_tracker(tracker).to_string(index=False))
     print(f"Guardado en {args.tracker_output}")
 

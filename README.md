@@ -283,6 +283,17 @@ porque es estado vivo. Conserva `first_odds`, actualiza `latest_odds` en cada
 run y deja columnas preparadas para `closing_odds`, `clv_pct`, resultado,
 beneficio y notas manuales.
 
+Staking v1:
+
+- `core_candidate`: stake conservador recomendado de `0.5u` sobre banca base
+  de `100u`.
+- `manual_check`: stake `0u` hasta aprobación manual.
+- `paper_only`: stake `0u`, solo seguimiento de CLV.
+
+El tracker guarda `recommended_stake_units`, `stake_units`, `bankroll_units`,
+`stake_method` y `risk_notes`. Si editáis manualmente una fila marcada como
+`placed`, el updater conserva la decisión.
+
 Comando único de v1 1X2:
 
 ```bash
@@ -291,6 +302,12 @@ python -m src.evaluation.run_1x2_v1
 
 # No gasta crédito; reutiliza outputs/wc2026_ev_h2h_strategy.csv
 python -m src.evaluation.run_1x2_v1 --skip-ev
+```
+
+Para cambiar banca/stake core:
+
+```bash
+python -m src.evaluation.run_1x2_v1 --bankroll-units 100 --core-stake-units 0.5
 ```
 
 ## Features principales
