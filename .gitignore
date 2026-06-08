@@ -58,6 +58,7 @@
 !/outputs/wc2026_poisson_predictions_with_odds.csv
 !/outputs/model_comparison.csv
 !/outputs/wc2026_ensemble_predictions.csv
+!/outputs/wc2026_market_probabilities.csv
 !/outputs/xgb_baseline_metrics.json
 !/outputs/poisson_metrics.json
 

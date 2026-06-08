@@ -310,6 +310,29 @@ Para cambiar banca/stake core:
 python -m src.evaluation.run_1x2_v1 --bankroll-units 100 --core-stake-units 0.5
 ```
 
+## Radar multi-mercado
+
+La v1 operativa sigue limitada a 1X2 core. Para ampliar el análisis sin gastar
+créditos ni forzar apuestas, `src/evaluation/market_probabilities.py` convierte
+el ensemble en probabilidades y cuotas justas de varios mercados:
+
+- 1X2, doble oportunidad y draw no bet.
+- Totales 1.5 / 2.5 / 3.5.
+- BTTS.
+- Goles de equipo 0.5 / 1.5 / 2.5.
+- Porterías a cero.
+- Córners totales 8.5 / 9.5 / 10.5 como aproximación Poisson.
+
+```bash
+python -m src.evaluation.market_probabilities
+```
+
+Genera `outputs/wc2026_market_probabilities.csv`. Ese archivo no contiene
+cuotas reales ni EV; es un radar para saber qué cuota mínima necesitaríamos ver
+en una casa. Incluye `fair_odds` y umbrales `min_odds_ev5`, `min_odds_ev10` y
+`min_odds_ev15`. Los córners salen marcados con confianza baja porque se derivan
+de una media esperada, no de una distribución calibrada.
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |
