@@ -66,6 +66,9 @@
 !/outputs/wc2026_ev_totals.csv
 !/outputs/backtest2022_bets.csv
 
+# Snapshots vivos de cuotas actuales por estrategia — regenerables con API
+/outputs/wc2026_ev_h2h_*.csv
+
 # Run contaminado del backtest (modelo reentrenado con todos los datos) — no subir
 /outputs/backtest2022/
 
