@@ -616,6 +616,17 @@ class MatchDatasetBuilder:
 
         df["home_elo"] = home_elo_list
         df["away_elo"] = away_elo_list
+
+        # Corrección de Elo a anfitriones auto-clasificados cuyo Elo está deflactado
+        # por jugar solo amistosos (K bajo). Solo afecta partidos WC2026 (fecha >=
+        # 2026-06-01), NUNCA el histórico de entrenamiento. Bump = Elo implícito por
+        # plantilla (ajuste rating->elo) menos Elo actual. USA: 1872-1753 ≈ +118.
+        HOST_ELO_BUMP = {"United States": 118.0}
+        _wc_row = pd.to_datetime(df["match_date"], errors="coerce") >= pd.Timestamp("2026-06-01")
+        for _team, _bump in HOST_ELO_BUMP.items():
+            df.loc[_wc_row & df["home_team"].eq(_team), "home_elo"] += _bump
+            df.loc[_wc_row & df["away_team"].eq(_team), "away_elo"] += _bump
+
         df["elo_diff"] = df["home_elo"] - df["away_elo"]
 
         n = df["home_elo"].notna().sum()

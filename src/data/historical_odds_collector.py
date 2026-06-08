@@ -181,10 +181,11 @@ class HistoricalOddsCollector:
             "apiKey": self.api_key,
             "regions": regions_arg,
             "markets": markets_arg,
-            "bookmakers": bookmakers_arg,
             "date": snapshot_date,
             "oddsFormat": odds_format,
         }
+        if bookmakers_arg:
+            params["bookmakers"] = bookmakers_arg
         log.info("Fetching The Odds API snapshot %s markets=%s", snapshot_date, markets_arg)
         response = self.session.get(endpoint, params=params, timeout=self.request_timeout)
 
@@ -222,9 +223,10 @@ class HistoricalOddsCollector:
             "apiKey": self.api_key,
             "regions": regions_arg,
             "markets": markets_arg,
-            "bookmakers": bookmakers_arg,
             "oddsFormat": odds_format,
         }
+        if bookmakers_arg:
+            params["bookmakers"] = bookmakers_arg
         log.info("Fetching The Odds API current odds sport=%s markets=%s", sport, markets_arg)
         response = self.session.get(endpoint, params=params, timeout=self.request_timeout)
 
@@ -267,9 +269,10 @@ class HistoricalOddsCollector:
             "apiKey": self.api_key,
             "regions": regions_arg,
             "markets": markets_arg,
-            "bookmakers": bookmakers_arg,
             "oddsFormat": odds_format,
         }
+        if bookmakers_arg:
+            params["bookmakers"] = bookmakers_arg
         log.info("Fetching The Odds API current odds flat sport=%s markets=%s", sport, markets_arg)
         response = self.session.get(endpoint, params=params, timeout=self.request_timeout)
 
@@ -356,10 +359,11 @@ class HistoricalOddsCollector:
             "apiKey": self.api_key,
             "regions": regions_arg,
             "markets": markets_arg,
-            "bookmakers": bookmakers_arg,
             "date": snapshot_date,
             "oddsFormat": odds_format,
         }
+        if bookmakers_arg:
+            params["bookmakers"] = bookmakers_arg
         log.info("Fetching The Odds API event snapshot %s event=%s markets=%s", snapshot_date, event_id, markets_arg)
         response = self.session.get(endpoint, params=params, timeout=self.request_timeout)
 
@@ -724,3 +728,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    

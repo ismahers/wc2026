@@ -1,0 +1,13 @@
+event_id,commence_time,home_team,away_team,sport_key,sport_title
+5f5c3869f6e4602dfb713cf5272db903,2022-12-01T15:00:00Z,Croatia,Belgium,soccer_fifa_world_cup,FIFA World Cup
+87459980cfed2681188b99a818cd4798,2022-12-01T15:00:00Z,Canada,Morocco,soccer_fifa_world_cup,FIFA World Cup
+8be384e38bb7c72b89bd6a2d6e03e5ae,2022-12-01T19:00:00Z,Costa Rica,Germany,soccer_fifa_world_cup,FIFA World Cup
+70b9e46c052fe1ab1bcd63af15818599,2022-12-01T19:00:00Z,Japan,Spain,soccer_fifa_world_cup,FIFA World Cup
+d82a2cbd3c417086fa662dbfe6388fce,2022-12-02T15:00:00Z,Ghana,Uruguay,soccer_fifa_world_cup,FIFA World Cup
+a93d6beff117e69247386c1ed8f7b29d,2022-12-02T15:00:00Z,South Korea,Portugal,soccer_fifa_world_cup,FIFA World Cup
+6b15eb9de40769986813d91faf29703a,2022-12-02T19:00:00Z,Cameroon,Brazil,soccer_fifa_world_cup,FIFA World Cup
+07b5caee99d4d950f870c99722afe0a8,2022-12-02T19:00:00Z,Serbia,Switzerland,soccer_fifa_world_cup,FIFA World Cup
+07c05f157b202a58bc9d4b441966ec7b,2022-12-03T15:00:00Z,Netherlands,USA,soccer_fifa_world_cup,FIFA World Cup
+23696155131671e1b77489e6aeeeb239,2022-12-03T19:00:00Z,Argentina,Australia,soccer_fifa_world_cup,FIFA World Cup
+07fbfa0c36cfbc300904c1481f72746d,2022-12-04T15:00:00Z,France,Poland,soccer_fifa_world_cup,FIFA World Cup
+93c7708689f9874a0cb7396d938e01ab,2022-12-04T19:00:00Z,England,Senegal,soccer_fifa_world_cup,FIFA World Cup

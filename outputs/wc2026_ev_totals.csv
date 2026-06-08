@@ -1,0 +1,291 @@
+date,home_team,away_team,mercado,seleccion,bookmaker,cuota,prob_modelo,cuota_justa,ev_pct,fiabilidad_pct,fiabilidad_nivel
+2026-06-16,Iraq,Norway,Under 2.5,Under,pmu_fr,2.33,0.5324,1.878,24.05,36.1,BAJA
+2026-06-16,Iraq,Norway,Under 2.5,Under,williamhill,2.3,0.5324,1.878,22.45,36.1,BAJA
+2026-06-16,Austria,Jordan,Under 2.5,Under,pmu_fr,2.28,0.5272,1.897,20.2,61.6,MEDIA
+2026-06-25,Curacao,Ivory Coast,Under 2.5,Under,williamhill,2.15,0.5428,1.842,16.7,46.9,BAJA
+2026-06-16,Austria,Jordan,Under 2.5,Under,williamhill,2.2,0.5272,1.897,15.98,61.6,MEDIA
+2026-06-20,Ecuador,Curacao,Over 2.5,Over,williamhill,1.67,0.6906,1.448,15.33,63.7,MEDIA
+2026-06-20,Netherlands,Sweden,Over 2.5,Over,pinnacle,1.92,0.5989,1.67,14.99,56.1,MEDIA
+2026-06-23,England,Ghana,Over 2.5,Over,williamhill,1.67,0.6775,1.476,13.14,50.9,MEDIA
+2026-06-15,Belgium,Egypt,Over 2.5,Over,pinnacle,2.04,0.5484,1.823,11.87,42.9,BAJA
+2026-06-14,Ivory Coast,Ecuador,Over 2.5,Over,williamhill,2.62,0.4257,2.349,11.53,48.3,BAJA
+2026-06-18,Czech Republic,South Africa,Over 2.5,Over,williamhill,2.2,0.504,1.984,10.88,47.1,BAJA
+2026-06-20,Netherlands,Sweden,Over 2.5,Over,williamhill,1.85,0.5989,1.67,10.8,56.1,MEDIA
+2026-06-27,Jordan,Argentina,Under 2.5,Under,williamhill,2.38,0.4645,2.153,10.55,62.2,MEDIA
+2026-06-27,Croatia,Ghana,Over 2.5,Over,williamhill,2.1,0.5256,1.903,10.38,53.7,MEDIA
+2026-06-11,Mexico,South Africa,Over 2.5,Over,pmu_fr,2.08,0.5268,1.898,9.57,35.9,BAJA
+2026-06-12,United States,Paraguay,Over 2.5,Over,williamhill,2.3,0.4716,2.12,8.47,66.4,ALTA
+2026-06-23,England,Ghana,Over 2.5,Over,pmu_fr,1.6,0.6775,1.476,8.4,50.9,MEDIA
+2026-06-13,Haiti,Scotland,Under 2.5,Under,williamhill,1.91,0.5622,1.779,7.38,45.9,BAJA
+2026-06-18,Switzerland,Bosnia and Herzegovina,Over 2.5,Over,williamhill,1.95,0.55,1.818,7.25,73.5,ALTA
+2026-06-25,Tunisia,Netherlands,Under 2.5,Under,pinnacle,1.95,0.5499,1.819,7.23,46.4,BAJA
+2026-06-20,Netherlands,Sweden,Over 2.5,Over,pmu_fr,1.79,0.5989,1.67,7.2,56.1,MEDIA
+2026-06-18,Czech Republic,South Africa,Over 2.5,Over,pmu_fr,2.12,0.504,1.984,6.85,47.1,BAJA
+2026-06-13,Haiti,Scotland,Under 2.5,Under,pinnacle,1.9,0.5622,1.779,6.82,45.9,BAJA
+2026-06-21,Spain,Saudi Arabia,Over 2.5,Over,williamhill,1.44,0.7414,1.349,6.76,35.5,BAJA
+2026-06-19,Turkey,Paraguay,Over 2.5,Over,williamhill,2.3,0.4631,2.159,6.51,63.5,MEDIA
+2026-06-25,Japan,Sweden,Over 2.5,Over,williamhill,2.05,0.5166,1.936,5.9,53.6,MEDIA
+2026-06-17,Uzbekistan,Colombia,Under 2.5,Under,pinnacle,1.88,0.5631,1.776,5.86,60.4,MEDIA
+2026-06-25,Ecuador,Germany,Under 2.5,Under,pinnacle,1.88,0.5615,1.781,5.56,69.1,ALTA
+2026-06-11,Mexico,South Africa,Over 2.5,Over,williamhill,2.0,0.5268,1.898,5.36,35.9,BAJA
+2026-06-23,Colombia,DR Congo,Over 2.5,Over,williamhill,2.1,0.4994,2.002,4.87,51.2,MEDIA
+2026-06-26,Senegal,Iraq,Under 2.5,Under,pinnacle,1.92,0.5462,1.831,4.87,38.0,BAJA
+2026-06-22,Jordan,Algeria,Under 2.5,Under,pinnacle,1.91,0.5489,1.822,4.84,55.6,MEDIA
+2026-06-15,Belgium,Egypt,Over 2.5,Over,williamhill,1.91,0.5484,1.823,4.74,42.9,BAJA
+2026-06-20,Ecuador,Curacao,Over 2.5,Over,pmu_fr,1.51,0.6906,1.448,4.28,63.7,MEDIA
+2026-06-16,Argentina,Algeria,Under 2.5,Under,pinnacle,1.92,0.5424,1.844,4.14,55.1,MEDIA
+2026-06-14,Germany,Curacao,Under 2.5,Under,williamhill,4.75,0.219,4.566,4.02,67.7,ALTA
+2026-06-25,Ecuador,Germany,Under 2.5,Under,williamhill,1.85,0.5615,1.781,3.88,69.1,ALTA
+2026-06-16,Argentina,Algeria,Under 2.5,Under,williamhill,1.91,0.5424,1.844,3.6,55.1,MEDIA
+2026-06-16,France,Senegal,Over 2.5,Over,pinnacle,2.01,0.5151,1.941,3.54,53.5,MEDIA
+2026-06-27,DR Congo,Uzbekistan,Under 2.5,Under,williamhill,1.6,0.647,1.546,3.52,37.6,BAJA
+2026-06-24,Bosnia and Herzegovina,Qatar,Over 2.5,Over,williamhill,2.05,0.5035,1.986,3.22,61.6,MEDIA
+2026-06-14,Sweden,Tunisia,Over 2.5,Over,williamhill,2.2,0.4683,2.135,3.03,59.5,MEDIA
+2026-06-24,Scotland,Brazil,Under 2.5,Under,williamhill,2.0,0.5151,1.941,3.02,51.7,MEDIA
+2026-06-17,Portugal,DR Congo,Under 2.5,Under,williamhill,2.2,0.4681,2.136,2.98,55.4,MEDIA
+2026-06-23,Portugal,Uzbekistan,Under 2.5,Under,williamhill,2.4,0.4289,2.332,2.94,64.7,MEDIA
+2026-06-26,Uruguay,Spain,Under 2.5,Under,pinnacle,1.92,0.5342,1.872,2.57,55.3,MEDIA
+2026-06-22,Argentina,Austria,Over 2.5,Over,williamhill,1.95,0.5256,1.903,2.49,61.0,MEDIA
+2026-06-21,Belgium,Iran,Over 2.5,Over,pinnacle,1.84,0.5559,1.799,2.29,67.0,ALTA
+2026-06-17,England,Croatia,Over 2.5,Over,williamhill,1.95,0.5236,1.91,2.1,79.5,ALTA
+2026-06-22,Argentina,Austria,Over 2.5,Over,pinnacle,1.94,0.5256,1.903,1.97,61.0,MEDIA
+2026-06-18,Switzerland,Bosnia and Herzegovina,Over 2.5,Over,pmu_fr,1.85,0.55,1.818,1.75,73.5,ALTA
+2026-06-25,Tunisia,Netherlands,Under 2.5,Under,williamhill,1.85,0.5499,1.819,1.73,46.4,BAJA
+2026-06-22,France,Iraq,Over 2.5,Over,williamhill,1.5,0.6777,1.476,1.66,42.9,BAJA
+2026-06-17,Uzbekistan,Colombia,Under 2.5,Under,williamhill,1.8,0.5631,1.776,1.36,60.4,MEDIA
+2026-06-13,Australia,Turkey,Under 2.5,Under,pinnacle,1.83,0.5538,1.806,1.35,69.3,ALTA
+2026-06-25,Turkey,United States,Over 2.5,Over,williamhill,1.91,0.5301,1.886,1.25,71.6,ALTA
+2026-06-13,Haiti,Scotland,Under 2.5,Under,pmu_fr,1.8,0.5622,1.779,1.2,45.9,BAJA
+2026-06-17,England,Croatia,Over 2.5,Over,pmu_fr,1.93,0.5236,1.91,1.05,79.5,ALTA
+2026-06-26,Senegal,Iraq,Under 2.5,Under,williamhill,1.85,0.5462,1.831,1.05,38.0,BAJA
+2026-06-15,Saudi Arabia,Uruguay,Over 2.5,Over,pinnacle,2.05,0.4926,2.03,0.98,41.2,BAJA
+2026-06-24,Scotland,Brazil,Under 2.5,Under,pinnacle,1.96,0.5151,1.941,0.96,51.7,MEDIA
+2026-06-15,Spain,Cape Verde,Over 2.5,Over,williamhill,1.33,0.7587,1.318,0.91,43.0,BAJA
+2026-06-24,Bosnia and Herzegovina,Qatar,Over 2.5,Over,pinnacle,2.0,0.5035,1.986,0.7,61.6,MEDIA
+2026-06-27,Colombia,Portugal,Over 2.5,Over,williamhill,2.1,0.4791,2.087,0.61,78.3,ALTA
+2026-06-11,South Korea,Czech Republic,Over 2.5,Over,williamhill,2.25,0.4466,2.239,0.49,67.6,ALTA
+2026-06-15,Belgium,Egypt,Over 2.5,Over,pmu_fr,1.83,0.5484,1.823,0.36,42.9,BAJA
+2026-06-23,Panama,Croatia,Under 2.5,Under,pinnacle,1.81,0.5544,1.804,0.35,73.1,ALTA
+2026-06-17,Portugal,DR Congo,Under 2.5,Under,pmu_fr,2.14,0.4681,2.136,0.17,55.4,MEDIA
+2026-06-21,Belgium,Iran,Over 2.5,Over,williamhill,1.8,0.5559,1.799,0.06,67.0,ALTA
+2026-06-25,Ecuador,Germany,Under 2.5,Under,pmu_fr,1.78,0.5615,1.781,-0.05,69.1,ALTA
+2026-06-13,Brazil,Morocco,Under 2.5,Under,williamhill,1.75,0.5708,1.752,-0.11,62.2,MEDIA
+2026-06-21,New Zealand,Egypt,Under 2.5,Under,williamhill,1.67,0.5937,1.684,-0.85,53.0,MEDIA
+2026-06-25,Turkey,United States,Over 2.5,Over,pinnacle,1.87,0.5301,1.886,-0.87,71.6,ALTA
+2026-06-17,Uzbekistan,Colombia,Under 2.5,Under,pmu_fr,1.76,0.5631,1.776,-0.89,60.4,MEDIA
+2026-06-25,Paraguay,Australia,Over 2.5,Over,williamhill,2.25,0.4405,2.27,-0.89,64.2,MEDIA
+2026-06-19,United States,Australia,Over 2.5,Over,pinnacle,2.01,0.4929,2.029,-0.93,72.2,ALTA
+2026-06-22,Norway,Senegal,Over 2.5,Over,williamhill,1.95,0.5074,1.971,-1.06,46.8,BAJA
+2026-06-14,Netherlands,Japan,Under 2.5,Under,pinnacle,1.9,0.5202,1.922,-1.16,93.0,MUY ALTA
+2026-06-26,Uruguay,Spain,Under 2.5,Under,williamhill,1.85,0.5342,1.872,-1.17,55.3,MEDIA
+2026-06-22,Jordan,Algeria,Under 2.5,Under,williamhill,1.8,0.5489,1.822,-1.2,55.6,MEDIA
+2026-06-19,United States,Australia,Over 2.5,Over,williamhill,2.0,0.4929,2.029,-1.42,72.2,ALTA
+2026-06-15,Iran,New Zealand,Over 2.5,Over,williamhill,2.15,0.4582,2.182,-1.49,59.6,MEDIA
+2026-06-22,Norway,Senegal,Over 2.5,Over,pinnacle,1.94,0.5074,1.971,-1.56,46.8,BAJA
+2026-06-16,Argentina,Algeria,Under 2.5,Under,pmu_fr,1.81,0.5424,1.844,-1.83,55.1,MEDIA
+2026-06-27,Panama,England,Under 2.5,Under,williamhill,2.2,0.446,2.242,-1.88,87.9,MUY ALTA
+2026-06-17,Ghana,Panama,Over 2.5,Over,williamhill,2.15,0.4557,2.194,-2.02,62.1,MEDIA
+2026-06-27,Colombia,Portugal,Over 2.5,Over,pmu_fr,2.04,0.4791,2.087,-2.26,78.3,ALTA
+2026-06-27,DR Congo,Uzbekistan,Under 2.5,Under,pmu_fr,1.51,0.647,1.546,-2.3,37.6,BAJA
+2026-06-22,Jordan,Algeria,Under 2.5,Under,pmu_fr,1.78,0.5489,1.822,-2.3,55.6,MEDIA
+2026-06-24,Czech Republic,Mexico,Under 2.5,Under,williamhill,1.7,0.5745,1.741,-2.33,70.6,ALTA
+2026-06-26,Egypt,Iran,Over 2.5,Over,williamhill,2.5,0.3904,2.561,-2.4,49.8,BAJA
+2026-06-23,Panama,Croatia,Under 2.5,Under,pmu_fr,1.76,0.5544,1.804,-2.43,73.1,ALTA
+2026-06-18,Mexico,South Korea,Under 2.5,Under,williamhill,1.62,0.6022,1.661,-2.44,73.9,ALTA
+2026-06-13,Qatar,Switzerland,Under 2.5,Under,williamhill,2.25,0.4335,2.307,-2.46,49.8,BAJA
+2026-06-14,Sweden,Tunisia,Over 2.5,Over,pmu_fr,2.08,0.4683,2.135,-2.59,59.5,MEDIA
+2026-06-23,Colombia,DR Congo,Over 2.5,Over,pmu_fr,1.95,0.4994,2.002,-2.62,51.2,MEDIA
+2026-06-23,Panama,Croatia,Under 2.5,Under,williamhill,1.75,0.5544,1.804,-2.98,73.1,ALTA
+2026-06-21,Uruguay,Cape Verde,Under 2.5,Under,pinnacle,1.89,0.5131,1.949,-3.02,45.9,BAJA
+2026-06-26,Norway,France,Under 2.5,Under,pinnacle,1.81,0.5356,1.867,-3.06,86.6,MUY ALTA
+2026-06-13,Australia,Turkey,Under 2.5,Under,williamhill,1.75,0.5538,1.806,-3.08,69.3,ALTA
+2026-06-18,Canada,Qatar,Under 2.5,Under,pinnacle,1.85,0.5237,1.909,-3.12,63.1,MEDIA
+2026-06-26,Norway,France,Under 2.5,Under,williamhill,1.8,0.5356,1.867,-3.59,86.6,MUY ALTA
+2026-06-20,Germany,Ivory Coast,Under 2.5,Under,williamhill,2.05,0.4697,2.129,-3.71,52.2,MEDIA
+2026-06-14,Netherlands,Japan,Under 2.5,Under,williamhill,1.85,0.5202,1.922,-3.76,93.0,MUY ALTA
+2026-06-27,Algeria,Austria,Under 2.5,Under,williamhill,1.65,0.5812,1.721,-4.1,71.9,ALTA
+2026-06-13,Brazil,Morocco,Under 2.5,Under,pmu_fr,1.68,0.5708,1.752,-4.11,62.2,MEDIA
+2026-06-14,Netherlands,Japan,Over 2.5,Over,pinnacle,1.99,0.4798,2.084,-4.52,93.0,MUY ALTA
+2026-06-15,Iran,New Zealand,Over 2.5,Over,pmu_fr,2.08,0.4582,2.182,-4.69,59.6,MEDIA
+2026-06-19,Scotland,Morocco,Over 2.5,Over,williamhill,2.25,0.4235,2.361,-4.71,81.2,MUY ALTA
+2026-06-12,Canada,Bosnia and Herzegovina,Under 2.5,Under,williamhill,1.67,0.5697,1.755,-4.86,51.8,MEDIA
+2026-06-19,United States,Australia,Over 2.5,Over,pmu_fr,1.93,0.4929,2.029,-4.87,72.2,ALTA
+2026-06-21,Uruguay,Cape Verde,Under 2.5,Under,williamhill,1.85,0.5131,1.949,-5.08,45.9,BAJA
+2026-06-26,Cape Verde,Saudi Arabia,Under 2.5,Under,williamhill,1.62,0.5843,1.711,-5.34,57.0,MEDIA
+2026-06-24,South Africa,South Korea,Under 2.5,Under,williamhill,1.67,0.5668,1.764,-5.34,33.0,MUY BAJA
+2026-06-22,Argentina,Austria,Over 2.5,Over,pmu_fr,1.8,0.5256,1.903,-5.39,61.0,MEDIA
+2026-06-26,New Zealand,Belgium,Under 2.5,Under,williamhill,2.1,0.45,2.222,-5.5,70.2,ALTA
+2026-06-12,United States,Paraguay,Over 2.5,Over,pmu_fr,2.0,0.4716,2.12,-5.68,66.4,ALTA
+2026-06-19,Brazil,Haiti,Over 2.5,Over,williamhill,1.25,0.7545,1.325,-5.69,44.3,BAJA
+2026-06-24,Scotland,Brazil,Under 2.5,Under,pmu_fr,1.83,0.5151,1.941,-5.74,51.7,MEDIA
+2026-06-24,Morocco,Haiti,Over 2.5,Over,williamhill,1.7,0.5544,1.804,-5.75,38.9,BAJA
+2026-06-24,Bosnia and Herzegovina,Qatar,Over 2.5,Over,pmu_fr,1.87,0.5035,1.986,-5.85,61.6,MEDIA
+2026-06-18,Mexico,South Korea,Under 2.5,Under,pmu_fr,1.56,0.6022,1.661,-6.06,73.9,ALTA
+2026-06-15,Saudi Arabia,Uruguay,Under 2.5,Under,williamhill,1.85,0.5074,1.971,-6.13,41.2,BAJA
+2026-06-15,Saudi Arabia,Uruguay,Under 2.5,Under,pinnacle,1.85,0.5074,1.971,-6.13,41.2,BAJA
+2026-06-20,Tunisia,Japan,Over 2.5,Over,williamhill,2.2,0.4266,2.344,-6.15,43.9,BAJA
+2026-06-17,Ghana,Panama,Over 2.5,Over,pmu_fr,2.05,0.4557,2.194,-6.58,62.1,MEDIA
+2026-06-24,Switzerland,Canada,Under 2.5,Under,williamhill,1.7,0.5493,1.82,-6.62,57.5,MEDIA
+2026-06-20,Tunisia,Japan,Under 2.5,Under,williamhill,1.62,0.5734,1.744,-7.11,43.9,BAJA
+2026-06-11,South Korea,Czech Republic,Over 2.5,Over,pmu_fr,2.08,0.4466,2.239,-7.11,67.6,ALTA
+2026-06-18,Canada,Qatar,Over 2.5,Over,williamhill,1.95,0.4763,2.1,-7.12,63.1,MEDIA
+2026-06-16,France,Senegal,Over 2.5,Over,williamhill,1.8,0.5151,1.941,-7.28,53.5,MEDIA
+2026-06-24,Morocco,Haiti,Under 2.5,Under,pmu_fr,2.08,0.4456,2.244,-7.32,38.9,BAJA
+2026-06-21,New Zealand,Egypt,Under 2.5,Under,pmu_fr,1.56,0.5937,1.684,-7.38,53.0,MEDIA
+2026-06-16,France,Senegal,Under 2.5,Under,williamhill,1.91,0.4849,2.062,-7.38,53.5,MEDIA
+2026-06-13,Australia,Turkey,Under 2.5,Under,pmu_fr,1.67,0.5538,1.806,-7.52,69.3,ALTA
+2026-06-24,Switzerland,Canada,Over 2.5,Over,williamhill,2.05,0.4507,2.219,-7.61,57.5,MEDIA
+2026-06-13,Australia,Turkey,Over 2.5,Over,pinnacle,2.07,0.4462,2.241,-7.64,69.3,ALTA
+2026-06-22,Norway,Senegal,Over 2.5,Over,pmu_fr,1.82,0.5074,1.971,-7.65,46.8,BAJA
+2026-06-19,Scotland,Morocco,Under 2.5,Under,williamhill,1.6,0.5765,1.735,-7.76,81.2,MUY ALTA
+2026-06-21,Uruguay,Cape Verde,Over 2.5,Over,pinnacle,1.89,0.4869,2.054,-7.98,45.9,BAJA
+2026-06-26,Norway,France,Over 2.5,Over,pinnacle,1.98,0.4644,2.153,-8.05,86.6,MUY ALTA
+2026-06-24,Switzerland,Canada,Over 2.5,Over,pmu_fr,2.04,0.4507,2.219,-8.06,57.5,MEDIA
+2026-06-18,Canada,Qatar,Over 2.5,Over,pinnacle,1.93,0.4763,2.1,-8.07,63.1,MEDIA
+2026-06-13,Qatar,Switzerland,Under 2.5,Under,pmu_fr,2.12,0.4335,2.307,-8.1,49.8,BAJA
+2026-06-26,New Zealand,Belgium,Over 2.5,Over,williamhill,1.67,0.55,1.818,-8.15,70.2,ALTA
+2026-06-18,Canada,Qatar,Under 2.5,Under,williamhill,1.75,0.5237,1.909,-8.35,63.1,MEDIA
+2026-06-14,Netherlands,Japan,Under 2.5,Under,pmu_fr,1.76,0.5202,1.922,-8.44,93.0,MUY ALTA
+2026-06-26,Cape Verde,Saudi Arabia,Over 2.5,Over,williamhill,2.2,0.4157,2.406,-8.55,57.0,MEDIA
+2026-06-14,Germany,Curacao,Over 2.5,Over,williamhill,1.17,0.781,1.28,-8.62,67.7,ALTA
+2026-06-24,Morocco,Haiti,Under 2.5,Under,williamhill,2.05,0.4456,2.244,-8.65,38.9,BAJA
+2026-06-16,France,Senegal,Under 2.5,Under,pinnacle,1.88,0.4849,2.062,-8.84,53.5,MEDIA
+2026-06-22,Norway,Senegal,Under 2.5,Under,pinnacle,1.85,0.4926,2.03,-8.87,46.8,BAJA
+2026-06-15,Saudi Arabia,Uruguay,Over 2.5,Over,williamhill,1.85,0.4926,2.03,-8.87,41.2,BAJA
+2026-06-24,South Africa,South Korea,Over 2.5,Over,williamhill,2.1,0.4332,2.308,-9.03,33.0,MUY BAJA
+2026-06-19,United States,Australia,Under 2.5,Under,pinnacle,1.79,0.5071,1.972,-9.23,72.2,ALTA
+2026-06-20,Germany,Ivory Coast,Over 2.5,Over,pmu_fr,1.71,0.5303,1.886,-9.32,52.2,MEDIA
+2026-06-13,Qatar,Switzerland,Over 2.5,Over,williamhill,1.6,0.5665,1.765,-9.36,49.8,BAJA
+2026-06-18,Canada,Qatar,Under 2.5,Under,pmu_fr,1.73,0.5237,1.909,-9.4,63.1,MEDIA
+2026-06-15,Iran,New Zealand,Under 2.5,Under,williamhill,1.67,0.5418,1.846,-9.52,59.6,MEDIA
+2026-06-12,Canada,Bosnia and Herzegovina,Over 2.5,Over,pmu_fr,2.1,0.4303,2.324,-9.64,51.8,MEDIA
+2026-06-12,Canada,Bosnia and Herzegovina,Over 2.5,Over,williamhill,2.1,0.4303,2.324,-9.64,51.8,MEDIA
+2026-06-25,Turkey,United States,Under 2.5,Under,pinnacle,1.92,0.4699,2.128,-9.78,71.6,ALTA
+2026-06-24,Czech Republic,Mexico,Under 2.5,Under,pmu_fr,1.57,0.5745,1.741,-9.8,70.6,ALTA
+2026-06-20,Germany,Ivory Coast,Over 2.5,Over,williamhill,1.7,0.5303,1.886,-9.85,52.2,MEDIA
+2026-06-16,Argentina,Algeria,Over 2.5,Over,pinnacle,1.97,0.4576,2.185,-9.85,55.1,MEDIA
+2026-06-24,South Africa,South Korea,Over 2.5,Over,pmu_fr,2.08,0.4332,2.308,-9.89,33.0,MUY BAJA
+2026-06-21,Uruguay,Cape Verde,Over 2.5,Over,williamhill,1.85,0.4869,2.054,-9.92,45.9,BAJA
+2026-06-27,Algeria,Austria,Over 2.5,Over,williamhill,2.15,0.4188,2.388,-9.96,71.9,ALTA
+2026-06-17,Ghana,Panama,Under 2.5,Under,williamhill,1.65,0.5443,1.837,-10.19,62.1,MEDIA
+2026-06-21,Uruguay,Cape Verde,Under 2.5,Under,pmu_fr,1.75,0.5131,1.949,-10.21,45.9,BAJA
+2026-06-19,Scotland,Morocco,Over 2.5,Over,pmu_fr,2.12,0.4235,2.361,-10.22,81.2,MUY ALTA
+2026-06-27,Panama,England,Over 2.5,Over,williamhill,1.62,0.554,1.805,-10.25,87.9,MUY ALTA
+2026-06-16,France,Senegal,Over 2.5,Over,pmu_fr,1.74,0.5151,1.941,-10.37,53.5,MEDIA
+2026-06-25,Paraguay,Australia,Under 2.5,Under,williamhill,1.6,0.5595,1.787,-10.48,64.2,MEDIA
+2026-06-20,Tunisia,Japan,Under 2.5,Under,pmu_fr,1.56,0.5734,1.744,-10.55,43.9,BAJA
+2026-06-24,Bosnia and Herzegovina,Qatar,Under 2.5,Under,pinnacle,1.8,0.4965,2.014,-10.63,61.6,MEDIA
+2026-06-13,Australia,Turkey,Over 2.5,Over,williamhill,2.0,0.4462,2.241,-10.76,69.3,ALTA
+2026-06-15,Saudi Arabia,Uruguay,Over 2.5,Over,pmu_fr,1.81,0.4926,2.03,-10.84,41.2,BAJA
+2026-06-15,Saudi Arabia,Uruguay,Under 2.5,Under,pmu_fr,1.75,0.5074,1.971,-11.2,41.2,BAJA
+2026-06-14,Netherlands,Japan,Over 2.5,Over,williamhill,1.85,0.4798,2.084,-11.24,93.0,MUY ALTA
+2026-06-24,Scotland,Brazil,Over 2.5,Over,pinnacle,1.83,0.4849,2.062,-11.26,51.7,MEDIA
+2026-06-26,Norway,France,Over 2.5,Over,williamhill,1.91,0.4644,2.153,-11.3,86.6,MUY ALTA
+2026-06-23,Panama,Croatia,Over 2.5,Over,pinnacle,1.99,0.4456,2.244,-11.33,73.1,ALTA
+2026-06-11,South Korea,Czech Republic,Under 2.5,Under,williamhill,1.6,0.5534,1.807,-11.46,67.6,ALTA
+2026-06-16,France,Senegal,Under 2.5,Under,pmu_fr,1.82,0.4849,2.062,-11.75,53.5,MEDIA
+2026-06-19,Scotland,Morocco,Under 2.5,Under,pmu_fr,1.53,0.5765,1.735,-11.8,81.2,MUY ALTA
+2026-06-21,Uruguay,Cape Verde,Over 2.5,Over,pmu_fr,1.81,0.4869,2.054,-11.87,45.9,BAJA
+2026-06-20,Tunisia,Japan,Over 2.5,Over,pmu_fr,2.06,0.4266,2.344,-12.12,43.9,BAJA
+2026-06-24,South Africa,South Korea,Under 2.5,Under,pmu_fr,1.55,0.5668,1.764,-12.15,33.0,MUY BAJA
+2026-06-17,Uzbekistan,Colombia,Over 2.5,Over,pinnacle,2.01,0.4369,2.289,-12.18,60.4,MEDIA
+2026-06-26,Egypt,Iran,Under 2.5,Under,williamhill,1.44,0.6096,1.64,-12.22,49.8,BAJA
+2026-06-22,Argentina,Austria,Under 2.5,Under,pinnacle,1.85,0.4744,2.108,-12.24,61.0,MEDIA
+2026-06-19,United States,Australia,Under 2.5,Under,williamhill,1.73,0.5071,1.972,-12.27,72.2,ALTA
+2026-06-12,Canada,Bosnia and Herzegovina,Under 2.5,Under,pmu_fr,1.54,0.5697,1.755,-12.27,51.8,MEDIA
+2026-06-24,Czech Republic,Mexico,Over 2.5,Over,williamhill,2.05,0.4255,2.35,-12.77,70.6,ALTA
+2026-06-18,Canada,Qatar,Over 2.5,Over,pmu_fr,1.83,0.4763,2.1,-12.84,63.1,MEDIA
+2026-06-13,Haiti,Scotland,Over 2.5,Over,pinnacle,1.99,0.4378,2.284,-12.88,45.9,BAJA
+2026-06-26,Uruguay,Spain,Over 2.5,Over,pinnacle,1.87,0.4658,2.147,-12.9,55.3,MEDIA
+2026-06-27,Colombia,Portugal,Under 2.5,Under,williamhill,1.67,0.5209,1.92,-13.01,78.3,ALTA
+2026-06-23,Panama,Croatia,Over 2.5,Over,williamhill,1.95,0.4456,2.244,-13.11,73.1,ALTA
+2026-06-20,Germany,Ivory Coast,Under 2.5,Under,pmu_fr,1.85,0.4697,2.129,-13.11,52.2,MEDIA
+2026-06-24,Czech Republic,Mexico,Over 2.5,Over,pmu_fr,2.04,0.4255,2.35,-13.2,70.6,ALTA
+2026-06-13,Qatar,Switzerland,Over 2.5,Over,pmu_fr,1.53,0.5665,1.765,-13.33,49.8,BAJA
+2026-06-21,Belgium,Iran,Under 2.5,Under,pinnacle,1.95,0.4441,2.252,-13.4,67.0,ALTA
+2026-06-14,Netherlands,Japan,Over 2.5,Over,pmu_fr,1.8,0.4798,2.084,-13.64,93.0,MUY ALTA
+2026-06-24,Switzerland,Canada,Under 2.5,Under,pmu_fr,1.57,0.5493,1.82,-13.76,57.5,MEDIA
+2026-06-22,Norway,Senegal,Under 2.5,Under,williamhill,1.75,0.4926,2.03,-13.79,46.8,BAJA
+2026-06-26,Uruguay,Spain,Over 2.5,Over,williamhill,1.85,0.4658,2.147,-13.83,55.3,MEDIA
+2026-06-17,Portugal,DR Congo,Over 2.5,Over,williamhill,1.62,0.5319,1.88,-13.83,55.4,MEDIA
+2026-06-22,Jordan,Algeria,Over 2.5,Over,williamhill,1.91,0.4511,2.217,-13.84,55.6,MEDIA
+2026-06-14,Sweden,Tunisia,Under 2.5,Under,williamhill,1.62,0.5317,1.881,-13.86,59.5,MEDIA
+2026-06-25,Turkey,United States,Under 2.5,Under,williamhill,1.83,0.4699,2.128,-14.01,71.6,ALTA
+2026-06-19,Brazil,Haiti,Under 2.5,Under,williamhill,3.5,0.2455,4.073,-14.07,44.3,BAJA
+2026-06-24,Morocco,Haiti,Over 2.5,Over,pmu_fr,1.55,0.5544,1.804,-14.07,38.9,BAJA
+2026-06-11,South Korea,Czech Republic,Under 2.5,Under,pmu_fr,1.55,0.5534,1.807,-14.22,67.6,ALTA
+2026-06-22,Norway,Senegal,Under 2.5,Under,pmu_fr,1.74,0.4926,2.03,-14.29,46.8,BAJA
+2026-06-23,Portugal,Uzbekistan,Over 2.5,Over,williamhill,1.5,0.5711,1.751,-14.33,64.7,MEDIA
+2026-06-18,Mexico,South Korea,Over 2.5,Over,williamhill,2.15,0.3978,2.514,-14.47,73.9,ALTA
+2026-06-17,Ghana,Panama,Under 2.5,Under,pmu_fr,1.57,0.5443,1.837,-14.54,62.1,MEDIA
+2026-06-21,New Zealand,Egypt,Over 2.5,Over,williamhill,2.1,0.4063,2.461,-14.68,53.0,MEDIA
+2026-06-13,Australia,Turkey,Over 2.5,Over,pmu_fr,1.91,0.4462,2.241,-14.78,69.3,ALTA
+2026-06-26,Senegal,Iraq,Over 2.5,Over,pinnacle,1.87,0.4538,2.204,-15.14,38.0,BAJA
+2026-06-24,Scotland,Brazil,Over 2.5,Over,williamhill,1.75,0.4849,2.062,-15.14,51.7,MEDIA
+2026-06-21,Belgium,Iran,Under 2.5,Under,williamhill,1.91,0.4441,2.252,-15.18,67.0,ALTA
+2026-06-22,Jordan,Algeria,Over 2.5,Over,pinnacle,1.88,0.4511,2.217,-15.19,55.6,MEDIA
+2026-06-12,United States,Paraguay,Under 2.5,Under,pmu_fr,1.6,0.5284,1.893,-15.46,66.4,ALTA
+2026-06-24,Bosnia and Herzegovina,Qatar,Under 2.5,Under,williamhill,1.7,0.4965,2.014,-15.59,61.6,MEDIA
+2026-06-24,Bosnia and Herzegovina,Qatar,Under 2.5,Under,pmu_fr,1.7,0.4965,2.014,-15.59,61.6,MEDIA
+2026-06-24,Scotland,Brazil,Over 2.5,Over,pmu_fr,1.74,0.4849,2.062,-15.63,51.7,MEDIA
+2026-06-19,Turkey,Paraguay,Under 2.5,Under,williamhill,1.57,0.5369,1.863,-15.71,63.5,MEDIA
+2026-06-15,Iran,New Zealand,Under 2.5,Under,pmu_fr,1.55,0.5418,1.846,-16.02,59.6,MEDIA
+2026-06-26,Senegal,Iraq,Over 2.5,Over,williamhill,1.85,0.4538,2.204,-16.05,38.0,BAJA
+2026-06-16,Argentina,Algeria,Over 2.5,Over,williamhill,1.83,0.4576,2.185,-16.26,55.1,MEDIA
+2026-06-13,Brazil,Morocco,Over 2.5,Over,williamhill,1.95,0.4292,2.33,-16.31,62.2,MEDIA
+2026-06-19,United States,Australia,Under 2.5,Under,pmu_fr,1.65,0.5071,1.972,-16.33,72.2,ALTA
+2026-06-23,Colombia,DR Congo,Under 2.5,Under,williamhill,1.67,0.5006,1.998,-16.4,51.2,MEDIA
+2026-06-15,Belgium,Egypt,Under 2.5,Under,pinnacle,1.85,0.4516,2.214,-16.45,42.9,BAJA
+2026-06-22,Argentina,Austria,Under 2.5,Under,pmu_fr,1.76,0.4744,2.108,-16.51,61.0,MEDIA
+2026-06-17,Uzbekistan,Colombia,Over 2.5,Over,williamhill,1.91,0.4369,2.289,-16.55,60.4,MEDIA
+2026-06-17,England,Croatia,Under 2.5,Under,williamhill,1.75,0.4764,2.099,-16.63,79.5,ALTA
+2026-06-25,Ecuador,Germany,Over 2.5,Over,pinnacle,1.9,0.4385,2.281,-16.69,69.1,ALTA
+2026-06-21,New Zealand,Egypt,Over 2.5,Over,pmu_fr,2.05,0.4063,2.461,-16.71,53.0,MEDIA
+2026-06-25,Tunisia,Netherlands,Over 2.5,Over,williamhill,1.85,0.4501,2.222,-16.73,46.4,BAJA
+2026-06-22,Argentina,Austria,Under 2.5,Under,williamhill,1.75,0.4744,2.108,-16.98,61.0,MEDIA
+2026-06-12,United States,Paraguay,Under 2.5,Under,williamhill,1.57,0.5284,1.893,-17.04,66.4,ALTA
+2026-06-14,Sweden,Tunisia,Under 2.5,Under,pmu_fr,1.56,0.5317,1.881,-17.05,59.5,MEDIA
+2026-06-14,Ivory Coast,Ecuador,Under 2.5,Under,williamhill,1.44,0.5743,1.741,-17.3,48.3,BAJA
+2026-06-25,Tunisia,Netherlands,Over 2.5,Over,pinnacle,1.83,0.4501,2.222,-17.63,46.4,BAJA
+2026-06-18,Mexico,South Korea,Over 2.5,Over,pmu_fr,2.07,0.3978,2.514,-17.66,73.9,ALTA
+2026-06-25,Japan,Sweden,Under 2.5,Under,williamhill,1.7,0.4834,2.069,-17.82,53.6,MEDIA
+2026-06-27,Jordan,Argentina,Over 2.5,Over,williamhill,1.53,0.5355,1.867,-18.07,62.2,MEDIA
+2026-06-11,Mexico,South Africa,Under 2.5,Under,williamhill,1.73,0.4732,2.113,-18.14,35.9,BAJA
+2026-06-27,Colombia,Portugal,Under 2.5,Under,pmu_fr,1.57,0.5209,1.92,-18.22,78.3,ALTA
+2026-06-23,Colombia,DR Congo,Under 2.5,Under,pmu_fr,1.63,0.5006,1.998,-18.4,51.2,MEDIA
+2026-06-17,Portugal,DR Congo,Over 2.5,Over,pmu_fr,1.53,0.5319,1.88,-18.62,55.4,MEDIA
+2026-06-15,Belgium,Egypt,Under 2.5,Under,williamhill,1.8,0.4516,2.214,-18.71,42.9,BAJA
+2026-06-25,Ecuador,Germany,Over 2.5,Over,williamhill,1.85,0.4385,2.281,-18.88,69.1,ALTA
+2026-06-13,Brazil,Morocco,Over 2.5,Over,pmu_fr,1.88,0.4292,2.33,-19.31,62.2,MEDIA
+2026-06-18,Czech Republic,South Africa,Under 2.5,Under,williamhill,1.62,0.496,2.016,-19.65,47.1,BAJA
+2026-06-22,Jordan,Algeria,Over 2.5,Over,pmu_fr,1.78,0.4511,2.217,-19.7,55.6,MEDIA
+2026-06-23,Panama,Croatia,Over 2.5,Over,pmu_fr,1.8,0.4456,2.244,-19.79,73.1,ALTA
+2026-06-16,Argentina,Algeria,Over 2.5,Over,pmu_fr,1.75,0.4576,2.185,-19.92,55.1,MEDIA
+2026-06-27,DR Congo,Uzbekistan,Over 2.5,Over,williamhill,2.25,0.353,2.833,-20.58,37.6,BAJA
+2026-06-27,Croatia,Ghana,Under 2.5,Under,williamhill,1.67,0.4744,2.108,-20.78,53.7,MEDIA
+2026-06-17,England,Croatia,Under 2.5,Under,pmu_fr,1.66,0.4764,2.099,-20.92,79.5,ALTA
+2026-06-13,Haiti,Scotland,Over 2.5,Over,williamhill,1.8,0.4378,2.284,-21.2,45.9,BAJA
+2026-06-18,Switzerland,Bosnia and Herzegovina,Under 2.5,Under,williamhill,1.75,0.45,2.222,-21.25,73.5,ALTA
+2026-06-17,Uzbekistan,Colombia,Over 2.5,Over,pmu_fr,1.8,0.4369,2.289,-21.36,60.4,MEDIA
+2026-06-25,Ecuador,Germany,Over 2.5,Over,pmu_fr,1.78,0.4385,2.281,-21.95,69.1,ALTA
+2026-06-15,Belgium,Egypt,Under 2.5,Under,pmu_fr,1.72,0.4516,2.214,-22.32,42.9,BAJA
+2026-06-22,France,Iraq,Under 2.5,Under,williamhill,2.4,0.3223,3.103,-22.65,42.9,BAJA
+2026-06-13,Haiti,Scotland,Over 2.5,Over,pmu_fr,1.76,0.4378,2.284,-22.95,45.9,BAJA
+2026-06-18,Switzerland,Bosnia and Herzegovina,Under 2.5,Under,pmu_fr,1.71,0.45,2.222,-23.05,73.5,ALTA
+2026-06-16,Austria,Jordan,Over 2.5,Over,williamhill,1.62,0.4728,2.115,-23.41,61.6,MEDIA
+2026-06-27,DR Congo,Uzbekistan,Over 2.5,Over,pmu_fr,2.15,0.353,2.833,-24.11,37.6,BAJA
+2026-06-18,Czech Republic,South Africa,Under 2.5,Under,pmu_fr,1.53,0.496,2.016,-24.11,47.1,BAJA
+2026-06-25,Curacao,Ivory Coast,Over 2.5,Over,williamhill,1.65,0.4572,2.187,-24.56,46.9,BAJA
+2026-06-20,Netherlands,Sweden,Under 2.5,Under,pinnacle,1.87,0.4011,2.493,-24.99,56.1,MEDIA
+2026-06-15,Spain,Cape Verde,Under 2.5,Under,williamhill,3.1,0.2413,4.144,-25.2,43.0,BAJA
+2026-06-20,Netherlands,Sweden,Under 2.5,Under,williamhill,1.85,0.4011,2.493,-25.8,56.1,MEDIA
+2026-06-11,Mexico,South Africa,Under 2.5,Under,pmu_fr,1.55,0.4732,2.113,-26.65,35.9,BAJA
+2026-06-16,Iraq,Norway,Over 2.5,Over,williamhill,1.55,0.4676,2.139,-27.52,36.1,BAJA
+2026-06-20,Netherlands,Sweden,Under 2.5,Under,pmu_fr,1.77,0.4011,2.493,-29.01,56.1,MEDIA
+2026-06-16,Austria,Jordan,Over 2.5,Over,pmu_fr,1.47,0.4728,2.115,-30.5,61.6,MEDIA
+2026-06-23,England,Ghana,Under 2.5,Under,williamhill,2.1,0.3225,3.101,-32.27,50.9,MEDIA
+2026-06-16,Iraq,Norway,Over 2.5,Over,pmu_fr,1.43,0.4676,2.139,-33.13,36.1,BAJA
+2026-06-20,Ecuador,Curacao,Under 2.5,Under,pmu_fr,2.15,0.3094,3.232,-33.48,63.7,MEDIA
+2026-06-23,England,Ghana,Under 2.5,Under,pmu_fr,2.02,0.3225,3.101,-34.86,50.9,MEDIA
+2026-06-20,Ecuador,Curacao,Under 2.5,Under,williamhill,2.1,0.3094,3.232,-35.03,63.7,MEDIA
+2026-06-21,Spain,Saudi Arabia,Under 2.5,Under,williamhill,2.5,0.2586,3.867,-35.35,35.5,BAJA

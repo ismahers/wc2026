@@ -1,0 +1,217 @@
+date,home_team,away_team,mercado,seleccion,bookmaker,cuota,prob_modelo,cuota_justa,ev_pct,fiabilidad_pct,fiabilidad_nivel
+2026-06-12,United States,Paraguay,1X2 Visitante (A),Paraguay,winamax_fr,3.65,0.4268,2.343,55.78,66.4,ALTA
+2026-06-16,Iraq,Norway,1X2 Empate (D),Draw,winamax_fr,6.5,0.216,4.63,40.4,36.1,BAJA
+2026-06-17,Ghana,Panama,1X2 Visitante (A),Panama,winamax_fr,3.45,0.4003,2.498,38.1,62.1,MEDIA
+2026-06-22,Jordan,Algeria,1X2 Local (H),Jordan,winamax_fr,5.3,0.2559,3.908,35.63,55.6,MEDIA
+2026-06-16,Austria,Jordan,1X2 Visitante (A),Jordan,winamax_fr,7.75,0.1733,5.77,34.31,61.6,MEDIA
+2026-06-21,Belgium,Iran,1X2 Visitante (A),Iran,winamax_fr,6.25,0.2139,4.675,33.69,67.0,ALTA
+2026-06-14,Sweden,Tunisia,1X2 Visitante (A),Tunisia,winamax_fr,3.95,0.3367,2.97,33.0,59.5,MEDIA
+2026-06-14,Ivory Coast,Ecuador,1X2 Visitante (A),Ecuador,winamax_fr,2.25,0.5856,1.708,31.76,48.3,BAJA
+2026-06-25,Curacao,Ivory Coast,1X2 Local (H),Curaçao,winamax_fr,8.0,0.1643,6.086,31.44,46.9,BAJA
+2026-06-16,Iraq,Norway,1X2 Local (H),Iraq,winamax_fr,10.5,0.1232,8.117,29.36,36.1,BAJA
+2026-06-13,Brazil,Morocco,1X2 Visitante (A),Morocco,winamax_fr,5.2,0.2432,4.112,26.46,62.2,MEDIA
+2026-06-17,Uzbekistan,Colombia,1X2 Local (H),Uzbekistan,winamax_fr,7.25,0.1738,5.754,26.01,60.4,MEDIA
+2026-06-16,Austria,Jordan,1X2 Empate (D),Draw,winamax_fr,5.5,0.2272,4.401,24.96,61.6,MEDIA
+2026-06-25,Ecuador,Germany,1X2 Local (H),Ecuador,winamax_fr,4.2,0.2971,3.366,24.78,69.1,ALTA
+2026-06-14,Germany,Curacao,1X2 Visitante (A),Curaçao,winamax_fr,35.0,0.0351,28.49,22.85,67.7,ALTA
+2026-06-25,Curacao,Ivory Coast,1X2 Empate (D),Draw,winamax_fr,5.0,0.2437,4.103,21.85,46.9,BAJA
+2026-06-15,Iran,New Zealand,1X2 Local (H),Iran,winamax_fr,1.86,0.6346,1.576,18.04,59.6,MEDIA
+2026-06-17,Portugal,DR Congo,1X2 Empate (D),Draw,winamax_fr,5.8,0.1989,5.028,15.36,55.4,MEDIA
+2026-06-17,Uzbekistan,Colombia,1X2 Empate (D),Draw,winamax_fr,4.5,0.2548,3.925,14.66,60.4,MEDIA
+2026-06-12,Canada,Bosnia and Herzegovina,1X2 Empate (D),Draw,winamax_fr,3.7,0.3089,3.237,14.29,51.8,MEDIA
+2026-06-26,Egypt,Iran,1X2 Visitante (A),Iran,winamax_fr,3.05,0.372,2.688,13.46,49.8,BAJA
+2026-06-27,DR Congo,Uzbekistan,1X2 Empate (D),Draw,winamax_fr,2.95,0.3814,2.622,12.51,37.6,BAJA
+2026-06-14,Germany,Curacao,1X2 Empate (D),Draw,winamax_fr,15.0,0.0744,13.441,11.6,67.7,ALTA
+2026-06-18,Czech Republic,South Africa,1X2 Local (H),Czech Republic,winamax_fr,1.84,0.6057,1.651,11.45,47.1,BAJA
+2026-06-13,Haiti,Scotland,1X2 Empate (D),Draw,winamax_fr,4.4,0.2531,3.951,11.36,45.9,BAJA
+2026-06-27,Croatia,Ghana,1X2 Local (H),Croatia,winamax_fr,1.52,0.7322,1.366,11.29,53.7,MEDIA
+2026-06-25,Japan,Sweden,1X2 Local (H),Japan,winamax_fr,1.9,0.5845,1.711,11.05,53.6,MEDIA
+2026-06-20,Netherlands,Sweden,1X2 Local (H),Netherlands,winamax_fr,1.54,0.7207,1.388,10.99,56.1,MEDIA
+2026-06-19,United States,Australia,1X2 Visitante (A),Australia,winamax_fr,4.0,0.2757,3.627,10.28,72.2,ALTA
+2026-06-13,Australia,Turkey,1X2 Local (H),Australia,winamax_fr,4.2,0.2614,3.826,9.79,69.3,ALTA
+2026-06-21,New Zealand,Egypt,1X2 Empate (D),Draw,winamax_fr,3.5,0.3095,3.231,8.33,53.0,MEDIA
+2026-06-24,Scotland,Brazil,1X2 Empate (D),Draw,winamax_fr,3.9,0.2776,3.602,8.26,51.7,MEDIA
+2026-06-18,Switzerland,Bosnia and Herzegovina,1X2 Local (H),Switzerland,winamax_fr,1.56,0.6935,1.442,8.19,73.5,ALTA
+2026-06-13,Australia,Turkey,1X2 Empate (D),Draw,winamax_fr,3.6,0.2977,3.359,7.17,69.3,ALTA
+2026-06-25,Turkey,United States,1X2 Local (H),Turkey,winamax_fr,2.4,0.446,2.242,7.04,71.6,ALTA
+2026-06-21,New Zealand,Egypt,1X2 Local (H),New Zealand,winamax_fr,4.4,0.243,4.115,6.92,53.0,MEDIA
+2026-06-17,Ghana,Panama,1X2 Empate (D),Draw,winamax_fr,3.55,0.2992,3.342,6.22,62.1,MEDIA
+2026-06-23,England,Ghana,1X2 Local (H),England,winamax_fr,1.25,0.8482,1.179,6.02,50.9,MEDIA
+2026-06-14,Netherlands,Japan,1X2 Visitante (A),Japan,winamax_fr,3.4,0.3093,3.233,5.16,93.0,MUY ALTA
+2026-06-18,Mexico,South Korea,1X2 Empate (D),Draw,winamax_fr,3.25,0.3202,3.123,4.06,73.9,ALTA
+2026-06-22,Jordan,Algeria,1X2 Empate (D),Draw,winamax_fr,3.9,0.2652,3.771,3.43,55.6,MEDIA
+2026-06-23,Panama,Croatia,1X2 Local (H),Panama,winamax_fr,5.8,0.1777,5.627,3.07,73.1,ALTA
+2026-06-13,Qatar,Switzerland,1X2 Empate (D),Draw,winamax_fr,6.25,0.1646,6.075,2.88,49.8,BAJA
+2026-06-15,Belgium,Egypt,1X2 Local (H),Belgium,winamax_fr,1.6,0.6427,1.556,2.83,42.9,BAJA
+2026-06-17,Portugal,DR Congo,1X2 Visitante (A),DR Congo,winamax_fr,9.0,0.1138,8.787,2.42,55.4,MEDIA
+2026-06-20,Germany,Ivory Coast,1X2 Local (H),Germany,winamax_fr,1.48,0.6906,1.448,2.21,52.2,MEDIA
+2026-06-26,Norway,France,1X2 Local (H),Norway,winamax_fr,3.65,0.2779,3.598,1.43,86.6,MUY ALTA
+2026-06-24,Bosnia and Herzegovina,Qatar,1X2 Visitante (A),Qatar,winamax_fr,5.0,0.2028,4.931,1.4,61.6,MEDIA
+2026-06-22,Norway,Senegal,1X2 Local (H),Norway,winamax_fr,1.96,0.5159,1.938,1.12,46.8,BAJA
+2026-06-25,Ecuador,Germany,1X2 Empate (D),Draw,winamax_fr,3.45,0.293,3.413,1.09,69.1,ALTA
+2026-06-23,Panama,Croatia,1X2 Empate (D),Draw,winamax_fr,3.95,0.2544,3.931,0.49,73.1,ALTA
+2026-06-11,Mexico,South Africa,1X2 Local (H),Mexico,winamax_fr,1.39,0.7208,1.387,0.19,35.9,BAJA
+2026-06-23,Portugal,Uzbekistan,1X2 Empate (D),Draw,winamax_fr,5.4,0.1844,5.423,-0.42,64.7,MEDIA
+2026-06-21,Belgium,Iran,1X2 Empate (D),Draw,winamax_fr,4.3,0.2314,4.322,-0.5,67.0,ALTA
+2026-06-24,South Africa,South Korea,1X2 Visitante (A),South Korea,winamax_fr,1.8,0.552,1.812,-0.64,33.0,MUY BAJA
+2026-06-16,Argentina,Algeria,1X2 Local (H),Argentina,winamax_fr,1.38,0.7199,1.389,-0.65,55.1,MEDIA
+2026-06-26,Uruguay,Spain,1X2 Visitante (A),Spain,winamax_fr,1.49,0.6667,1.5,-0.66,55.3,MEDIA
+2026-06-25,Paraguay,Australia,1X2 Local (H),Paraguay,winamax_fr,1.96,0.5068,1.973,-0.67,64.2,MEDIA
+2026-06-14,Sweden,Tunisia,1X2 Empate (D),Draw,winamax_fr,3.45,0.2874,3.479,-0.85,59.5,MEDIA
+2026-06-17,England,Croatia,1X2 Empate (D),Draw,winamax_fr,3.75,0.2627,3.807,-1.49,79.5,ALTA
+2026-06-16,France,Senegal,1X2 Local (H),France,winamax_fr,1.43,0.6881,1.453,-1.6,53.5,MEDIA
+2026-06-13,Haiti,Scotland,1X2 Local (H),Haiti,winamax_fr,5.7,0.1718,5.821,-2.07,45.9,BAJA
+2026-06-22,Argentina,Austria,1X2 Local (H),Argentina,winamax_fr,1.56,0.6242,1.602,-2.62,61.0,MEDIA
+2026-06-21,Spain,Saudi Arabia,1X2 Local (H),Spain,winamax_fr,1.07,0.9071,1.102,-2.94,35.5,BAJA
+2026-06-24,Switzerland,Canada,1X2 Local (H),Switzerland,winamax_fr,1.9,0.5102,1.96,-3.06,57.5,MEDIA
+2026-06-15,Spain,Cape Verde,1X2 Local (H),Spain,winamax_fr,1.05,0.9211,1.086,-3.28,43.0,BAJA
+2026-06-27,Colombia,Portugal,1X2 Local (H),Colombia,winamax_fr,3.0,0.3223,3.103,-3.31,78.3,ALTA
+2026-06-11,South Korea,Czech Republic,1X2 Empate (D),Draw,winamax_fr,3.15,0.3052,3.277,-3.86,67.6,ALTA
+2026-06-26,Senegal,Iraq,1X2 Empate (D),Draw,winamax_fr,3.8,0.2526,3.959,-4.01,38.0,BAJA
+2026-06-11,South Korea,Czech Republic,1X2 Local (H),South Korea,winamax_fr,2.45,0.3917,2.553,-4.03,67.6,ALTA
+2026-06-20,Tunisia,Japan,1X2 Empate (D),Draw,winamax_fr,3.3,0.29,3.448,-4.3,43.9,BAJA
+2026-06-27,Jordan,Argentina,1X2 Empate (D),Draw,winamax_fr,5.2,0.184,5.435,-4.32,62.2,MEDIA
+2026-06-19,Turkey,Paraguay,1X2 Local (H),Turkey,winamax_fr,2.05,0.4653,2.149,-4.61,63.5,MEDIA
+2026-06-23,Portugal,Uzbekistan,1X2 Visitante (A),Uzbekistan,winamax_fr,8.0,0.119,8.403,-4.8,64.7,MEDIA
+2026-06-13,Brazil,Morocco,1X2 Empate (D),Draw,winamax_fr,3.7,0.257,3.891,-4.91,62.2,MEDIA
+2026-06-20,Ecuador,Curacao,1X2 Local (H),Ecuador,winamax_fr,1.15,0.8245,1.213,-5.18,63.7,MEDIA
+2026-06-24,Bosnia and Herzegovina,Qatar,1X2 Empate (D),Draw,winamax_fr,3.55,0.2669,3.747,-5.25,61.6,MEDIA
+2026-06-12,Canada,Bosnia and Herzegovina,1X2 Local (H),Canada,winamax_fr,1.76,0.5375,1.86,-5.4,51.8,MEDIA
+2026-06-15,Saudi Arabia,Uruguay,1X2 Visitante (A),Uruguay,winamax_fr,1.44,0.656,1.524,-5.54,41.2,BAJA
+2026-06-19,Scotland,Morocco,1X2 Local (H),Scotland,winamax_fr,3.55,0.266,3.759,-5.57,81.2,MUY ALTA
+2026-06-23,Colombia,DR Congo,1X2 Local (H),Colombia,winamax_fr,1.39,0.6788,1.473,-5.65,51.2,MEDIA
+2026-06-26,Cape Verde,Saudi Arabia,1X2 Local (H),Cape Verde,winamax_fr,2.25,0.4163,2.402,-6.33,57.0,MEDIA
+2026-06-22,Argentina,Austria,1X2 Empate (D),Draw,winamax_fr,3.55,0.2638,3.791,-6.35,61.0,MEDIA
+2026-06-13,Qatar,Switzerland,1X2 Visitante (A),Switzerland,winamax_fr,1.21,0.7738,1.292,-6.37,49.8,BAJA
+2026-06-15,Saudi Arabia,Uruguay,1X2 Empate (D),Draw,winamax_fr,4.4,0.2123,4.71,-6.59,41.2,BAJA
+2026-06-26,Senegal,Iraq,1X2 Visitante (A),Iraq,winamax_fr,5.4,0.1729,5.784,-6.63,38.0,BAJA
+2026-06-17,England,Croatia,1X2 Local (H),England,winamax_fr,1.68,0.555,1.802,-6.76,79.5,ALTA
+2026-06-19,United States,Australia,1X2 Empate (D),Draw,winamax_fr,3.45,0.2672,3.743,-7.82,72.2,ALTA
+2026-06-21,Uruguay,Cape Verde,1X2 Local (H),Uruguay,winamax_fr,1.37,0.6707,1.491,-8.11,45.9,BAJA
+2026-06-14,Germany,Curacao,1X2 Local (H),Germany,winamax_fr,1.03,0.8905,1.123,-8.28,67.7,ALTA
+2026-06-15,Belgium,Egypt,1X2 Empate (D),Draw,winamax_fr,3.85,0.2378,4.205,-8.45,42.9,BAJA
+2026-06-18,Canada,Qatar,1X2 Local (H),Canada,winamax_fr,1.26,0.7262,1.377,-8.5,63.1,MEDIA
+2026-06-24,Morocco,Haiti,1X2 Local (H),Morocco,winamax_fr,1.25,0.7282,1.373,-8.97,38.9,BAJA
+2026-06-19,Turkey,Paraguay,1X2 Visitante (A),Paraguay,winamax_fr,3.1,0.293,3.413,-9.17,63.5,MEDIA
+2026-06-19,Brazil,Haiti,1X2 Local (H),Brazil,winamax_fr,1.04,0.8729,1.146,-9.22,44.3,BAJA
+2026-06-22,Norway,Senegal,1X2 Visitante (A),Senegal,winamax_fr,3.15,0.2882,3.47,-9.22,46.8,BAJA
+2026-06-18,Mexico,South Korea,1X2 Visitante (A),South Korea,winamax_fr,4.0,0.2265,4.415,-9.4,73.9,ALTA
+2026-06-20,Tunisia,Japan,1X2 Visitante (A),Japan,winamax_fr,1.68,0.5387,1.856,-9.5,43.9,BAJA
+2026-06-22,France,Iraq,1X2 Local (H),France,winamax_fr,1.07,0.845,1.183,-9.58,42.9,BAJA
+2026-06-14,Netherlands,Japan,1X2 Empate (D),Draw,winamax_fr,3.6,0.2509,3.986,-9.68,93.0,MUY ALTA
+2026-06-27,Algeria,Austria,1X2 Empate (D),Draw,winamax_fr,2.9,0.3109,3.216,-9.84,71.9,ALTA
+2026-06-12,United States,Paraguay,1X2 Empate (D),Draw,winamax_fr,3.35,0.2679,3.733,-10.25,66.4,ALTA
+2026-06-26,Egypt,Iran,1X2 Empate (D),Draw,winamax_fr,2.7,0.3318,3.014,-10.41,49.8,BAJA
+2026-06-24,Scotland,Brazil,1X2 Local (H),Scotland,winamax_fr,5.2,0.1717,5.824,-10.72,51.7,MEDIA
+2026-06-27,Panama,England,1X2 Visitante (A),England,winamax_fr,1.22,0.7291,1.372,-11.05,87.9,MUY ALTA
+2026-06-27,Colombia,Portugal,1X2 Empate (D),Draw,winamax_fr,3.0,0.2961,3.377,-11.17,78.3,ALTA
+2026-06-16,France,Senegal,1X2 Empate (D),Draw,winamax_fr,4.3,0.2057,4.861,-11.55,53.5,MEDIA
+2026-06-25,Tunisia,Netherlands,1X2 Visitante (A),Netherlands,winamax_fr,1.39,0.6356,1.573,-11.65,46.4,BAJA
+2026-06-25,Paraguay,Australia,1X2 Empate (D),Draw,winamax_fr,2.95,0.2983,3.352,-12.0,64.2,MEDIA
+2026-06-24,Czech Republic,Mexico,1X2 Empate (D),Draw,winamax_fr,3.15,0.2767,3.614,-12.84,70.6,ALTA
+2026-06-19,Scotland,Morocco,1X2 Empate (D),Draw,winamax_fr,3.1,0.2808,3.561,-12.95,81.2,MUY ALTA
+2026-06-24,Switzerland,Canada,1X2 Empate (D),Draw,winamax_fr,3.0,0.2873,3.481,-13.81,57.5,MEDIA
+2026-06-16,Argentina,Algeria,1X2 Empate (D),Draw,winamax_fr,4.5,0.1914,5.225,-13.87,55.1,MEDIA
+2026-06-26,Cape Verde,Saudi Arabia,1X2 Empate (D),Draw,winamax_fr,2.95,0.2917,3.428,-13.95,57.0,MEDIA
+2026-06-24,Czech Republic,Mexico,1X2 Local (H),Czech Republic,winamax_fr,3.7,0.2307,4.335,-14.64,70.6,ALTA
+2026-06-14,Netherlands,Japan,1X2 Local (H),Netherlands,winamax_fr,1.94,0.4398,2.274,-14.68,93.0,MUY ALTA
+2026-06-17,Portugal,DR Congo,1X2 Local (H),Portugal,winamax_fr,1.24,0.6873,1.455,-14.77,55.4,MEDIA
+2026-06-21,Uruguay,Cape Verde,1X2 Empate (D),Draw,winamax_fr,4.1,0.2074,4.822,-14.97,45.9,BAJA
+2026-06-26,New Zealand,Belgium,1X2 Visitante (A),Belgium,winamax_fr,1.22,0.6964,1.436,-15.04,70.2,ALTA
+2026-06-27,Algeria,Austria,1X2 Visitante (A),Austria,winamax_fr,2.0,0.4225,2.367,-15.5,71.9,ALTA
+2026-06-27,Jordan,Argentina,1X2 Local (H),Jordan,winamax_fr,8.5,0.0993,10.07,-15.6,62.2,MEDIA
+2026-06-15,Iran,New Zealand,1X2 Empate (D),Draw,winamax_fr,3.4,0.2479,4.034,-15.71,59.6,MEDIA
+2026-06-19,Scotland,Morocco,1X2 Visitante (A),Morocco,winamax_fr,1.86,0.4531,2.207,-15.72,81.2,MUY ALTA
+2026-06-25,Tunisia,Netherlands,1X2 Empate (D),Draw,winamax_fr,3.7,0.2275,4.396,-15.82,46.4,BAJA
+2026-06-13,Haiti,Scotland,1X2 Visitante (A),Scotland,winamax_fr,1.46,0.5751,1.739,-16.04,45.9,BAJA
+2026-06-23,Portugal,Uzbekistan,1X2 Local (H),Portugal,winamax_fr,1.2,0.6966,1.436,-16.41,64.7,MEDIA
+2026-06-11,South Korea,Czech Republic,1X2 Visitante (A),Czech Republic,winamax_fr,2.75,0.3031,3.299,-16.65,67.6,ALTA
+2026-06-23,Colombia,DR Congo,1X2 Empate (D),Draw,winamax_fr,3.9,0.2127,4.701,-17.05,51.2,MEDIA
+2026-06-26,Norway,France,1X2 Empate (D),Draw,winamax_fr,3.2,0.258,3.876,-17.44,86.6,MUY ALTA
+2026-06-26,New Zealand,Belgium,1X2 Empate (D),Draw,winamax_fr,4.5,0.1831,5.461,-17.6,70.2,ALTA
+2026-06-24,Czech Republic,Mexico,1X2 Visitante (A),Mexico,winamax_fr,1.66,0.4926,2.03,-18.23,70.6,ALTA
+2026-06-27,Jordan,Argentina,1X2 Visitante (A),Argentina,winamax_fr,1.14,0.7167,1.395,-18.3,62.2,MEDIA
+2026-06-24,South Africa,South Korea,1X2 Empate (D),Draw,winamax_fr,3.05,0.2677,3.736,-18.35,33.0,MUY BAJA
+2026-06-26,New Zealand,Belgium,1X2 Local (H),New Zealand,winamax_fr,6.75,0.1205,8.299,-18.66,70.2,ALTA
+2026-06-27,Panama,England,1X2 Empate (D),Draw,winamax_fr,4.7,0.1729,5.784,-18.74,87.9,MUY ALTA
+2026-06-25,Japan,Sweden,1X2 Empate (D),Draw,winamax_fr,3.05,0.2649,3.775,-19.21,53.6,MEDIA
+2026-06-18,Canada,Qatar,1X2 Empate (D),Draw,winamax_fr,4.6,0.1746,5.727,-19.68,63.1,MEDIA
+2026-06-17,England,Croatia,1X2 Visitante (A),Croatia,winamax_fr,4.4,0.1823,5.485,-19.79,79.5,ALTA
+2026-06-23,Panama,Croatia,1X2 Visitante (A),Croatia,winamax_fr,1.41,0.5679,1.761,-19.93,73.1,ALTA
+2026-06-13,Brazil,Morocco,1X2 Local (H),Brazil,winamax_fr,1.6,0.4998,2.001,-20.03,62.2,MEDIA
+2026-06-15,Saudi Arabia,Uruguay,1X2 Local (H),Saudi Arabia,winamax_fr,6.0,0.1317,7.593,-20.98,41.2,BAJA
+2026-06-17,Uzbekistan,Colombia,1X2 Visitante (A),Colombia,winamax_fr,1.38,0.5714,1.75,-21.15,60.4,MEDIA
+2026-06-16,Iraq,Norway,1X2 Visitante (A),Norway,winamax_fr,1.19,0.6608,1.513,-21.36,36.1,BAJA
+2026-06-11,Mexico,South Africa,1X2 Empate (D),Draw,winamax_fr,4.4,0.1786,5.599,-21.42,35.9,BAJA
+2026-06-18,Mexico,South Korea,1X2 Local (H),Mexico,winamax_fr,1.72,0.4533,2.206,-22.03,73.9,ALTA
+2026-06-19,Brazil,Haiti,1X2 Empate (D),Draw,winamax_fr,9.0,0.0864,11.574,-22.24,44.3,BAJA
+2026-06-26,Senegal,Iraq,1X2 Local (H),Senegal,winamax_fr,1.35,0.5746,1.74,-22.43,38.0,BAJA
+2026-06-16,Austria,Jordan,1X2 Local (H),Austria,winamax_fr,1.29,0.5995,1.668,-22.66,61.6,MEDIA
+2026-06-27,Algeria,Austria,1X2 Local (H),Algeria,winamax_fr,2.9,0.2666,3.751,-22.69,71.9,ALTA
+2026-06-26,Norway,France,1X2 Visitante (A),France,winamax_fr,1.66,0.4641,2.155,-22.96,86.6,MUY ALTA
+2026-06-18,Canada,Qatar,1X2 Visitante (A),Qatar,winamax_fr,7.75,0.0993,10.07,-23.04,63.1,MEDIA
+2026-06-22,France,Iraq,1X2 Empate (D),Draw,winamax_fr,7.25,0.1061,9.425,-23.08,42.9,BAJA
+2026-06-26,Uruguay,Spain,1X2 Empate (D),Draw,winamax_fr,3.5,0.2194,4.558,-23.21,55.3,MEDIA
+2026-06-13,Australia,Turkey,1X2 Visitante (A),Turkey,winamax_fr,1.74,0.4409,2.268,-23.28,69.3,ALTA
+2026-06-24,Morocco,Haiti,1X2 Empate (D),Draw,winamax_fr,4.3,0.1778,5.624,-23.55,38.9,BAJA
+2026-06-18,Czech Republic,South Africa,1X2 Empate (D),Draw,winamax_fr,3.1,0.2462,4.062,-23.68,47.1,BAJA
+2026-06-25,Turkey,United States,1X2 Empate (D),Draw,winamax_fr,3.1,0.2458,4.068,-23.8,71.6,ALTA
+2026-06-27,DR Congo,Uzbekistan,1X2 Visitante (A),Uzbekistan,winamax_fr,2.7,0.2814,3.554,-24.02,37.6,BAJA
+2026-06-19,United States,Australia,1X2 Local (H),USA,winamax_fr,1.66,0.4571,2.188,-24.12,72.2,ALTA
+2026-06-24,Bosnia and Herzegovina,Qatar,1X2 Local (H),Bosnia & Herzegovina,winamax_fr,1.42,0.5303,1.886,-24.7,61.6,MEDIA
+2026-06-24,Scotland,Brazil,1X2 Visitante (A),Brazil,winamax_fr,1.35,0.5508,1.816,-25.64,51.7,MEDIA
+2026-06-21,Belgium,Iran,1X2 Local (H),Belgium,winamax_fr,1.34,0.5547,1.803,-25.67,67.0,ALTA
+2026-06-22,France,Iraq,1X2 Visitante (A),Iraq,winamax_fr,15.0,0.0489,20.45,-26.65,42.9,BAJA
+2026-06-27,Colombia,Portugal,1X2 Visitante (A),Portugal,winamax_fr,1.92,0.3816,2.621,-26.73,78.3,ALTA
+2026-06-21,Uruguay,Cape Verde,1X2 Visitante (A),Cape Verde,winamax_fr,6.0,0.122,8.197,-26.8,45.9,BAJA
+2026-06-11,Mexico,South Africa,1X2 Visitante (A),South Africa,winamax_fr,7.25,0.1006,9.94,-27.07,35.9,BAJA
+2026-06-19,Turkey,Paraguay,1X2 Empate (D),Draw,winamax_fr,3.0,0.2417,4.137,-27.49,63.5,MEDIA
+2026-06-20,Tunisia,Japan,1X2 Local (H),Tunisia,winamax_fr,4.2,0.1712,5.841,-28.1,43.9,BAJA
+2026-06-21,New Zealand,Egypt,1X2 Visitante (A),Egypt,winamax_fr,1.6,0.4475,2.235,-28.4,53.0,MEDIA
+2026-06-26,Cape Verde,Saudi Arabia,1X2 Visitante (A),Saudi Arabia,winamax_fr,2.45,0.292,3.425,-28.46,57.0,MEDIA
+2026-06-20,Ecuador,Curacao,1X2 Empate (D),Draw,winamax_fr,6.0,0.118,8.475,-29.2,63.7,MEDIA
+2026-06-18,Switzerland,Bosnia and Herzegovina,1X2 Empate (D),Draw,winamax_fr,3.65,0.1904,5.252,-30.5,73.5,ALTA
+2026-06-22,Jordan,Algeria,1X2 Visitante (A),Algeria,winamax_fr,1.45,0.4789,2.088,-30.56,55.6,MEDIA
+2026-06-25,Turkey,United States,1X2 Visitante (A),USA,winamax_fr,2.25,0.3082,3.245,-30.66,71.6,ALTA
+2026-06-14,Sweden,Tunisia,1X2 Local (H),Sweden,winamax_fr,1.84,0.3759,2.66,-30.83,59.5,MEDIA
+2026-06-27,DR Congo,Uzbekistan,1X2 Local (H),DR Congo,winamax_fr,2.05,0.3373,2.965,-30.85,37.6,BAJA
+2026-06-25,Curacao,Ivory Coast,1X2 Visitante (A),Ivory Coast,winamax_fr,1.16,0.592,1.689,-31.33,46.9,BAJA
+2026-06-25,Tunisia,Netherlands,1X2 Local (H),Tunisia,winamax_fr,5.0,0.1368,7.31,-31.6,46.4,BAJA
+2026-06-20,Germany,Ivory Coast,1X2 Visitante (A),Ivory Coast,winamax_fr,4.9,0.1393,7.179,-31.74,52.2,MEDIA
+2026-06-15,Spain,Cape Verde,1X2 Empate (D),Draw,winamax_fr,11.5,0.059,16.949,-32.15,43.0,BAJA
+2026-06-23,Colombia,DR Congo,1X2 Visitante (A),DR Congo,winamax_fr,6.25,0.1085,9.217,-32.19,51.2,MEDIA
+2026-06-20,Germany,Ivory Coast,1X2 Empate (D),Draw,winamax_fr,3.95,0.1701,5.879,-32.81,52.2,MEDIA
+2026-06-14,Ivory Coast,Ecuador,1X2 Empate (D),Draw,winamax_fr,2.75,0.2438,4.102,-32.95,48.3,BAJA
+2026-06-16,France,Senegal,1X2 Visitante (A),Senegal,winamax_fr,6.25,0.1062,9.416,-33.62,53.5,MEDIA
+2026-06-16,Argentina,Algeria,1X2 Visitante (A),Algeria,winamax_fr,7.25,0.0887,11.274,-35.69,55.1,MEDIA
+2026-06-27,Panama,England,1X2 Local (H),Panama,winamax_fr,6.5,0.098,10.204,-36.3,87.9,MUY ALTA
+2026-06-22,Norway,Senegal,1X2 Empate (D),Draw,winamax_fr,3.25,0.1958,5.107,-36.37,46.8,BAJA
+2026-06-12,Canada,Bosnia and Herzegovina,1X2 Visitante (A),Bosnia & Herzegovina,winamax_fr,4.1,0.1536,6.51,-37.02,51.8,MEDIA
+2026-06-25,Ecuador,Germany,1X2 Visitante (A),Germany,winamax_fr,1.52,0.4099,2.44,-37.7,69.1,ALTA
+2026-06-24,Switzerland,Canada,1X2 Visitante (A),Canada,winamax_fr,3.05,0.2025,4.938,-38.24,57.5,MEDIA
+2026-06-13,Qatar,Switzerland,1X2 Local (H),Qatar,winamax_fr,10.0,0.0615,16.26,-38.5,49.8,BAJA
+2026-06-20,Netherlands,Sweden,1X2 Empate (D),Draw,winamax_fr,3.7,0.1656,6.039,-38.73,56.1,MEDIA
+2026-06-24,Morocco,Haiti,1X2 Visitante (A),Haiti,winamax_fr,6.5,0.094,10.638,-38.9,38.9,BAJA
+2026-06-19,Brazil,Haiti,1X2 Visitante (A),Haiti,winamax_fr,15.0,0.0407,24.57,-38.95,44.3,BAJA
+2026-06-15,Belgium,Egypt,1X2 Visitante (A),Egypt,winamax_fr,5.0,0.1196,8.361,-40.2,42.9,BAJA
+2026-06-14,Ivory Coast,Ecuador,1X2 Local (H),Ivory Coast,winamax_fr,3.5,0.1706,5.862,-40.29,48.3,BAJA
+2026-06-24,South Africa,South Korea,1X2 Local (H),South Africa,winamax_fr,3.3,0.1803,5.546,-40.5,33.0,MUY BAJA
+2026-06-26,Egypt,Iran,1X2 Local (H),Egypt,winamax_fr,2.0,0.2962,3.376,-40.76,49.8,BAJA
+2026-06-12,United States,Paraguay,1X2 Local (H),USA,winamax_fr,1.94,0.3053,3.275,-40.77,66.4,ALTA
+2026-06-17,Ghana,Panama,1X2 Local (H),Ghana,winamax_fr,1.94,0.3005,3.328,-41.7,62.1,MEDIA
+2026-06-25,Paraguay,Australia,1X2 Visitante (A),Australia,winamax_fr,2.95,0.1949,5.131,-42.5,64.2,MEDIA
+2026-06-20,Ecuador,Curacao,1X2 Visitante (A),Curaçao,winamax_fr,9.5,0.0575,17.391,-45.38,63.7,MEDIA
+2026-06-27,Croatia,Ghana,1X2 Empate (D),Draw,winamax_fr,3.35,0.1621,6.169,-45.7,53.7,MEDIA
+2026-06-18,Czech Republic,South Africa,1X2 Visitante (A),South Africa,winamax_fr,3.65,0.1481,6.752,-45.94,47.1,BAJA
+2026-06-21,Spain,Saudi Arabia,1X2 Empate (D),Draw,winamax_fr,7.5,0.0701,14.265,-47.43,35.5,BAJA
+2026-06-18,Switzerland,Bosnia and Herzegovina,1X2 Visitante (A),Bosnia & Herzegovina,winamax_fr,4.5,0.1161,8.613,-47.76,73.5,ALTA
+2026-06-22,Argentina,Austria,1X2 Visitante (A),Austria,winamax_fr,4.6,0.1121,8.921,-48.43,61.0,MEDIA
+2026-06-20,Netherlands,Sweden,1X2 Visitante (A),Sweden,winamax_fr,4.5,0.1137,8.795,-48.84,56.1,MEDIA
+2026-06-23,England,Ghana,1X2 Empate (D),Draw,winamax_fr,4.9,0.1029,9.718,-49.58,50.9,MEDIA
+2026-06-26,Uruguay,Spain,1X2 Local (H),Uruguay,winamax_fr,4.3,0.1139,8.78,-51.02,55.3,MEDIA
+2026-06-15,Iran,New Zealand,1X2 Visitante (A),New Zealand,winamax_fr,3.95,0.1175,8.511,-53.59,59.6,MEDIA
+2026-06-25,Japan,Sweden,1X2 Visitante (A),Sweden,winamax_fr,3.05,0.1506,6.64,-54.07,53.6,MEDIA
+2026-06-27,Croatia,Ghana,1X2 Visitante (A),Ghana,winamax_fr,4.3,0.1057,9.461,-54.55,53.7,MEDIA
+2026-06-15,Spain,Cape Verde,1X2 Visitante (A),Cape Verde,winamax_fr,20.0,0.02,50.0,-60.0,43.0,BAJA
+2026-06-23,England,Ghana,1X2 Visitante (A),Ghana,winamax_fr,7.5,0.0489,20.45,-63.32,50.9,MEDIA
+2026-06-21,Spain,Saudi Arabia,1X2 Visitante (A),Saudi Arabia,winamax_fr,14.5,0.0229,43.668,-66.8,35.5,BAJA

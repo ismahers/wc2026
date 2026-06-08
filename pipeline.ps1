@@ -1,34 +1,52 @@
+# run_pipeline.ps1
+# ================
+# Pipeline completo de prediccion WC2026.
+# Corta al primer fallo. Ejecutar desde la raiz del repo:
+#     powershell -ExecutionPolicy Bypass -File .\run_pipeline.ps1
+#
+# Empieza en builder porque los pasos de convocatorias/ratings no cambian con
+# el bump de Elo a USA (solo se toco builder.py). Si cambias squads o ratings,
+# usa regen_fifa.ps1 (que reejecuta tambien esos pasos previos).
+#
+# Pasos:
+#   builder -> feature_engineering -> XGBoost -> Poisson -> cuotas (x2)
+#   -> model_comparison -> model_ensemble
+#   -> calibration_report -> match_reliability -> ev_calculator
+#
+# ev_calculator necesita ODDS_API_KEY en .env y conexion a internet.
+
 $ErrorActionPreference = "Stop"
 
 function Run-Step {
-    param([string]$Label, [string]$Cmd)
+    param([string]$Description, [string[]]$CommandArgs)
     Write-Host ""
-    Write-Host ">>> $Label" -ForegroundColor Cyan
-    Invoke-Expression $Cmd
+    Write-Host ">> $Description" -ForegroundColor Cyan
+    & python @CommandArgs
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "FALLO en: $Label (exit $LASTEXITCODE)" -ForegroundColor Red
-        exit 1
+        Write-Host "[FALLO] en: $Description (exit $LASTEXITCODE)" -ForegroundColor Red
+        exit $LASTEXITCODE
     }
-    Write-Host "OK" -ForegroundColor Green
 }
 
-# Regenera unified.csv con los 314 partidos. Re-descarga StatsBomb,
-# asi que tarda unos minutos. Es el paso que mete Copa y AFCON en el dataset.
-Run-Step "1/5  Recoleccion + unificacion (lento, re-descarga StatsBomb)" `
-    "python data_collector.py"
+# --- Datos y features ---
+Run-Step "Builder dataset enriquecido"      @("-m", "src.data.builder")
+Run-Step "Feature engineering"              @("src/features/feature_engineering.py")
 
-Run-Step "2/5  Elo inicial anclado" `
-    "python -m src.data.elo_loader"
+# --- Modelos ---
+Run-Step "XGBoost (5 mercados)"             @("-m", "src.models.xgboost_model", "--markets", "result_1x2,over25,btts,total_goals,corners")
+Run-Step "Modelo Poisson"                   @("-m", "src.models.poisson_model")
 
-Run-Step "3/5  Builder: regenera matches_enriched.csv (de aqui lee features)" `
-    "python -m src.data.builder"
+# --- Cuotas y combinacion ---
+Run-Step "Cuotas XGBoost"                   @("-m", "src.evaluation.odds_converter", "--input", "outputs/wc2026_predictions.csv")
+Run-Step "Cuotas Poisson"                   @("-m", "src.evaluation.odds_converter", "--input", "outputs/wc2026_poisson_predictions.csv")
+Run-Step "Comparacion de modelos"           @("-m", "src.evaluation.model_comparison")
+Run-Step "Ensemble final"                   @("-m", "src.evaluation.model_ensemble")
 
-Run-Step "4/5  Feature engineering (con los 314)" `
-    "python src/features/feature_engineering.py"
-
-Run-Step "5/5  XGBoost (incluye el mercado de corners)" `
-    "python -m src.models.xgboost_model --features data/processed/features_train.csv --wc-features data/processed/features_wc2026.csv"
+# --- Evaluacion ---
+Run-Step "Calibracion (historico)"          @("-m", "src.evaluation.calibration_report")
+Run-Step "Fiabilidad de inputs por partido" @("-m", "src.evaluation.match_reliability")
+Run-Step "Calculo de EV (cuotas reales)"    @("-m", "src.evaluation.ev_calculator")
 
 Write-Host ""
-Write-Host "Listo. Abre outputs/wc2026_predictions.csv y mira la columna de corners." -ForegroundColor Yellow
-Write-Host "Antes predecia ~8; con los 314 deberia subir hacia ~10." -ForegroundColor Yellow
+Write-Host "[OK] Pipeline completo sin errores." -ForegroundColor Green
+Write-Host "Revisa: outputs/wc2026_ev.csv  (value bets con fiabilidad)" -ForegroundColor Green

@@ -7,6 +7,7 @@
 !/data/raw/knockout_wc2026.csv
 !/data/raw/squads_wc2026_final_official_corrected.csv
 !/data/raw/squads_wc2026_fifa_official.csv
+!/data/raw/elo_initial_ratings.csv
 
 # Transfermarkt — el gordo no cabe en GitHub (157MB)
 /data/transfermarkt/player_performances.csv
@@ -15,6 +16,7 @@
 /data/processed/features.csv
 /data/processed/features_train.csv
 /data/processed/features_wc2026.csv
+/data/processed/features_2022.csv
 /data/processed/matches_enriched.csv
 /data/processed/team_ratings.csv
 
@@ -31,6 +33,10 @@
 !/data/processed/transfermarkt_match_review.csv
 !/data/processed/fifa_squad_diff.csv
 !/data/processed/fifa_squad_summary.csv
+
+# Event ids de The Odds API — costaron creditos recolectarlos, SI subir
+!/data/processed/odds_events.csv
+!/data/processed/odds_events_2022.csv
 
 # Odds actuales/históricas — snapshots regenerables con API y timestamp
 /data/processed/odds_current*.csv
@@ -51,6 +57,17 @@
 !/outputs/wc2026_ensemble_predictions.csv
 !/outputs/xgb_baseline_metrics.json
 !/outputs/poisson_metrics.json
+
+# Evaluacion (calibracion, fiabilidad, EV, backtest) — SI subir
+!/outputs/calibration_bins.csv
+!/outputs/calibration_metrics.json
+!/outputs/wc2026_reliability.csv
+!/outputs/wc2026_ev.csv
+!/outputs/wc2026_ev_totals.csv
+!/outputs/backtest2022_bets.csv
+
+# Run contaminado del backtest (modelo reentrenado con todos los datos) — no subir
+/outputs/backtest2022/
 
 # Diagnósticos temporales de runs parciales
 /outputs/*_check/

@@ -109,13 +109,17 @@ def _agreement_lookup(comparison_path: str) -> dict:
     if not {"home_team", "away_team"}.issubset(df.columns):
         return {}
 
+    # Buscar primero por nombre conocido, luego por contenido como fallback
     conf_col = None
-    for c in df.columns:
-        if df[c].dtype == object:
-            vals = set(df[c].dropna().astype(str).str.strip().str.upper().unique())
-            if vals and vals.issubset(_AGREEMENT_LEVELS):
-                conf_col = c
-                break
+    if "confidence" in df.columns:
+        conf_col = "confidence"
+    else:
+        for c in df.columns:
+            if df[c].dtype == object:
+                vals = set(df[c].dropna().astype(str).str.strip().str.upper().unique())
+                if vals and vals.issubset(_AGREEMENT_LEVELS):
+                    conf_col = c
+                    break
     if conf_col is None:
         return {}
     print(f"  agreement: usando columna '{conf_col}' de model_comparison")
@@ -238,4 +242,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-      
+    
