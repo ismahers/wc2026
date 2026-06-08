@@ -355,6 +355,12 @@ moderado, cuotas `1.50-2.50`, fiabilidad mínima `MEDIA` y confianza de modelo
 al menos `medium`. El resultado se usa para medir CLV/resultado antes de
 permitir apuestas reales.
 
+Flujo completo de fase 2 en un comando, sin llamar a la API:
+
+```bash
+python -m src.evaluation.run_market_radar
+```
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |
