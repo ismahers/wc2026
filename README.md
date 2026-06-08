@@ -333,6 +333,17 @@ en una casa. Incluye `fair_odds` y umbrales `min_odds_ev5`, `min_odds_ev10` y
 `min_odds_ev15`. Los córners salen marcados con confianza baja porque se derivan
 de una media esperada, no de una distribución calibrada.
 
+Si ya existe un CSV plano de cuotas actuales, se puede cruzar sin llamar a la
+API:
+
+```bash
+python -m src.evaluation.multi_market_ev
+```
+
+Por defecto lee `data/processed/odds_current_worldcup_flat.csv` y guarda
+`outputs/wc2026_multi_market_ev.csv`. Ese output contiene cuotas vivas y no se
+versiona.
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |
