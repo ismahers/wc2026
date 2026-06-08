@@ -344,6 +344,17 @@ Por defecto lee `data/processed/odds_current_worldcup_flat.csv` y guarda
 `outputs/wc2026_multi_market_ev.csv`. Ese output contiene cuotas vivas y no se
 versiona.
 
+Para sacar una shortlist de seguimiento en papel de mercados no validados:
+
+```bash
+python -m src.evaluation.multi_market_shortlist
+```
+
+Por defecto solo considera `total_goals` y `btts`, líneas principales, EV
+moderado, cuotas `1.50-2.50`, fiabilidad mínima `MEDIA` y confianza de modelo
+al menos `medium`. El resultado se usa para medir CLV/resultado antes de
+permitir apuestas reales.
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |

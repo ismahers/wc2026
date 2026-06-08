@@ -73,6 +73,8 @@
 # Snapshots vivos de cuotas actuales por estrategia — regenerables con API
 /outputs/wc2026_ev_h2h_*.csv
 /outputs/wc2026_multi_market_ev.csv
+/outputs/wc2026_multi_market_paper_*.csv
+/outputs/wc2026_multi_market_review*.csv
 
 # Run contaminado del backtest (modelo reentrenado con todos los datos) — no subir
 /outputs/backtest2022/
