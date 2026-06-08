@@ -235,6 +235,7 @@ La regla operativa actual es:
 
 - Solo 1X2 local/visitante (`1X2-H`, `1X2-A`).
 - Solo EV moderado: `10% <= EV <= 40%`.
+- Para shortlist core: cuota `1.50-2.50` y fiabilidad mínima `MEDIA`.
 
 Comando reproducible sin gastar créditos de API:
 
@@ -254,6 +255,16 @@ El calculador en vivo `src/evaluation/ev_calculator.py` ya aplica estos filtros
 por defecto y guarda `strategy_bet_allowed` + `strategy_reason` en el CSV.
 El modo más abierto `5% <= EV <= 40%` sigue disponible con `--min-ev 0.05`,
 pero no es el perfil operativo por defecto.
+
+Para convertir el EV vivo en shortlist revisable:
+
+```bash
+python -m src.evaluation.strategy_shortlist
+```
+
+Ese filtro evita que el sistema recomiende automáticamente underdogs de cuota
+muy alta. En el snapshot actual de Pinnacle, la shortlist core queda en 6
+apuestas, cuota media 1.83 y EV medio 16.15%.
 
 ## Features principales
 

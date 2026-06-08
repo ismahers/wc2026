@@ -16,6 +16,8 @@ import pandas as pd
 DEFAULT_INPUT = "outputs/wc2026_ev_h2h_strategy.csv"
 DEFAULT_OUTPUT = "outputs/wc2026_ev_h2h_shortlist.csv"
 DEFAULT_SUMMARY = "outputs/wc2026_ev_h2h_shortlist_summary.csv"
+DEFAULT_MIN_ODDS = 1.50
+DEFAULT_MAX_ODDS = 2.50
 
 RELIABILITY_ORDER = {
     "N/A": -1,
@@ -34,7 +36,9 @@ def reliability_rank(value: object) -> int:
 def build_shortlist(
     df: pd.DataFrame,
     *,
-    min_reliability: str = "ALTA",
+    min_reliability: str = "MEDIA",
+    min_odds: float = DEFAULT_MIN_ODDS,
+    max_odds: float = DEFAULT_MAX_ODDS,
     allow_conflicts: bool = False,
 ) -> pd.DataFrame:
     if "strategy_bet_allowed" not in df.columns:
@@ -44,6 +48,7 @@ def build_shortlist(
     out = df[df["strategy_bet_allowed"].astype(bool)].copy()
     out["_reliability_rank"] = out["fiabilidad_nivel"].map(reliability_rank)
     out = out[out["_reliability_rank"] >= min_rank].copy()
+    out = out[out["cuota"].between(min_odds, max_odds, inclusive="both")].copy()
     out = out.sort_values(["fiabilidad_pct", "ev_pct"], ascending=[False, False])
 
     if not allow_conflicts and not out.empty:
@@ -59,6 +64,8 @@ def summarize(shortlist: pd.DataFrame) -> pd.DataFrame:
             "bets": 0,
             "avg_ev_pct": 0.0,
             "avg_odds": 0.0,
+            "min_odds": 0.0,
+            "max_odds": 0.0,
             "min_ev_pct": 0.0,
             "max_ev_pct": 0.0,
             "avg_fiabilidad_pct": 0.0,
@@ -67,6 +74,8 @@ def summarize(shortlist: pd.DataFrame) -> pd.DataFrame:
         "bets": len(shortlist),
         "avg_ev_pct": round(float(shortlist["ev_pct"].mean()), 2),
         "avg_odds": round(float(shortlist["cuota"].mean()), 3),
+        "min_odds": round(float(shortlist["cuota"].min()), 3),
+        "max_odds": round(float(shortlist["cuota"].max()), 3),
         "min_ev_pct": round(float(shortlist["ev_pct"].min()), 2),
         "max_ev_pct": round(float(shortlist["ev_pct"].max()), 2),
         "avg_fiabilidad_pct": round(float(shortlist["fiabilidad_pct"].mean()), 2),
@@ -77,13 +86,21 @@ def run(
     input_path: str = DEFAULT_INPUT,
     output_path: str = DEFAULT_OUTPUT,
     summary_path: str = DEFAULT_SUMMARY,
-    min_reliability: str = "ALTA",
+    min_reliability: str = "MEDIA",
+    min_odds: float = DEFAULT_MIN_ODDS,
+    max_odds: float = DEFAULT_MAX_ODDS,
     allow_conflicts: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     if not os.path.exists(input_path):
         raise FileNotFoundError(f"{input_path} no existe. Ejecuta antes ev_calculator.")
     df = pd.read_csv(input_path)
-    shortlist = build_shortlist(df, min_reliability=min_reliability, allow_conflicts=allow_conflicts)
+    shortlist = build_shortlist(
+        df,
+        min_reliability=min_reliability,
+        min_odds=min_odds,
+        max_odds=max_odds,
+        allow_conflicts=allow_conflicts,
+    )
     summary = summarize(shortlist)
 
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
@@ -97,7 +114,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--input", default=DEFAULT_INPUT)
     parser.add_argument("--output", default=DEFAULT_OUTPUT)
     parser.add_argument("--summary-output", default=DEFAULT_SUMMARY)
-    parser.add_argument("--min-reliability", default="ALTA", choices=["MUY BAJA", "BAJA", "MEDIA", "ALTA", "MUY ALTA"])
+    parser.add_argument("--min-reliability", default="MEDIA", choices=["MUY BAJA", "BAJA", "MEDIA", "ALTA", "MUY ALTA"])
+    parser.add_argument("--min-odds", type=float, default=DEFAULT_MIN_ODDS)
+    parser.add_argument("--max-odds", type=float, default=DEFAULT_MAX_ODDS)
     parser.add_argument("--allow-conflicts", action="store_true")
     return parser
 
@@ -109,6 +128,8 @@ def main() -> None:
         output_path=args.output,
         summary_path=args.summary_output,
         min_reliability=args.min_reliability,
+        min_odds=args.min_odds,
+        max_odds=args.max_odds,
         allow_conflicts=args.allow_conflicts,
     )
     print(summary.to_string(index=False))
