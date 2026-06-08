@@ -283,6 +283,16 @@ porque es estado vivo. Conserva `first_odds`, actualiza `latest_odds` en cada
 run y deja columnas preparadas para `closing_odds`, `clv_pct`, resultado,
 beneficio y notas manuales.
 
+Comando único de v1 1X2:
+
+```bash
+# Gasta una llamada de cuotas actuales
+python -m src.evaluation.run_1x2_v1
+
+# No gasta crédito; reutiliza outputs/wc2026_ev_h2h_strategy.csv
+python -m src.evaluation.run_1x2_v1 --skip-ev
+```
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |
