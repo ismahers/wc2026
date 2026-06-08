@@ -16,6 +16,8 @@ import pandas as pd
 DEFAULT_INPUT = "outputs/wc2026_ev_h2h_strategy.csv"
 DEFAULT_OUTPUT = "outputs/wc2026_ev_h2h_shortlist.csv"
 DEFAULT_SUMMARY = "outputs/wc2026_ev_h2h_shortlist_summary.csv"
+DEFAULT_REVIEW_OUTPUT = "outputs/wc2026_ev_h2h_manual_review.csv"
+DEFAULT_REVIEW_SUMMARY = "outputs/wc2026_ev_h2h_manual_review_summary.csv"
 DEFAULT_MIN_ODDS = 1.50
 DEFAULT_MAX_ODDS = 2.50
 
@@ -58,6 +60,61 @@ def build_shortlist(
     return out.reset_index(drop=True)
 
 
+def build_manual_review(
+    df: pd.DataFrame,
+    shortlist: pd.DataFrame,
+    *,
+    min_reliability: str = "MEDIA",
+    min_odds: float = DEFAULT_MIN_ODDS,
+    max_odds: float = DEFAULT_MAX_ODDS,
+    allow_conflicts: bool = False,
+) -> pd.DataFrame:
+    """Bets with model signal that require human review before staking."""
+    if "strategy_bet_allowed" not in df.columns:
+        raise ValueError("Input CSV must include strategy_bet_allowed. Run ev_calculator first.")
+
+    min_rank = reliability_rank(min_reliability)
+    out = df[df["strategy_bet_allowed"].astype(bool)].copy()
+    out["_reliability_rank"] = out["fiabilidad_nivel"].map(reliability_rank)
+    out["_odds_in_core_range"] = out["cuota"].between(min_odds, max_odds, inclusive="both")
+    out["_reliability_ok"] = out["_reliability_rank"] >= min_rank
+
+    shortlist_keys = set()
+    if not shortlist.empty:
+        shortlist_keys = set(
+            shortlist[["home_team", "away_team", "mercado", "seleccion"]]
+            .astype(str)
+            .agg("|".join, axis=1)
+        )
+    out["_bet_key"] = out[["home_team", "away_team", "mercado", "seleccion"]].astype(str).agg("|".join, axis=1)
+    out = out[~out["_bet_key"].isin(shortlist_keys)].copy()
+
+    reasons = []
+    for _, row in out.iterrows():
+        row_reasons = []
+        if not row["_odds_in_core_range"]:
+            row_reasons.append("high_odds" if row["cuota"] > max_odds else "low_odds")
+        if not row["_reliability_ok"]:
+            row_reasons.append("low_reliability")
+        reasons.append("+".join(row_reasons) if row_reasons else "manual_review")
+    out["review_reason"] = reasons
+    out["review_action"] = "paper_only"
+    out.loc[
+        out["_reliability_ok"] & (out["cuota"] <= 4.0) & (out["cuota"] > max_odds),
+        "review_action",
+    ] = "manual_check"
+
+    if not allow_conflicts and not out.empty:
+        out = out.sort_values(["fiabilidad_pct", "ev_pct"], ascending=[False, False])
+        out = out.drop_duplicates(["home_team", "away_team"], keep="first")
+
+    out = out.sort_values(["review_action", "fiabilidad_pct", "ev_pct"], ascending=[True, False, False])
+    out = out.drop(columns=[
+        "_reliability_rank", "_odds_in_core_range", "_reliability_ok", "_bet_key",
+    ])
+    return out.reset_index(drop=True)
+
+
 def summarize(shortlist: pd.DataFrame) -> pd.DataFrame:
     if shortlist.empty:
         return pd.DataFrame([{
@@ -86,11 +143,13 @@ def run(
     input_path: str = DEFAULT_INPUT,
     output_path: str = DEFAULT_OUTPUT,
     summary_path: str = DEFAULT_SUMMARY,
+    review_output_path: str = DEFAULT_REVIEW_OUTPUT,
+    review_summary_path: str = DEFAULT_REVIEW_SUMMARY,
     min_reliability: str = "MEDIA",
     min_odds: float = DEFAULT_MIN_ODDS,
     max_odds: float = DEFAULT_MAX_ODDS,
     allow_conflicts: bool = False,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     if not os.path.exists(input_path):
         raise FileNotFoundError(f"{input_path} no existe. Ejecuta antes ev_calculator.")
     df = pd.read_csv(input_path)
@@ -102,11 +161,22 @@ def run(
         allow_conflicts=allow_conflicts,
     )
     summary = summarize(shortlist)
+    review = build_manual_review(
+        df,
+        shortlist,
+        min_reliability=min_reliability,
+        min_odds=min_odds,
+        max_odds=max_odds,
+        allow_conflicts=allow_conflicts,
+    )
+    review_summary = summarize(review)
 
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     shortlist.to_csv(output_path, index=False)
     summary.to_csv(summary_path, index=False)
-    return shortlist, summary
+    review.to_csv(review_output_path, index=False)
+    review_summary.to_csv(review_summary_path, index=False)
+    return shortlist, summary, review, review_summary
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -114,6 +184,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--input", default=DEFAULT_INPUT)
     parser.add_argument("--output", default=DEFAULT_OUTPUT)
     parser.add_argument("--summary-output", default=DEFAULT_SUMMARY)
+    parser.add_argument("--review-output", default=DEFAULT_REVIEW_OUTPUT)
+    parser.add_argument("--review-summary-output", default=DEFAULT_REVIEW_SUMMARY)
     parser.add_argument("--min-reliability", default="MEDIA", choices=["MUY BAJA", "BAJA", "MEDIA", "ALTA", "MUY ALTA"])
     parser.add_argument("--min-odds", type=float, default=DEFAULT_MIN_ODDS)
     parser.add_argument("--max-odds", type=float, default=DEFAULT_MAX_ODDS)
@@ -123,15 +195,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_arg_parser().parse_args()
-    shortlist, summary = run(
+    shortlist, summary, review, review_summary = run(
         input_path=args.input,
         output_path=args.output,
         summary_path=args.summary_output,
+        review_output_path=args.review_output,
+        review_summary_path=args.review_summary_output,
         min_reliability=args.min_reliability,
         min_odds=args.min_odds,
         max_odds=args.max_odds,
         allow_conflicts=args.allow_conflicts,
     )
+    print("SHORTLIST CORE")
     print(summary.to_string(index=False))
     if not shortlist.empty:
         cols = [
@@ -140,6 +215,17 @@ def main() -> None:
         ]
         print()
         print(shortlist[cols].to_string(index=False))
+    print()
+    print("MANUAL REVIEW / PAPER")
+    print(review_summary.to_string(index=False))
+    if not review.empty:
+        cols = [
+            "home_team", "away_team", "mercado", "seleccion", "bookmaker",
+            "cuota", "prob_modelo", "ev_pct", "fiabilidad_nivel",
+            "review_reason", "review_action",
+        ]
+        print()
+        print(review[cols].to_string(index=False))
 
 
 if __name__ == "__main__":

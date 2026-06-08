@@ -266,6 +266,12 @@ Ese filtro evita que el sistema recomiende automáticamente underdogs de cuota
 muy alta. En el snapshot actual de Pinnacle, la shortlist core queda en 6
 apuestas, cuota media 1.83 y EV medio 16.15%.
 
+El mismo comando genera una segunda lista de revisión manual:
+`outputs/wc2026_ev_h2h_manual_review.csv`. Ahí entran selecciones que el modelo
+ve posibles, pero que no pasan el perfil core por cuota alta o fiabilidad baja.
+Esas señales se tratan como `manual_check` o `paper_only`, no como apuestas
+automáticas.
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |
