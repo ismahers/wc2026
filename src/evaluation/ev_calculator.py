@@ -17,7 +17,7 @@ Mercados soportados (se mapean a las columnas del ensemble):
 
 Uso:
     python -m src.evaluation.ev_calculator
-    python -m src.evaluation.ev_calculator --min-ev 0.05 --markets h2h,totals
+    python -m src.evaluation.ev_calculator --min-ev 0.05 --markets h2h,totals  # modo abierto
     python -m src.evaluation.ev_calculator --markets h2h,totals,btts   (si tu plan lo da)
 """
 
@@ -31,6 +31,7 @@ import pandas as pd
 
 from src.data.team_names import canonicalize
 from src.data.historical_odds_collector import HistoricalOddsCollector
+from src.evaluation.value_filters import apply_value_filters
 
 
 # Etiquetas legibles por (market, lo que sea)
@@ -104,7 +105,19 @@ def _build_reliability_lookup(reliability_path: str) -> dict:
     return lookup
 
 
-def run(ensemble_path, reliability_path, min_ev, markets, bookmakers, regions, sport, output_path, env_path, data_dir):
+def run(
+    ensemble_path,
+    reliability_path,
+    min_ev,
+    max_ev,
+    markets,
+    bookmakers,
+    regions,
+    sport,
+    output_path,
+    env_path,
+    data_dir,
+):
     if not os.path.exists(ensemble_path):
         raise FileNotFoundError(
             f"{ensemble_path} no existe. Ejecuta antes: python -m src.evaluation.model_ensemble"
@@ -186,13 +199,14 @@ def run(ensemble_path, reliability_path, min_ev, markets, bookmakers, regions, s
         return
 
     out = pd.DataFrame(rows).sort_values("ev_pct", ascending=False).reset_index(drop=True)
+    out = apply_value_filters(out, min_ev_pct=min_ev * 100, max_ev_pct=max_ev * 100)
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     out.to_csv(output_path, index=False)
 
-    value = out[out["ev_pct"] >= min_ev * 100]
+    value = out[out["strategy_bet_allowed"]]
 
     print("\n" + "=" * 104)
-    print(f"VALUE BETS  (EV >= {min_ev*100:.1f}%)   [EV = prob_modelo x cuota - 1]")
+    print(f"VALUE BETS  ({min_ev*100:.1f}% <= EV <= {max_ev*100:.1f}%, sin empates)   [EV = prob_modelo x cuota - 1]")
     print(f"{'Partido':<34}{'Mercado':<18}{'Sel':<10}{'Book':<12}{'Cuota':>7}{'pMod':>7}{'EV%':>8}  {'Fiabilidad':<10}")
     print("-" * 104)
     if value.empty:
@@ -205,7 +219,7 @@ def run(ensemble_path, reliability_path, min_ev, markets, bookmakers, regions, s
             print(f"  {partido:<32}{r['mercado']:<18}{sel:<10}{book:<12}"
                   f"{r['cuota']:>7.2f}{r['prob_modelo']:>7.2f}{r['ev_pct']:>8.2f}  {str(r['fiabilidad_nivel']):<10}")
     print("=" * 104)
-    print(f"Guardado TODO (con y sin value) en {output_path}   [{len(out)} filas, {len(value)} con value]")
+    print(f"Guardado TODO (con y sin value) en {output_path}   [{len(out)} filas, {len(value)} con value limpio]")
     if no_match:
         print(f"\n⚠ {len(no_match)} partidos de las cuotas no casaron con el ensemble "
               f"(nombres distintos). Muestra:")
@@ -217,7 +231,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Calcula EV cruzando ensemble con cuotas reales (The Odds API).")
     parser.add_argument("--ensemble", default="outputs/wc2026_ensemble_predictions.csv")
     parser.add_argument("--reliability", default="outputs/wc2026_reliability.csv")
-    parser.add_argument("--min-ev", type=float, default=0.08, help="Umbral de EV para mostrar (0.08 = 8%%).")
+    parser.add_argument("--min-ev", type=float, default=0.10, help="Umbral de EV para apostar (0.10 = 10%%).")
+    parser.add_argument("--max-ev", type=float, default=0.40, help="EV maximo aceptado (0.40 = 40%%); EV mayores se descartan.")
     parser.add_argument("--markets", default="h2h,totals", help="Mercados: h2h,totals[,btts].")
     parser.add_argument("--bookmakers", default="winamax_fr", help="Bookmakers (coma). Vacio = todos los de la region.")
     parser.add_argument("--regions", default="eu", help="Regiones (coma). 'eu' = libros europeos, ahorra creditos.")
@@ -235,6 +250,7 @@ def main() -> None:
         ensemble_path=args.ensemble,
         reliability_path=args.reliability,
         min_ev=args.min_ev,
+        max_ev=args.max_ev,
         markets=args.markets,
         bookmakers=bookmakers,
         regions=args.regions,
