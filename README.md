@@ -222,6 +222,67 @@ las cuotas del modelo (sin margen) para comparar:
 python -m src.evaluation.odds_converter --input outputs/wc2026_poisson_predictions.csv
 ```
 
+### Estrategia depurada de value betting
+
+El primer backtest con cuotas de cierre de Pinnacle para WC2022 detectó dos
+fallos del modelo:
+
+- No apostar empates 1X2: el modelo los sobreestima.
+- No apostar EV extremo: `EV > 40%` suele ser error del modelo, no value real.
+- Descartar EV bajo: el tramo 5-10% añade ruido y baja el beneficio del backtest.
+
+La regla operativa actual es:
+
+- Solo 1X2 local/visitante (`1X2-H`, `1X2-A`).
+- Solo EV moderado: `10% <= EV <= 40%`.
+- Para shortlist core: cuota `1.50-2.50` y fiabilidad mínima `MEDIA`.
+
+Comando reproducible sin gastar créditos de API:
+
+```bash
+python -m src.evaluation.value_filters
+```
+
+Resultado con `outputs/backtest2022_bets.csv`:
+
+| Segmento | Apuestas | Acierto | Beneficio | ROI |
+|---|---:|---:|---:|---:|
+| Total | 28 | 42.86% | +15.06u | +53.79% |
+| 1X2-A | 12 | 33.33% | +7.58u | +63.17% |
+| 1X2-H | 16 | 50.00% | +7.48u | +46.75% |
+
+El calculador en vivo `src/evaluation/ev_calculator.py` ya aplica estos filtros
+por defecto y guarda `strategy_bet_allowed` + `strategy_reason` en el CSV.
+El modo más abierto `5% <= EV <= 40%` sigue disponible con `--min-ev 0.05`,
+pero no es el perfil operativo por defecto.
+
+Para convertir el EV vivo en shortlist revisable:
+
+```bash
+python -m src.evaluation.strategy_shortlist
+```
+
+Ese filtro evita que el sistema recomiende automáticamente underdogs de cuota
+muy alta. En el snapshot actual de Pinnacle, la shortlist core queda en 6
+apuestas, cuota media 1.83 y EV medio 16.15%.
+
+El mismo comando genera una segunda lista de revisión manual:
+`outputs/wc2026_ev_h2h_manual_review.csv`. Ahí entran selecciones que el modelo
+ve posibles, pero que no pasan el perfil core por cuota alta o fiabilidad baja.
+Esas señales se tratan como `manual_check` o `paper_only`, no como apuestas
+automáticas.
+
+Para registrar las señales en el tracker local:
+
+```bash
+python -m src.evaluation.bet_tracker
+```
+
+El tracker queda en `data/tracking/wc2026_bet_tracker.csv` y no se sube a Git
+porque es estado vivo. Conserva `first_odds`, actualiza `latest_odds` en cada
+run y deja columnas preparadas para `closing_odds`, `clv_pct`, resultado,
+beneficio y notas manuales.
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |
@@ -241,11 +302,14 @@ python -m src.evaluation.odds_converter --input outputs/wc2026_poisson_predictio
 
 - Datos históricos de córners y tarjetas para selecciones (solo 165 partidos disponibles)
 - Resultado al descanso (HT)
-- Integrar cuotas reales vía The Odds API para calcular VE real
-- Backtesting con Mundiales 2018 y 2022
+- Recalibrar la clase empate o mantenerla excluida de las apuestas
+- Conectar EV y fiabilidad al tracker de apuestas en vivo
+- Ampliar backtesting a más torneos con cache de The Odds API
 - Árbitros: rellenar `data/raw/referees.csv` manualmente desde transfermarkt.es
 
 ## Evaluación
 
 Simulación de apuestas en Mundiales 2018 y 2022 midiendo ROI, Brier Score y ECE.
-Pendiente de cuotas históricas (The Odds API, plan de pago).
+Primer backtest WC2022 con cuotas de cierre de Pinnacle disponible en
+`outputs/backtest2022_bets.csv`; la versión filtrada está en
+`outputs/backtest2022_filtered_bets.csv`.

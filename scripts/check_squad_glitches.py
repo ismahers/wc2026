@@ -2,8 +2,8 @@
 scripts/check_squad_glitches.py
 ===============================
 Detecta nombres de jugador sospechosos de venir DEFORMADOS de la extracción
-del PDF de FIFA (run-on en mayúsculas tipo "ABDELMONEIMMohamed", nombres sin
-espacios, token repetido, o demasiado largos).
+del PDF de FIFA (run-on en mayúsculas tipo "ABDELMONEIMMohamed", token
+repetido, o demasiado largos).
 
 NO detecta apodos oficiales dispares (Cabo Verde: "Roberto Lopes" -> "Pico
 Lopes"): esos no son glitches, son nombres oficiales y se dejan como vengan de
@@ -40,7 +40,6 @@ def _is_glitch(name: object) -> bool:
         return True
     return (
         bool(re.search(r"[A-Z]{4,}[a-z]", s))              # run-on MAYUS+minus pegados
-        or " " not in s                                     # nombre sin espacios
         or bool(re.search(r"\b(\w+)\b.*\b\1\b", s, re.I))   # token repetido
         or len(s) > MAX_LEN                                 # sospechosamente largo
     )

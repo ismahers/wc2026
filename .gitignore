@@ -41,6 +41,9 @@
 # Odds actuales/históricas — snapshots regenerables con API y timestamp
 /data/processed/odds_current*.csv
 
+# Tracker local de señales/apuestas — estado vivo, no versionar
+/data/tracking/*.csv
+
 # Histórico y StatsBomb — generados por data_collector.py
 /data/results.csv
 /data/results_raw.csv
@@ -65,6 +68,9 @@
 !/outputs/wc2026_ev.csv
 !/outputs/wc2026_ev_totals.csv
 !/outputs/backtest2022_bets.csv
+
+# Snapshots vivos de cuotas actuales por estrategia — regenerables con API
+/outputs/wc2026_ev_h2h_*.csv
 
 # Run contaminado del backtest (modelo reentrenado con todos los datos) — no subir
 /outputs/backtest2022/
