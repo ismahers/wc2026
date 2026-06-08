@@ -41,6 +41,9 @@
 # Odds actuales/históricas — snapshots regenerables con API y timestamp
 /data/processed/odds_current*.csv
 
+# Tracker local de señales/apuestas — estado vivo, no versionar
+/data/tracking/*.csv
+
 # Histórico y StatsBomb — generados por data_collector.py
 /data/results.csv
 /data/results_raw.csv

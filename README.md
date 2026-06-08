@@ -272,6 +272,17 @@ ve posibles, pero que no pasan el perfil core por cuota alta o fiabilidad baja.
 Esas señales se tratan como `manual_check` o `paper_only`, no como apuestas
 automáticas.
 
+Para registrar las señales en el tracker local:
+
+```bash
+python -m src.evaluation.bet_tracker
+```
+
+El tracker queda en `data/tracking/wc2026_bet_tracker.csv` y no se sube a Git
+porque es estado vivo. Conserva `first_odds`, actualiza `latest_odds` en cada
+run y deja columnas preparadas para `closing_odds`, `clv_pct`, resultado,
+beneficio y notas manuales.
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |
