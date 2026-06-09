@@ -51,6 +51,9 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `outputs/model_comparison.csv` | Diagnostico XGBoost vs Poisson. |
 | `outputs/xgb_baseline_metrics.json` | Metricas XGBoost. |
 | `outputs/poisson_metrics.json` | Metricas Poisson. |
+| `outputs/backtest2022_total_goals_v2.csv` | Backtest dedicado de Over/Under 2.5. |
+| `outputs/backtest2022_total_goals_v2_summary.csv` | Resumen de ROI del backtest de Over/Under 2.5. |
+| `outputs/backtest2022_total_goals_v2_grid.csv` | Sensibilidad por umbrales EV para Over/Under 2.5. |
 
 ## Ignorados
 
@@ -67,6 +70,7 @@ Estos archivos son pesados, regenerables o dependen de snapshots/API.
 | `data/processed/matches_enriched.csv` | Dataset enriquecido generado por builder. |
 | `data/processed/team_ratings.csv` | Elo histórico grande generado por `elo_loader.py`. |
 | `data/processed/odds_current*.csv` | Snapshots de cuotas actuales con timestamp/API. |
+| `data/tracking/wc2026_paper_tracker.csv` | Tracker local de paper trading, estado vivo. |
 | `outputs/*_check/` | Diagnosticos temporales de runs parciales. |
 | `data/transfermarkt/player_performances.csv` | Archivo grande de Transfermarkt. |
 
@@ -92,4 +96,6 @@ python -m src.evaluation.model_comparison
 python -m src.evaluation.model_ensemble
 python -m src.evaluation.market_registry
 python -m src.evaluation.run_market_radar
+python -m src.evaluation.total_goals_backtest
+python -m src.evaluation.paper_tracker
 ```

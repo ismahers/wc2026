@@ -21,6 +21,7 @@ from src.evaluation import market_probabilities
 from src.evaluation import market_registry
 from src.evaluation import multi_market_ev
 from src.evaluation import multi_market_shortlist
+from src.evaluation import paper_tracker
 
 
 def run(args: argparse.Namespace) -> None:
@@ -94,11 +95,27 @@ def run(args: argparse.Namespace) -> None:
     print("===========")
     print(review_summary.to_string(index=False))
 
+    if args.skip_paper_tracker:
+        print("\nSaltando paper tracker por --skip-paper-tracker.")
+    else:
+        signals = paper_tracker.load_current_paper_signals(args.paper_output, args.review_output)
+        tracker = paper_tracker.update_paper_tracker(
+            signals,
+            tracker_path=args.paper_tracker_output,
+            paper_stake_units=args.paper_stake_units,
+        )
+        tracker_summary = paper_tracker.summarize_paper_tracker(tracker)
+        print("\nPAPER TRACKER")
+        print("=============")
+        print(tracker_summary.to_string(index=False))
+
     print("\nOutputs")
     print(f"  Radar:  {args.probabilities_output}")
     print(f"  EV:     {args.ev_output}")
     print(f"  Paper:  {args.paper_output}")
     print(f"  Review: {args.review_output}")
+    if not args.skip_paper_tracker:
+        print(f"  Tracker:{args.paper_tracker_output}")
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -125,6 +142,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--paper-min-reliability", default="MEDIA", choices=["MUY BAJA", "BAJA", "MEDIA", "ALTA", "MUY ALTA"])
     parser.add_argument("--paper-min-confidence", default="medium", choices=["derived", "low", "medium", "high"])
     parser.add_argument("--allow-conflicts", action="store_true")
+    parser.add_argument("--skip-paper-tracker", action="store_true")
+    parser.add_argument("--paper-tracker-output", default=paper_tracker.DEFAULT_TRACKER_OUTPUT)
+    parser.add_argument("--paper-stake-units", type=float, default=paper_tracker.DEFAULT_PAPER_STAKE_UNITS)
     return parser
 
 

@@ -367,6 +367,27 @@ moderado, cuotas `1.50-2.50`, fiabilidad mínima `MEDIA` y confianza de modelo
 al menos `medium`. El resultado se usa para medir CLV/resultado antes de
 permitir apuestas reales.
 
+Backtest dedicado de Over/Under 2.5, sin gastar API:
+
+```bash
+python -m src.evaluation.total_goals_backtest
+```
+
+Resultado actual con el backtest WC2022 disponible: la estrategia por defecto
+(`5% <= EV <= 25%`, cuotas `1.50-2.50`) da 10 apuestas, 40% de acierto y ROI
+`-23.5%`. Por tanto `total_goals_2_5` se mantiene como `paper_only`, no pasa a
+stake real.
+
+Tracker local de mercados paper:
+
+```bash
+python -m src.evaluation.paper_tracker
+```
+
+Guarda `data/tracking/wc2026_paper_tracker.csv`, con `first_odds`,
+`latest_odds`, `closing_odds`, `clv_pct`, resultado y beneficio simulado. Ese
+CSV es estado local y no se versiona.
+
 Flujo completo de fase 2 en un comando, sin llamar a la API:
 
 ```bash
