@@ -227,8 +227,8 @@ class PoissonGoalModel:
         X_h, y_h, self.feats_home, self.fill_home = self._prepare(
             df_train, "target_home_goals", HOME_ATTACK_FEATURES
         )
-        n_est = self.params.pop("n_estimators", 300)
-        params = {k: v for k, v in self.params.items()}
+        params = self.params.copy()
+        n_est = params.pop("n_estimators", 300)
 
         self.model_home = xgb.XGBRegressor(n_estimators=n_est, **params)
         self.model_home.fit(X_h, y_h)
@@ -242,7 +242,6 @@ class PoissonGoalModel:
         self.model_away.fit(X_a, y_a)
         log.info("  ✓ lambda_away: %d muestras, %d features", len(X_a), len(self.feats_away))
 
-        self.params["n_estimators"] = n_est
         return self
 
     @staticmethod

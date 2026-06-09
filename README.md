@@ -295,6 +295,17 @@ El tracker guarda `recommended_stake_units`, `stake_units`, `bankroll_units`,
 `stake_method` y `risk_notes`. Si editáis manualmente una fila marcada como
 `placed`, el updater conserva la decisión.
 
+También existe staking opcional con Kelly fraccional capado, pero no está
+activado por defecto hasta comparar drawdown/ROI contra flat staking:
+
+```bash
+python -m src.evaluation.run_1x2_v1 \
+  --skip-ev \
+  --stake-method fractional_kelly \
+  --kelly-fraction 0.25 \
+  --max-stake-units 1.0
+```
+
 Comando único de v1 1X2:
 
 ```bash
@@ -434,7 +445,11 @@ y tarjetas/props siguen bloqueados por falta de modelo/datos.
 
 ## Trabajo pendiente
 
-- Datos históricos de córners y tarjetas para selecciones (solo 165 partidos disponibles)
+- Backtest ampliado multi-torneo con >200 apuestas antes de subir stake real.
+- Validar Dixon-Coles frente al Poisson independiente antes de usarlo en cuotas.
+- Comparar flat `0.5u` vs Kelly fraccional capado en ROI, CLV y max drawdown.
+- Datos históricos de córners y tarjetas para selecciones: muestra aún pequeña
+  (314 partidos StatsBomb; 135 en validación).
 - Resultado al descanso (HT)
 - Recalibrar la clase empate o mantenerla excluida de las apuestas
 - Conectar EV y fiabilidad al tracker de apuestas en vivo

@@ -541,7 +541,17 @@ class XGBBaselinePipeline:
                 metrics = model.evaluate(df_val)
                 self.models[market_key] = model
 
+                full_df = df[df[config.target_col].notna()].copy()
                 if metrics:
+                    metrics.update({
+                        "evaluation_model": "train_only_temporal_split",
+                        "evaluation_train_rows": int(train_target_n),
+                        "evaluation_val_rows": int(val_target_n),
+                        "evaluation_train_cutoff_year": int(self.train_cutoff),
+                        "evaluation_val_cutoff_year": int(self.val_cutoff),
+                        "production_model": "refit_all_available_history_for_wc2026",
+                        "production_refit_rows": int(len(full_df)),
+                    })
                     self.all_metrics.append(metrics)
                     self._print_metrics(metrics)
 
@@ -551,7 +561,6 @@ class XGBBaselinePipeline:
                         log.info("    %-35s  %.4f", row["feature"], row["importance"])
 
             # ── NUEVO: reentrenar con TODOS los datos para predecir WC2026 ──
-                full_df = df[df[config.target_col].notna()].copy()
                 refit_model = MarketModel(config)
                 refit_model.fit(full_df)
                 self.models[market_key] = refit_model

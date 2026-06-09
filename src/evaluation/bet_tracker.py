@@ -21,6 +21,8 @@ DEFAULT_REVIEW_INPUT = "outputs/wc2026_ev_h2h_manual_review.csv"
 DEFAULT_TRACKER_OUTPUT = "data/tracking/wc2026_bet_tracker.csv"
 DEFAULT_BANKROLL_UNITS = 100.0
 DEFAULT_CORE_STAKE_UNITS = 0.5
+DEFAULT_KELLY_FRACTION = 0.25
+DEFAULT_MAX_STAKE_UNITS = 1.0
 
 TRACKER_COLUMNS = [
     "signal_id",
@@ -127,13 +129,34 @@ def _compute_clv(row: pd.Series) -> object:
 
 
 def _stake_policy(
-    recommended_action: object,
+    signal: pd.Series,
     *,
     bankroll_units: float,
     core_stake_units: float,
+    stake_method: str,
+    kelly_fraction: float,
+    max_stake_units: float,
 ) -> dict[str, object]:
-    action = str(recommended_action or "").strip()
+    action = str(signal.get("recommended_action") or "").strip()
     if action == "core_candidate":
+        if stake_method == "fractional_kelly":
+            probability = pd.to_numeric(signal.get("model_prob"), errors="coerce")
+            odds = pd.to_numeric(signal.get("latest_odds"), errors="coerce")
+            if pd.notna(probability) and pd.notna(odds) and odds > 1.0:
+                full_kelly = max(0.0, (float(probability) * float(odds) - 1.0) / (float(odds) - 1.0))
+                uncapped_stake = bankroll_units * kelly_fraction * full_kelly
+                stake_units = min(max_stake_units, uncapped_stake)
+                return {
+                    "recommended_stake_units": round(stake_units, 3),
+                    "stake_units": round(stake_units, 3),
+                    "bankroll_units": bankroll_units,
+                    "stake_method": f"{kelly_fraction:g}_kelly_cap_{max_stake_units:g}u",
+                    "risk_notes": (
+                        "Core 1X2 con Kelly fraccional capado; revisar manualmente "
+                        "si el edge depende de cuota alta o baja fiabilidad."
+                    ),
+                }
+
         return {
             "recommended_stake_units": core_stake_units,
             "stake_units": core_stake_units,
@@ -165,6 +188,9 @@ def update_tracker(
     seen_at_utc: str | None = None,
     bankroll_units: float = DEFAULT_BANKROLL_UNITS,
     core_stake_units: float = DEFAULT_CORE_STAKE_UNITS,
+    stake_method: str = "fixed",
+    kelly_fraction: float = DEFAULT_KELLY_FRACTION,
+    max_stake_units: float = DEFAULT_MAX_STAKE_UNITS,
     refresh_candidate_stakes: bool = True,
 ) -> pd.DataFrame:
     seen_at_utc = seen_at_utc or _now_utc()
@@ -190,9 +216,12 @@ def update_tracker(
             row = {col: pd.NA for col in TRACKER_COLUMNS}
             row.update(signal.to_dict())
             stake_policy = _stake_policy(
-                signal.get("recommended_action"),
+                signal,
                 bankroll_units=bankroll_units,
                 core_stake_units=core_stake_units,
+                stake_method=stake_method,
+                kelly_fraction=kelly_fraction,
+                max_stake_units=max_stake_units,
             )
             row.update(stake_policy)
             row["first_seen_utc"] = seen_at_utc
@@ -216,9 +245,12 @@ def update_tracker(
             if col not in preserve_cols:
                 tracker.at[signal_id, col] = signal[col]
         stake_policy = _stake_policy(
-            signal.get("recommended_action"),
+            signal,
             bankroll_units=bankroll_units,
             core_stake_units=core_stake_units,
+            stake_method=stake_method,
+            kelly_fraction=kelly_fraction,
+            max_stake_units=max_stake_units,
         )
         for col in ["recommended_stake_units", "bankroll_units", "stake_method", "risk_notes"]:
             tracker.at[signal_id, col] = stake_policy[col]
@@ -265,6 +297,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--seen-at-utc", default=None)
     parser.add_argument("--bankroll-units", type=float, default=DEFAULT_BANKROLL_UNITS)
     parser.add_argument("--core-stake-units", type=float, default=DEFAULT_CORE_STAKE_UNITS)
+    parser.add_argument("--stake-method", default="fixed", choices=["fixed", "fractional_kelly"])
+    parser.add_argument("--kelly-fraction", type=float, default=DEFAULT_KELLY_FRACTION)
+    parser.add_argument("--max-stake-units", type=float, default=DEFAULT_MAX_STAKE_UNITS)
     parser.add_argument("--no-refresh-candidate-stakes", action="store_true")
     return parser
 
@@ -278,6 +313,9 @@ def main() -> None:
         seen_at_utc=args.seen_at_utc,
         bankroll_units=args.bankroll_units,
         core_stake_units=args.core_stake_units,
+        stake_method=args.stake_method,
+        kelly_fraction=args.kelly_fraction,
+        max_stake_units=args.max_stake_units,
         refresh_candidate_stakes=not args.no_refresh_candidate_stakes,
     )
     print(summarize_tracker(tracker).to_string(index=False))

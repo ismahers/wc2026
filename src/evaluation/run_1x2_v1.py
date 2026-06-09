@@ -73,6 +73,9 @@ def run(args: argparse.Namespace) -> None:
         seen_at_utc=args.seen_at_utc,
         bankroll_units=args.bankroll_units,
         core_stake_units=args.core_stake_units,
+        stake_method=args.stake_method,
+        kelly_fraction=args.kelly_fraction,
+        max_stake_units=args.max_stake_units,
         refresh_candidate_stakes=not args.no_refresh_candidate_stakes,
     )
     tracker_summary = bet_tracker.summarize_tracker(tracker)
@@ -127,6 +130,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--seen-at-utc", default=None)
     parser.add_argument("--bankroll-units", type=float, default=100.0)
     parser.add_argument("--core-stake-units", type=float, default=0.5)
+    parser.add_argument("--stake-method", default="fixed", choices=["fixed", "fractional_kelly"])
+    parser.add_argument("--kelly-fraction", type=float, default=0.25)
+    parser.add_argument("--max-stake-units", type=float, default=1.0)
     parser.add_argument("--no-refresh-candidate-stakes", action="store_true")
     return parser
 
