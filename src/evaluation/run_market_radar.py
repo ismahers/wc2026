@@ -7,6 +7,7 @@ This runner never calls The Odds API. It:
   1. Builds model probabilities / fair odds for multiple markets.
   2. Optionally crosses an existing flat odds CSV.
   3. Builds a paper shortlist for non-v1 markets.
+  4. Writes a local market availability report.
 
 Usage:
     python -m src.evaluation.run_market_radar
@@ -19,6 +20,7 @@ import os
 
 from src.evaluation import market_probabilities
 from src.evaluation import market_registry
+from src.evaluation import market_availability
 from src.evaluation import multi_market_ev
 from src.evaluation import multi_market_shortlist
 from src.evaluation import paper_tracker
@@ -109,11 +111,25 @@ def run(args: argparse.Namespace) -> None:
         print("=============")
         print(tracker_summary.to_string(index=False))
 
+    availability, availability_summary = market_availability.build_market_availability(
+        registry_path=args.registry_output,
+        probabilities_path=args.probabilities_output,
+        odds_path=args.odds,
+        ev_path=args.ev_output,
+        paper_tracker_path=args.paper_tracker_output,
+        output_path=args.availability_output,
+        summary_path=args.availability_summary_output,
+    )
+    print("\nMARKET AVAILABILITY")
+    print("===================")
+    print(availability_summary.to_string(index=False))
+
     print("\nOutputs")
     print(f"  Radar:  {args.probabilities_output}")
     print(f"  EV:     {args.ev_output}")
     print(f"  Paper:  {args.paper_output}")
     print(f"  Review: {args.review_output}")
+    print(f"  Avail:  {args.availability_output}")
     if not args.skip_paper_tracker:
         print(f"  Tracker:{args.paper_tracker_output}")
 
@@ -145,6 +161,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--skip-paper-tracker", action="store_true")
     parser.add_argument("--paper-tracker-output", default=paper_tracker.DEFAULT_TRACKER_OUTPUT)
     parser.add_argument("--paper-stake-units", type=float, default=paper_tracker.DEFAULT_PAPER_STAKE_UNITS)
+    parser.add_argument("--availability-output", default=market_availability.DEFAULT_OUTPUT)
+    parser.add_argument("--availability-summary-output", default=market_availability.DEFAULT_SUMMARY)
     return parser
 
 

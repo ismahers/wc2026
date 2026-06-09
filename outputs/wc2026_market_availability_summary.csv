@@ -1,0 +1,5 @@
+availability_status,markets,probability_rows,odds_rows,ev_rows,paper_tracker_rows
+blocked_not_modeled,2,0,0,0,0
+live_ev_ready,1,216,207,207,0
+modeled_waiting_for_odds,6,2088,0,0,0
+paper_ev_ready,1,432,144,52,9

@@ -405,6 +405,18 @@ Flujo completo de fase 2 en un comando, sin llamar a la API:
 python -m src.evaluation.run_market_radar
 ```
 
+Para ver qué mercados están realmente disponibles con los CSV locales, sin
+llamar a ninguna API:
+
+```bash
+python -m src.evaluation.market_availability
+```
+
+Genera `outputs/wc2026_market_availability.csv` y un resumen por estado. Con el
+snapshot local actual: 1X2 está listo para la v1, `total_goals` está en paper,
+BTTS/doble oportunidad/DNB/goles de equipo/clean sheet/córners esperan cuotas,
+y tarjetas/props siguen bloqueados por falta de modelo/datos.
+
 ## Features principales
 
 | Feature | Cobertura | Descripción |
