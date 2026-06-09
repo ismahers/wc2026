@@ -1,0 +1,2 @@
+market_key,model_status,validation_status,betting_status,stake_allowed,xgb_auc,xgb_brier,xgb_log_loss,xgb_pred_mean,actual_mean,calibration_ece,calibration_brier,radar_rows,current_odds_rows,backtest_rows,candidate_rows_if_odds_available,decision,next_step
+btts,trained_direct,paper_tracking,paper_only,False,0.5666,0.2384,0.6689,0.433,0.4134,0.0207,0.2384,144,0,0,93,blocked_waiting_for_btts_odds,"Fetch/collect BTTS odds, rerun multi_market_ev, then paper track; do not stake until a dedicated backtest is positive."

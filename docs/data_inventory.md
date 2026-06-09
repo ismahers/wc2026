@@ -54,6 +54,8 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `outputs/backtest2022_total_goals_v2.csv` | Backtest dedicado de Over/Under 2.5. |
 | `outputs/backtest2022_total_goals_v2_summary.csv` | Resumen de ROI del backtest de Over/Under 2.5. |
 | `outputs/backtest2022_total_goals_v2_grid.csv` | Sensibilidad por umbrales EV para Over/Under 2.5. |
+| `outputs/btts_readiness_summary.csv` | Semaforo BTTS: estado del modelo, cobertura de cuotas y decision operativa. |
+| `outputs/wc2026_btts_radar_candidates.csv` | Candidatos radar BTTS si aparecen cuotas suficientes, sin stake real. |
 
 ## Ignorados
 
@@ -97,5 +99,6 @@ python -m src.evaluation.model_ensemble
 python -m src.evaluation.market_registry
 python -m src.evaluation.run_market_radar
 python -m src.evaluation.total_goals_backtest
+python -m src.evaluation.btts_readiness
 python -m src.evaluation.paper_tracker
 ```

@@ -378,6 +378,17 @@ Resultado actual con el backtest WC2022 disponible: la estrategia por defecto
 `-23.5%`. Por tanto `total_goals_2_5` se mantiene como `paper_only`, no pasa a
 stake real.
 
+Semáforo BTTS, sin gastar API:
+
+```bash
+python -m src.evaluation.btts_readiness
+```
+
+Resultado actual: BTTS tiene modelo directo (`AUC=0.5666`, `ECE=0.0207`) y 144
+probabilidades radar para WC2026, pero el repo no contiene cuotas BTTS actuales
+ni históricas. Queda bloqueado como `paper_only` hasta conseguir cuotas BTTS,
+cruzarlas con `multi_market_ev` y correr un backtest dedicado.
+
 Tracker local de mercados paper:
 
 ```bash
