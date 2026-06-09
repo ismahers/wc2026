@@ -33,6 +33,7 @@
 !/data/processed/transfermarkt_match_review.csv
 !/data/processed/fifa_squad_diff.csv
 !/data/processed/fifa_squad_summary.csv
+!/data/processed/market_registry.csv
 
 # Event ids de The Odds API — costaron creditos recolectarlos, SI subir
 !/data/processed/odds_events.csv

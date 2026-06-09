@@ -36,6 +36,7 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `data/processed/name_coverage.csv` | `python scripts/check_name_coverage.py` | Reporte de cobertura de nombres canonicos. |
 | `data/processed/fifa_squad_diff.csv` | `python -m src.data.fifa_squads_pdf` | Diferencias entre el CSV actual y el PDF FIFA. |
 | `data/processed/fifa_squad_summary.csv` | `python -m src.data.fifa_squads_pdf` | Resumen por tipo de diferencia. |
+| `data/processed/market_registry.csv` | `python -m src.evaluation.market_registry` | Estado operativo de cada mercado: entrenado, derivado, paper, live o bloqueado. |
 
 ### Outputs versionados
 
@@ -46,6 +47,7 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `outputs/wc2026_poisson_predictions.csv` | Predicciones Poisson de goles. |
 | `outputs/wc2026_poisson_predictions_with_odds.csv` | Cuotas justas derivadas de Poisson. |
 | `outputs/wc2026_ensemble_predictions.csv` | Prediccion final del ensemble, una unica cuota por mercado. |
+| `outputs/wc2026_market_probabilities.csv` | Radar multi-mercado con cuotas justas y estado del registry. |
 | `outputs/model_comparison.csv` | Diagnostico XGBoost vs Poisson. |
 | `outputs/xgb_baseline_metrics.json` | Metricas XGBoost. |
 | `outputs/poisson_metrics.json` | Metricas Poisson. |
@@ -88,4 +90,6 @@ python -m src.evaluation.odds_converter --input outputs/wc2026_predictions.csv -
 python -m src.evaluation.odds_converter --input outputs/wc2026_poisson_predictions.csv --output outputs/wc2026_poisson_predictions_with_odds.csv
 python -m src.evaluation.model_comparison
 python -m src.evaluation.model_ensemble
+python -m src.evaluation.market_registry
+python -m src.evaluation.run_market_radar
 ```

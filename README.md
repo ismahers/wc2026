@@ -29,7 +29,8 @@ wc2026/
 │       ├── team_player_stats_wc2026.csv  # Stats de jugadores agregadas por selección
 │       ├── players_wc2026.csv       # Jugadores normalizados
 │       ├── teams_wc2026.csv         # Selecciones normalizadas
-│       └── squad_summary_wc2026.csv # Resumen de convocatorias
+│       ├── squad_summary_wc2026.csv # Resumen de convocatorias
+│       └── market_registry.csv      # Estado operativo de cada mercado
 │
 ├── src/
 │   ├── data/
@@ -322,6 +323,17 @@ el ensemble en probabilidades y cuotas justas de varios mercados:
 - Goles de equipo 0.5 / 1.5 / 2.5.
 - Porterías a cero.
 - Córners totales 8.5 / 9.5 / 10.5 como aproximación Poisson.
+
+La fuente de verdad sobre qué mercados son apostables, paper o solo radar es:
+
+```bash
+python -m src.evaluation.market_registry
+```
+
+Genera `data/processed/market_registry.csv` con `model_status`,
+`validation_status`, `betting_status`, `stake_allowed` y el siguiente paso de
+cada mercado. El radar y el EV local arrastran esas columnas para evitar que un
+mercado derivado parezca validado.
 
 ```bash
 python -m src.evaluation.market_probabilities

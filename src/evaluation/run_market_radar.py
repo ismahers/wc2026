@@ -18,11 +18,19 @@ import argparse
 import os
 
 from src.evaluation import market_probabilities
+from src.evaluation import market_registry
 from src.evaluation import multi_market_ev
 from src.evaluation import multi_market_shortlist
 
 
 def run(args: argparse.Namespace) -> None:
+    registry = market_registry.write_registry(args.registry_output)
+    registry_summary = market_registry.summarize_registry(registry)
+
+    print("\nMARKET REGISTRY")
+    print("===============")
+    print(registry_summary.to_string(index=False))
+
     radar = market_probabilities.build_market_probabilities(
         ensemble_path=args.ensemble,
         reliability_path=args.reliability,
@@ -97,6 +105,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run phase 2 market radar without calling any API.")
     parser.add_argument("--ensemble", default=market_probabilities.DEFAULT_ENSEMBLE_INPUT)
     parser.add_argument("--reliability", default=market_probabilities.DEFAULT_RELIABILITY_INPUT)
+    parser.add_argument("--registry-output", default=market_registry.DEFAULT_OUTPUT)
     parser.add_argument("--probabilities-output", default=market_probabilities.DEFAULT_OUTPUT)
     parser.add_argument("--markets", default="all")
 

@@ -69,6 +69,8 @@ def _market_reason(row: pd.Series) -> str:
     reasons = []
     if not row["_paper_market_ok"]:
         reasons.append("unsupported_market")
+    if not row["_registry_ok"]:
+        reasons.append("registry_not_paper")
     if not row["_line_ok"]:
         reasons.append("unsupported_line")
     if not row["_ev_ok"]:
@@ -99,6 +101,10 @@ def _add_filter_columns(
     out["_reliability_rank"] = out["fiabilidad_nivel"].map(reliability_rank)
     out["_confidence_rank"] = out["model_confidence"].map(confidence_rank)
     out["_paper_market_ok"] = out["market"].isin(paper_markets)
+    if "betting_status" in out.columns:
+        out["_registry_ok"] = out["betting_status"].eq("paper_only")
+    else:
+        out["_registry_ok"] = True
     out["_line_ok"] = _is_total_goals_line_ok(out)
     out["_ev_ok"] = out["ev_pct"].between(min_ev_pct, max_ev_pct, inclusive="both")
     out["_odds_ok"] = out["odds_decimal"].between(min_odds, max_odds, inclusive="both")
@@ -106,6 +112,7 @@ def _add_filter_columns(
     out["_confidence_ok"] = out["_confidence_rank"] >= confidence_rank(min_confidence)
     out["paper_track_allowed"] = (
         out["_paper_market_ok"]
+        & out["_registry_ok"]
         & out["_line_ok"]
         & out["_ev_ok"]
         & out["_odds_ok"]

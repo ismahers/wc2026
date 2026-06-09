@@ -32,6 +32,7 @@ import pandas as pd
 from scipy.stats import poisson
 
 from src.data.team_names import canonicalize
+from src.evaluation.market_registry import metadata_for
 
 
 DEFAULT_ENSEMBLE_INPUT = "outputs/wc2026_ensemble_predictions.csv"
@@ -114,6 +115,7 @@ def _add_row(
     probability = _safe_prob(probability)
     if pd.isna(probability):
         return
+    registry = metadata_for(market, line, selection)
 
     rows.append({
         "date": row.get("date"),
@@ -122,6 +124,15 @@ def _add_row(
         "market": market,
         "selection": selection,
         "line": line,
+        "registry_market_key": registry["registry_market_key"],
+        "registry_display_name": registry["display_name"],
+        "market_family": registry["market_family"],
+        "model_status": registry["model_status"],
+        "trained_directly": registry["trained_directly"],
+        "validation_status": registry["validation_status"],
+        "betting_status": registry["betting_status"],
+        "stake_allowed": registry["stake_allowed"],
+        "default_tracking_action": registry["default_tracking_action"],
         "model_probability": round(float(probability), 4),
         "fair_odds": _fair_odds(probability),
         "min_odds_ev5": round(1.05 / probability, 3),
@@ -129,11 +140,14 @@ def _add_row(
         "min_odds_ev15": round(1.15 / probability, 3),
         "source_model": source_model,
         "model_confidence": model_confidence,
+        "registry_probability_source": registry["probability_source"],
         "fiabilidad_pct": row.get("fiabilidad_pct"),
         "fiabilidad_nivel": row.get("fiabilidad_nivel"),
         "model_regime": row.get("model_regime"),
         "poisson_weight": row.get("poisson_weight"),
         "notes": notes,
+        "registry_notes": registry["notes"],
+        "next_step": registry["next_step"],
     })
 
 
