@@ -88,6 +88,7 @@ Run-Step "Radar multi-mercado + EV + paper"  @("-m", "src.evaluation.run_market_
 
 # --- 9. Subir senales al tracker web ---
 Run-Step "Subir senales a Supabase (tracker)" @("-m", "src.evaluation.push_signals_supabase")
+Run-Step "Subir radar a Supabase" @("src/evaluation/market_radar_push.py")
 
 Write-Host ""
 Write-Host "[OK] Pipeline completo sin errores." -ForegroundColor Green

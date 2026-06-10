@@ -33,6 +33,7 @@ jobs:
       ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
       SUPABASE_URL: https://bcqfyipszvktufenlcep.supabase.co
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -86,6 +87,9 @@ jobs:
 
       - name: Subir senales a Supabase (tracker web)
         run: python -m src.evaluation.push_signals_supabase
+
+      - name: Subir radar a Supabase
+        run: python src/evaluation/market_radar_push.py
 
       - name: Resumen
         run: |
