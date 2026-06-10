@@ -1,11 +1,17 @@
 {
   "n_test": 4509,
-  "mae_home": 1.027,
-  "mae_away": 0.8323,
-  "rmse_home": 1.3763,
-  "rmse_away": 1.1276,
-  "mae_avg": 0.9297,
-  "accuracy_1x2": 0.605,
-  "mean_lambda_home": 1.673,
-  "mean_lambda_away": 1.089
+  "model_variant": "dixon_coles",
+  "dixon_coles_rho": -0.06282,
+  "mae_home": 1.0436,
+  "mae_away": 0.8358,
+  "rmse_home": 1.4089,
+  "rmse_away": 1.1297,
+  "mae_avg": 0.9397,
+  "accuracy_1x2": 0.6015,
+  "log_loss_1x2": 1.8547,
+  "draw_actual_rate": 0.2311,
+  "draw_pred_mean": 0.222,
+  "draw_pred_error": -0.0091,
+  "mean_lambda_home": 1.686,
+  "mean_lambda_away": 1.098
 }

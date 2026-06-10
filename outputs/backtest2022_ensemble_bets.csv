@@ -1,0 +1,861 @@
+model_variant,home_team,away_team,mercado,seleccion,cuota,prob_modelo,ev_pct,win,profit,resultado_real
+xgb_clean,Qatar,Ecuador,1X2-A,Ecuador,2.26,0.4413,-0.26,True,1.26,0-2
+poisson_dixon_coles,Qatar,Ecuador,1X2-A,Ecuador,2.26,0.395,-10.73,True,1.26,0-2
+ensemble_raw,Qatar,Ecuador,1X2-A,Ecuador,2.26,0.4078,-7.83,True,1.26,0-2
+ensemble_calibrated,Qatar,Ecuador,1X2-A,Ecuador,2.26,0.4022,-9.09,True,1.26,0-2
+xgb_clean,Qatar,Ecuador,1X2-H,Qatar,3.79,0.2969,12.54,False,-1.0,0-2
+poisson_dixon_coles,Qatar,Ecuador,1X2-H,Qatar,3.79,0.2934,11.2,False,-1.0,0-2
+ensemble_raw,Qatar,Ecuador,1X2-H,Qatar,3.79,0.2944,11.57,False,-1.0,0-2
+ensemble_calibrated,Qatar,Ecuador,1X2-H,Qatar,3.79,0.2934,11.19,False,-1.0,0-2
+xgb_clean,Qatar,Ecuador,1X2-D,Draw,3.17,0.2617,-17.03,False,-1.0,0-2
+poisson_dixon_coles,Qatar,Ecuador,1X2-D,Draw,3.17,0.3116,-1.22,False,-1.0,0-2
+ensemble_raw,Qatar,Ecuador,1X2-D,Draw,3.17,0.2978,-5.61,False,-1.0,0-2
+ensemble_calibrated,Qatar,Ecuador,1X2-D,Draw,3.17,0.3044,-3.51,False,-1.0,0-2
+xgb_clean,Senegal,Netherlands,1X2-A,Netherlands,1.64,0.6124,0.43,True,0.64,0-2
+poisson_dixon_coles,Senegal,Netherlands,1X2-A,Netherlands,1.64,0.5982,-1.9,True,0.64,0-2
+ensemble_raw,Senegal,Netherlands,1X2-A,Netherlands,1.64,0.6021,-1.25,True,0.64,0-2
+ensemble_calibrated,Senegal,Netherlands,1X2-A,Netherlands,1.64,0.6168,1.15,True,0.64,0-2
+xgb_clean,Senegal,Netherlands,1X2-H,Senegal,6.5,0.1803,17.23,False,-1.0,0-2
+poisson_dixon_coles,Senegal,Netherlands,1X2-H,Senegal,6.5,0.1638,6.47,False,-1.0,0-2
+ensemble_raw,Senegal,Netherlands,1X2-H,Senegal,6.5,0.1684,9.45,False,-1.0,0-2
+ensemble_calibrated,Senegal,Netherlands,1X2-H,Senegal,6.5,0.1458,-5.22,False,-1.0,0-2
+xgb_clean,Senegal,Netherlands,1X2-D,Draw,3.85,0.2073,-20.19,False,-1.0,0-2
+poisson_dixon_coles,Senegal,Netherlands,1X2-D,Draw,3.85,0.238,-8.37,False,-1.0,0-2
+ensemble_raw,Senegal,Netherlands,1X2-D,Draw,3.85,0.2295,-11.65,False,-1.0,0-2
+ensemble_calibrated,Senegal,Netherlands,1X2-D,Draw,3.85,0.2374,-8.59,False,-1.0,0-2
+xgb_clean,England,Iran,1X2-H,England,1.39,0.5962,-17.13,True,0.39,6-2
+poisson_dixon_coles,England,Iran,1X2-H,England,1.39,0.6671,-7.27,True,0.39,6-2
+ensemble_raw,England,Iran,1X2-H,England,1.39,0.6474,-10.01,True,0.39,6-2
+ensemble_calibrated,England,Iran,1X2-H,England,1.39,0.6342,-11.85,True,0.39,6-2
+xgb_clean,England,Iran,1X2-A,Iran,11.0,0.1696,86.53,False,-1.0,6-2
+poisson_dixon_coles,England,Iran,1X2-A,Iran,11.0,0.1361,49.71,False,-1.0,6-2
+ensemble_raw,England,Iran,1X2-A,Iran,11.0,0.1454,59.92,False,-1.0,6-2
+ensemble_calibrated,England,Iran,1X2-A,Iran,11.0,0.1709,87.94,False,-1.0,6-2
+xgb_clean,England,Iran,1X2-D,Draw,4.75,0.2343,11.27,False,-1.0,6-2
+poisson_dixon_coles,England,Iran,1X2-D,Draw,4.75,0.1968,-6.52,False,-1.0,6-2
+ensemble_raw,England,Iran,1X2-D,Draw,4.75,0.2072,-1.59,False,-1.0,6-2
+ensemble_calibrated,England,Iran,1X2-D,Draw,4.75,0.195,-7.39,False,-1.0,6-2
+xgb_clean,United States,Wales,1X2-H,USA,2.58,0.4172,7.65,False,-1.0,1-1
+poisson_dixon_coles,United States,Wales,1X2-H,USA,2.58,0.516,33.13,False,-1.0,1-1
+ensemble_raw,United States,Wales,1X2-H,USA,2.58,0.4886,26.06,False,-1.0,1-1
+ensemble_calibrated,United States,Wales,1X2-H,USA,2.58,0.4326,11.6,False,-1.0,1-1
+xgb_clean,United States,Wales,1X2-A,Wales,3.26,0.2627,-14.34,False,-1.0,1-1
+poisson_dixon_coles,United States,Wales,1X2-A,Wales,3.26,0.2202,-28.21,False,-1.0,1-1
+ensemble_raw,United States,Wales,1X2-A,Wales,3.26,0.232,-24.37,False,-1.0,1-1
+ensemble_calibrated,United States,Wales,1X2-A,Wales,3.26,0.2244,-26.86,False,-1.0,1-1
+xgb_clean,United States,Wales,1X2-D,Draw,3.05,0.32,-2.39,True,2.05,1-1
+poisson_dixon_coles,United States,Wales,1X2-D,Draw,3.05,0.2638,-19.54,True,2.05,1-1
+ensemble_raw,United States,Wales,1X2-D,Draw,3.05,0.2794,-14.79,True,2.05,1-1
+ensemble_calibrated,United States,Wales,1X2-D,Draw,3.05,0.3431,4.64,True,2.05,1-1
+xgb_clean,Argentina,Saudi Arabia,1X2-H,Argentina,1.14,0.7484,-14.69,False,-1.0,1-2
+poisson_dixon_coles,Argentina,Saudi Arabia,1X2-H,Argentina,1.14,0.7823,-10.82,False,-1.0,1-2
+ensemble_raw,Argentina,Saudi Arabia,1X2-H,Argentina,1.14,0.7729,-11.89,False,-1.0,1-2
+ensemble_calibrated,Argentina,Saudi Arabia,1X2-H,Argentina,1.14,0.829,-5.49,False,-1.0,1-2
+xgb_clean,Argentina,Saudi Arabia,1X2-A,Saudi Arabia,21.0,0.1147,140.8,True,20.0,1-2
+poisson_dixon_coles,Argentina,Saudi Arabia,1X2-A,Saudi Arabia,21.0,0.0607,27.47,True,20.0,1-2
+ensemble_raw,Argentina,Saudi Arabia,1X2-A,Saudi Arabia,21.0,0.0757,58.9,True,20.0,1-2
+ensemble_calibrated,Argentina,Saudi Arabia,1X2-A,Saudi Arabia,21.0,0.0465,-2.33,True,20.0,1-2
+xgb_clean,Argentina,Saudi Arabia,1X2-D,Draw,10.0,0.137,36.97,False,-1.0,1-2
+poisson_dixon_coles,Argentina,Saudi Arabia,1X2-D,Draw,10.0,0.157,57.0,False,-1.0,1-2
+ensemble_raw,Argentina,Saudi Arabia,1X2-D,Draw,10.0,0.1514,51.45,False,-1.0,1-2
+ensemble_calibrated,Argentina,Saudi Arabia,1X2-D,Draw,10.0,0.1244,24.44,False,-1.0,1-2
+xgb_clean,Mexico,Poland,1X2-H,Mexico,2.56,0.4236,8.44,False,-1.0,0-0
+poisson_dixon_coles,Mexico,Poland,1X2-H,Mexico,2.56,0.5346,36.86,False,-1.0,0-0
+ensemble_raw,Mexico,Poland,1X2-H,Mexico,2.56,0.5038,28.98,False,-1.0,0-0
+ensemble_calibrated,Mexico,Poland,1X2-H,Mexico,2.56,0.4326,10.74,False,-1.0,0-0
+xgb_clean,Mexico,Poland,1X2-A,Poland,3.27,0.2649,-13.37,False,-1.0,0-0
+poisson_dixon_coles,Mexico,Poland,1X2-A,Poland,3.27,0.1997,-34.7,False,-1.0,0-0
+ensemble_raw,Mexico,Poland,1X2-A,Poland,3.27,0.2178,-28.78,False,-1.0,0-0
+ensemble_calibrated,Mexico,Poland,1X2-A,Poland,3.27,0.2244,-26.64,False,-1.0,0-0
+xgb_clean,Mexico,Poland,1X2-D,Draw,3.07,0.3115,-4.37,True,2.07,0-0
+poisson_dixon_coles,Mexico,Poland,1X2-D,Draw,3.07,0.2657,-18.43,True,2.07,0-0
+ensemble_raw,Mexico,Poland,1X2-D,Draw,3.07,0.2784,-14.53,True,2.07,0-0
+ensemble_calibrated,Mexico,Poland,1X2-D,Draw,3.07,0.3431,5.33,True,2.07,0-0
+xgb_clean,Denmark,Tunisia,1X2-H,Denmark,1.61,0.5787,-6.84,False,-1.0,0-0
+poisson_dixon_coles,Denmark,Tunisia,1X2-H,Denmark,1.61,0.503,-19.02,False,-1.0,0-0
+ensemble_raw,Denmark,Tunisia,1X2-H,Denmark,1.61,0.524,-15.64,False,-1.0,0-0
+ensemble_calibrated,Denmark,Tunisia,1X2-H,Denmark,1.61,0.5087,-18.1,False,-1.0,0-0
+xgb_clean,Denmark,Tunisia,1X2-A,Tunisia,6.89,0.1615,11.26,False,-1.0,0-0
+poisson_dixon_coles,Denmark,Tunisia,1X2-A,Tunisia,6.89,0.2228,53.51,False,-1.0,0-0
+ensemble_raw,Denmark,Tunisia,1X2-A,Tunisia,6.89,0.2058,41.79,False,-1.0,0-0
+ensemble_calibrated,Denmark,Tunisia,1X2-A,Tunisia,6.89,0.2042,40.67,False,-1.0,0-0
+xgb_clean,Denmark,Tunisia,1X2-D,Draw,3.85,0.2599,0.04,True,2.85,0-0
+poisson_dixon_coles,Denmark,Tunisia,1X2-D,Draw,3.85,0.2742,5.57,True,2.85,0-0
+ensemble_raw,Denmark,Tunisia,1X2-D,Draw,3.85,0.2702,4.04,True,2.85,0-0
+ensemble_calibrated,Denmark,Tunisia,1X2-D,Draw,3.85,0.2871,10.54,True,2.85,0-0
+xgb_clean,France,Australia,1X2-A,Australia,11.5,0.1041,19.68,False,-1.0,4-1
+poisson_dixon_coles,France,Australia,1X2-A,Australia,11.5,0.1113,27.99,False,-1.0,4-1
+ensemble_raw,France,Australia,1X2-A,Australia,11.5,0.1093,25.69,False,-1.0,4-1
+ensemble_calibrated,France,Australia,1X2-A,Australia,11.5,0.0962,10.61,False,-1.0,4-1
+xgb_clean,France,Australia,1X2-H,France,1.27,0.6548,-16.84,True,0.27,4-1
+poisson_dixon_coles,France,Australia,1X2-H,France,1.27,0.695,-11.74,True,0.27,4-1
+ensemble_raw,France,Australia,1X2-H,France,1.27,0.6839,-13.15,True,0.27,4-1
+ensemble_calibrated,France,Australia,1X2-H,France,1.27,0.7122,-9.55,True,0.27,4-1
+xgb_clean,France,Australia,1X2-D,Draw,6.7,0.2411,61.56,False,-1.0,4-1
+poisson_dixon_coles,France,Australia,1X2-D,Draw,6.7,0.1937,29.78,False,-1.0,4-1
+ensemble_raw,France,Australia,1X2-D,Draw,6.7,0.2069,38.59,False,-1.0,4-1
+ensemble_calibrated,France,Australia,1X2-D,Draw,6.7,0.1916,28.37,False,-1.0,4-1
+xgb_clean,Belgium,Canada,1X2-H,Belgium,1.6,0.5663,-9.4,True,0.6,1-0
+poisson_dixon_coles,Belgium,Canada,1X2-H,Belgium,1.6,0.5495,-12.08,True,0.6,1-0
+ensemble_raw,Belgium,Canada,1X2-H,Belgium,1.6,0.5541,-11.34,True,0.6,1-0
+ensemble_calibrated,Belgium,Canada,1X2-H,Belgium,1.6,0.5175,-17.2,True,0.6,1-0
+xgb_clean,Belgium,Canada,1X2-A,Canada,5.96,0.1651,-1.58,False,-1.0,1-0
+poisson_dixon_coles,Belgium,Canada,1X2-A,Canada,5.96,0.1955,16.52,False,-1.0,1-0
+ensemble_raw,Belgium,Canada,1X2-A,Canada,5.96,0.1871,11.49,False,-1.0,1-0
+ensemble_calibrated,Belgium,Canada,1X2-A,Canada,5.96,0.2005,19.5,False,-1.0,1-0
+xgb_clean,Belgium,Canada,1X2-D,Draw,4.31,0.2686,15.77,False,-1.0,1-0
+poisson_dixon_coles,Belgium,Canada,1X2-D,Draw,4.31,0.2551,9.95,False,-1.0,1-0
+ensemble_raw,Belgium,Canada,1X2-D,Draw,4.31,0.2588,11.56,False,-1.0,1-0
+ensemble_calibrated,Belgium,Canada,1X2-D,Draw,4.31,0.282,21.54,False,-1.0,1-0
+xgb_clean,Spain,Costa Rica,1X2-A,Costa Rica,19.5,0.1129,120.1,False,-1.0,7-0
+poisson_dixon_coles,Spain,Costa Rica,1X2-A,Costa Rica,19.5,0.1353,163.84,False,-1.0,7-0
+ensemble_raw,Spain,Costa Rica,1X2-A,Costa Rica,19.5,0.1291,151.71,False,-1.0,7-0
+ensemble_calibrated,Spain,Costa Rica,1X2-A,Costa Rica,19.5,0.1551,202.39,False,-1.0,7-0
+xgb_clean,Spain,Costa Rica,1X2-H,Spain,1.18,0.6472,-23.63,True,0.18,7-0
+poisson_dixon_coles,Spain,Costa Rica,1X2-H,Spain,1.18,0.6423,-24.21,True,0.18,7-0
+ensemble_raw,Spain,Costa Rica,1X2-H,Spain,1.18,0.6437,-24.05,True,0.18,7-0
+ensemble_calibrated,Spain,Costa Rica,1X2-H,Spain,1.18,0.6107,-27.93,True,0.18,7-0
+xgb_clean,Spain,Costa Rica,1X2-D,Draw,8.0,0.2399,91.94,False,-1.0,7-0
+poisson_dixon_coles,Spain,Costa Rica,1X2-D,Draw,8.0,0.2224,77.92,False,-1.0,7-0
+ensemble_raw,Spain,Costa Rica,1X2-D,Draw,8.0,0.2273,81.81,False,-1.0,7-0
+ensemble_calibrated,Spain,Costa Rica,1X2-D,Draw,8.0,0.2342,87.34,False,-1.0,7-0
+xgb_clean,Germany,Japan,1X2-H,Germany,1.54,0.4254,-34.5,False,-1.0,1-2
+poisson_dixon_coles,Germany,Japan,1X2-H,Germany,1.54,0.4107,-36.75,False,-1.0,1-2
+ensemble_raw,Germany,Japan,1X2-H,Germany,1.54,0.4148,-36.13,False,-1.0,1-2
+ensemble_calibrated,Germany,Japan,1X2-H,Germany,1.54,0.3772,-41.91,False,-1.0,1-2
+xgb_clean,Germany,Japan,1X2-A,Japan,6.5,0.3023,96.48,True,5.5,1-2
+poisson_dixon_coles,Germany,Japan,1X2-A,Japan,6.5,0.31,101.5,True,5.5,1-2
+ensemble_raw,Germany,Japan,1X2-A,Japan,6.5,0.3079,100.11,True,5.5,1-2
+ensemble_calibrated,Germany,Japan,1X2-A,Japan,6.5,0.3146,104.48,True,5.5,1-2
+xgb_clean,Germany,Japan,1X2-D,Draw,4.5,0.2724,22.57,False,-1.0,1-2
+poisson_dixon_coles,Germany,Japan,1X2-D,Draw,4.5,0.2793,25.69,False,-1.0,1-2
+ensemble_raw,Germany,Japan,1X2-D,Draw,4.5,0.2774,24.82,False,-1.0,1-2
+ensemble_calibrated,Germany,Japan,1X2-D,Draw,4.5,0.3082,38.71,False,-1.0,1-2
+xgb_clean,Uruguay,South Korea,1X2-A,South Korea,5.37,0.2184,17.28,False,-1.0,0-0
+poisson_dixon_coles,Uruguay,South Korea,1X2-A,South Korea,5.37,0.2276,22.22,False,-1.0,0-0
+ensemble_raw,Uruguay,South Korea,1X2-A,South Korea,5.37,0.2251,20.86,False,-1.0,0-0
+ensemble_calibrated,Uruguay,South Korea,1X2-A,South Korea,5.37,0.2042,9.64,False,-1.0,0-0
+xgb_clean,Uruguay,South Korea,1X2-H,Uruguay,1.82,0.5309,-3.37,False,-1.0,0-0
+poisson_dixon_coles,Uruguay,South Korea,1X2-H,Uruguay,1.82,0.5117,-6.87,False,-1.0,0-0
+ensemble_raw,Uruguay,South Korea,1X2-H,Uruguay,1.82,0.5171,-5.89,False,-1.0,0-0
+ensemble_calibrated,Uruguay,South Korea,1X2-H,Uruguay,1.82,0.5087,-7.42,False,-1.0,0-0
+xgb_clean,Uruguay,South Korea,1X2-D,Draw,3.51,0.2507,-12.02,True,2.51,0-0
+poisson_dixon_coles,Uruguay,South Korea,1X2-D,Draw,3.51,0.2606,-8.53,True,2.51,0-0
+ensemble_raw,Uruguay,South Korea,1X2-D,Draw,3.51,0.2579,-9.49,True,2.51,0-0
+ensemble_calibrated,Uruguay,South Korea,1X2-D,Draw,3.51,0.2871,0.78,True,2.51,0-0
+xgb_clean,Portugal,Ghana,1X2-A,Ghana,9.0,0.0713,-35.82,False,-1.0,3-2
+poisson_dixon_coles,Portugal,Ghana,1X2-A,Ghana,9.0,0.0854,-23.14,False,-1.0,3-2
+ensemble_raw,Portugal,Ghana,1X2-A,Ghana,9.0,0.0815,-26.66,False,-1.0,3-2
+ensemble_calibrated,Portugal,Ghana,1X2-A,Ghana,9.0,0.0936,-15.77,False,-1.0,3-2
+xgb_clean,Portugal,Ghana,1X2-H,Portugal,1.38,0.7483,3.26,True,0.38,3-2
+poisson_dixon_coles,Portugal,Ghana,1X2-H,Portugal,1.38,0.7338,1.26,True,0.38,3-2
+ensemble_raw,Portugal,Ghana,1X2-H,Portugal,1.38,0.7378,1.81,True,0.38,3-2
+ensemble_calibrated,Portugal,Ghana,1X2-H,Portugal,1.38,0.7363,1.61,True,0.38,3-2
+xgb_clean,Portugal,Ghana,1X2-D,Draw,5.25,0.1804,-5.29,False,-1.0,3-2
+poisson_dixon_coles,Portugal,Ghana,1X2-D,Draw,5.25,0.1809,-5.03,False,-1.0,3-2
+ensemble_raw,Portugal,Ghana,1X2-D,Draw,5.25,0.1807,-5.11,False,-1.0,3-2
+ensemble_calibrated,Portugal,Ghana,1X2-D,Draw,5.25,0.1701,-10.71,False,-1.0,3-2
+xgb_clean,Switzerland,Cameroon,1X2-A,Cameroon,5.74,0.1221,-29.89,False,-1.0,1-0
+poisson_dixon_coles,Switzerland,Cameroon,1X2-A,Cameroon,5.74,0.1223,-29.8,False,-1.0,1-0
+ensemble_raw,Switzerland,Cameroon,1X2-A,Cameroon,5.74,0.1223,-29.82,False,-1.0,1-0
+ensemble_calibrated,Switzerland,Cameroon,1X2-A,Cameroon,5.74,0.0975,-44.03,False,-1.0,1-0
+xgb_clean,Switzerland,Cameroon,1X2-H,Switzerland,1.75,0.6439,12.68,True,0.75,1-0
+poisson_dixon_coles,Switzerland,Cameroon,1X2-H,Switzerland,1.75,0.6661,16.57,True,0.75,1-0
+ensemble_raw,Switzerland,Cameroon,1X2-H,Switzerland,1.75,0.66,15.5,True,0.75,1-0
+ensemble_calibrated,Switzerland,Cameroon,1X2-H,Switzerland,1.75,0.6731,17.79,True,0.75,1-0
+xgb_clean,Switzerland,Cameroon,1X2-D,Draw,3.64,0.2339,-14.84,False,-1.0,1-0
+poisson_dixon_coles,Switzerland,Cameroon,1X2-D,Draw,3.64,0.2115,-23.01,False,-1.0,1-0
+ensemble_raw,Switzerland,Cameroon,1X2-D,Draw,3.64,0.2177,-20.74,False,-1.0,1-0
+ensemble_calibrated,Switzerland,Cameroon,1X2-D,Draw,3.64,0.2294,-16.49,False,-1.0,1-0
+xgb_clean,Brazil,Serbia,1X2-H,Brazil,1.47,0.7742,13.81,True,0.47,2-0
+poisson_dixon_coles,Brazil,Serbia,1X2-H,Brazil,1.47,0.7432,9.25,True,0.47,2-0
+ensemble_raw,Brazil,Serbia,1X2-H,Brazil,1.47,0.7518,10.51,True,0.47,2-0
+ensemble_calibrated,Brazil,Serbia,1X2-H,Brazil,1.47,0.7757,14.03,True,0.47,2-0
+xgb_clean,Brazil,Serbia,1X2-A,Serbia,7.42,0.0713,-47.13,False,-1.0,2-0
+poisson_dixon_coles,Brazil,Serbia,1X2-A,Serbia,7.42,0.0829,-38.49,False,-1.0,2-0
+ensemble_raw,Brazil,Serbia,1X2-A,Serbia,7.42,0.0797,-40.88,False,-1.0,2-0
+ensemble_calibrated,Brazil,Serbia,1X2-A,Serbia,7.42,0.0475,-64.72,False,-1.0,2-0
+xgb_clean,Brazil,Serbia,1X2-D,Draw,4.77,0.1546,-26.28,False,-1.0,2-0
+poisson_dixon_coles,Brazil,Serbia,1X2-D,Draw,4.77,0.1739,-17.05,False,-1.0,2-0
+ensemble_raw,Brazil,Serbia,1X2-D,Draw,4.77,0.1685,-19.61,False,-1.0,2-0
+ensemble_calibrated,Brazil,Serbia,1X2-D,Draw,4.77,0.1767,-15.7,False,-1.0,2-0
+xgb_clean,Wales,Iran,1X2-A,Iran,3.99,0.292,16.53,True,2.99,0-2
+poisson_dixon_coles,Wales,Iran,1X2-A,Iran,3.99,0.3702,47.71,True,2.99,0-2
+ensemble_raw,Wales,Iran,1X2-A,Iran,3.99,0.3485,39.05,True,2.99,0-2
+ensemble_calibrated,Wales,Iran,1X2-A,Iran,3.99,0.3278,30.8,True,2.99,0-2
+xgb_clean,Wales,Iran,1X2-H,Wales,2.18,0.4404,-4.0,False,-1.0,0-2
+poisson_dixon_coles,Wales,Iran,1X2-H,Wales,2.18,0.3401,-25.86,False,-1.0,0-2
+ensemble_raw,Wales,Iran,1X2-H,Wales,2.18,0.3679,-19.8,False,-1.0,0-2
+ensemble_calibrated,Wales,Iran,1X2-H,Wales,2.18,0.351,-23.49,False,-1.0,0-2
+xgb_clean,Wales,Iran,1X2-D,Draw,3.23,0.2676,-13.57,False,-1.0,0-2
+poisson_dixon_coles,Wales,Iran,1X2-D,Draw,3.23,0.2898,-6.39,False,-1.0,0-2
+ensemble_raw,Wales,Iran,1X2-D,Draw,3.23,0.2836,-8.39,False,-1.0,0-2
+ensemble_calibrated,Wales,Iran,1X2-D,Draw,3.23,0.3212,3.75,False,-1.0,0-2
+xgb_clean,Netherlands,Ecuador,1X2-A,Ecuador,4.89,0.2163,5.75,False,-1.0,1-1
+poisson_dixon_coles,Netherlands,Ecuador,1X2-A,Ecuador,4.89,0.2078,1.61,False,-1.0,1-1
+ensemble_raw,Netherlands,Ecuador,1X2-A,Ecuador,4.89,0.2101,2.76,False,-1.0,1-1
+ensemble_calibrated,Netherlands,Ecuador,1X2-A,Ecuador,4.89,0.2042,-0.16,False,-1.0,1-1
+xgb_clean,Netherlands,Ecuador,1X2-H,Netherlands,1.87,0.5689,6.38,False,-1.0,1-1
+poisson_dixon_coles,Netherlands,Ecuador,1X2-H,Netherlands,1.87,0.5081,-4.99,False,-1.0,1-1
+ensemble_raw,Netherlands,Ecuador,1X2-H,Netherlands,1.87,0.525,-1.83,False,-1.0,1-1
+ensemble_calibrated,Netherlands,Ecuador,1X2-H,Netherlands,1.87,0.5087,-4.87,False,-1.0,1-1
+xgb_clean,Netherlands,Ecuador,1X2-D,Draw,3.55,0.2149,-23.72,True,2.55,1-1
+poisson_dixon_coles,Netherlands,Ecuador,1X2-D,Draw,3.55,0.2841,0.86,True,2.55,1-1
+ensemble_raw,Netherlands,Ecuador,1X2-D,Draw,3.55,0.2649,-5.96,True,2.55,1-1
+ensemble_calibrated,Netherlands,Ecuador,1X2-D,Draw,3.55,0.2871,1.93,True,2.55,1-1
+xgb_clean,England,United States,1X2-H,England,1.5,0.5025,-24.62,False,-1.0,0-0
+poisson_dixon_coles,England,United States,1X2-H,England,1.5,0.5277,-20.85,False,-1.0,0-0
+ensemble_raw,England,United States,1X2-H,England,1.5,0.5207,-21.89,False,-1.0,0-0
+ensemble_calibrated,England,United States,1X2-H,England,1.5,0.5182,-22.27,False,-1.0,0-0
+xgb_clean,England,United States,1X2-A,USA,7.75,0.236,82.88,False,-1.0,0-0
+poisson_dixon_coles,England,United States,1X2-A,USA,7.75,0.2235,73.21,False,-1.0,0-0
+ensemble_raw,England,United States,1X2-A,USA,7.75,0.227,75.89,False,-1.0,0-0
+ensemble_calibrated,England,United States,1X2-A,USA,7.75,0.208,61.19,False,-1.0,0-0
+xgb_clean,England,United States,1X2-D,Draw,4.4,0.2615,15.06,True,3.4,0-0
+poisson_dixon_coles,England,United States,1X2-D,Draw,4.4,0.2488,9.47,True,3.4,0-0
+ensemble_raw,England,United States,1X2-D,Draw,4.4,0.2523,11.02,True,3.4,0-0
+ensemble_calibrated,England,United States,1X2-D,Draw,4.4,0.2738,20.47,True,3.4,0-0
+xgb_clean,England,United States,Over2.5,Over,2.04,0.5234,6.77,False,-1.0,0-0
+poisson_dixon_coles,England,United States,Over2.5,Over,2.04,0.5357,9.28,False,-1.0,0-0
+ensemble_raw,England,United States,Over2.5,Over,2.04,0.5323,8.59,False,-1.0,0-0
+ensemble_calibrated,England,United States,Over2.5,Over,2.04,0.5323,8.59,False,-1.0,0-0
+xgb_clean,England,United States,Under2.5,Under,1.87,0.4766,-10.88,True,0.87,0-0
+poisson_dixon_coles,England,United States,Under2.5,Under,1.87,0.4643,-13.18,True,0.87,0-0
+ensemble_raw,England,United States,Under2.5,Under,1.87,0.4677,-12.54,True,0.87,0-0
+ensemble_calibrated,England,United States,Under2.5,Under,1.87,0.4677,-12.54,True,0.87,0-0
+xgb_clean,Qatar,Senegal,1X2-H,Qatar,5.73,0.3319,90.16,False,-1.0,1-3
+poisson_dixon_coles,Qatar,Senegal,1X2-H,Qatar,5.73,0.347,98.83,False,-1.0,1-3
+ensemble_raw,Qatar,Senegal,1X2-H,Qatar,5.73,0.3428,96.43,False,-1.0,1-3
+ensemble_calibrated,Qatar,Senegal,1X2-H,Qatar,5.73,0.3414,95.64,False,-1.0,1-3
+xgb_clean,Qatar,Senegal,1X2-A,Senegal,1.75,0.3966,-30.59,True,0.75,1-3
+poisson_dixon_coles,Qatar,Senegal,1X2-A,Senegal,1.75,0.3487,-38.98,True,0.75,1-3
+ensemble_raw,Qatar,Senegal,1X2-A,Senegal,1.75,0.362,-36.65,True,0.75,1-3
+ensemble_calibrated,Qatar,Senegal,1X2-A,Senegal,1.75,0.3326,-41.79,True,0.75,1-3
+xgb_clean,Qatar,Senegal,1X2-D,Draw,3.63,0.2715,-1.44,False,-1.0,1-3
+poisson_dixon_coles,Qatar,Senegal,1X2-D,Draw,3.63,0.3043,10.46,False,-1.0,1-3
+ensemble_raw,Qatar,Senegal,1X2-D,Draw,3.63,0.2952,7.16,False,-1.0,1-3
+ensemble_calibrated,Qatar,Senegal,1X2-D,Draw,3.63,0.3259,18.31,False,-1.0,1-3
+xgb_clean,Poland,Saudi Arabia,1X2-H,Poland,1.8,0.3936,-29.16,True,0.8,2-0
+poisson_dixon_coles,Poland,Saudi Arabia,1X2-H,Poland,1.8,0.4059,-26.94,True,0.8,2-0
+ensemble_raw,Poland,Saudi Arabia,1X2-H,Poland,1.8,0.4025,-27.55,True,0.8,2-0
+ensemble_calibrated,Poland,Saudi Arabia,1X2-H,Poland,1.8,0.3772,-32.11,True,0.8,2-0
+xgb_clean,Poland,Saudi Arabia,1X2-A,Saudi Arabia,5.35,0.3142,68.11,False,-1.0,2-0
+poisson_dixon_coles,Poland,Saudi Arabia,1X2-A,Saudi Arabia,5.35,0.2946,57.61,False,-1.0,2-0
+ensemble_raw,Poland,Saudi Arabia,1X2-A,Saudi Arabia,5.35,0.3,60.52,False,-1.0,2-0
+ensemble_calibrated,Poland,Saudi Arabia,1X2-A,Saudi Arabia,5.35,0.3146,68.3,False,-1.0,2-0
+xgb_clean,Poland,Saudi Arabia,1X2-D,Draw,3.59,0.2922,4.9,False,-1.0,2-0
+poisson_dixon_coles,Poland,Saudi Arabia,1X2-D,Draw,3.59,0.2995,7.52,False,-1.0,2-0
+ensemble_raw,Poland,Saudi Arabia,1X2-D,Draw,3.59,0.2975,6.79,False,-1.0,2-0
+ensemble_calibrated,Poland,Saudi Arabia,1X2-D,Draw,3.59,0.3082,10.66,False,-1.0,2-0
+xgb_clean,France,Denmark,1X2-A,Denmark,4.89,0.2145,4.91,False,-1.0,2-1
+poisson_dixon_coles,France,Denmark,1X2-A,Denmark,4.89,0.2094,2.4,False,-1.0,2-1
+ensemble_raw,France,Denmark,1X2-A,Denmark,4.89,0.2108,3.09,False,-1.0,2-1
+ensemble_calibrated,France,Denmark,1X2-A,Denmark,4.89,0.2089,2.17,False,-1.0,2-1
+xgb_clean,France,Denmark,1X2-H,France,1.85,0.4507,-16.62,True,0.85,2-1
+poisson_dixon_coles,France,Denmark,1X2-H,France,1.85,0.5276,-2.39,True,0.85,2-1
+ensemble_raw,France,Denmark,1X2-H,France,1.85,0.5063,-6.34,True,0.85,2-1
+ensemble_calibrated,France,Denmark,1X2-H,France,1.85,0.4715,-12.76,True,0.85,2-1
+xgb_clean,France,Denmark,1X2-D,Draw,3.62,0.3348,21.19,False,-1.0,2-1
+poisson_dixon_coles,France,Denmark,1X2-D,Draw,3.62,0.263,-4.79,False,-1.0,2-1
+ensemble_raw,France,Denmark,1X2-D,Draw,3.62,0.2829,2.41,False,-1.0,2-1
+ensemble_calibrated,France,Denmark,1X2-D,Draw,3.62,0.3195,15.66,False,-1.0,2-1
+xgb_clean,Argentina,Mexico,1X2-H,Argentina,1.5,0.6942,4.13,True,0.5,2-0
+poisson_dixon_coles,Argentina,Mexico,1X2-H,Argentina,1.5,0.6773,1.6,True,0.5,2-0
+ensemble_raw,Argentina,Mexico,1X2-H,Argentina,1.5,0.682,2.3,True,0.5,2-0
+ensemble_calibrated,Argentina,Mexico,1X2-H,Argentina,1.5,0.7122,6.83,True,0.5,2-0
+xgb_clean,Argentina,Mexico,1X2-A,Mexico,8.32,0.0958,-20.29,False,-1.0,2-0
+poisson_dixon_coles,Argentina,Mexico,1X2-A,Mexico,8.32,0.1143,-4.9,False,-1.0,2-0
+ensemble_raw,Argentina,Mexico,1X2-A,Mexico,8.32,0.1092,-9.17,False,-1.0,2-0
+ensemble_calibrated,Argentina,Mexico,1X2-A,Mexico,8.32,0.0962,-19.97,False,-1.0,2-0
+xgb_clean,Argentina,Mexico,1X2-D,Draw,4.28,0.21,-10.13,False,-1.0,2-0
+poisson_dixon_coles,Argentina,Mexico,1X2-D,Draw,4.28,0.2084,-10.8,False,-1.0,2-0
+ensemble_raw,Argentina,Mexico,1X2-D,Draw,4.28,0.2088,-10.62,False,-1.0,2-0
+ensemble_calibrated,Argentina,Mexico,1X2-D,Draw,4.28,0.1916,-18.0,False,-1.0,2-0
+xgb_clean,Tunisia,Australia,1X2-A,Australia,3.71,0.3121,15.79,True,2.71,0-1
+poisson_dixon_coles,Tunisia,Australia,1X2-A,Australia,3.71,0.2821,4.66,True,2.71,0-1
+ensemble_raw,Tunisia,Australia,1X2-A,Australia,3.71,0.2904,7.74,True,2.71,0-1
+ensemble_calibrated,Tunisia,Australia,1X2-A,Australia,3.71,0.2846,5.58,True,2.71,0-1
+xgb_clean,Tunisia,Australia,1X2-H,Tunisia,2.19,0.3767,-17.51,False,-1.0,0-1
+poisson_dixon_coles,Tunisia,Australia,1X2-H,Tunisia,2.19,0.4227,-7.43,False,-1.0,0-1
+ensemble_raw,Tunisia,Australia,1X2-H,Tunisia,2.19,0.4099,-10.23,False,-1.0,0-1
+ensemble_calibrated,Tunisia,Australia,1X2-H,Tunisia,2.19,0.3937,-13.78,False,-1.0,0-1
+xgb_clean,Tunisia,Australia,1X2-D,Draw,3.4,0.3112,5.82,False,-1.0,0-1
+poisson_dixon_coles,Tunisia,Australia,1X2-D,Draw,3.4,0.2953,0.4,False,-1.0,0-1
+ensemble_raw,Tunisia,Australia,1X2-D,Draw,3.4,0.2997,1.9,False,-1.0,0-1
+ensemble_calibrated,Tunisia,Australia,1X2-D,Draw,3.4,0.3217,9.39,False,-1.0,0-1
+xgb_clean,Belgium,Morocco,1X2-H,Belgium,1.96,0.5283,3.54,False,-1.0,0-2
+poisson_dixon_coles,Belgium,Morocco,1X2-H,Belgium,1.96,0.5195,1.82,False,-1.0,0-2
+ensemble_raw,Belgium,Morocco,1X2-H,Belgium,1.96,0.5219,2.3,False,-1.0,0-2
+ensemble_calibrated,Belgium,Morocco,1X2-H,Belgium,1.96,0.4963,-2.73,False,-1.0,0-2
+xgb_clean,Belgium,Morocco,1X2-A,Morocco,4.45,0.1714,-23.71,True,3.45,0-2
+poisson_dixon_coles,Belgium,Morocco,1X2-A,Morocco,4.45,0.2176,-3.17,True,3.45,0-2
+ensemble_raw,Belgium,Morocco,1X2-A,Morocco,4.45,0.2048,-8.87,True,3.45,0-2
+ensemble_calibrated,Belgium,Morocco,1X2-A,Morocco,4.45,0.1992,-11.37,True,3.45,0-2
+xgb_clean,Belgium,Morocco,1X2-D,Draw,3.49,0.3003,4.8,False,-1.0,0-2
+poisson_dixon_coles,Belgium,Morocco,1X2-D,Draw,3.49,0.2629,-8.25,False,-1.0,0-2
+ensemble_raw,Belgium,Morocco,1X2-D,Draw,3.49,0.2733,-4.63,False,-1.0,0-2
+ensemble_calibrated,Belgium,Morocco,1X2-D,Draw,3.49,0.3046,6.29,False,-1.0,0-2
+xgb_clean,Croatia,Canada,1X2-A,Canada,3.54,0.2603,-7.85,False,-1.0,4-1
+poisson_dixon_coles,Croatia,Canada,1X2-A,Canada,3.54,0.2814,-0.38,False,-1.0,4-1
+ensemble_raw,Croatia,Canada,1X2-A,Canada,3.54,0.2756,-2.45,False,-1.0,4-1
+ensemble_calibrated,Croatia,Canada,1X2-A,Canada,3.54,0.2846,0.74,False,-1.0,4-1
+xgb_clean,Croatia,Canada,1X2-H,Croatia,2.28,0.4488,2.34,True,1.28,4-1
+poisson_dixon_coles,Croatia,Canada,1X2-H,Croatia,2.28,0.4143,-5.54,True,1.28,4-1
+ensemble_raw,Croatia,Canada,1X2-H,Croatia,2.28,0.4239,-3.36,True,1.28,4-1
+ensemble_calibrated,Croatia,Canada,1X2-H,Croatia,2.28,0.3937,-10.24,True,1.28,4-1
+xgb_clean,Croatia,Canada,1X2-D,Draw,3.36,0.2909,-2.27,False,-1.0,4-1
+poisson_dixon_coles,Croatia,Canada,1X2-D,Draw,3.36,0.3043,2.24,False,-1.0,4-1
+ensemble_raw,Croatia,Canada,1X2-D,Draw,3.36,0.3006,0.99,False,-1.0,4-1
+ensemble_calibrated,Croatia,Canada,1X2-D,Draw,3.36,0.3217,8.1,False,-1.0,4-1
+xgb_clean,Spain,Germany,1X2-A,Germany,3.02,0.1548,-53.24,False,-1.0,1-1
+poisson_dixon_coles,Spain,Germany,1X2-A,Germany,3.02,0.2251,-32.02,False,-1.0,1-1
+ensemble_raw,Spain,Germany,1X2-A,Germany,3.02,0.2056,-37.9,False,-1.0,1-1
+ensemble_calibrated,Spain,Germany,1X2-A,Germany,3.02,0.2042,-38.34,False,-1.0,1-1
+xgb_clean,Spain,Germany,1X2-H,Spain,2.52,0.5605,41.23,False,-1.0,1-1
+poisson_dixon_coles,Spain,Germany,1X2-H,Spain,2.52,0.5187,30.71,False,-1.0,1-1
+ensemble_raw,Spain,Germany,1X2-H,Spain,2.52,0.5303,33.63,False,-1.0,1-1
+ensemble_calibrated,Spain,Germany,1X2-H,Spain,2.52,0.5087,28.19,False,-1.0,1-1
+xgb_clean,Spain,Germany,1X2-D,Draw,3.44,0.2847,-2.06,True,2.44,1-1
+poisson_dixon_coles,Spain,Germany,1X2-D,Draw,3.44,0.2562,-11.87,True,2.44,1-1
+ensemble_raw,Spain,Germany,1X2-D,Draw,3.44,0.2641,-9.15,True,2.44,1-1
+ensemble_calibrated,Spain,Germany,1X2-D,Draw,3.44,0.2871,-1.23,True,2.44,1-1
+xgb_clean,Japan,Costa Rica,1X2-A,Costa Rica,7.5,0.2018,51.33,True,6.5,0-1
+poisson_dixon_coles,Japan,Costa Rica,1X2-A,Costa Rica,7.5,0.2069,55.17,True,6.5,0-1
+ensemble_raw,Japan,Costa Rica,1X2-A,Costa Rica,7.5,0.2055,54.12,True,6.5,0-1
+ensemble_calibrated,Japan,Costa Rica,1X2-A,Costa Rica,7.5,0.2042,53.12,True,6.5,0-1
+xgb_clean,Japan,Costa Rica,1X2-H,Japan,1.54,0.5282,-18.66,False,-1.0,0-1
+poisson_dixon_coles,Japan,Costa Rica,1X2-H,Japan,1.54,0.5331,-17.9,False,-1.0,0-1
+ensemble_raw,Japan,Costa Rica,1X2-H,Japan,1.54,0.5318,-18.11,False,-1.0,0-1
+ensemble_calibrated,Japan,Costa Rica,1X2-H,Japan,1.54,0.5087,-21.66,False,-1.0,0-1
+xgb_clean,Japan,Costa Rica,1X2-D,Draw,4.15,0.27,12.07,False,-1.0,0-1
+poisson_dixon_coles,Japan,Costa Rica,1X2-D,Draw,4.15,0.2599,7.86,False,-1.0,0-1
+ensemble_raw,Japan,Costa Rica,1X2-D,Draw,4.15,0.2627,9.03,False,-1.0,0-1
+ensemble_calibrated,Japan,Costa Rica,1X2-D,Draw,4.15,0.2871,19.16,False,-1.0,0-1
+xgb_clean,South Korea,Ghana,1X2-A,Ghana,3.2,0.1178,-62.31,True,2.2,2-3
+poisson_dixon_coles,South Korea,Ghana,1X2-A,Ghana,3.2,0.1305,-58.24,True,2.2,2-3
+ensemble_raw,South Korea,Ghana,1X2-A,Ghana,3.2,0.127,-59.36,True,2.2,2-3
+ensemble_calibrated,South Korea,Ghana,1X2-A,Ghana,3.2,0.1551,-50.38,True,2.2,2-3
+xgb_clean,South Korea,Ghana,1X2-H,South Korea,2.63,0.6665,75.28,False,-1.0,2-3
+poisson_dixon_coles,South Korea,Ghana,1X2-H,South Korea,2.63,0.6215,63.45,False,-1.0,2-3
+ensemble_raw,South Korea,Ghana,1X2-H,South Korea,2.63,0.634,66.74,False,-1.0,2-3
+ensemble_calibrated,South Korea,Ghana,1X2-H,South Korea,2.63,0.6107,60.63,False,-1.0,2-3
+xgb_clean,South Korea,Ghana,1X2-D,Draw,3.06,0.2158,-33.98,False,-1.0,2-3
+poisson_dixon_coles,South Korea,Ghana,1X2-D,Draw,3.06,0.2479,-24.14,False,-1.0,2-3
+ensemble_raw,South Korea,Ghana,1X2-D,Draw,3.06,0.239,-26.86,False,-1.0,2-3
+ensemble_calibrated,South Korea,Ghana,1X2-D,Draw,3.06,0.2342,-28.34,False,-1.0,2-3
+xgb_clean,Brazil,Switzerland,1X2-H,Brazil,1.48,0.8508,25.92,True,0.48,1-0
+poisson_dixon_coles,Brazil,Switzerland,1X2-H,Brazil,1.48,0.7547,11.7,True,0.48,1-0
+ensemble_raw,Brazil,Switzerland,1X2-H,Brazil,1.48,0.7813,15.64,True,0.48,1-0
+ensemble_calibrated,Brazil,Switzerland,1X2-H,Brazil,1.48,0.83,22.84,True,0.48,1-0
+xgb_clean,Brazil,Switzerland,1X2-A,Switzerland,8.0,0.0433,-65.36,False,-1.0,1-0
+poisson_dixon_coles,Brazil,Switzerland,1X2-A,Switzerland,8.0,0.0751,-39.92,False,-1.0,1-0
+ensemble_raw,Brazil,Switzerland,1X2-A,Switzerland,8.0,0.0663,-46.97,False,-1.0,1-0
+ensemble_calibrated,Brazil,Switzerland,1X2-A,Switzerland,8.0,0.0454,-63.68,False,-1.0,1-0
+xgb_clean,Brazil,Switzerland,1X2-D,Draw,4.5,0.1059,-52.34,False,-1.0,1-0
+poisson_dixon_coles,Brazil,Switzerland,1X2-D,Draw,4.5,0.1702,-23.41,False,-1.0,1-0
+ensemble_raw,Brazil,Switzerland,1X2-D,Draw,4.5,0.1524,-31.43,False,-1.0,1-0
+ensemble_calibrated,Brazil,Switzerland,1X2-D,Draw,4.5,0.1246,-43.94,False,-1.0,1-0
+xgb_clean,Brazil,Switzerland,Over2.5,Over,2.06,0.482,-0.71,False,-1.0,1-0
+poisson_dixon_coles,Brazil,Switzerland,Over2.5,Over,2.06,0.5538,14.08,False,-1.0,1-0
+ensemble_raw,Brazil,Switzerland,Over2.5,Over,2.06,0.5339,9.98,False,-1.0,1-0
+ensemble_calibrated,Brazil,Switzerland,Over2.5,Over,2.06,0.5339,9.98,False,-1.0,1-0
+xgb_clean,Brazil,Switzerland,Under2.5,Under,1.86,0.518,-3.65,True,0.86,1-0
+poisson_dixon_coles,Brazil,Switzerland,Under2.5,Under,1.86,0.4462,-17.01,True,0.86,1-0
+ensemble_raw,Brazil,Switzerland,Under2.5,Under,1.86,0.4661,-13.3,True,0.86,1-0
+ensemble_calibrated,Brazil,Switzerland,Under2.5,Under,1.86,0.4661,-13.3,True,0.86,1-0
+xgb_clean,Portugal,Uruguay,1X2-H,Portugal,2.01,0.5017,0.83,True,1.01,2-0
+poisson_dixon_coles,Portugal,Uruguay,1X2-H,Portugal,2.01,0.4541,-8.73,True,1.01,2-0
+ensemble_raw,Portugal,Uruguay,1X2-H,Portugal,2.01,0.4673,-6.08,True,1.01,2-0
+ensemble_calibrated,Portugal,Uruguay,1X2-H,Portugal,2.01,0.4309,-13.39,True,1.01,2-0
+xgb_clean,Portugal,Uruguay,1X2-A,Uruguay,4.38,0.1815,-20.51,False,-1.0,2-0
+poisson_dixon_coles,Portugal,Uruguay,1X2-A,Uruguay,4.38,0.2658,16.42,False,-1.0,2-0
+ensemble_raw,Portugal,Uruguay,1X2-A,Uruguay,4.38,0.2424,6.17,False,-1.0,2-0
+ensemble_calibrated,Portugal,Uruguay,1X2-A,Uruguay,4.38,0.2274,-0.41,False,-1.0,2-0
+xgb_clean,Portugal,Uruguay,1X2-D,Draw,3.39,0.3169,7.41,False,-1.0,2-0
+poisson_dixon_coles,Portugal,Uruguay,1X2-D,Draw,3.39,0.2802,-5.01,False,-1.0,2-0
+ensemble_raw,Portugal,Uruguay,1X2-D,Draw,3.39,0.2903,-1.57,False,-1.0,2-0
+ensemble_calibrated,Portugal,Uruguay,1X2-D,Draw,3.39,0.3417,15.85,False,-1.0,2-0
+xgb_clean,Cameroon,Serbia,1X2-H,Cameroon,5.05,0.1375,-30.59,False,-1.0,3-3
+poisson_dixon_coles,Cameroon,Serbia,1X2-H,Cameroon,5.05,0.1837,-7.23,False,-1.0,3-3
+ensemble_raw,Cameroon,Serbia,1X2-H,Cameroon,5.05,0.1709,-13.71,False,-1.0,3-3
+ensemble_calibrated,Cameroon,Serbia,1X2-H,Cameroon,5.05,0.1401,-29.27,False,-1.0,3-3
+xgb_clean,Cameroon,Serbia,1X2-A,Serbia,1.83,0.6066,11.01,False,-1.0,3-3
+poisson_dixon_coles,Cameroon,Serbia,1X2-A,Serbia,1.83,0.5645,3.3,False,-1.0,3-3
+ensemble_raw,Cameroon,Serbia,1X2-A,Serbia,1.83,0.5761,5.43,False,-1.0,3-3
+ensemble_calibrated,Cameroon,Serbia,1X2-A,Serbia,1.83,0.5925,8.43,False,-1.0,3-3
+xgb_clean,Cameroon,Serbia,1X2-D,Draw,3.6,0.2559,-7.87,True,2.6,3-3
+poisson_dixon_coles,Cameroon,Serbia,1X2-D,Draw,3.6,0.2519,-9.32,True,2.6,3-3
+ensemble_raw,Cameroon,Serbia,1X2-D,Draw,3.6,0.253,-8.92,True,2.6,3-3
+ensemble_calibrated,Cameroon,Serbia,1X2-D,Draw,3.6,0.2674,-3.72,True,2.6,3-3
+xgb_clean,Qatar,Netherlands,1X2-A,Netherlands,1.24,0.6436,-20.19,True,0.24,0-2
+poisson_dixon_coles,Qatar,Netherlands,1X2-A,Netherlands,1.24,0.653,-19.03,True,0.24,0-2
+ensemble_raw,Qatar,Netherlands,1X2-A,Netherlands,1.24,0.6504,-19.35,True,0.24,0-2
+ensemble_calibrated,Qatar,Netherlands,1X2-A,Netherlands,1.24,0.6901,-14.43,True,0.24,0-2
+xgb_clean,Qatar,Netherlands,1X2-H,Qatar,13.0,0.1322,71.89,False,-1.0,0-2
+poisson_dixon_coles,Qatar,Netherlands,1X2-H,Qatar,13.0,0.1347,75.11,False,-1.0,0-2
+ensemble_raw,Qatar,Netherlands,1X2-H,Qatar,13.0,0.134,74.22,False,-1.0,0-2
+ensemble_calibrated,Qatar,Netherlands,1X2-H,Qatar,13.0,0.1023,33.03,False,-1.0,0-2
+xgb_clean,Qatar,Netherlands,1X2-D,Draw,6.9,0.2242,54.67,False,-1.0,0-2
+poisson_dixon_coles,Qatar,Netherlands,1X2-D,Draw,6.9,0.2123,46.49,False,-1.0,0-2
+ensemble_raw,Qatar,Netherlands,1X2-D,Draw,6.9,0.2156,48.75,False,-1.0,0-2
+ensemble_calibrated,Qatar,Netherlands,1X2-D,Draw,6.9,0.2076,43.22,False,-1.0,0-2
+xgb_clean,Iran,United States,1X2-H,Iran,4.33,0.2308,-0.06,False,-1.0,0-1
+poisson_dixon_coles,Iran,United States,1X2-H,Iran,4.33,0.2911,26.05,False,-1.0,0-1
+ensemble_raw,Iran,United States,1X2-H,Iran,4.33,0.2744,18.81,False,-1.0,0-1
+ensemble_calibrated,Iran,United States,1X2-H,Iran,4.33,0.2396,3.73,False,-1.0,0-1
+xgb_clean,Iran,United States,1X2-A,USA,1.93,0.4284,-17.31,True,0.93,0-1
+poisson_dixon_coles,Iran,United States,1X2-A,USA,1.93,0.4078,-21.29,True,0.93,0-1
+ensemble_raw,Iran,United States,1X2-A,USA,1.93,0.4135,-20.19,True,0.93,0-1
+ensemble_calibrated,Iran,United States,1X2-A,USA,1.93,0.4475,-13.63,True,0.93,0-1
+xgb_clean,Iran,United States,1X2-D,Draw,3.58,0.3408,21.99,False,-1.0,0-1
+poisson_dixon_coles,Iran,United States,1X2-D,Draw,3.58,0.3011,7.79,False,-1.0,0-1
+ensemble_raw,Iran,United States,1X2-D,Draw,3.58,0.3121,11.73,False,-1.0,0-1
+ensemble_calibrated,Iran,United States,1X2-D,Draw,3.58,0.3129,12.04,False,-1.0,0-1
+xgb_clean,Wales,England,1X2-A,England,1.45,0.5505,-20.18,True,0.45,0-3
+poisson_dixon_coles,Wales,England,1X2-A,England,1.45,0.595,-13.73,True,0.45,0-3
+ensemble_raw,Wales,England,1X2-A,England,1.45,0.5827,-15.52,True,0.45,0-3
+ensemble_calibrated,Wales,England,1X2-A,England,1.45,0.6168,-10.57,True,0.45,0-3
+xgb_clean,Wales,England,1X2-H,Wales,8.5,0.2106,78.97,False,-1.0,0-3
+poisson_dixon_coles,Wales,England,1X2-H,Wales,8.5,0.1637,39.15,False,-1.0,0-3
+ensemble_raw,Wales,England,1X2-H,Wales,8.5,0.1767,50.19,False,-1.0,0-3
+ensemble_calibrated,Wales,England,1X2-H,Wales,8.5,0.1458,23.94,False,-1.0,0-3
+xgb_clean,Wales,England,1X2-D,Draw,4.6,0.239,9.93,False,-1.0,0-3
+poisson_dixon_coles,Wales,England,1X2-D,Draw,4.6,0.2413,11.0,False,-1.0,0-3
+ensemble_raw,Wales,England,1X2-D,Draw,4.6,0.2407,10.7,False,-1.0,0-3
+ensemble_calibrated,Wales,England,1X2-D,Draw,4.6,0.2374,9.21,False,-1.0,0-3
+xgb_clean,Wales,England,Over2.5,Over,2.04,0.5004,2.07,True,1.04,0-3
+poisson_dixon_coles,Wales,England,Over2.5,Over,2.04,0.4873,-0.59,True,1.04,0-3
+ensemble_raw,Wales,England,Over2.5,Over,2.04,0.4909,0.15,True,1.04,0-3
+ensemble_calibrated,Wales,England,Over2.5,Over,2.04,0.4909,0.15,True,1.04,0-3
+xgb_clean,Wales,England,Under2.5,Under,1.87,0.4996,-6.57,False,-1.0,0-3
+poisson_dixon_coles,Wales,England,Under2.5,Under,1.87,0.5127,-4.13,False,-1.0,0-3
+ensemble_raw,Wales,England,Under2.5,Under,1.87,0.5091,-4.8,False,-1.0,0-3
+ensemble_calibrated,Wales,England,Under2.5,Under,1.87,0.5091,-4.8,False,-1.0,0-3
+xgb_clean,Ecuador,Senegal,1X2-H,Ecuador,2.43,0.4981,21.04,False,-1.0,1-2
+poisson_dixon_coles,Ecuador,Senegal,1X2-H,Ecuador,2.43,0.5389,30.95,False,-1.0,1-2
+ensemble_raw,Ecuador,Senegal,1X2-H,Ecuador,2.43,0.5275,28.19,False,-1.0,1-2
+ensemble_calibrated,Ecuador,Senegal,1X2-H,Ecuador,2.43,0.4963,20.59,False,-1.0,1-2
+xgb_clean,Ecuador,Senegal,1X2-A,Senegal,3.31,0.1576,-47.84,True,2.31,1-2
+poisson_dixon_coles,Ecuador,Senegal,1X2-A,Senegal,3.31,0.2021,-33.1,True,2.31,1-2
+ensemble_raw,Ecuador,Senegal,1X2-A,Senegal,3.31,0.1897,-37.19,True,2.31,1-2
+ensemble_calibrated,Ecuador,Senegal,1X2-A,Senegal,3.31,0.1992,-34.07,True,2.31,1-2
+xgb_clean,Ecuador,Senegal,1X2-D,Draw,3.26,0.3443,12.25,False,-1.0,1-2
+poisson_dixon_coles,Ecuador,Senegal,1X2-D,Draw,3.26,0.2591,-15.53,False,-1.0,1-2
+ensemble_raw,Ecuador,Senegal,1X2-D,Draw,3.26,0.2827,-7.84,False,-1.0,1-2
+ensemble_calibrated,Ecuador,Senegal,1X2-D,Draw,3.26,0.3046,-0.71,False,-1.0,1-2
+xgb_clean,Poland,Argentina,1X2-A,Argentina,1.48,0.6817,0.89,True,0.48,0-2
+poisson_dixon_coles,Poland,Argentina,1X2-A,Argentina,1.48,0.7206,6.65,True,0.48,0-2
+ensemble_raw,Poland,Argentina,1X2-A,Argentina,1.48,0.7098,5.05,True,0.48,0-2
+ensemble_calibrated,Poland,Argentina,1X2-A,Argentina,1.48,0.762,12.78,True,0.48,0-2
+xgb_clean,Poland,Argentina,1X2-H,Poland,8.0,0.1023,-18.17,False,-1.0,0-2
+poisson_dixon_coles,Poland,Argentina,1X2-H,Poland,8.0,0.0945,-24.4,False,-1.0,0-2
+ensemble_raw,Poland,Argentina,1X2-H,Poland,8.0,0.0967,-22.67,False,-1.0,0-2
+ensemble_calibrated,Poland,Argentina,1X2-H,Poland,8.0,0.0499,-60.08,False,-1.0,0-2
+xgb_clean,Poland,Argentina,1X2-D,Draw,4.5,0.216,-2.79,False,-1.0,0-2
+poisson_dixon_coles,Poland,Argentina,1X2-D,Draw,4.5,0.1849,-16.79,False,-1.0,0-2
+ensemble_raw,Poland,Argentina,1X2-D,Draw,4.5,0.1935,-12.91,False,-1.0,0-2
+ensemble_calibrated,Poland,Argentina,1X2-D,Draw,4.5,0.1881,-15.37,False,-1.0,0-2
+xgb_clean,Saudi Arabia,Mexico,1X2-A,Mexico,1.68,0.5719,-3.91,True,0.68,1-2
+poisson_dixon_coles,Saudi Arabia,Mexico,1X2-A,Mexico,1.68,0.471,-20.87,True,0.68,1-2
+ensemble_raw,Saudi Arabia,Mexico,1X2-A,Mexico,1.68,0.499,-16.17,True,0.68,1-2
+ensemble_calibrated,Saudi Arabia,Mexico,1X2-A,Mexico,1.68,0.4851,-18.5,True,0.68,1-2
+xgb_clean,Saudi Arabia,Mexico,1X2-H,Saudi Arabia,5.23,0.2081,8.84,False,-1.0,1-2
+poisson_dixon_coles,Saudi Arabia,Mexico,1X2-H,Saudi Arabia,5.23,0.2528,32.21,False,-1.0,1-2
+ensemble_raw,Saudi Arabia,Mexico,1X2-H,Saudi Arabia,5.23,0.2404,25.73,False,-1.0,1-2
+ensemble_calibrated,Saudi Arabia,Mexico,1X2-H,Saudi Arabia,5.23,0.2367,23.78,False,-1.0,1-2
+xgb_clean,Saudi Arabia,Mexico,1X2-D,Draw,4.22,0.2199,-7.18,False,-1.0,1-2
+poisson_dixon_coles,Saudi Arabia,Mexico,1X2-D,Draw,4.22,0.2762,16.56,False,-1.0,1-2
+ensemble_raw,Saudi Arabia,Mexico,1X2-D,Draw,4.22,0.2606,9.97,False,-1.0,1-2
+ensemble_calibrated,Saudi Arabia,Mexico,1X2-D,Draw,4.22,0.2782,17.39,False,-1.0,1-2
+xgb_clean,Saudi Arabia,Mexico,Over2.5,Over,1.98,0.4282,-15.21,True,0.98,1-2
+poisson_dixon_coles,Saudi Arabia,Mexico,Over2.5,Over,1.98,0.4563,-9.65,True,0.98,1-2
+ensemble_raw,Saudi Arabia,Mexico,Over2.5,Over,1.98,0.4485,-11.19,True,0.98,1-2
+ensemble_calibrated,Saudi Arabia,Mexico,Over2.5,Over,1.98,0.4485,-11.19,True,0.98,1-2
+xgb_clean,Saudi Arabia,Mexico,Under2.5,Under,1.93,0.5718,10.35,False,-1.0,1-2
+poisson_dixon_coles,Saudi Arabia,Mexico,Under2.5,Under,1.93,0.5437,4.93,False,-1.0,1-2
+ensemble_raw,Saudi Arabia,Mexico,Under2.5,Under,1.93,0.5515,6.44,False,-1.0,1-2
+ensemble_calibrated,Saudi Arabia,Mexico,Under2.5,Under,1.93,0.5515,6.44,False,-1.0,1-2
+xgb_clean,Australia,Denmark,1X2-H,Australia,6.5,0.2207,43.44,True,5.5,1-0
+poisson_dixon_coles,Australia,Denmark,1X2-H,Australia,6.5,0.3114,102.41,True,5.5,1-0
+ensemble_raw,Australia,Denmark,1X2-H,Australia,6.5,0.2862,86.06,True,5.5,1-0
+ensemble_calibrated,Australia,Denmark,1X2-H,Australia,6.5,0.2448,59.1,True,5.5,1-0
+xgb_clean,Australia,Denmark,1X2-A,Denmark,1.51,0.4768,-28.01,False,-1.0,1-0
+poisson_dixon_coles,Australia,Denmark,1X2-A,Denmark,1.51,0.3929,-40.67,False,-1.0,1-0
+ensemble_raw,Australia,Denmark,1X2-A,Denmark,1.51,0.4162,-37.16,False,-1.0,1-0
+ensemble_calibrated,Australia,Denmark,1X2-A,Denmark,1.51,0.4573,-30.95,False,-1.0,1-0
+xgb_clean,Australia,Denmark,1X2-D,Draw,4.65,0.3025,40.68,False,-1.0,1-0
+poisson_dixon_coles,Australia,Denmark,1X2-D,Draw,4.65,0.2957,37.5,False,-1.0,1-0
+ensemble_raw,Australia,Denmark,1X2-D,Draw,4.65,0.2976,38.38,False,-1.0,1-0
+ensemble_calibrated,Australia,Denmark,1X2-D,Draw,4.65,0.298,38.56,False,-1.0,1-0
+xgb_clean,Australia,Denmark,Over2.5,Over,2.0,0.4224,-15.51,False,-1.0,1-0
+poisson_dixon_coles,Australia,Denmark,Over2.5,Over,2.0,0.4131,-17.38,False,-1.0,1-0
+ensemble_raw,Australia,Denmark,Over2.5,Over,2.0,0.4157,-16.86,False,-1.0,1-0
+ensemble_calibrated,Australia,Denmark,Over2.5,Over,2.0,0.4157,-16.86,False,-1.0,1-0
+xgb_clean,Australia,Denmark,Under2.5,Under,1.91,0.5776,10.31,True,0.91,1-0
+poisson_dixon_coles,Australia,Denmark,Under2.5,Under,1.91,0.5869,12.1,True,0.91,1-0
+ensemble_raw,Australia,Denmark,Under2.5,Under,1.91,0.5843,11.6,True,0.91,1-0
+ensemble_calibrated,Australia,Denmark,Under2.5,Under,1.91,0.5843,11.6,True,0.91,1-0
+xgb_clean,Tunisia,France,1X2-A,France,1.53,0.7713,18.0,False,-1.0,1-0
+poisson_dixon_coles,Tunisia,France,1X2-A,France,1.53,0.6862,4.99,False,-1.0,1-0
+ensemble_raw,Tunisia,France,1X2-A,France,1.53,0.7098,8.6,False,-1.0,1-0
+ensemble_calibrated,Tunisia,France,1X2-A,France,1.53,0.7212,10.34,False,-1.0,1-0
+xgb_clean,Tunisia,France,1X2-H,Tunisia,7.0,0.0684,-52.14,True,6.0,1-0
+poisson_dixon_coles,Tunisia,France,1X2-H,Tunisia,7.0,0.1103,-22.79,True,6.0,1-0
+ensemble_raw,Tunisia,France,1X2-H,Tunisia,7.0,0.0987,-30.93,True,6.0,1-0
+ensemble_calibrated,Tunisia,France,1X2-H,Tunisia,7.0,0.1008,-29.43,True,6.0,1-0
+xgb_clean,Tunisia,France,1X2-D,Draw,4.5,0.1604,-27.84,False,-1.0,1-0
+poisson_dixon_coles,Tunisia,France,1X2-D,Draw,4.5,0.2035,-8.43,False,-1.0,1-0
+ensemble_raw,Tunisia,France,1X2-D,Draw,4.5,0.1915,-13.81,False,-1.0,1-0
+ensemble_calibrated,Tunisia,France,1X2-D,Draw,4.5,0.178,-19.91,False,-1.0,1-0
+xgb_clean,Tunisia,France,Over2.5,Over,1.93,0.4693,-9.42,False,-1.0,1-0
+poisson_dixon_coles,Tunisia,France,Over2.5,Over,1.93,0.5245,1.23,False,-1.0,1-0
+ensemble_raw,Tunisia,France,Over2.5,Over,1.93,0.5092,-1.72,False,-1.0,1-0
+ensemble_calibrated,Tunisia,France,Over2.5,Over,1.93,0.5092,-1.72,False,-1.0,1-0
+xgb_clean,Tunisia,France,Under2.5,Under,1.95,0.5307,3.48,True,0.95,1-0
+poisson_dixon_coles,Tunisia,France,Under2.5,Under,1.95,0.4755,-7.28,True,0.95,1-0
+ensemble_raw,Tunisia,France,Under2.5,Under,1.95,0.4908,-4.29,True,0.95,1-0
+ensemble_calibrated,Tunisia,France,Under2.5,Under,1.95,0.4908,-4.29,True,0.95,1-0
+xgb_clean,Croatia,Belgium,1X2-A,Belgium,2.59,0.3867,0.16,False,-1.0,0-0
+poisson_dixon_coles,Croatia,Belgium,1X2-A,Belgium,2.59,0.4006,3.76,False,-1.0,0-0
+ensemble_raw,Croatia,Belgium,1X2-A,Belgium,2.59,0.3967,2.75,False,-1.0,0-0
+ensemble_calibrated,Croatia,Belgium,1X2-A,Belgium,2.59,0.4022,4.18,False,-1.0,0-0
+xgb_clean,Croatia,Belgium,1X2-H,Croatia,2.85,0.3227,-8.04,False,-1.0,0-0
+poisson_dixon_coles,Croatia,Belgium,1X2-H,Croatia,2.85,0.3038,-13.42,False,-1.0,0-0
+ensemble_raw,Croatia,Belgium,1X2-H,Croatia,2.85,0.309,-11.93,False,-1.0,0-0
+ensemble_calibrated,Croatia,Belgium,1X2-H,Croatia,2.85,0.2934,-16.39,False,-1.0,0-0
+xgb_clean,Croatia,Belgium,1X2-D,Draw,3.51,0.2906,2.0,True,2.51,0-0
+poisson_dixon_coles,Croatia,Belgium,1X2-D,Draw,3.51,0.2957,3.79,True,2.51,0-0
+ensemble_raw,Croatia,Belgium,1X2-D,Draw,3.51,0.2943,3.29,True,2.51,0-0
+ensemble_calibrated,Croatia,Belgium,1X2-D,Draw,3.51,0.3044,6.84,True,2.51,0-0
+xgb_clean,Croatia,Belgium,Over2.5,Over,2.06,0.484,-0.29,False,-1.0,0-0
+poisson_dixon_coles,Croatia,Belgium,Over2.5,Over,2.06,0.4115,-15.23,False,-1.0,0-0
+ensemble_raw,Croatia,Belgium,Over2.5,Over,2.06,0.4316,-11.09,False,-1.0,0-0
+ensemble_calibrated,Croatia,Belgium,Over2.5,Over,2.06,0.4316,-11.09,False,-1.0,0-0
+xgb_clean,Croatia,Belgium,Under2.5,Under,1.85,0.516,-4.55,True,0.85,0-0
+poisson_dixon_coles,Croatia,Belgium,Under2.5,Under,1.85,0.5885,8.87,True,0.85,0-0
+ensemble_raw,Croatia,Belgium,Under2.5,Under,1.85,0.5684,5.15,True,0.85,0-0
+ensemble_calibrated,Croatia,Belgium,Under2.5,Under,1.85,0.5684,5.15,True,0.85,0-0
+xgb_clean,Canada,Morocco,1X2-H,Canada,4.72,0.2188,3.28,False,-1.0,1-2
+poisson_dixon_coles,Canada,Morocco,1X2-H,Canada,4.72,0.2745,29.56,False,-1.0,1-2
+ensemble_raw,Canada,Morocco,1X2-H,Canada,4.72,0.2591,22.27,False,-1.0,1-2
+ensemble_calibrated,Canada,Morocco,1X2-H,Canada,4.72,0.2432,14.77,False,-1.0,1-2
+xgb_clean,Canada,Morocco,1X2-A,Morocco,1.87,0.519,-2.96,True,0.87,1-2
+poisson_dixon_coles,Canada,Morocco,1X2-A,Morocco,1.87,0.4413,-17.48,True,0.87,1-2
+ensemble_raw,Canada,Morocco,1X2-A,Morocco,1.87,0.4628,-13.45,True,0.87,1-2
+ensemble_calibrated,Canada,Morocco,1X2-A,Morocco,1.87,0.4608,-13.82,True,0.87,1-2
+xgb_clean,Canada,Morocco,1X2-D,Draw,3.61,0.2622,-5.33,False,-1.0,1-2
+poisson_dixon_coles,Canada,Morocco,1X2-D,Draw,3.61,0.2842,2.6,False,-1.0,1-2
+ensemble_raw,Canada,Morocco,1X2-D,Draw,3.61,0.2781,0.4,False,-1.0,1-2
+ensemble_calibrated,Canada,Morocco,1X2-D,Draw,3.61,0.296,6.86,False,-1.0,1-2
+xgb_clean,Costa Rica,Germany,1X2-H,Costa Rica,22.0,0.2421,432.67,False,-1.0,2-4
+poisson_dixon_coles,Costa Rica,Germany,1X2-H,Costa Rica,22.0,0.2285,402.7,False,-1.0,2-4
+ensemble_raw,Costa Rica,Germany,1X2-H,Costa Rica,22.0,0.2323,411.05,False,-1.0,2-4
+ensemble_calibrated,Costa Rica,Germany,1X2-H,Costa Rica,22.0,0.2273,400.01,False,-1.0,2-4
+xgb_clean,Costa Rica,Germany,1X2-A,Germany,1.12,0.5193,-41.84,True,0.12,2-4
+poisson_dixon_coles,Costa Rica,Germany,1X2-A,Germany,1.12,0.511,-42.77,True,0.12,2-4
+ensemble_raw,Costa Rica,Germany,1X2-A,Germany,1.12,0.5133,-42.51,True,0.12,2-4
+ensemble_calibrated,Costa Rica,Germany,1X2-A,Germany,1.12,0.497,-44.34,True,0.12,2-4
+xgb_clean,Costa Rica,Germany,1X2-D,Draw,11.0,0.2386,162.48,False,-1.0,2-4
+poisson_dixon_coles,Costa Rica,Germany,1X2-D,Draw,11.0,0.2604,186.44,False,-1.0,2-4
+ensemble_raw,Costa Rica,Germany,1X2-D,Draw,11.0,0.2544,179.82,False,-1.0,2-4
+ensemble_calibrated,Costa Rica,Germany,1X2-D,Draw,11.0,0.2758,203.34,False,-1.0,2-4
+xgb_clean,Japan,Spain,1X2-H,Japan,7.25,0.1671,21.13,True,6.25,2-1
+poisson_dixon_coles,Japan,Spain,1X2-H,Japan,7.25,0.1806,30.94,True,6.25,2-1
+ensemble_raw,Japan,Spain,1X2-H,Japan,7.25,0.1768,28.22,True,6.25,2-1
+ensemble_calibrated,Japan,Spain,1X2-H,Japan,7.25,0.1458,5.71,True,6.25,2-1
+xgb_clean,Japan,Spain,1X2-A,Spain,1.48,0.5987,-11.39,False,-1.0,2-1
+poisson_dixon_coles,Japan,Spain,1X2-A,Spain,1.48,0.5734,-15.14,False,-1.0,2-1
+ensemble_raw,Japan,Spain,1X2-A,Spain,1.48,0.5804,-14.1,False,-1.0,2-1
+ensemble_calibrated,Japan,Spain,1X2-A,Spain,1.48,0.6168,-8.72,False,-1.0,2-1
+xgb_clean,Japan,Spain,1X2-D,Draw,4.8,0.2342,12.42,False,-1.0,2-1
+poisson_dixon_coles,Japan,Spain,1X2-D,Draw,4.8,0.246,18.08,False,-1.0,2-1
+ensemble_raw,Japan,Spain,1X2-D,Draw,4.8,0.2427,16.51,False,-1.0,2-1
+ensemble_calibrated,Japan,Spain,1X2-D,Draw,4.8,0.2374,13.96,False,-1.0,2-1
+xgb_clean,Japan,Spain,Over2.5,Over,1.93,0.4347,-16.1,True,0.93,2-1
+poisson_dixon_coles,Japan,Spain,Over2.5,Over,1.93,0.4948,-4.5,True,0.93,2-1
+ensemble_raw,Japan,Spain,Over2.5,Over,1.93,0.4781,-7.72,True,0.93,2-1
+ensemble_calibrated,Japan,Spain,Over2.5,Over,1.93,0.4781,-7.72,True,0.93,2-1
+xgb_clean,Japan,Spain,Under2.5,Under,1.97,0.5653,11.36,False,-1.0,2-1
+poisson_dixon_coles,Japan,Spain,Under2.5,Under,1.97,0.5052,-0.48,False,-1.0,2-1
+ensemble_raw,Japan,Spain,Under2.5,Under,1.97,0.5219,2.81,False,-1.0,2-1
+ensemble_calibrated,Japan,Spain,Under2.5,Under,1.97,0.5219,2.81,False,-1.0,2-1
+xgb_clean,Serbia,Switzerland,1X2-H,Serbia,2.55,0.3079,-21.49,False,-1.0,2-3
+poisson_dixon_coles,Serbia,Switzerland,1X2-H,Serbia,2.55,0.3021,-22.96,False,-1.0,2-3
+ensemble_raw,Serbia,Switzerland,1X2-H,Serbia,2.55,0.3037,-22.56,False,-1.0,2-3
+ensemble_calibrated,Serbia,Switzerland,1X2-H,Serbia,2.55,0.2934,-25.19,False,-1.0,2-3
+xgb_clean,Serbia,Switzerland,1X2-A,Switzerland,2.93,0.3932,15.21,True,1.93,2-3
+poisson_dixon_coles,Serbia,Switzerland,1X2-A,Switzerland,2.93,0.4124,20.83,True,1.93,2-3
+ensemble_raw,Serbia,Switzerland,1X2-A,Switzerland,2.93,0.4071,19.27,True,1.93,2-3
+ensemble_calibrated,Serbia,Switzerland,1X2-A,Switzerland,2.93,0.4022,17.85,True,1.93,2-3
+xgb_clean,Serbia,Switzerland,1X2-D,Draw,3.47,0.2989,3.73,False,-1.0,2-3
+poisson_dixon_coles,Serbia,Switzerland,1X2-D,Draw,3.47,0.2855,-0.93,False,-1.0,2-3
+ensemble_raw,Serbia,Switzerland,1X2-D,Draw,3.47,0.2892,0.36,False,-1.0,2-3
+ensemble_calibrated,Serbia,Switzerland,1X2-D,Draw,3.47,0.3044,5.62,False,-1.0,2-3
+xgb_clean,Serbia,Switzerland,Over2.5,Over,1.97,0.4819,-5.07,True,0.97,2-3
+poisson_dixon_coles,Serbia,Switzerland,Over2.5,Over,1.97,0.4469,-11.96,True,0.97,2-3
+ensemble_raw,Serbia,Switzerland,Over2.5,Over,1.97,0.4566,-10.05,True,0.97,2-3
+ensemble_calibrated,Serbia,Switzerland,Over2.5,Over,1.97,0.4566,-10.05,True,0.97,2-3
+xgb_clean,Serbia,Switzerland,Under2.5,Under,1.93,0.5181,0.0,False,-1.0,2-3
+poisson_dixon_coles,Serbia,Switzerland,Under2.5,Under,1.93,0.5531,6.75,False,-1.0,2-3
+ensemble_raw,Serbia,Switzerland,Under2.5,Under,1.93,0.5434,4.88,False,-1.0,2-3
+ensemble_calibrated,Serbia,Switzerland,Under2.5,Under,1.93,0.5434,4.88,False,-1.0,2-3
+xgb_clean,South Korea,Portugal,1X2-A,Portugal,1.85,0.6126,13.32,False,-1.0,2-1
+poisson_dixon_coles,South Korea,Portugal,1X2-A,Portugal,1.85,0.6358,17.62,False,-1.0,2-1
+ensemble_raw,South Korea,Portugal,1X2-A,Portugal,1.85,0.6294,16.43,False,-1.0,2-1
+ensemble_calibrated,South Korea,Portugal,1X2-A,Portugal,1.85,0.6485,19.97,False,-1.0,2-1
+xgb_clean,South Korea,Portugal,1X2-H,South Korea,4.3,0.135,-41.96,True,3.3,2-1
+poisson_dixon_coles,South Korea,Portugal,1X2-H,South Korea,4.3,0.1349,-41.99,True,3.3,2-1
+ensemble_raw,South Korea,Portugal,1X2-H,South Korea,4.3,0.1349,-41.98,True,3.3,2-1
+ensemble_calibrated,South Korea,Portugal,1X2-H,South Korea,4.3,0.1119,-51.89,True,3.3,2-1
+xgb_clean,South Korea,Portugal,1X2-D,Draw,3.96,0.2525,-0.02,False,-1.0,2-1
+poisson_dixon_coles,South Korea,Portugal,1X2-D,Draw,3.96,0.2293,-9.2,False,-1.0,2-1
+ensemble_raw,South Korea,Portugal,1X2-D,Draw,3.96,0.2357,-6.65,False,-1.0,2-1
+ensemble_calibrated,South Korea,Portugal,1X2-D,Draw,3.96,0.2396,-5.1,False,-1.0,2-1
+xgb_clean,South Korea,Portugal,Over2.5,Over,1.95,0.4442,-13.38,True,0.95,2-1
+poisson_dixon_coles,South Korea,Portugal,Over2.5,Over,1.95,0.4812,-6.17,True,0.95,2-1
+ensemble_raw,South Korea,Portugal,Over2.5,Over,1.95,0.4709,-8.17,True,0.95,2-1
+ensemble_calibrated,South Korea,Portugal,Over2.5,Over,1.95,0.4709,-8.17,True,0.95,2-1
+xgb_clean,South Korea,Portugal,Under2.5,Under,1.95,0.5558,8.38,False,-1.0,2-1
+poisson_dixon_coles,South Korea,Portugal,Under2.5,Under,1.95,0.5188,1.17,False,-1.0,2-1
+ensemble_raw,South Korea,Portugal,Under2.5,Under,1.95,0.5291,3.17,False,-1.0,2-1
+ensemble_calibrated,South Korea,Portugal,Under2.5,Under,1.95,0.5291,3.17,False,-1.0,2-1
+xgb_clean,Cameroon,Brazil,1X2-A,Brazil,1.39,0.9304,29.33,False,-1.0,1-0
+poisson_dixon_coles,Cameroon,Brazil,1X2-A,Brazil,1.39,0.8897,23.67,False,-1.0,1-0
+ensemble_raw,Cameroon,Brazil,1X2-A,Brazil,1.39,0.901,25.24,False,-1.0,1-0
+ensemble_calibrated,Cameroon,Brazil,1X2-A,Brazil,1.39,0.9013,25.28,False,-1.0,1-0
+xgb_clean,Cameroon,Brazil,1X2-H,Cameroon,8.6,0.0277,-76.2,True,7.6,1-0
+poisson_dixon_coles,Cameroon,Brazil,1X2-H,Cameroon,8.6,0.0245,-78.93,True,7.6,1-0
+ensemble_raw,Cameroon,Brazil,1X2-H,Cameroon,8.6,0.0254,-78.17,True,7.6,1-0
+ensemble_calibrated,Cameroon,Brazil,1X2-H,Cameroon,8.6,0.0193,-83.42,True,7.6,1-0
+xgb_clean,Cameroon,Brazil,1X2-D,Draw,5.17,0.0419,-78.34,False,-1.0,1-0
+poisson_dixon_coles,Cameroon,Brazil,1X2-D,Draw,5.17,0.0858,-55.64,False,-1.0,1-0
+ensemble_raw,Cameroon,Brazil,1X2-D,Draw,5.17,0.0736,-61.93,False,-1.0,1-0
+ensemble_calibrated,Cameroon,Brazil,1X2-D,Draw,5.17,0.0794,-58.95,False,-1.0,1-0
+xgb_clean,Ghana,Uruguay,1X2-H,Ghana,4.39,0.1015,-55.42,False,-1.0,0-2
+poisson_dixon_coles,Ghana,Uruguay,1X2-H,Ghana,4.39,0.1502,-34.06,False,-1.0,0-2
+ensemble_raw,Ghana,Uruguay,1X2-H,Ghana,4.39,0.1367,-39.98,False,-1.0,0-2
+ensemble_calibrated,Ghana,Uruguay,1X2-H,Ghana,4.39,0.1119,-50.88,False,-1.0,0-2
+xgb_clean,Ghana,Uruguay,1X2-A,Uruguay,1.87,0.6893,28.9,True,0.87,0-2
+poisson_dixon_coles,Ghana,Uruguay,1X2-A,Uruguay,1.87,0.6115,14.35,True,0.87,0-2
+ensemble_raw,Ghana,Uruguay,1X2-A,Uruguay,1.87,0.6331,18.38,True,0.87,0-2
+ensemble_calibrated,Ghana,Uruguay,1X2-A,Uruguay,1.87,0.6485,21.26,True,0.87,0-2
+xgb_clean,Ghana,Uruguay,1X2-D,Draw,3.85,0.2092,-19.48,False,-1.0,0-2
+poisson_dixon_coles,Ghana,Uruguay,1X2-D,Draw,3.85,0.2383,-8.25,False,-1.0,0-2
+ensemble_raw,Ghana,Uruguay,1X2-D,Draw,3.85,0.2302,-11.37,False,-1.0,0-2
+ensemble_calibrated,Ghana,Uruguay,1X2-D,Draw,3.85,0.2396,-7.74,False,-1.0,0-2
+xgb_clean,Ghana,Uruguay,Over2.5,Over,2.06,0.4135,-14.81,False,-1.0,0-2
+poisson_dixon_coles,Ghana,Uruguay,Over2.5,Over,2.06,0.4759,-1.96,False,-1.0,0-2
+ensemble_raw,Ghana,Uruguay,Over2.5,Over,2.06,0.4586,-5.53,False,-1.0,0-2
+ensemble_calibrated,Ghana,Uruguay,Over2.5,Over,2.06,0.4586,-5.53,False,-1.0,0-2
+xgb_clean,Ghana,Uruguay,Under2.5,Under,1.85,0.5865,8.5,True,0.85,0-2
+poisson_dixon_coles,Ghana,Uruguay,Under2.5,Under,1.85,0.5241,-3.04,True,0.85,0-2
+ensemble_raw,Ghana,Uruguay,Under2.5,Under,1.85,0.5414,0.16,True,0.85,0-2
+ensemble_calibrated,Ghana,Uruguay,Under2.5,Under,1.85,0.5414,0.16,True,0.85,0-2
+xgb_clean,Netherlands,United States,1X2-H,Netherlands,2.1,0.5544,16.43,True,1.1,3-1
+poisson_dixon_coles,Netherlands,United States,1X2-H,Netherlands,2.1,0.4537,-4.72,True,1.1,3-1
+ensemble_raw,Netherlands,United States,1X2-H,Netherlands,2.1,0.4816,1.14,True,1.1,3-1
+ensemble_calibrated,Netherlands,United States,1X2-H,Netherlands,2.1,0.4326,-9.16,True,1.1,3-1
+xgb_clean,Netherlands,United States,1X2-A,USA,4.14,0.1405,-41.85,False,-1.0,3-1
+poisson_dixon_coles,Netherlands,United States,1X2-A,USA,4.14,0.2726,12.86,False,-1.0,3-1
+ensemble_raw,Netherlands,United States,1X2-A,USA,4.14,0.236,-2.31,False,-1.0,3-1
+ensemble_calibrated,Netherlands,United States,1X2-A,USA,4.14,0.2244,-7.12,False,-1.0,3-1
+xgb_clean,Netherlands,United States,1X2-D,Draw,3.31,0.3051,1.0,False,-1.0,3-1
+poisson_dixon_coles,Netherlands,United States,1X2-D,Draw,3.31,0.2737,-9.41,False,-1.0,3-1
+ensemble_raw,Netherlands,United States,1X2-D,Draw,3.31,0.2824,-6.52,False,-1.0,3-1
+ensemble_calibrated,Netherlands,United States,1X2-D,Draw,3.31,0.3431,13.56,False,-1.0,3-1
+xgb_clean,Argentina,Australia,1X2-H,Argentina,1.29,0.7942,2.46,True,0.29,2-1
+poisson_dixon_coles,Argentina,Australia,1X2-H,Argentina,1.29,0.762,-1.7,True,0.29,2-1
+ensemble_raw,Argentina,Australia,1X2-H,Argentina,1.29,0.7709,-0.55,True,0.29,2-1
+ensemble_calibrated,Argentina,Australia,1X2-H,Argentina,1.29,0.8098,4.46,True,0.29,2-1
+xgb_clean,Argentina,Australia,1X2-A,Australia,11.5,0.0602,-30.76,False,-1.0,2-1
+poisson_dixon_coles,Argentina,Australia,1X2-A,Australia,11.5,0.0747,-14.1,False,-1.0,2-1
+ensemble_raw,Argentina,Australia,1X2-A,Australia,11.5,0.0707,-18.72,False,-1.0,2-1
+ensemble_calibrated,Argentina,Australia,1X2-A,Australia,11.5,0.0443,-49.06,False,-1.0,2-1
+xgb_clean,Argentina,Australia,1X2-D,Draw,6.25,0.1455,-9.03,False,-1.0,2-1
+poisson_dixon_coles,Argentina,Australia,1X2-D,Draw,6.25,0.1633,2.06,False,-1.0,2-1
+ensemble_raw,Argentina,Australia,1X2-D,Draw,6.25,0.1584,-1.01,False,-1.0,2-1
+ensemble_calibrated,Argentina,Australia,1X2-D,Draw,6.25,0.1459,-8.8,False,-1.0,2-1
+xgb_clean,France,Poland,1X2-H,France,1.34,0.5596,-25.01,True,0.34,3-1
+poisson_dixon_coles,France,Poland,1X2-H,France,1.34,0.5906,-20.86,True,0.34,3-1
+ensemble_raw,France,Poland,1X2-H,France,1.34,0.582,-22.01,True,0.34,3-1
+ensemble_calibrated,France,Poland,1X2-H,France,1.34,0.5487,-26.47,True,0.34,3-1
+xgb_clean,France,Poland,1X2-A,Poland,10.75,0.2028,117.99,False,-1.0,3-1
+poisson_dixon_coles,France,Poland,1X2-A,Poland,10.75,0.1823,95.97,False,-1.0,3-1
+ensemble_raw,France,Poland,1X2-A,Poland,10.75,0.188,102.08,False,-1.0,3-1
+ensemble_calibrated,France,Poland,1X2-A,Poland,10.75,0.2126,128.55,False,-1.0,3-1
+xgb_clean,France,Poland,1X2-D,Draw,5.4,0.2376,28.29,False,-1.0,3-1
+poisson_dixon_coles,France,Poland,1X2-D,Draw,5.4,0.2271,22.63,False,-1.0,3-1
+ensemble_raw,France,Poland,1X2-D,Draw,5.4,0.23,24.2,False,-1.0,3-1
+ensemble_calibrated,France,Poland,1X2-D,Draw,5.4,0.2387,28.89,False,-1.0,3-1
+xgb_clean,England,Senegal,1X2-H,England,1.55,0.6082,-5.74,True,0.55,3-0
+poisson_dixon_coles,England,Senegal,1X2-H,England,1.55,0.5843,-9.43,True,0.55,3-0
+ensemble_raw,England,Senegal,1X2-H,England,1.55,0.5909,-8.41,True,0.55,3-0
+ensemble_calibrated,England,Senegal,1X2-H,England,1.55,0.599,-7.16,True,0.55,3-0
+xgb_clean,England,Senegal,1X2-A,Senegal,7.35,0.1337,-1.75,False,-1.0,3-0
+poisson_dixon_coles,England,Senegal,1X2-A,Senegal,7.35,0.1869,37.37,False,-1.0,3-0
+ensemble_raw,England,Senegal,1X2-A,Senegal,7.35,0.1721,26.52,False,-1.0,3-0
+ensemble_calibrated,England,Senegal,1X2-A,Senegal,7.35,0.1655,21.64,False,-1.0,3-0
+xgb_clean,England,Senegal,1X2-D,Draw,4.1,0.2582,5.85,False,-1.0,3-0
+poisson_dixon_coles,England,Senegal,1X2-D,Draw,4.1,0.2288,-6.19,False,-1.0,3-0
+ensemble_raw,England,Senegal,1X2-D,Draw,4.1,0.2369,-2.85,False,-1.0,3-0
+ensemble_calibrated,England,Senegal,1X2-D,Draw,4.1,0.2355,-3.43,False,-1.0,3-0
+xgb_clean,Japan,Croatia,1X2-A,Croatia,2.11,0.3026,-36.14,False,-1.0,1-1
+poisson_dixon_coles,Japan,Croatia,1X2-A,Croatia,2.11,0.4226,-10.83,False,-1.0,1-1
+ensemble_raw,Japan,Croatia,1X2-A,Croatia,2.11,0.3894,-17.84,False,-1.0,1-1
+ensemble_calibrated,Japan,Croatia,1X2-A,Croatia,2.11,0.4022,-15.13,False,-1.0,1-1
+xgb_clean,Japan,Croatia,1X2-H,Japan,4.06,0.3739,51.81,False,-1.0,1-1
+poisson_dixon_coles,Japan,Croatia,1X2-H,Japan,4.06,0.2991,21.43,False,-1.0,1-1
+ensemble_raw,Japan,Croatia,1X2-H,Japan,4.06,0.3199,29.87,False,-1.0,1-1
+ensemble_calibrated,Japan,Croatia,1X2-H,Japan,4.06,0.2934,19.11,False,-1.0,1-1
+xgb_clean,Japan,Croatia,1X2-D,Draw,3.31,0.3234,7.06,True,2.31,1-1
+poisson_dixon_coles,Japan,Croatia,1X2-D,Draw,3.31,0.2782,-7.92,True,2.31,1-1
+ensemble_raw,Japan,Croatia,1X2-D,Draw,3.31,0.2908,-3.76,True,2.31,1-1
+ensemble_calibrated,Japan,Croatia,1X2-D,Draw,3.31,0.3044,0.75,True,2.31,1-1
+xgb_clean,Brazil,South Korea,1X2-H,Brazil,1.29,0.8404,8.42,True,0.29,4-1
+poisson_dixon_coles,Brazil,South Korea,1X2-H,Brazil,1.29,0.7213,-6.95,True,0.29,4-1
+ensemble_raw,Brazil,South Korea,1X2-H,Brazil,1.29,0.7543,-2.69,True,0.29,4-1
+ensemble_calibrated,Brazil,South Korea,1X2-H,Brazil,1.29,0.7756,0.05,True,0.29,4-1
+xgb_clean,Brazil,South Korea,1X2-A,South Korea,12.0,0.0536,-35.73,False,-1.0,4-1
+poisson_dixon_coles,Brazil,South Korea,1X2-A,South Korea,12.0,0.1024,22.88,False,-1.0,4-1
+ensemble_raw,Brazil,South Korea,1X2-A,South Korea,12.0,0.0889,6.63,False,-1.0,4-1
+ensemble_calibrated,Brazil,South Korea,1X2-A,South Korea,12.0,0.0972,16.68,False,-1.0,4-1
+xgb_clean,Brazil,South Korea,1X2-D,Draw,6.0,0.106,-36.41,False,-1.0,4-1
+poisson_dixon_coles,Brazil,South Korea,1X2-D,Draw,6.0,0.1763,5.78,False,-1.0,4-1
+ensemble_raw,Brazil,South Korea,1X2-D,Draw,6.0,0.1568,-5.92,False,-1.0,4-1
+ensemble_calibrated,Brazil,South Korea,1X2-D,Draw,6.0,0.1272,-23.68,False,-1.0,4-1
+xgb_clean,Portugal,Switzerland,1X2-H,Portugal,1.96,0.4813,-5.66,True,0.96,6-1
+poisson_dixon_coles,Portugal,Switzerland,1X2-H,Portugal,1.96,0.4645,-8.96,True,0.96,6-1
+ensemble_raw,Portugal,Switzerland,1X2-H,Portugal,1.96,0.4692,-8.04,True,0.96,6-1
+ensemble_calibrated,Portugal,Switzerland,1X2-H,Portugal,1.96,0.4326,-15.22,True,0.96,6-1
+xgb_clean,Portugal,Switzerland,1X2-A,Switzerland,4.43,0.1881,-16.68,False,-1.0,6-1
+poisson_dixon_coles,Portugal,Switzerland,1X2-A,Switzerland,4.43,0.2611,15.67,False,-1.0,6-1
+ensemble_raw,Portugal,Switzerland,1X2-A,Switzerland,4.43,0.2409,6.7,False,-1.0,6-1
+ensemble_calibrated,Portugal,Switzerland,1X2-A,Switzerland,4.43,0.2244,-0.61,False,-1.0,6-1
+xgb_clean,Portugal,Switzerland,1X2-D,Draw,3.48,0.3306,15.05,False,-1.0,6-1
+poisson_dixon_coles,Portugal,Switzerland,1X2-D,Draw,3.48,0.2744,-4.51,False,-1.0,6-1
+ensemble_raw,Portugal,Switzerland,1X2-D,Draw,3.48,0.29,0.92,False,-1.0,6-1
+ensemble_calibrated,Portugal,Switzerland,1X2-D,Draw,3.48,0.3431,19.39,False,-1.0,6-1
+xgb_clean,Morocco,Spain,1X2-H,Morocco,6.15,0.1934,18.96,False,-1.0,0-0
+poisson_dixon_coles,Morocco,Spain,1X2-H,Morocco,6.15,0.197,21.16,False,-1.0,0-0
+ensemble_raw,Morocco,Spain,1X2-H,Morocco,6.15,0.196,20.55,False,-1.0,0-0
+ensemble_calibrated,Morocco,Spain,1X2-H,Morocco,6.15,0.1401,-13.86,False,-1.0,0-0
+xgb_clean,Morocco,Spain,1X2-A,Spain,1.65,0.5971,-1.48,False,-1.0,0-0
+poisson_dixon_coles,Morocco,Spain,1X2-A,Spain,1.65,0.5365,-11.48,False,-1.0,0-0
+ensemble_raw,Morocco,Spain,1X2-A,Spain,1.65,0.5533,-8.7,False,-1.0,0-0
+ensemble_calibrated,Morocco,Spain,1X2-A,Spain,1.65,0.5925,-2.24,False,-1.0,0-0
+xgb_clean,Morocco,Spain,1X2-D,Draw,3.95,0.2095,-17.26,True,2.95,0-0
+poisson_dixon_coles,Morocco,Spain,1X2-D,Draw,3.95,0.2665,5.27,True,2.95,0-0
+ensemble_raw,Morocco,Spain,1X2-D,Draw,3.95,0.2507,-0.98,True,2.95,0-0
+ensemble_calibrated,Morocco,Spain,1X2-D,Draw,3.95,0.2674,5.64,True,2.95,0-0
+xgb_clean,Croatia,Brazil,1X2-A,Brazil,1.42,0.6726,-4.49,False,-1.0,1-1
+poisson_dixon_coles,Croatia,Brazil,1X2-A,Brazil,1.42,0.6921,-1.72,False,-1.0,1-1
+ensemble_raw,Croatia,Brazil,1X2-A,Brazil,1.42,0.6867,-2.49,False,-1.0,1-1
+ensemble_calibrated,Croatia,Brazil,1X2-A,Brazil,1.42,0.7128,1.22,False,-1.0,1-1
+xgb_clean,Croatia,Brazil,1X2-H,Croatia,8.85,0.121,7.09,False,-1.0,1-1
+poisson_dixon_coles,Croatia,Brazil,1X2-H,Croatia,8.85,0.1154,2.13,False,-1.0,1-1
+ensemble_raw,Croatia,Brazil,1X2-H,Croatia,8.85,0.117,3.5,False,-1.0,1-1
+ensemble_calibrated,Croatia,Brazil,1X2-H,Croatia,8.85,0.1057,-6.46,False,-1.0,1-1
+xgb_clean,Croatia,Brazil,1X2-D,Draw,4.9,0.2064,1.15,True,3.9,1-1
+poisson_dixon_coles,Croatia,Brazil,1X2-D,Draw,4.9,0.1925,-5.67,True,3.9,1-1
+ensemble_raw,Croatia,Brazil,1X2-D,Draw,4.9,0.1964,-3.78,True,3.9,1-1
+ensemble_calibrated,Croatia,Brazil,1X2-D,Draw,4.9,0.1815,-11.06,True,3.9,1-1
+xgb_clean,Croatia,Brazil,Over2.5,Over,1.96,0.4716,-7.56,False,-1.0,1-1
+poisson_dixon_coles,Croatia,Brazil,Over2.5,Over,1.96,0.5829,14.25,False,-1.0,1-1
+ensemble_raw,Croatia,Brazil,Over2.5,Over,1.96,0.552,8.2,False,-1.0,1-1
+ensemble_calibrated,Croatia,Brazil,Over2.5,Over,1.96,0.552,8.2,False,-1.0,1-1
+xgb_clean,Croatia,Brazil,Under2.5,Under,1.94,0.5284,2.5,True,0.94,1-1
+poisson_dixon_coles,Croatia,Brazil,Under2.5,Under,1.94,0.4171,-19.08,True,0.94,1-1
+ensemble_raw,Croatia,Brazil,Under2.5,Under,1.94,0.448,-13.1,True,0.94,1-1
+ensemble_calibrated,Croatia,Brazil,Under2.5,Under,1.94,0.448,-13.1,True,0.94,1-1
+xgb_clean,Netherlands,Argentina,1X2-A,Argentina,2.19,0.4594,0.6,False,-1.0,2-2
+poisson_dixon_coles,Netherlands,Argentina,1X2-A,Argentina,2.19,0.5014,9.81,False,-1.0,2-2
+ensemble_raw,Netherlands,Argentina,1X2-A,Argentina,2.19,0.4897,7.25,False,-1.0,2-2
+ensemble_calibrated,Netherlands,Argentina,1X2-A,Argentina,2.19,0.4851,6.25,False,-1.0,2-2
+xgb_clean,Netherlands,Argentina,1X2-H,Netherlands,3.85,0.2545,-2.02,False,-1.0,2-2
+poisson_dixon_coles,Netherlands,Argentina,1X2-H,Netherlands,3.85,0.2399,-7.64,False,-1.0,2-2
+ensemble_raw,Netherlands,Argentina,1X2-H,Netherlands,3.85,0.2439,-6.08,False,-1.0,2-2
+ensemble_calibrated,Netherlands,Argentina,1X2-H,Netherlands,3.85,0.2367,-8.88,False,-1.0,2-2
+xgb_clean,Netherlands,Argentina,1X2-D,Draw,3.28,0.2862,-6.14,True,2.28,2-2
+poisson_dixon_coles,Netherlands,Argentina,1X2-D,Draw,3.28,0.2587,-15.15,True,2.28,2-2
+ensemble_raw,Netherlands,Argentina,1X2-D,Draw,3.28,0.2663,-12.65,True,2.28,2-2
+ensemble_calibrated,Netherlands,Argentina,1X2-D,Draw,3.28,0.2782,-8.76,True,2.28,2-2
+xgb_clean,Morocco,Portugal,1X2-H,Morocco,5.88,0.2505,47.3,True,4.88,1-0
+poisson_dixon_coles,Morocco,Portugal,1X2-H,Morocco,5.88,0.1765,3.78,True,4.88,1-0
+ensemble_raw,Morocco,Portugal,1X2-H,Morocco,5.88,0.197,15.85,True,4.88,1-0
+ensemble_calibrated,Morocco,Portugal,1X2-H,Morocco,5.88,0.1458,-14.26,True,4.88,1-0
+xgb_clean,Morocco,Portugal,1X2-A,Portugal,1.71,0.4738,-18.98,False,-1.0,1-0
+poisson_dixon_coles,Morocco,Portugal,1X2-A,Portugal,1.71,0.5946,1.68,False,-1.0,1-0
+ensemble_raw,Morocco,Portugal,1X2-A,Portugal,1.71,0.5611,-4.05,False,-1.0,1-0
+ensemble_calibrated,Morocco,Portugal,1X2-A,Portugal,1.71,0.6168,5.47,False,-1.0,1-0
+xgb_clean,Morocco,Portugal,1X2-D,Draw,3.7,0.2757,2.01,False,-1.0,1-0
+poisson_dixon_coles,Morocco,Portugal,1X2-D,Draw,3.7,0.2289,-15.31,False,-1.0,1-0
+ensemble_raw,Morocco,Portugal,1X2-D,Draw,3.7,0.2419,-10.51,False,-1.0,1-0
+ensemble_calibrated,Morocco,Portugal,1X2-D,Draw,3.7,0.2374,-12.15,False,-1.0,1-0
+xgb_clean,England,France,1X2-H,England,3.01,0.4028,21.23,False,-1.0,1-2
+poisson_dixon_coles,England,France,1X2-H,England,3.01,0.3465,4.3,False,-1.0,1-2
+ensemble_raw,England,France,1X2-H,England,3.01,0.3621,8.99,False,-1.0,1-2
+ensemble_calibrated,England,France,1X2-H,England,3.01,0.351,5.64,False,-1.0,1-2
+xgb_clean,England,France,1X2-A,France,2.7,0.3298,-10.94,True,1.7,1-2
+poisson_dixon_coles,England,France,1X2-A,France,2.7,0.3721,0.47,True,1.7,1-2
+ensemble_raw,England,France,1X2-A,France,2.7,0.3604,-2.7,True,1.7,1-2
+ensemble_calibrated,England,France,1X2-A,France,2.7,0.3278,-11.49,True,1.7,1-2
+xgb_clean,England,France,1X2-D,Draw,3.13,0.2674,-16.3,False,-1.0,1-2
+poisson_dixon_coles,England,France,1X2-D,Draw,3.13,0.2814,-11.92,False,-1.0,1-2
+ensemble_raw,England,France,1X2-D,Draw,3.13,0.2775,-13.14,False,-1.0,1-2
+ensemble_calibrated,England,France,1X2-D,Draw,3.13,0.3212,0.54,False,-1.0,1-2
+xgb_clean,Argentina,Croatia,1X2-H,Argentina,1.99,0.6668,32.7,True,0.99,3-0
+poisson_dixon_coles,Argentina,Croatia,1X2-H,Argentina,1.99,0.5585,11.14,True,0.99,3-0
+ensemble_raw,Argentina,Croatia,1X2-H,Argentina,1.99,0.5885,17.12,True,0.99,3-0
+ensemble_calibrated,Argentina,Croatia,1X2-H,Argentina,1.99,0.5487,9.19,True,0.99,3-0
+xgb_clean,Argentina,Croatia,1X2-A,Croatia,4.95,0.1225,-39.37,False,-1.0,3-0
+poisson_dixon_coles,Argentina,Croatia,1X2-A,Croatia,4.95,0.1963,-2.83,False,-1.0,3-0
+ensemble_raw,Argentina,Croatia,1X2-A,Croatia,4.95,0.1758,-12.96,False,-1.0,3-0
+ensemble_calibrated,Argentina,Croatia,1X2-A,Croatia,4.95,0.2126,5.24,False,-1.0,3-0
+xgb_clean,Argentina,Croatia,1X2-D,Draw,3.18,0.2107,-33.0,False,-1.0,3-0
+poisson_dixon_coles,Argentina,Croatia,1X2-D,Draw,3.18,0.2452,-22.03,False,-1.0,3-0
+ensemble_raw,Argentina,Croatia,1X2-D,Draw,3.18,0.2356,-25.07,False,-1.0,3-0
+ensemble_calibrated,Argentina,Croatia,1X2-D,Draw,3.18,0.2387,-24.1,False,-1.0,3-0
+xgb_clean,France,Morocco,1X2-H,France,1.58,0.4942,-21.91,True,0.58,2-0
+poisson_dixon_coles,France,Morocco,1X2-H,France,1.58,0.4426,-30.07,True,0.58,2-0
+ensemble_raw,France,Morocco,1X2-H,France,1.58,0.4569,-27.81,True,0.58,2-0
+ensemble_calibrated,France,Morocco,1X2-H,France,1.58,0.4058,-35.89,True,0.58,2-0
+xgb_clean,France,Morocco,1X2-A,Morocco,7.15,0.2057,47.08,False,-1.0,2-0
+poisson_dixon_coles,France,Morocco,1X2-A,Morocco,7.15,0.2747,96.41,False,-1.0,2-0
+ensemble_raw,France,Morocco,1X2-A,Morocco,7.15,0.2556,82.73,False,-1.0,2-0
+ensemble_calibrated,France,Morocco,1X2-A,Morocco,7.15,0.2631,88.13,False,-1.0,2-0
+xgb_clean,France,Morocco,1X2-D,Draw,4.0,0.3001,20.03,False,-1.0,2-0
+poisson_dixon_coles,France,Morocco,1X2-D,Draw,4.0,0.2827,13.08,False,-1.0,2-0
+ensemble_raw,France,Morocco,1X2-D,Draw,4.0,0.2875,15.01,False,-1.0,2-0
+ensemble_calibrated,France,Morocco,1X2-D,Draw,4.0,0.3311,32.44,False,-1.0,2-0
+xgb_clean,Croatia,Morocco,1X2-H,Croatia,2.4,0.4191,0.6,True,1.4,2-1
+poisson_dixon_coles,Croatia,Morocco,1X2-H,Croatia,2.4,0.3398,-18.45,True,1.4,2-1
+ensemble_raw,Croatia,Morocco,1X2-H,Croatia,2.4,0.3618,-13.16,True,1.4,2-1
+ensemble_calibrated,Croatia,Morocco,1X2-H,Croatia,2.4,0.351,-15.77,True,1.4,2-1
+xgb_clean,Croatia,Morocco,1X2-A,Morocco,3.05,0.3204,-2.29,False,-1.0,2-1
+poisson_dixon_coles,Croatia,Morocco,1X2-A,Morocco,3.05,0.3483,6.23,False,-1.0,2-1
+ensemble_raw,Croatia,Morocco,1X2-A,Morocco,3.05,0.3406,3.88,False,-1.0,2-1
+ensemble_calibrated,Croatia,Morocco,1X2-A,Morocco,3.05,0.3278,-0.02,False,-1.0,2-1
+xgb_clean,Croatia,Morocco,1X2-D,Draw,3.54,0.2605,-7.79,False,-1.0,2-1
+poisson_dixon_coles,Croatia,Morocco,1X2-D,Draw,3.54,0.3118,10.38,False,-1.0,2-1
+ensemble_raw,Croatia,Morocco,1X2-D,Draw,3.54,0.2976,5.35,False,-1.0,2-1
+ensemble_calibrated,Croatia,Morocco,1X2-D,Draw,3.54,0.3212,13.71,False,-1.0,2-1
+xgb_clean,Croatia,Morocco,Over2.5,Over,1.93,0.4435,-14.41,True,0.93,2-1
+poisson_dixon_coles,Croatia,Morocco,Over2.5,Over,1.93,0.3629,-29.96,True,0.93,2-1
+ensemble_raw,Croatia,Morocco,Over2.5,Over,1.93,0.3852,-25.65,True,0.93,2-1
+ensemble_calibrated,Croatia,Morocco,Over2.5,Over,1.93,0.3852,-25.65,True,0.93,2-1
+xgb_clean,Croatia,Morocco,Under2.5,Under,1.98,0.5565,10.19,False,-1.0,2-1
+poisson_dixon_coles,Croatia,Morocco,Under2.5,Under,1.98,0.6371,26.15,False,-1.0,2-1
+ensemble_raw,Croatia,Morocco,Under2.5,Under,1.98,0.6148,21.72,False,-1.0,2-1
+ensemble_calibrated,Croatia,Morocco,Under2.5,Under,1.98,0.6148,21.72,False,-1.0,2-1
+xgb_clean,Argentina,France,1X2-H,Argentina,2.73,0.3874,5.77,False,-1.0,3-3
+poisson_dixon_coles,Argentina,France,1X2-H,Argentina,2.73,0.3405,-7.04,False,-1.0,3-3
+ensemble_raw,Argentina,France,1X2-H,Argentina,2.73,0.3535,-3.48,False,-1.0,3-3
+ensemble_calibrated,Argentina,France,1X2-H,Argentina,2.73,0.3278,-10.52,False,-1.0,3-3
+xgb_clean,Argentina,France,1X2-A,France,2.89,0.3683,6.45,False,-1.0,3-3
+poisson_dixon_coles,Argentina,France,1X2-A,France,2.89,0.3871,11.87,False,-1.0,3-3
+ensemble_raw,Argentina,France,1X2-A,France,2.89,0.3819,10.38,False,-1.0,3-3
+ensemble_calibrated,Argentina,France,1X2-A,France,2.89,0.3964,14.56,False,-1.0,3-3
+xgb_clean,Argentina,France,1X2-D,Draw,3.27,0.2442,-20.14,True,2.27,3-3
+poisson_dixon_coles,Argentina,France,1X2-D,Draw,3.27,0.2723,-10.96,True,2.27,3-3
+ensemble_raw,Argentina,France,1X2-D,Draw,3.27,0.2645,-13.5,True,2.27,3-3
+ensemble_calibrated,Argentina,France,1X2-D,Draw,3.27,0.2759,-9.79,True,2.27,3-3

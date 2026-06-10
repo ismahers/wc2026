@@ -1,13 +1,14 @@
 """
 src/models/poisson_model.py
 ============================
-Modelo Poisson para predicción de goles y mercados derivados.
+Modelo Poisson / Dixon-Coles para predicción de goles y mercados derivados.
 
 Arquitectura:
   - Dos XGBoost con objective=count:poisson:
       lambda_home: goles esperados del equipo home
       lambda_away: goles esperados del equipo away
   - Distribución de marcadores P(home=i, away=j) para i,j en 0..8
+  - Ajuste Dixon-Coles con rho global para corregir marcadores bajos
   - Derivación coherente de 1X2, Over/Under y BTTS
 
 Ventaja sobre XGBoost directo:
@@ -34,7 +35,8 @@ import numpy as np
 import pandas as pd
 import xgboost as xgb
 from scipy.stats import poisson
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+from scipy.optimize import minimize_scalar
+from sklearn.metrics import log_loss, mean_absolute_error, mean_squared_error
 
 log = logging.getLogger(__name__)
 
@@ -113,16 +115,76 @@ XGB_POISSON_PARAMS = {
 # Distribución de marcadores desde dos lambdas Poisson
 # ---------------------------------------------------------------------------
 
-def score_matrix(lambda_home: float, lambda_away: float, max_goals: int = MAX_GOALS) -> np.ndarray:
+def _dixon_coles_factor(
+    home_goals: int,
+    away_goals: int,
+    lambda_home: float,
+    lambda_away: float,
+    rho: float,
+) -> float:
+    """Dixon-Coles low-score correction factor for one exact score."""
+    if home_goals == 0 and away_goals == 0:
+        return 1.0 - lambda_home * lambda_away * rho
+    if home_goals == 1 and away_goals == 0:
+        return 1.0 + lambda_away * rho
+    if home_goals == 0 and away_goals == 1:
+        return 1.0 + lambda_home * rho
+    if home_goals == 1 and away_goals == 1:
+        return 1.0 - rho
+    return 1.0
+
+
+def dixon_coles_adjust(
+    matrix: np.ndarray,
+    lambda_home: float,
+    lambda_away: float,
+    rho: float,
+) -> np.ndarray:
+    """
+    Ajusta la matriz de Poisson independiente con correlación Dixon-Coles.
+
+    El ajuste solo modifica los marcadores bajos: 0-0, 1-0, 0-1 y 1-1.
+    Después renormaliza para compensar la truncación de la matriz 0..MAX_GOALS.
+    """
+    adjusted = matrix.astype(float, copy=True)
+    if adjusted.shape[0] < 2 or adjusted.shape[1] < 2 or abs(float(rho)) < 1e-12:
+        total = adjusted.sum()
+        return adjusted / total if total > 0 else adjusted
+
+    adjusted[0, 0] *= _dixon_coles_factor(0, 0, lambda_home, lambda_away, rho)
+    adjusted[1, 0] *= _dixon_coles_factor(1, 0, lambda_home, lambda_away, rho)
+    adjusted[0, 1] *= _dixon_coles_factor(0, 1, lambda_home, lambda_away, rho)
+    adjusted[1, 1] *= _dixon_coles_factor(1, 1, lambda_home, lambda_away, rho)
+
+    if np.any(adjusted < 0):
+        raise ValueError(
+            f"rho={rho:.4f} produce probabilidades negativas "
+            f"para lambdas ({lambda_home:.3f}, {lambda_away:.3f})"
+        )
+    total = adjusted.sum()
+    if total <= 0 or not np.isfinite(total):
+        raise ValueError(f"rho={rho:.4f} produce una matriz Dixon-Coles inválida")
+    return adjusted / total
+
+
+def score_matrix(
+    lambda_home: float,
+    lambda_away: float,
+    max_goals: int = MAX_GOALS,
+    rho: float = 0.0,
+) -> np.ndarray:
     """
     Calcula la matriz de probabilidades de marcadores P(home=i, away=j).
 
     Retorna array (max_goals+1, max_goals+1) donde [i, j] = P(home=i, away=j).
-    Asume independencia entre goles home y away (Poisson bivariado independiente).
+    Si rho != 0, aplica el ajuste Dixon-Coles a marcadores bajos.
     """
     home_probs = poisson.pmf(np.arange(max_goals + 1), lambda_home)
     away_probs = poisson.pmf(np.arange(max_goals + 1), lambda_away)
-    return np.outer(home_probs, away_probs)
+    matrix = np.outer(home_probs, away_probs)
+    if abs(float(rho)) < 1e-12:
+        return matrix
+    return dixon_coles_adjust(matrix, lambda_home, lambda_away, rho)
 
 
 def derive_markets(matrix: np.ndarray) -> dict:
@@ -177,9 +239,10 @@ def derive_markets(matrix: np.ndarray) -> dict:
 class PoissonGoalModel:
     """
     Dos modelos XGBoost Poisson: uno para lambda_home y otro para lambda_away.
+    Opcionalmente aplica un rho Dixon-Coles global sobre marcadores bajos.
     """
 
-    def __init__(self, params: dict = XGB_POISSON_PARAMS):
+    def __init__(self, params: dict = XGB_POISSON_PARAMS, dixon_coles_rho: float = 0.0):
         self.params      = params.copy()
         self.model_home  = None
         self.model_away  = None
@@ -187,6 +250,7 @@ class PoissonGoalModel:
         self.feats_away: list[str] = []
         self.fill_home: dict[str, float] = {}
         self.fill_away: dict[str, float] = {}
+        self.dixon_coles_rho = float(dixon_coles_rho)
 
     def _select_features(self, df: pd.DataFrame, candidates: list[str]) -> list[str]:
         """Selecciona features disponibles con al menos 10% de cobertura."""
@@ -265,17 +329,77 @@ class PoissonGoalModel:
         lambda_away = np.clip(self.model_away.predict(X_a), 0.01, 15)
         return lambda_home, lambda_away
 
+    @staticmethod
+    def _score_log_probability(
+        home_goals: int,
+        away_goals: int,
+        lambda_home: float,
+        lambda_away: float,
+        rho: float,
+    ) -> float:
+        factor = _dixon_coles_factor(home_goals, away_goals, lambda_home, lambda_away, rho)
+        if factor <= 0 or not np.isfinite(factor):
+            return -np.inf
+        return float(
+            poisson.logpmf(home_goals, lambda_home)
+            + poisson.logpmf(away_goals, lambda_away)
+            + np.log(factor)
+        )
+
+    def fit_dixon_coles_rho(
+        self,
+        df: pd.DataFrame,
+        *,
+        bounds: tuple[float, float] = (-0.30, 0.30),
+    ) -> float:
+        """
+        Estima rho maximizando la log-verosimilitud de marcadores observados.
+
+        Se ajusta sobre los datos de entrenamiento para no usar la validación
+        como calibración oculta de métricas.
+        """
+        required = ["target_home_goals", "target_away_goals"]
+        mask = df[required[0]].notna() & df[required[1]].notna()
+        clean = df[mask].copy()
+        if clean.empty:
+            self.dixon_coles_rho = 0.0
+            return self.dixon_coles_rho
+
+        lambda_home, lambda_away = self.predict_lambdas(clean)
+        home_goals = clean["target_home_goals"].astype(int).to_numpy()
+        away_goals = clean["target_away_goals"].astype(int).to_numpy()
+
+        def objective(rho: float) -> float:
+            log_probs = [
+                self._score_log_probability(hg, ag, lh, la, rho)
+                for hg, ag, lh, la in zip(home_goals, away_goals, lambda_home, lambda_away)
+            ]
+            if not np.all(np.isfinite(log_probs)):
+                return 1e12
+            return -float(np.sum(log_probs))
+
+        result = minimize_scalar(objective, bounds=bounds, method="bounded")
+        if not result.success or not np.isfinite(result.x):
+            log.warning("No se pudo estimar rho Dixon-Coles; usando rho=0")
+            self.dixon_coles_rho = 0.0
+        else:
+            self.dixon_coles_rho = round(float(result.x), 6)
+
+        log.info("Dixon-Coles rho estimado: %.6f", self.dixon_coles_rho)
+        return self.dixon_coles_rho
+
     def predict_markets(self, df: pd.DataFrame) -> pd.DataFrame:
         """Predice todos los mercados para un DataFrame de partidos."""
         lambda_home, lambda_away = self.predict_lambdas(df)
 
         rows = []
         for i, (lh, la) in enumerate(zip(lambda_home, lambda_away)):
-            mat     = score_matrix(lh, la)
+            mat     = score_matrix(lh, la, rho=self.dixon_coles_rho)
             markets = derive_markets(mat)
             rows.append({
                 "lambda_home": round(float(lh), 3),
                 "lambda_away": round(float(la), 3),
+                "dixon_coles_rho": self.dixon_coles_rho,
                 **markets,
                 "top5_scores": json.dumps(markets["top5_scores"]),
             })
@@ -304,10 +428,12 @@ class PoissonGoalModel:
         # Precisión de resultado derivado
         pred_result = []
         actual_result = []
+        proba_1x2 = []
         for lh, la, hs, as_ in zip(lambda_home, lambda_away, y_h, y_a):
-            mat = score_matrix(lh, la)
+            mat = score_matrix(lh, la, rho=self.dixon_coles_rho)
             m   = derive_markets(mat)
             probs = [m["prob_H"], m["prob_D"], m["prob_A"]]
+            proba_1x2.append(probs)
             pred_result.append(["H", "D", "A"][np.argmax(probs)])
             if hs > as_:
                 actual_result.append("H")
@@ -317,15 +443,26 @@ class PoissonGoalModel:
                 actual_result.append("D")
 
         accuracy = np.mean([p == a for p, a in zip(pred_result, actual_result)])
+        proba_1x2 = np.asarray(proba_1x2, dtype=float)
+        proba_1x2 = proba_1x2 / proba_1x2.sum(axis=1, keepdims=True)
+        result_log_loss = log_loss(actual_result, proba_1x2, labels=["H", "D", "A"])
+        draw_actual_rate = float(np.mean(np.asarray(actual_result) == "D"))
+        draw_pred_mean = float(proba_1x2[:, 1].mean())
 
         metrics = {
             "n_test":       len(df_clean),
+            "model_variant": "dixon_coles" if abs(self.dixon_coles_rho) > 1e-12 else "independent_poisson",
+            "dixon_coles_rho": self.dixon_coles_rho,
             "mae_home":     round(mae_h,  4),
             "mae_away":     round(mae_a,  4),
             "rmse_home":    round(rmse_h, 4),
             "rmse_away":    round(rmse_a, 4),
             "mae_avg":      round((mae_h + mae_a) / 2, 4),
             "accuracy_1x2": round(accuracy, 4),
+            "log_loss_1x2": round(float(result_log_loss), 4),
+            "draw_actual_rate": round(draw_actual_rate, 4),
+            "draw_pred_mean": round(draw_pred_mean, 4),
+            "draw_pred_error": round(draw_pred_mean - draw_actual_rate, 4),
             "mean_lambda_home": round(float(lambda_home.mean()), 3),
             "mean_lambda_away": round(float(lambda_away.mean()), 3),
         }
@@ -362,6 +499,8 @@ class PoissonRunConfig:
     output_dir:       str = "outputs"
     train_cutoff:     int = 2018
     val_cutoff:       int = 2023
+    use_dixon_coles:  bool = True
+    rho:              Optional[float] = None
 
 
 def _add_goal_targets(df: pd.DataFrame) -> pd.DataFrame:
@@ -414,6 +553,15 @@ def run_poisson_pipeline(config: PoissonRunConfig) -> tuple[dict, pd.DataFrame]:
     # Entrenar
     model = PoissonGoalModel()
     model.fit(df_train)
+    if config.use_dixon_coles:
+        if config.rho is None:
+            model.fit_dixon_coles_rho(df_train)
+        else:
+            model.dixon_coles_rho = float(config.rho)
+            log.info("Dixon-Coles rho fijado manualmente: %.6f", model.dixon_coles_rho)
+    else:
+        model.dixon_coles_rho = 0.0
+        log.info("Dixon-Coles desactivado: usando Poisson independiente")
 
     # Evaluar
     metrics = model.evaluate(df_val)
@@ -473,8 +621,8 @@ def run_poisson_pipeline(config: PoissonRunConfig) -> tuple[dict, pd.DataFrame]:
 
 def _print_predictions(df: pd.DataFrame) -> None:
     print("\n" + "=" * 85)
-    print("PREDICCIONES WC2026 — MODELO POISSON")
-    print(f"{'Partido':<40} {'λH':>5} {'λA':>5} {'P(H)':>7} {'P(D)':>7} {'P(A)':>7} {'O2.5':>7} {'BTTS':>7}")
+    print("PREDICCIONES WC2026 — MODELO POISSON / DIXON-COLES")
+    print(f"{'Partido':<40} {'λH':>5} {'λA':>5} {'rho':>6} {'P(H)':>7} {'P(D)':>7} {'P(A)':>7} {'O2.5':>7} {'BTTS':>7}")
     print("-" * 85)
     for _, row in df.iterrows():
         if pd.isna(row.get("lambda_home")):
@@ -484,6 +632,7 @@ def _print_predictions(df: pd.DataFrame) -> None:
             f"  {partido:<38} "
             f"{row['lambda_home']:>5.2f} "
             f"{row['lambda_away']:>5.2f} "
+            f"{row.get('dixon_coles_rho', 0.0):>6.3f} "
             f"{row['prob_H']:>7.3f} "
             f"{row['prob_D']:>7.3f} "
             f"{row['prob_A']:>7.3f} "
@@ -504,6 +653,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output-dir",  default="outputs")
     parser.add_argument("--train-cutoff", type=int, default=2018)
     parser.add_argument("--val-cutoff",   type=int, default=2023)
+    parser.add_argument(
+        "--no-dixon-coles",
+        action="store_true",
+        help="Desactiva el ajuste Dixon-Coles y usa Poisson independiente.",
+    )
+    parser.add_argument(
+        "--rho",
+        type=float,
+        default=None,
+        help="Fija manualmente rho Dixon-Coles. Si se omite, se estima en train.",
+    )
     return parser
 
 
@@ -520,6 +680,8 @@ def main() -> None:
         output_dir       = args.output_dir,
         train_cutoff     = args.train_cutoff,
         val_cutoff       = args.val_cutoff,
+        use_dixon_coles  = not args.no_dixon_coles,
+        rho              = args.rho,
     )
     run_poisson_pipeline(config)
 

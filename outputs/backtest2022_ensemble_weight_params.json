@@ -1,0 +1,51 @@
+{
+  "params": {
+    "close_rating": 0.236506,
+    "strong_rating": 0.93335,
+    "min_weight": 0.72269,
+    "max_weight": 0.722777
+  },
+  "metrics": {
+    "n_validation": 3540,
+    "train_cutoff": 2018,
+    "val_cutoff": 2022,
+    "dixon_coles_rho": -0.063019,
+    "xgb_only": {
+      "log_loss": 0.871508,
+      "accuracy": 0.60113,
+      "pred_draw_mean": 0.225518,
+      "actual_draw_rate": 0.232203
+    },
+    "poisson_only": {
+      "log_loss": 0.865918,
+      "accuracy": 0.60339,
+      "pred_draw_mean": 0.220639,
+      "actual_draw_rate": 0.232203
+    },
+    "default_blend": {
+      "log_loss": 0.86625,
+      "accuracy": 0.604237,
+      "pred_draw_mean": 0.223376,
+      "actual_draw_rate": 0.232203
+    },
+    "optimized_blend": {
+      "log_loss": 0.86469,
+      "accuracy": 0.60452,
+      "pred_draw_mean": 0.221992,
+      "actual_draw_rate": 0.232203
+    },
+    "optimizer_success": true,
+    "optimizer_fun": 0.86469,
+    "optimized_weight_summary": {
+      "mean_poisson_weight": 0.722709,
+      "min_poisson_weight": 0.72269,
+      "max_poisson_weight": 0.722777,
+      "mean_strength": 0.337609
+    }
+  },
+  "objective": "1x2_log_loss",
+  "validation_window": {
+    "train": "date.year < train_cutoff",
+    "validation": "train_cutoff <= date.year < val_cutoff"
+  }
+}

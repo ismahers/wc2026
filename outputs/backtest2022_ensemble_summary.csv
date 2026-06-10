@@ -1,0 +1,13 @@
+model_variant,segment,bets,wins,hit_rate_pct,profit_units,roi_pct,avg_odds,min_odds,max_odds,avg_ev_pct
+ensemble_raw,1X2-A,2,1,50.0,-0.13,-6.5,1.86,1.85,1.87,17.41
+poisson_dixon_coles,1X2-A,2,1,50.0,-0.13,-6.5,1.86,1.85,1.87,15.98
+ensemble_calibrated,1X2-A,3,1,33.33,-1.13,-37.67,1.75,1.53,1.87,17.19
+xgb_clean,1X2-A,4,1,25.0,-2.13,-53.25,1.77,1.53,1.87,17.81
+xgb_clean,1X2-H,4,3,75.0,1.84,46.0,2.067,1.75,2.43,20.71
+ensemble_raw,1X2-H,3,2,66.67,0.74,24.67,2.057,1.75,2.43,20.27
+poisson_dixon_coles,1X2-H,3,2,66.67,0.74,24.67,2.057,1.75,2.43,19.55
+ensemble_calibrated,1X2-H,2,1,50.0,-0.25,-12.5,2.09,1.75,2.43,19.19
+ensemble_raw,overall,5,3,60.0,0.61,12.2,1.978,1.75,2.43,19.12
+poisson_dixon_coles,overall,5,3,60.0,0.61,12.2,1.978,1.75,2.43,18.13
+xgb_clean,overall,8,4,50.0,-0.29,-3.63,1.919,1.53,2.43,19.26
+ensemble_calibrated,overall,5,2,40.0,-1.38,-27.6,1.886,1.53,2.43,17.99
