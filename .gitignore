@@ -39,6 +39,8 @@
 !/data/processed/odds_events.csv
 !/data/processed/odds_events_2022.csv
 
+!/data/processed/referees_with_stats.csv
+
 # Odds actuales/históricas — snapshots regenerables con API y timestamp
 /data/processed/odds_current*.csv
 

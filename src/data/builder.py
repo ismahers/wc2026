@@ -464,8 +464,17 @@ class MatchDatasetBuilder:
             log.info("Partidos históricos sin columna referee — stats de árbitro omitidas")
             return df
 
-        ref_col = "referee" if "referee" in df.columns else "referee_name"
-        df = df.rename(columns={ref_col: "referee_name"})
+        # Unificar columna de arbitro: historico trae 'referee' (StatsBomb),
+        # WC2026 trae 'referee_name'. Si coexisten, fusionar sin duplicar.
+        if "referee" in df.columns and "referee_name" in df.columns:
+            df["referee_name"] = df["referee_name"].fillna(df["referee"])
+            df = df.drop(columns=["referee"])
+        elif "referee" in df.columns:
+            df = df.rename(columns={"referee": "referee_name"})
+        elif "referee_name" not in df.columns:
+            log.info("Partidos sin columna de arbitro — stats de arbitro omitidas")
+            return df
+
         df = df.merge(ref_stats, on="referee_name", how="left")
 
         n = df["ref_yellow_per_match"].notna().sum() if "ref_yellow_per_match" in df.columns else 0

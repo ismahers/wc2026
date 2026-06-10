@@ -1,0 +1,85 @@
+# .github/workflows/refresh_signals.yml
+# ======================================
+# Ciclo operativo diario SIN PC: cuotas Winamax -> EV -> shortlist
+# -> radar multi-mercado -> push de senales a Supabase (tracker web).
+#
+# NO reentrena modelos. Usa outputs/wc2026_ensemble_predictions.csv y
+# outputs/wc2026_reliability.csv commiteados en el repo. Si cambias el
+# modelo en local, haz git push antes de lanzar esto.
+#
+# Coste por run: 2 creditos de The Odds API (h2h + flat multi-mercado).
+#
+# Disparo:
+#   - Manual: GitHub > Actions > "Refrescar senales" > Run workflow
+#     (funciona desde el movil con la app de GitHub o el navegador)
+#   - Automatico: todos los dias a las 09:00 UTC (11:00 en Gijon)
+#
+# Secrets necesarios (Settings > Secrets and variables > Actions):
+#   ODDS_API_KEY          - tu key de The Odds API
+#   SUPABASE_SERVICE_KEY  - service_role key de Supabase
+
+name: Refrescar senales
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9 * * *"
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      SUPABASE_URL: https://bcqfyipszvktufenlcep.supabase.co
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Dependencias (sin xgboost/torch, no entrenamos)
+        run: pip install pandas numpy scipy requests
+
+      - name: Verificar outputs del modelo en el repo
+        run: |
+          test -f outputs/wc2026_ensemble_predictions.csv || { echo "Falta ensemble. Corre el pipeline en local y haz git push."; exit 1; }
+          test -f outputs/wc2026_reliability.csv || { echo "Falta reliability. Corre el pipeline en local y haz git push."; exit 1; }
+
+      - name: 1X2 v1 - EV Winamax + shortlist (1 credito)
+        run: python -m src.evaluation.run_1x2_v1 --bookmakers winamax_fr
+
+      - name: Cuotas flat multi-mercado Winamax (1 credito)
+        run: >
+          python -m src.data.historical_odds_collector
+          --current-flat
+          --sport soccer_fifa_world_cup
+          --markets h2h,totals,btts
+          --bookmakers winamax_fr
+          --regions eu
+          --output data/processed/odds_current_worldcup_flat.csv
+
+      - name: Limpiar snapshot vacio si Winamax no tiene mercados
+        run: |
+          f=data/processed/odds_current_worldcup_flat.csv
+          if [ -f "$f" ] && [ "$(wc -c < "$f")" -lt 10 ]; then
+            rm "$f"
+            echo "Snapshot vacio eliminado (Winamax sin totals/btts aun)"
+          fi
+
+      - name: Radar multi-mercado + paper shortlist (0 creditos)
+        run: python -m src.evaluation.run_market_radar
+
+      - name: Subir senales a Supabase (tracker web)
+        run: python -m src.evaluation.push_signals_supabase
+
+      - name: Resumen
+        run: |
+          echo "=== SHORTLIST CORE ==="
+          cat outputs/wc2026_ev_h2h_shortlist_summary.csv || true
+          echo "=== PAPER ==="
+          cat outputs/wc2026_multi_market_paper_summary.csv || true
