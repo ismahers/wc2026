@@ -149,12 +149,13 @@ def _load_paper(path: str) -> list[dict]:
     return rows
 
 
+try:
+    from phase_helper import get_phase as _gp
+except ImportError:
+    from src.evaluation.phase_helper import get_phase as _gp
+
 def _get_phase(home, away):
-    try:
-        from src.evaluation.phase_helper import get_phase
-        return get_phase(home, away)
-    except Exception:
-        return None
+    return _gp(home, away)
 
 def collect_signals(core_input: str, review_input: str, paper_input: str) -> list[dict]:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

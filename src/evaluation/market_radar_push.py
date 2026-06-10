@@ -20,12 +20,13 @@ def _num(v):
     x = pd.to_numeric(v, errors='coerce')
     return None if pd.isna(x) else round(float(x), 4)
 
+try:
+    from phase_helper import get_phase
+except ImportError:
+    from src.evaluation.phase_helper import get_phase
+
 def _get_phase_radar(home, away):
-    try:
-        from src.evaluation.phase_helper import get_phase
-        return get_phase(home, away)
-    except Exception:
-        return None
+    return get_phase(home, away)
 
 def load_radar(path=DEFAULT_RADAR_INPUT):
     if not os.path.exists(path):
