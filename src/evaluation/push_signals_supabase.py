@@ -35,6 +35,8 @@ from pathlib import Path
 
 import pandas as pd
 import requests
+import sys, os
+sys.path.insert(0, os.getcwd())
 
 
 DEFAULT_CORE_INPUT = "outputs/wc2026_ev_h2h_shortlist.csv"
@@ -91,6 +93,7 @@ def _load_h2h(path: str, bucket: str, default_action: str) -> list[dict]:
         rows.append({
             "signal_id": _signal_id(r.get("date"), r.get("home_team"), r.get("away_team"),
                                     r.get("mercado"), r.get("seleccion"), r.get("bookmaker")),
+            "phase": _get_phase(str(r.get("home_team","")), str(r.get("away_team",""))),
             "match_date": str(r.get("date") or ""),
             "home_team": str(r.get("home_team") or ""),
             "away_team": str(r.get("away_team") or ""),
@@ -127,6 +130,7 @@ def _load_paper(path: str) -> list[dict]:
         rows.append({
             "signal_id": _signal_id(r.get("date"), r.get("home_team"), r.get("away_team"),
                                     mercado, r.get("selection"), r.get("bookmaker")),
+            "phase": _get_phase(str(r.get("home_team","")), str(r.get("away_team",""))),
             "match_date": str(r.get("date") or ""),
             "home_team": str(r.get("home_team") or ""),
             "away_team": str(r.get("away_team") or ""),
@@ -144,6 +148,13 @@ def _load_paper(path: str) -> list[dict]:
         })
     return rows
 
+
+def _get_phase(home, away):
+    try:
+        from src.evaluation.phase_helper import get_phase
+        return get_phase(home, away)
+    except Exception:
+        return None
 
 def collect_signals(core_input: str, review_input: str, paper_input: str) -> list[dict]:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

@@ -48,6 +48,7 @@ ALL_MARKETS = {
     "team_goals",
     "clean_sheet",
     "corners",
+    "yellows",
 }
 
 CONFIDENCE_RANK = {
@@ -364,6 +365,38 @@ def build_market_probabilities(
                     probability=1.0 - p_over, source_model="poisson_approx_from_expected_corners",
                     model_confidence="low",
                     notes="Aproximacion: corners tienen sobredispersion; usar como radar, no como apuesta core.",
+                )
+
+        # Amarillas: prediccion analitica (propension equipos x factor arbitro)
+        if "yellows" in selected_markets:
+            pred_yellows = row.get("pred_yellows_analytical")
+            if pd.isna(pred_yellows) or pred_yellows is None:
+                hy = _safe_prob(row.get("home_yellow_per_90", float("nan")))
+                ay = _safe_prob(row.get("away_yellow_per_90", float("nan")))
+                ref = _safe_prob(row.get("ref_yellow_per_match", float("nan")))
+                GLOBAL_YELLOW = 4.27
+                if not (pd.isna(hy) or pd.isna(ay)) and not pd.isna(ref):
+                    pred_yellows = (hy + ay) / 90.0 * 95.0 * (ref / GLOBAL_YELLOW)
+                elif not (pd.isna(hy) or pd.isna(ay)):
+                    pred_yellows = (hy + ay) / 90.0 * 95.0
+                elif not pd.isna(ref):
+                    pred_yellows = float(ref)
+                else:
+                    pred_yellows = GLOBAL_YELLOW
+            pred_yellows = float(pred_yellows)
+            for line in (3.5, 4.5, 5.5):
+                p_over = _poisson_over(pred_yellows, line)
+                _add_row(
+                    rows, row, market="total_yellows", selection="Over", line=line,
+                    probability=p_over, source_model="analytical_yellows",
+                    model_confidence="low",
+                    notes="Analitico: propension equipos x factor arbitro. Mejora con mas arbitros asignados.",
+                )
+                _add_row(
+                    rows, row, market="total_yellows", selection="Under", line=line,
+                    probability=1.0 - p_over, source_model="analytical_yellows",
+                    model_confidence="low",
+                    notes="Analitico: propension equipos x factor arbitro. Mejora con mas arbitros asignados.",
                 )
 
     out = pd.DataFrame(rows)

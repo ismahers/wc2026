@@ -20,6 +20,13 @@ def _num(v):
     x = pd.to_numeric(v, errors='coerce')
     return None if pd.isna(x) else round(float(x), 4)
 
+def _get_phase_radar(home, away):
+    try:
+        from src.evaluation.phase_helper import get_phase
+        return get_phase(home, away)
+    except Exception:
+        return None
+
 def load_radar(path=DEFAULT_RADAR_INPUT):
     if not os.path.exists(path):
         return []
@@ -48,6 +55,7 @@ def load_radar(path=DEFAULT_RADAR_INPUT):
             "fiabilidad_nivel": str(r.get("fiabilidad_nivel") or ""),
             "model_confidence": str(r.get("model_confidence") or ""),
             "source_model": str(r.get("source_model") or ""),
+            "phase": _get_phase_radar(str(r.get("home_team","")), str(r.get("away_team",""))),
             "updated_at": now,
         })
     return rows
