@@ -141,6 +141,8 @@ tr:last-child td{border-bottom:none}
         <div class="card-title" style="margin:0">Señales del modelo</div>
         <div class="filters">
           <select id="fsig" onchange="renderSignals()"><option value="">Todas</option><option value="core">Core (apostar)</option><option value="manual_review">Revisión</option><option value="paper">Paper</option></select>
+          <select id="fphase" onchange="renderSignals()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todas las fases</option></select>
+          <select id="fmatch" onchange="renderSignals()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todos los partidos</option></select>
           <button class="btn-add" style="padding:6px 12px;font-size:11px;background:transparent;border:1px solid var(--b2);color:var(--mu)" onclick="loadSignals()">Actualizar</button>
         </div>
       </div>
@@ -217,6 +219,35 @@ tr:last-child td{border-bottom:none}
     </div>
   </div>
 </div>
+    <div class="card">
+      <div class="table-header">
+        <div class="card-title" style="margin:0">Radar de mercados</div>
+        <div class="filters">
+          <select id="frad-phase" onchange="renderRadar()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todas las fases</option></select>
+          <select id="frad-match" onchange="renderRadar()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todos los partidos</option></select>
+          <select id="frad-market" onchange="renderRadar()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todos los mercados</option></select>
+          <button class="btn-add" style="padding:6px 12px;font-size:11px;background:transparent;border:1px solid var(--b2);color:var(--mu)" onclick="loadRadar()">Actualizar</button>
+        </div>
+      </div>
+      <div class="tw">
+        <table>
+          <thead><tr>
+            <th style="width:24%">Partido</th>
+            <th style="width:18%">Mercado</th>
+            <th style="width:13%">Selección</th>
+            <th style="width:8%">Prob%</th>
+            <th style="width:9%">Justa</th>
+            <th style="width:9%">Min EV5</th>
+            <th style="width:9%">Min EV10</th>
+            <th style="width:10%">Fiab.</th>
+          </tr></thead>
+          <tbody id="rad-tb"></tbody>
+        </table>
+        <div id="rad-emp" class="empty">Sin datos. Corre el pipeline y pulsa Actualizar.</div>
+      </div>
+      <div class="sig-meta" id="rad-meta" style="margin-top:8px;font-size:11px;color:var(--mu)">Compara la cuota de Winamax con Min EV10: si la cuota real supera ese número, hay valor según el modelo.</div>
+    </div>
+
 <div id="toast"></div>
 
 <script>
@@ -427,6 +458,7 @@ function showApp(email) {
   currentEmail=email;
   loadBets();
   loadSignals();
+  loadRadar();
 }
 
 async function loadBets() {
@@ -586,7 +618,17 @@ async function loadSignals() {
 
 function renderSignals() {
   const fb = document.getElementById('fsig').value;
-  const vis = signals.filter(s => !fb || s.bucket === fb);
+  const phases = [...new Set(signals.map(s => s.phase).filter(Boolean))].sort();
+  const fphase = document.getElementById('fphase');
+  const prevP = fphase.value;
+  fphase.innerHTML = '<option value="">Todas las fases</option>' + phases.map(p => `<option value="${esc(p)}"${p===prevP?' selected':''}>${esc(p)}</option>`).join('');
+  const fp = fphase.value;
+  const matchList = [...new Set(signals.filter(s => !fp || s.phase === fp).map(s => s.home_team + ' vs ' + s.away_team))].sort();
+  const fmatchEl = document.getElementById('fmatch');
+  const prevM = fmatchEl.value;
+  fmatchEl.innerHTML = '<option value="">Todos los partidos</option>' + matchList.map(m => `<option value="${esc(m)}"${m===prevM?' selected':''}>${esc(m)}</option>`).join('');
+  const fm = fmatchEl.value;
+  const vis = signals.filter(s => (!fb || s.bucket === fb) && (!fp || s.phase === fp) && (!fm || (s.home_team + ' vs ' + s.away_team) === fm));
   const tb = document.getElementById('sig-tb');
   const emp = document.getElementById('sig-emp');
   const meta = document.getElementById('sig-meta');
@@ -676,6 +718,111 @@ function updateEdgeHint() {
 
 ['fp', 'fc'].forEach(id => document.getElementById(id).addEventListener('input', updateEdgeHint));
 document.getElementById('fm').addEventListener('change', updateEdgeHint);
+
+
+/* ============================================================
+   RADAR DE MERCADOS (market_probabilities subido a Supabase)
+   Tabla: market_radar en Supabase
+   Subida por: push_signals_supabase.py (extendido)
+   ============================================================ */
+let radarData = [];
+
+const MARKET_LABELS = {
+  'btts': 'BTTS',
+  'clean_sheet': 'Porteria a cero',
+  'double_chance': 'Doble oportunidad',
+  'draw_no_bet': 'DNB',
+  'h2h': '1X2',
+  'team_goals': 'Goles equipo',
+  'total_corners': 'Corners totales',
+  'total_yellows': 'Amarillas totales',
+  'total_goals': 'Over/Under'
+};
+
+const STATUS_BADGE = {
+  'paper_only':   '<span class="sig-badge sig-paper">PAPER</span>',
+  'paper_track':  '<span class="sig-badge sig-paper">PAPER</span>',
+  'no_stake':     '<span class="sig-badge sig-paper">RADAR</span>',
+  'radar_only':   '<span class="sig-badge sig-paper">RADAR</span>',
+  'live_core_restricted': '<span class="sig-badge sig-core">CORE</span>',
+  'excluded':     '<span class="sig-badge" style="background:var(--rd-bg);color:var(--rd)">EXCLUIDO</span>'
+};
+
+async function loadRadar() {
+  // Supabase devuelve max 1000 filas por peticion: paginar
+  let all = [];
+  for (let off = 0; ; off += 1000) {
+    const r = await sbFetch('/rest/v1/market_radar?select=*&order=home_team.asc,market.asc,selection.asc&limit=1000&offset=' + off);
+    if (!r.ok) {
+      document.getElementById('rad-emp').textContent = 'No se pudo cargar el radar (tabla market_radar creada en Supabase?).';
+      document.getElementById('rad-emp').style.display = 'block';
+      return;
+    }
+    const chunk = Array.isArray(r.data) ? r.data : [];
+    all = all.concat(chunk);
+    if (chunk.length < 1000) break;
+  }
+  radarData = all;
+  renderRadar();
+}
+
+function renderRadar() {
+  // Cascada: fase → partido → mercado
+  const phases2 = [...new Set(radarData.map(r => r.phase).filter(Boolean))].sort();
+  const fphaseEl = document.getElementById('frad-phase');
+  const prevP2 = fphaseEl.value;
+  fphaseEl.innerHTML = '<option value="">Todas las fases</option>' + phases2.map(p => `<option value="${esc(p)}"${p===prevP2?' selected':''}>${esc(p)}</option>`).join('');
+  const fp2 = fphaseEl.value;
+
+  const byPhase = radarData.filter(r => !fp2 || r.phase === fp2);
+  const matchList2 = [...new Set(byPhase.map(r => r.home_team + ' vs ' + r.away_team))].sort();
+  const fmatchEl2 = document.getElementById('frad-match');
+  const prevMa = fmatchEl2.value;
+  fmatchEl2.innerHTML = '<option value="">Todos los partidos</option>' + matchList2.map(m => `<option value="${esc(m)}"${m===prevMa?' selected':''}>${esc(m)}</option>`).join('');
+  const fmatch = fmatchEl2.value;
+
+  const byMatch = byPhase.filter(r => !fmatch || (r.home_team + ' vs ' + r.away_team) === fmatch);
+  const markets = [...new Set(byMatch.map(r => r.market))].filter(Boolean).sort();
+  const fmktEl = document.getElementById('frad-market');
+  const prevM = fmktEl.value;
+  fmktEl.innerHTML = '<option value="">Todos los mercados</option>' + markets.map(m => `<option value="${esc(m)}"${m===prevM?' selected':''}>${esc(MARKET_LABELS[m]||m)}</option>`).join('');
+  const fm = fmktEl.value;
+
+  const vis = byMatch.filter(r => !fm || r.market === fm);
+
+  const tb = document.getElementById('rad-tb');
+  const emp = document.getElementById('rad-emp');
+
+  if (!vis.length) {
+    tb.innerHTML = '';
+    emp.style.display = 'block';
+    emp.textContent = radarData.length ? 'Sin datos en este filtro.' : 'Sin datos. Corre el pipeline y pulsa Actualizar.';
+    return;
+  }
+  emp.style.display = 'none';
+
+  tb.innerHTML = vis.map(r => {
+    const partido = esc(r.home_team + ' vs ' + r.away_team);
+    const lineStr = r.line != null && r.line !== '' && !isNaN(parseFloat(r.line)) ? ' ' + parseFloat(r.line) : '';
+    const mercado = esc((MARKET_LABELS[r.market] || r.market) + lineStr);
+    const sel = esc(r.selection || '');
+    const prob = r.model_probability != null ? (parseFloat(r.model_probability)*100).toFixed(1)+'%' : '—';
+    const justa = r.fair_odds != null ? parseFloat(r.fair_odds).toFixed(2) : '—';
+    const ev5 = r.min_odds_ev5 != null ? parseFloat(r.min_odds_ev5).toFixed(2) : '—';
+    const ev10 = r.min_odds_ev10 != null ? parseFloat(r.min_odds_ev10).toFixed(2) : '—';
+    const fiab = r.fiabilidad_nivel ? esc(r.fiabilidad_nivel) + (r.fiabilidad_pct != null ? ' ('+parseFloat(r.fiabilidad_pct).toFixed(0)+')' : '') : '—';
+    return '<tr>' +
+      '<td title="'+partido+'">'+partido+'</td>' +
+      '<td>'+mercado+'</td>' +
+      '<td title="'+sel+'">'+sel+'</td>' +
+      '<td>'+prob+'</td>' +
+      '<td>'+justa+'</td>' +
+      '<td>'+ev5+'</td>' +
+      '<td><strong>'+ev10+'</strong></td>' +
+      '<td title="'+fiab+'">'+fiab+'</td>' +
+      '</tr>';
+  }).join('');
+}
 
 (function(){
   const token=localStorage.getItem('wc26_token');

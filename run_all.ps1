@@ -67,13 +67,19 @@ if ($SkipApi) {
     Run-Step "1X2 v1 (EV Winamax + shortlist + tracker)" @("-m", "src.evaluation.run_1x2_v1", "--bookmakers", "winamax_fr")
 }
 
-# --- 7. Cuotas flat de TODOS los mercados disponibles en Winamax ---
+# --- 7. Cuotas flat multi-mercado (Winamax primero, Pinnacle de fallback) ---
 if (-not $SkipApi) {
-    Run-Step "Cuotas flat multi-mercado (Winamax)" @("-m", "src.data.historical_odds_collector", "--current-flat", "--sport", "soccer_fifa_world_cup", "--markets", "h2h,totals,btts", "--bookmakers", "winamax_fr", "--regions", "eu", "--output", "data/processed/odds_current_worldcup_flat.csv")
+    Run-Step "Cuotas flat Winamax (h2h)" @("-m", "src.data.historical_odds_collector", "--current-flat", "--sport", "soccer_fifa_world_cup", "--markets", "h2h,totals,btts", "--bookmakers", "winamax_fr", "--regions", "eu", "--output", "data/processed/odds_current_worldcup_flat.csv")
     $flat = "data/processed/odds_current_worldcup_flat.csv"
     if ((Test-Path $flat) -and ((Get-Item $flat).Length -lt 10)) {
         Remove-Item $flat
-        Write-Host "[INFO] Winamax sin totals/btts en la API todavia: snapshot vacio eliminado. El radar seguira solo con probabilidades del modelo." -ForegroundColor Yellow
+        Write-Host "[INFO] Winamax sin totals/btts, usando Pinnacle como fallback..." -ForegroundColor Yellow
+        Run-Step "Cuotas flat Pinnacle (fallback)" @("-m", "src.data.historical_odds_collector", "--current-flat", "--sport", "soccer_fifa_world_cup", "--markets", "h2h,totals,btts", "--bookmakers", "pinnacle", "--regions", "eu", "--output", "data/processed/odds_current_worldcup_flat.csv")
+        $flat2 = "data/processed/odds_current_worldcup_flat.csv"
+        if ((Test-Path $flat2) -and ((Get-Item $flat2).Length -lt 10)) {
+            Remove-Item $flat2
+            Write-Host "[INFO] Pinnacle tampoco tiene mercados abiertos todavia." -ForegroundColor Yellow
+        }
     }
 }
 
@@ -82,6 +88,7 @@ Run-Step "Radar multi-mercado + EV + paper"  @("-m", "src.evaluation.run_market_
 
 # --- 9. Subir senales al tracker web ---
 Run-Step "Subir senales a Supabase (tracker)" @("-m", "src.evaluation.push_signals_supabase")
+Run-Step "Subir radar a Supabase" @("src/evaluation/market_radar_push.py")
 
 Write-Host ""
 Write-Host "[OK] Pipeline completo sin errores." -ForegroundColor Green

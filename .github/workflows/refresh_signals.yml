@@ -33,12 +33,13 @@ jobs:
       ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
       SUPABASE_URL: https://bcqfyipszvktufenlcep.supabase.co
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5.6.0
         with:
           python-version: "3.11"
 
@@ -53,15 +54,25 @@ jobs:
       - name: 1X2 v1 - EV Winamax + shortlist (1 credito)
         run: python -m src.evaluation.run_1x2_v1 --bookmakers winamax_fr
 
-      - name: Cuotas flat multi-mercado Winamax (1 credito)
-        run: >
-          python -m src.data.historical_odds_collector
-          --current-flat
-          --sport soccer_fifa_world_cup
-          --markets h2h,totals,btts
-          --bookmakers winamax_fr
-          --regions eu
-          --output data/processed/odds_current_worldcup_flat.csv
+      - name: Cuotas flat (Winamax, fallback Pinnacle)
+        run: |
+          python -m src.data.historical_odds_collector \
+            --current-flat --sport soccer_fifa_world_cup \
+            --markets h2h,totals,btts --bookmakers winamax_fr \
+            --regions eu --output data/processed/odds_current_worldcup_flat.csv
+          f=data/processed/odds_current_worldcup_flat.csv
+          if [ -f "$f" ] && [ "$(wc -c < "$f")" -lt 10 ]; then
+            rm "$f"
+            echo "Winamax sin totals/btts, probando Pinnacle..."
+            python -m src.data.historical_odds_collector \
+              --current-flat --sport soccer_fifa_world_cup \
+              --markets h2h,totals,btts --bookmakers pinnacle \
+              --regions eu --output data/processed/odds_current_worldcup_flat.csv
+          fi
+          if [ -f "$f" ] && [ "$(wc -c < "$f")" -lt 10 ]; then
+            rm "$f"
+            echo "Sin mercados abiertos todavia en ninguna casa"
+          fi
 
       - name: Limpiar snapshot vacio si Winamax no tiene mercados
         run: |
@@ -76,6 +87,9 @@ jobs:
 
       - name: Subir senales a Supabase (tracker web)
         run: python -m src.evaluation.push_signals_supabase
+
+      - name: Subir radar a Supabase
+        run: python src/evaluation/market_radar_push.py
 
       - name: Resumen
         run: |
