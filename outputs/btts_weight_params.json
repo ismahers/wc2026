@@ -1,0 +1,59 @@
+{
+  "params": {
+    "close_rating": 0.088477,
+    "strong_rating": 0.911898,
+    "min_weight": 0.391336,
+    "max_weight": 0.391492
+  },
+  "metrics": {
+    "n_validation": 4509,
+    "train_cutoff": 2018,
+    "val_cutoff": 2023,
+    "dixon_coles_rho": -0.06282,
+    "xgb_only": {
+      "log_loss": 0.669232,
+      "brier": 0.238493,
+      "auc": 0.568891,
+      "accuracy": 0.577068,
+      "pred_mean": 0.428334,
+      "actual_mean": 0.413395
+    },
+    "poisson_only": {
+      "log_loss": 0.670371,
+      "brier": 0.239071,
+      "auc": 0.572264,
+      "accuracy": 0.577068,
+      "pred_mean": 0.447728,
+      "actual_mean": 0.413395
+    },
+    "default_blend": {
+      "log_loss": 0.668821,
+      "brier": 0.238305,
+      "auc": 0.570968,
+      "accuracy": 0.578177,
+      "pred_mean": 0.438013,
+      "actual_mean": 0.413395
+    },
+    "optimized_blend": {
+      "log_loss": 0.668373,
+      "brier": 0.238095,
+      "auc": 0.572861,
+      "accuracy": 0.579729,
+      "pred_mean": 0.435925,
+      "actual_mean": 0.413395
+    },
+    "optimizer_success": true,
+    "optimizer_fun": 0.668373,
+    "optimized_weight_summary": {
+      "mean_poisson_weight": 0.391383,
+      "min_poisson_weight": 0.391336,
+      "max_poisson_weight": 0.391492,
+      "mean_strength": 0.33087
+    }
+  },
+  "objective": "btts_log_loss",
+  "validation_window": {
+    "train": "date.year < train_cutoff",
+    "validation": "train_cutoff <= date.year < val_cutoff"
+  }
+}

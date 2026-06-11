@@ -23,6 +23,7 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 
 | Archivo | Generador | Motivo |
 |---|---|---|
+| `data/manual/player_expected_minutes_overrides_wc2026.csv` | Manual | Overrides de alineaciones, bajas y minutos esperados. No se sobreescribe al regenerar. |
 | `data/processed/players_master.csv` | `python -m src.data.player_master` | Claves internas estables de los 1248 jugadores. |
 | `data/processed/player_source_matches.csv` | `python -m src.data.player_master` y `python -m src.data.match_transfermarkt` | Tabla puente hacia FBref, Transfermarkt y StatsBomb. |
 | `data/processed/transfermarkt_player_profiles.csv` | `python -m src.data.match_transfermarkt` | Perfiles Transfermarkt enlazados a `player_key`. |
@@ -31,6 +32,14 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `data/processed/teams_wc2026.csv` | `python -m src.data.normalize_squads` | Selecciones normalizadas. |
 | `data/processed/squad_summary_wc2026.csv` | `python -m src.data.normalize_squads` | Resumen por seleccion usado por `builder.py`. |
 | `data/processed/team_player_stats_wc2026.csv` | `python -m src.data.player_stats_aggregator` | Stats agregadas por seleccion. |
+| `data/processed/player_prop_features_wc2026.csv` | `python -m src.data.player_prop_features` | Features Transfermarkt a nivel jugador para props v0. |
+| `data/processed/player_prop_readiness_summary.csv` | `python -m src.data.player_prop_features` | Cobertura por seleccion para props v0. |
+| `data/processed/player_season_stats.parquet` | `python -m src.data.normalize_fbref` | Tabla comun player-season normalizada desde FBref/soccerdata. |
+| `data/processed/player_season_stats.csv` | `python -m src.data.normalize_fbref` | Copia CSV revisable de la tabla player-season FBref. |
+| `data/processed/fbref_player_features_wc2026.csv` | `python -m src.data.fbref_player_features` | Features FBref por convocado para tiros, SoT, tackles, faltas, tarjetas y porteros. |
+| `data/processed/fbref_player_match_review.csv` | `python -m src.data.fbref_player_features` | Filas FBref sin matching conservador a `player_key`. |
+| `data/processed/fbref_player_feature_summary.csv` | `python -m src.data.fbref_player_features` | Cobertura FBref por seleccion. |
+| `data/processed/player_expected_minutes_wc2026.csv` | `python -m src.evaluation.player_minutes_projection` | Minutos esperados por jugador-partido, con base automatica y overrides manuales aplicados. |
 | `data/processed/team_ratings_wc2026.csv` | `python -m src.data.team_rating_wc2026` | Rating compuesto para WC2026. |
 | `data/processed/referees_with_stats.csv` | `src.features.referee_rates` / carga manual | Tasas de arbitros usadas por features. |
 | `data/processed/name_coverage.csv` | `python scripts/check_name_coverage.py` | Reporte de cobertura de nombres canonicos. |
@@ -58,6 +67,9 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `outputs/wc2026_btts_radar_candidates.csv` | Candidatos radar BTTS si aparecen cuotas suficientes, sin stake real. |
 | `outputs/wc2026_market_availability.csv` | Disponibilidad local por mercado: probabilidades, odds, EV, tracker y accion recomendada. |
 | `outputs/wc2026_market_availability_summary.csv` | Resumen por estado operativo de disponibilidad. |
+| `outputs/wc2026_player_prop_radar.csv` | Radar de props de jugador sin odds, stake ni lineups confirmadas. |
+| `outputs/wc2026_player_prop_radar_summary.csv` | Resumen por mercado/linea/calidad de dato del radar player props. |
+| `outputs/wc2026_player_minutes_projection_summary.csv` | Resumen de minutos esperados por fuente, estado de alineacion y overrides. |
 
 ## Ignorados
 
@@ -66,6 +78,7 @@ Estos archivos son pesados, regenerables o dependen de snapshots/API.
 | Patron | Motivo |
 |---|---|
 | `data/raw/*` salvo whitelisted WC2026 | Datos crudos externos o descargables. |
+| `data/raw/fbref/player_season/*` | Crudos FBref/soccerdata, regenerables y sujetos a rate limits/cache local. |
 | `data/raw/international_match_stats.csv` | Generado por StatsBomb collector. |
 | `data/results.csv`, `data/results_raw.csv` | Histórico externo descargable. |
 | `data/unified.csv` | Generado por `data_collector.py`. |
@@ -90,6 +103,12 @@ python -m src.data.normalize_squads
 python -m src.data.elo_loader
 python -m src.data.team_rating_wc2026
 python -m src.data.player_stats_aggregator
+python -m src.data.player_prop_features
+# Opcional, solo cuando se quiera refrescar FBref:
+python -m src.data.fbref_probe_leagues --leagues "USA-Major League Soccer" "NED-Eredivisie" "POR-Primeira Liga"
+python -m src.data.fbref_collector
+python -m src.data.normalize_fbref
+python -m src.data.fbref_player_features
 python -m src.data.builder
 python -m src.features.feature_engineering
 python -m src.models.xgboost_model --markets result_1x2,over25,btts,total_goals,corners
@@ -104,4 +123,35 @@ python -m src.evaluation.total_goals_backtest
 python -m src.evaluation.btts_readiness
 python -m src.evaluation.market_availability
 python -m src.evaluation.paper_tracker
+python -m src.evaluation.player_minutes_projection
+python -m src.evaluation.player_prop_radar
+```
+
+## FBref Seguro
+
+Antes de scrapear una liga nueva, comprobar que `soccerdata` reconoce el nombre:
+
+```bash
+python -m src.data.fbref_probe_leagues \
+  --leagues "USA-Major League Soccer" "NED-Eredivisie" "POR-Primeira Liga"
+```
+
+Las ligas con temporada europea usan `2025-26`; MLS va por año natural y debe
+probarse con `2026`. Para pruebas pequeñas, usar un directorio temporal y
+`--no-overwrite`:
+
+```bash
+python -m src.data.fbref_collector \
+  --leagues "NED-Eredivisie" \
+  --seasons 2025-26 \
+  --stat-types standard \
+  --output-dir data/raw/fbref_probe \
+  --no-overwrite
+
+python -m src.data.fbref_collector \
+  --leagues "USA-Major League Soccer" \
+  --seasons 2026 \
+  --stat-types standard \
+  --output-dir data/raw/fbref_probe \
+  --no-overwrite
 ```

@@ -1,0 +1,5 @@
+minutes_source,lineup_status,rows,players,matches,avg_expected_minutes,avg_start_probability,avg_confidence,manual_overrides
+auto_role_rank_heuristic,bench_option,927,309,72,16.4,0.087,0.377,0
+auto_role_rank_heuristic,locked_starter,387,129,62,62.0,0.828,0.688,0
+auto_role_rank_heuristic,probable_starter,1320,440,72,50.8,0.644,0.677,0
+auto_role_rank_heuristic,rotation,1110,370,72,32.7,0.299,0.572,0

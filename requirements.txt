@@ -12,3 +12,5 @@ lxml>=4.9
 pypdf>=5.0
 torch>=2.0
 tqdm>=4.65
+pyarrow>=15.0
+soccerdata>=1.8

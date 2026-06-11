@@ -53,6 +53,10 @@
 /data/unified.csv
 /data/statsbomb_matches.csv
 
+# Cache local de soccerdata/FBref
+/downloaded_files/
+/.soccerdata/
+
 # Outputs del modelo — SÍ subir para que Dani los vea
 !/outputs/
 !/outputs/wc2026_predictions.csv

@@ -23,6 +23,7 @@ from src.evaluation.multi_market_shortlist import confidence_rank, reliability_r
 
 
 DEFAULT_METRICS = "outputs/xgb_baseline_metrics.json"
+DEFAULT_BTTS_WEIGHTS = "outputs/btts_weight_params.json"
 DEFAULT_CALIBRATION = "outputs/calibration_metrics.json"
 DEFAULT_RADAR = "outputs/wc2026_market_probabilities.csv"
 DEFAULT_ODDS = "data/processed/odds_current_worldcup_flat.csv"
@@ -61,6 +62,7 @@ def _count_market_rows(path: str, market_col: str, market_values: set[str]) -> i
 
 def build_btts_readiness(
     metrics_path: str = DEFAULT_METRICS,
+    btts_weights_path: str = DEFAULT_BTTS_WEIGHTS,
     calibration_path: str = DEFAULT_CALIBRATION,
     radar_path: str = DEFAULT_RADAR,
     odds_path: str = DEFAULT_ODDS,
@@ -72,6 +74,10 @@ def build_btts_readiness(
     max_min_odds_ev10: float = 2.50,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     metrics = _find_record(_read_json_records(metrics_path), target_col="target_btts")
+    btts_weights = _read_json_records(btts_weights_path)
+    btts_weight_metrics = btts_weights[0].get("metrics", {}) if btts_weights else {}
+    optimized_blend = btts_weight_metrics.get("optimized_blend", {})
+    xgb_only = btts_weight_metrics.get("xgb_only", {})
     calibration = _find_record(_read_json_records(calibration_path), market_contains="BTTS")
 
     radar = pd.read_csv(radar_path) if os.path.exists(radar_path) else pd.DataFrame()
@@ -115,6 +121,15 @@ def build_btts_readiness(
         "xgb_log_loss": metrics.get("log_loss"),
         "xgb_pred_mean": metrics.get("pred_mean"),
         "actual_mean": metrics.get("actual_mean"),
+        "optimized_blend_auc": optimized_blend.get("auc"),
+        "optimized_blend_brier": optimized_blend.get("brier"),
+        "optimized_blend_log_loss": optimized_blend.get("log_loss"),
+        "optimized_blend_pred_mean": optimized_blend.get("pred_mean"),
+        "btts_log_loss_delta": (
+            round(float(optimized_blend["log_loss"]) - float(xgb_only["log_loss"]), 6)
+            if optimized_blend.get("log_loss") is not None and xgb_only.get("log_loss") is not None
+            else None
+        ),
         "calibration_ece": calibration.get("ece"),
         "calibration_brier": calibration.get("brier"),
         "radar_rows": len(btts_radar),
@@ -137,6 +152,7 @@ def build_btts_readiness(
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Build BTTS readiness report without calling any API.")
     parser.add_argument("--metrics", default=DEFAULT_METRICS)
+    parser.add_argument("--btts-weights", default=DEFAULT_BTTS_WEIGHTS)
     parser.add_argument("--calibration", default=DEFAULT_CALIBRATION)
     parser.add_argument("--radar", default=DEFAULT_RADAR)
     parser.add_argument("--odds", default=DEFAULT_ODDS)
@@ -153,6 +169,7 @@ def main() -> None:
     args = build_arg_parser().parse_args()
     summary, candidates = build_btts_readiness(
         metrics_path=args.metrics,
+        btts_weights_path=args.btts_weights,
         calibration_path=args.calibration,
         radar_path=args.radar,
         odds_path=args.odds,

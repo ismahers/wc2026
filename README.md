@@ -20,6 +20,9 @@ wc2026/
 │   │   ├── player_latest_market_value.csv  # Valor de mercado más reciente
 │   │   └── player_national_performances.csv  # Stats en selección
 │   │   # player_performances.csv (157MB) — descargar manualmente, no está en Git
+│   ├── raw/fbref/player_season/      # Crudos FBref/soccerdata (Parquet, no subir)
+│   ├── manual/                       # Overrides manuales auditables
+│   │   └── player_expected_minutes_overrides_wc2026.csv
 │   └── processed/                   # Generados por los scripts
 │       ├── players_master.csv       # Claves internas estables de jugadores
 │       ├── player_source_matches.csv # Puente FBref/Transfermarkt/StatsBomb
@@ -27,6 +30,10 @@ wc2026/
 │       ├── transfermarkt_match_review.csv # Casos para revisión manual
 │       ├── team_ratings_wc2026.csv  # Rating compuesto por selección (Elo+mercado+racha)
 │       ├── team_player_stats_wc2026.csv  # Stats de jugadores agregadas por selección
+│       ├── player_prop_features_wc2026.csv # Features Transfermarkt por jugador
+│       ├── player_season_stats.parquet # Tabla común player-season FBref
+│       ├── fbref_player_features_wc2026.csv # Features FBref por convocado
+│       ├── player_expected_minutes_wc2026.csv # Minutos esperados por jugador-partido
 │       ├── players_wc2026.csv       # Jugadores normalizados
 │       ├── teams_wc2026.csv         # Selecciones normalizadas
 │       ├── squad_summary_wc2026.csv # Resumen de convocatorias
@@ -38,6 +45,10 @@ wc2026/
 │   │   ├── elo_loader.py            # Calcula Elo histórico desde resultados
 │   │   ├── team_rating_wc2026.py    # Rating compuesto WC2026 (Elo+mercado+racha)
 │   │   ├── player_stats_aggregator.py  # Agrega stats de jugadores por selección
+│   │   ├── player_prop_features.py  # Features Transfermarkt a nivel jugador
+│   │   ├── fbref_collector.py       # Descarga FBref player-season vía soccerdata
+│   │   ├── normalize_fbref.py       # Normaliza FBref a player_season_stats
+│   │   ├── fbref_player_features.py # Cruza FBref con convocados WC2026
 │   │   ├── normalize_squads.py      # Normaliza convocatorias oficiales
 │   │   ├── team_names.py            # Canonización de nombres de selección
 │   │   └── schemas.py               # Contratos de tablas normalizadas
@@ -52,7 +63,9 @@ wc2026/
 │       ├── betting.py               # Cálculo de VE y ROI
 │       ├── odds_converter.py        # Convierte probabilidades a cuotas decimales
 │       ├── model_comparison.py      # Compara XGBoost vs Poisson con nivel de confianza
-│       └── model_ensemble.py        # Combina XGBoost+Poisson en una cuota final
+│       ├── model_ensemble.py        # Combina XGBoost+Poisson en una cuota final
+│       ├── player_minutes_projection.py # Minutos esperados + overrides manuales
+│       └── player_prop_radar.py     # Radar de props de jugador sin stake real
 │
 ├── outputs/                         # Predicciones y métricas (subidas a Git)
 │   ├── wc2026_predictions.csv       # Predicciones XGBoost (prob + cuotas)
@@ -100,6 +113,18 @@ python -m src.data.team_rating_wc2026
 #                    data/transfermarkt/player_national_performances.csv
 python -m src.data.player_stats_aggregator
 
+# 4b. Construir features individuales Transfermarkt para props v0
+python -m src.data.player_prop_features
+
+# 4c. Opcional: capa gratuita FBref player-season para props finos
+#     Ojo: hace scraping a FBref; respetar rate limits y cache de soccerdata.
+python -m src.data.fbref_probe_leagues \
+  --leagues "USA-Major League Soccer" "NED-Eredivisie" "POR-Primeira Liga"
+
+python -m src.data.fbref_collector
+python -m src.data.normalize_fbref
+python -m src.data.fbref_player_features
+
 # 5. Construir dataset enriquecido
 python -m src.data.builder wc2026
 
@@ -124,7 +149,16 @@ python -m src.evaluation.model_comparison
 
 # 10. Generar predicción final combinada
 python -m src.evaluation.model_ensemble
+
+# 11. Generar radar de props de jugador sin odds ni stake real
+python -m src.evaluation.player_minutes_projection
+python -m src.evaluation.player_prop_radar
 ```
+
+El archivo `data/manual/player_expected_minutes_overrides_wc2026.csv` es la capa
+editable para alineaciones probables, bajas y titulares confirmados. Después de
+tocarlo, regenerar primero `player_minutes_projection` y luego `player_prop_radar`.
+Guía práctica: `docs/player_minutes_overrides_guide.md`.
 
 La política completa de CSVs versionados e ignorados está en
 `docs/data_inventory.md`.

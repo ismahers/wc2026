@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import differential_evolution
 from sklearn.isotonic import IsotonicRegression
-from sklearn.metrics import accuracy_score, log_loss
+from sklearn.metrics import accuracy_score, brier_score_loss, log_loss, roc_auc_score
 
 
 ONE_X_TWO = ("H", "D", "A")
@@ -36,6 +36,7 @@ PROB_MARKETS = {
     "btts": "prob_btts",
 }
 DEFAULT_WEIGHT_CONFIG = "outputs/ensemble_weight_params.json"
+DEFAULT_BTTS_WEIGHT_CONFIG = "outputs/btts_weight_params.json"
 DEFAULT_CALIBRATION_CONFIG = "outputs/ensemble_calibration.json"
 
 
@@ -93,12 +94,14 @@ def save_weight_params(
     params: EnsembleWeightParams,
     metrics: dict,
     output_path: str = DEFAULT_WEIGHT_CONFIG,
+    *,
+    objective: str = "1x2_log_loss",
 ) -> None:
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     payload = {
         "params": asdict(params),
         "metrics": metrics,
-        "objective": "1x2_log_loss",
+        "objective": objective,
         "validation_window": {
             "train": "date.year < train_cutoff",
             "validation": "train_cutoff <= date.year < val_cutoff",
@@ -444,6 +447,176 @@ def optimize_ensemble_weights(
     return params, metrics, validation
 
 
+def _binary_metrics(labels: pd.Series | np.ndarray, probs: np.ndarray) -> dict:
+    labels = np.asarray(labels, dtype=int)
+    probs = np.asarray(probs, dtype=float)
+    probs = np.clip(probs, 1e-6, 1.0 - 1e-6)
+    preds = probs >= 0.5
+    return {
+        "log_loss": round(float(log_loss(labels, probs)), 6),
+        "brier": round(float(brier_score_loss(labels, probs)), 6),
+        "auc": round(float(roc_auc_score(labels, probs)), 6),
+        "accuracy": round(float(accuracy_score(labels, preds)), 6),
+        "pred_mean": round(float(probs.mean()), 6),
+        "actual_mean": round(float(labels.mean()), 6),
+    }
+
+
+def _blend_binary_validation_probs(
+    df: pd.DataFrame,
+    params: EnsembleWeightParams,
+    *,
+    xgb_col: str,
+    poisson_col: str,
+) -> np.ndarray:
+    weights, _ = _weight_vector(df, params)
+    xgb_probs = df[xgb_col].to_numpy(dtype=float)
+    poisson_probs = df[poisson_col].to_numpy(dtype=float)
+    probs = (1.0 - weights) * xgb_probs + weights * poisson_probs
+    return np.clip(probs, 1e-6, 1.0 - 1e-6)
+
+
+def _build_btts_validation_predictions(
+    features_path: str,
+    *,
+    train_cutoff: int = 2018,
+    val_cutoff: int = 2023,
+    use_dixon_coles: bool = True,
+) -> pd.DataFrame:
+    """Train validation-only XGB BTTS and Poisson models for BTTS blend tuning."""
+    from src.models.poisson_model import PoissonGoalModel, _add_goal_targets
+    from src.models.xgb_baseline import MARKETS, MarketModel
+
+    df = pd.read_csv(features_path, parse_dates=["date"])
+    df = _add_goal_targets(df)
+    df["date"] = pd.to_datetime(df["date"], errors="coerce")
+    df = df.sort_values("date").reset_index(drop=True)
+
+    train = df[df["date"].dt.year < train_cutoff].copy()
+    val = df[
+        (df["date"].dt.year >= train_cutoff)
+        & (df["date"].dt.year < val_cutoff)
+        & df["target_btts"].notna()
+        & df["target_home_goals"].notna()
+        & df["target_away_goals"].notna()
+    ].copy()
+
+    if train.empty or val.empty:
+        raise ValueError("No hay datos suficientes para optimizar pesos BTTS.")
+
+    btts_model = MarketModel(MARKETS["btts"]).fit(train[train["target_btts"].notna()].copy())
+    xgb_probs = btts_model.predict_proba(val)[:, 1]
+
+    poisson_model = PoissonGoalModel().fit(train)
+    if use_dixon_coles:
+        poisson_model.fit_dixon_coles_rho(train)
+    poisson_preds = poisson_model.predict_markets(val)
+
+    out = val[[
+        "date", "home_team", "away_team", "target_btts",
+        "rating_diff", "elo_diff",
+    ]].copy()
+    out["xgb_prob_btts"] = xgb_probs
+    out["poisson_prob_btts"] = poisson_preds["prob_btts"].to_numpy(dtype=float)
+    out["dixon_coles_rho"] = poisson_model.dixon_coles_rho
+    return out.reset_index(drop=True)
+
+
+def optimize_btts_weights(
+    features_path: str = "data/processed/features_train.csv",
+    output_path: str = DEFAULT_BTTS_WEIGHT_CONFIG,
+    *,
+    train_cutoff: int = 2018,
+    val_cutoff: int = 2023,
+    maxiter: int = 80,
+) -> tuple[EnsembleWeightParams, dict, pd.DataFrame]:
+    """Optimize the XGB/Poisson weight curve specifically for BTTS log-loss."""
+    validation = _build_btts_validation_predictions(
+        features_path,
+        train_cutoff=train_cutoff,
+        val_cutoff=val_cutoff,
+        use_dixon_coles=True,
+    )
+    labels = validation["target_btts"].astype(int).to_numpy()
+    xgb_probs = validation["xgb_prob_btts"].to_numpy(dtype=float)
+    poisson_probs = validation["poisson_prob_btts"].to_numpy(dtype=float)
+
+    def objective(values: np.ndarray) -> float:
+        close_rating, strong_rating, min_weight, max_weight = map(float, values)
+        if strong_rating <= close_rating + 0.02 or max_weight < min_weight:
+            return 10.0 + abs(strong_rating - close_rating) + abs(max_weight - min_weight)
+        params = EnsembleWeightParams(close_rating, strong_rating, min_weight, max_weight)
+        probs = _blend_binary_validation_probs(
+            validation,
+            params,
+            xgb_col="xgb_prob_btts",
+            poisson_col="poisson_prob_btts",
+        )
+        return float(log_loss(labels, probs))
+
+    bounds = [
+        (0.02, 0.35),  # close_rating
+        (0.20, 1.00),  # strong_rating
+        (0.00, 0.80),  # min_weight
+        (0.05, 1.00),  # max_weight
+    ]
+    result = differential_evolution(
+        objective,
+        bounds=bounds,
+        seed=43,
+        maxiter=maxiter,
+        popsize=12,
+        tol=1e-5,
+        polish=True,
+        updating="immediate",
+        workers=1,
+    )
+    close_rating, strong_rating, min_weight, max_weight = map(float, result.x)
+    if strong_rating <= close_rating + 0.02 or max_weight < min_weight:
+        params = DEFAULT_WEIGHT_PARAMS
+    else:
+        params = EnsembleWeightParams(
+            close_rating=round(close_rating, 6),
+            strong_rating=round(strong_rating, 6),
+            min_weight=round(min_weight, 6),
+            max_weight=round(max_weight, 6),
+        )
+
+    default_probs = _blend_binary_validation_probs(
+        validation,
+        DEFAULT_WEIGHT_PARAMS,
+        xgb_col="xgb_prob_btts",
+        poisson_col="poisson_prob_btts",
+    )
+    optimized_probs = _blend_binary_validation_probs(
+        validation,
+        params,
+        xgb_col="xgb_prob_btts",
+        poisson_col="poisson_prob_btts",
+    )
+    weights, strength = _weight_vector(validation, params)
+    metrics = {
+        "n_validation": int(len(validation)),
+        "train_cutoff": int(train_cutoff),
+        "val_cutoff": int(val_cutoff),
+        "dixon_coles_rho": round(float(validation["dixon_coles_rho"].iloc[0]), 6),
+        "xgb_only": _binary_metrics(labels, xgb_probs),
+        "poisson_only": _binary_metrics(labels, poisson_probs),
+        "default_blend": _binary_metrics(labels, default_probs),
+        "optimized_blend": _binary_metrics(labels, optimized_probs),
+        "optimizer_success": bool(result.success),
+        "optimizer_fun": round(float(result.fun), 6),
+        "optimized_weight_summary": {
+            "mean_poisson_weight": round(float(weights.mean()), 6),
+            "min_poisson_weight": round(float(weights.min()), 6),
+            "max_poisson_weight": round(float(weights.max()), 6),
+            "mean_strength": round(float(np.mean(strength)), 6),
+        },
+    }
+    save_weight_params(params, metrics, output_path, objective="btts_log_loss")
+    return params, metrics, validation
+
+
 def _read_predictions(xgb_path: str, poisson_path: str, features_path: str) -> pd.DataFrame:
     xgb = pd.read_csv(xgb_path)
     poisson = pd.read_csv(poisson_path)
@@ -478,8 +651,10 @@ def build_ensemble_predictions(
     features_path: str = "data/processed/features_wc2026.csv",
     output_path: str = "outputs/wc2026_ensemble_predictions.csv",
     weight_config_path: str = DEFAULT_WEIGHT_CONFIG,
+    btts_weight_config_path: str = DEFAULT_BTTS_WEIGHT_CONFIG,
     calibration_config_path: str = DEFAULT_CALIBRATION_CONFIG,
     weight_params: EnsembleWeightParams | None = None,
+    btts_weight_params: EnsembleWeightParams | None = None,
     calibration_payload: dict | None = None,
     apply_calibration: bool = False,
 ) -> pd.DataFrame:
@@ -492,6 +667,14 @@ def build_ensemble_predictions(
     else:
         weight_source = "argument"
 
+    if btts_weight_params is None:
+        btts_weight_params, btts_weight_source = load_weight_params(btts_weight_config_path)
+        if btts_weight_source == "default":
+            btts_weight_params = weight_params
+            btts_weight_source = weight_source
+    else:
+        btts_weight_source = "argument"
+
     if calibration_payload is None and apply_calibration:
         calibration_payload = load_calibration_config(calibration_config_path)
 
@@ -501,6 +684,11 @@ def build_ensemble_predictions(
             row.get("rating_diff"),
             row.get("elo_diff"),
             params=weight_params,
+        )
+        btts_poisson_w, _, _ = _poisson_weight(
+            row.get("rating_diff"),
+            row.get("elo_diff"),
+            params=btts_weight_params,
         )
         xgb_w = round(1.0 - poisson_w, 4)
 
@@ -519,6 +707,12 @@ def build_ensemble_predictions(
             "weight_strong_rating": weight_params.strong_rating,
             "weight_min_poisson": weight_params.min_weight,
             "weight_max_poisson": weight_params.max_weight,
+            "btts_poisson_weight": btts_poisson_w,
+            "btts_weight_source": btts_weight_source,
+            "btts_weight_close_rating": btts_weight_params.close_rating,
+            "btts_weight_strong_rating": btts_weight_params.strong_rating,
+            "btts_weight_min_poisson": btts_weight_params.min_weight,
+            "btts_weight_max_poisson": btts_weight_params.max_weight,
             "lambda_home": row.get("lambda_home"),
             "lambda_away": row.get("lambda_away"),
             "dixon_coles_rho": row.get("dixon_coles_rho"),
@@ -560,7 +754,8 @@ def build_ensemble_predictions(
         for market, prob_col in PROB_MARKETS.items():
             xgb_prob = row.get(f"{prob_col}_xgb")
             poi_prob = row.get(f"{prob_col}_poisson")
-            final = _weighted_prob(xgb_prob, poi_prob, poisson_w)
+            market_poisson_w = btts_poisson_w if market == "btts" else poisson_w
+            final = _weighted_prob(xgb_prob, poi_prob, market_poisson_w)
             diff, conf = _confidence_from_probs(_safe_prob(xgb_prob), _safe_prob(poi_prob))
 
             entry[f"xgb_{prob_col}"] = round(_safe_prob(xgb_prob), 4)
@@ -679,8 +874,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--features", default="data/processed/features_wc2026.csv")
     parser.add_argument("--output", default="outputs/wc2026_ensemble_predictions.csv")
     parser.add_argument("--weight-config", default=DEFAULT_WEIGHT_CONFIG)
+    parser.add_argument("--btts-weight-config", default=DEFAULT_BTTS_WEIGHT_CONFIG)
     parser.add_argument("--calibration-config", default=DEFAULT_CALIBRATION_CONFIG)
     parser.add_argument("--optimize-weights", action="store_true")
+    parser.add_argument("--optimize-btts-weights", action="store_true")
     parser.add_argument("--fit-calibration", action="store_true")
     parser.add_argument(
         "--apply-calibration",
@@ -702,7 +899,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
 def main() -> None:
     args = build_arg_parser().parse_args()
     optimized_params = None
+    optimized_btts_params = None
     weight_params_for_build = None
+    btts_weight_params_for_build = None
     validation_predictions = None
     if args.optimize_weights:
         for path in [args.optimization_features]:
@@ -718,6 +917,21 @@ def main() -> None:
         print(f"Pesos optimizados guardados en {args.weight_config}")
         print(json.dumps({"params": asdict(optimized_params), "metrics": metrics}, indent=2))
         weight_params_for_build = optimized_params
+
+    if args.optimize_btts_weights:
+        for path in [args.optimization_features]:
+            if not os.path.exists(path):
+                raise FileNotFoundError(path)
+        optimized_btts_params, btts_metrics, _ = optimize_btts_weights(
+            args.optimization_features,
+            args.btts_weight_config,
+            train_cutoff=args.train_cutoff,
+            val_cutoff=args.val_cutoff,
+            maxiter=args.optimizer_maxiter,
+        )
+        print(f"Pesos BTTS optimizados guardados en {args.btts_weight_config}")
+        print(json.dumps({"params": asdict(optimized_btts_params), "metrics": btts_metrics}, indent=2))
+        btts_weight_params_for_build = optimized_btts_params
 
     calibration_weight_params = optimized_params
     if calibration_weight_params is None:
@@ -749,8 +963,10 @@ def main() -> None:
         args.features,
         args.output,
         weight_config_path=args.weight_config,
+        btts_weight_config_path=args.btts_weight_config,
         calibration_config_path=args.calibration_config,
         weight_params=weight_params_for_build,
+        btts_weight_params=btts_weight_params_for_build,
         calibration_payload=calibration_payload,
         apply_calibration=args.apply_calibration and not args.no_calibration,
     )
