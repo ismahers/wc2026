@@ -142,6 +142,16 @@ tr:last-child td{border-bottom:none}
 .sig-use{background:transparent;border:1px solid var(--b2);border-radius:var(--rs);color:var(--ac-2);font-family:var(--mono);font-size:11px;padding:4px 10px;cursor:pointer;transition:border-color .15s}
 .sig-use:hover{border-color:var(--ac)}
 .sig-meta{font-size:11px;color:var(--hi);margin-top:12px}
+.prop-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start;padding:12px 0;border-bottom:1px solid var(--b1)}
+.prop-row:last-child{border-bottom:none}
+.prop-main{min-width:0}
+.prop-title{font-size:13px;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prop-sub{font-size:11px;color:var(--mu);margin-top:4px;line-height:1.45}
+.prop-odds{text-align:right;font-size:11px;color:var(--mu);min-width:82px}
+.prop-odds strong{display:block;color:var(--tx);font-size:16px;margin-bottom:2px}
+.prop-rule{display:inline-block;margin-top:7px;font-size:10px;letter-spacing:0.04em;padding:3px 7px;border-radius:5px;background:var(--am-bg);color:var(--am)}
+.prop-rule.ok{background:var(--gr-bg);color:var(--gr)}
+.prop-rule.paper{background:var(--s3);color:var(--mu)}
 .edge-hint{font-size:12px;border:1px solid var(--b2);border-radius:var(--rs);padding:10px 12px;margin-bottom:12px;background:var(--s2);line-height:1.5}
 .edge-hint.good{border-color:rgba(98,207,168,0.35);color:var(--gr);background:var(--gr-bg)}
 .edge-hint.bad{border-color:rgba(242,154,154,0.35);color:var(--rd);background:var(--rd-bg)}
@@ -187,6 +197,8 @@ tr:last-child td{border-bottom:none}
   td>span,td>select,td>button{text-align:right}
   .res-sel{max-width:140px}
   .del-btn{margin-left:auto}
+  .prop-row{grid-template-columns:1fr}
+  .prop-odds{text-align:left}
 }
 @media(max-width:380px){
   .metrics{grid-template-columns:repeat(2,1fr)}
@@ -271,6 +283,24 @@ tr:last-child td{border-bottom:none}
         <div id="sig-emp" class="empty">Sin señales. Corre el pipeline y pulsa Actualizar.</div>
       </div>
       <div class="sig-meta" id="sig-meta"></div>
+      </div>
+    </div>
+    <div class="card collapsible" id="card-player-props">
+      <button class="card-head" type="button" onclick="toggleCard('card-player-props')" aria-expanded="true">
+        <span class="card-title" style="margin:0">Props móvil<span class="ct-count" id="prop-count"></span></span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="card-body">
+        <div class="table-header" style="justify-content:flex-end">
+          <div class="filters">
+            <select id="fprop-match" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todos los partidos</option></select>
+            <select id="fprop-action" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todas</option><option value="manual_review_if_odds_available">Revisión</option><option value="radar_watch">Watchlist</option><option value="longshot_manual_only">Cuota alta</option><option value="card_radar_watch">Amarillas</option></select>
+            <button class="btn-add btn-ghost" style="padding:6px 12px;font-size:11px" onclick="loadPlayerProps()">Actualizar</button>
+          </div>
+        </div>
+        <div id="prop-list"></div>
+        <div id="prop-emp" class="empty">Sin props. Sube el radar de jugador y pulsa Actualizar.</div>
+        <div class="sig-meta" id="prop-meta">Uso móvil: mirar titularidad y comparar cuota real con Min revisión.</div>
       </div>
     </div>
     <div class="card">
@@ -580,6 +610,7 @@ function showApp(email) {
   initCollapsibles();
   loadBets();
   loadSignals();
+  loadPlayerProps();
   loadRadar();
 }
 
@@ -928,6 +959,105 @@ function updateEdgeHint() {
 
 ['fp', 'fc'].forEach(id => document.getElementById(id).addEventListener('input', updateEdgeHint));
 document.getElementById('fm').addEventListener('change', updateEdgeHint);
+
+
+/* ============================================================
+   PROPS MOVIL (player_prop_radar subido a Supabase)
+   Subida por: python -m src.evaluation.player_prop_radar_push
+   ============================================================ */
+let playerProps = [];
+
+const PROP_ACTION_LABEL = {
+  manual_review_if_odds_available: 'REVISAR',
+  radar_watch: 'WATCH',
+  card_radar_watch: 'AMARILLA',
+  longshot_manual_only: 'CUOTA ALTA',
+  low_confidence_review: 'PAPER'
+};
+
+function propBool(v) {
+  return v === true || v === 'true' || v === 1 || v === '1';
+}
+
+function propRuleClass(p) {
+  const action = String(p.tracking_action || '');
+  const status = String(p.lineup_status || '');
+  if (action === 'manual_review_if_odds_available' && ['locked_starter','probable_starter','confirmed_starter'].includes(status)) return 'ok';
+  if (action === 'low_confidence_review' || !propBool(p.paper_tracking_allowed)) return 'paper';
+  return '';
+}
+
+async function loadPlayerProps() {
+  let all = [];
+  for (let off = 0; ; off += 1000) {
+    const r = await sbFetch('/rest/v1/player_prop_radar?select=*&order=match_number.asc,min_odds_review.asc&limit=1000&offset=' + off);
+    if (!r.ok) {
+      document.getElementById('prop-emp').textContent = 'No se pudieron cargar props (¿tabla player_prop_radar creada?).';
+      document.getElementById('prop-emp').style.display = 'block';
+      return;
+    }
+    const chunk = Array.isArray(r.data) ? r.data : [];
+    all = all.concat(chunk);
+    if (chunk.length < 1000) break;
+  }
+  playerProps = all;
+  renderPlayerProps();
+}
+
+function renderPlayerProps() {
+  const pc = document.getElementById('prop-count');
+  if (pc) pc.textContent = playerProps.length ? playerProps.length : '';
+
+  const matchEl = document.getElementById('fprop-match');
+  const prevM = matchEl.value;
+  const matches = [...new Set(playerProps.map(p => p.home_team + ' vs ' + p.away_team))].sort();
+  matchEl.innerHTML = '<option value="">Todos los partidos</option>' + matches.map(m => `<option value="${esc(m)}"${m===prevM?' selected':''}>${esc(m)}</option>`).join('');
+
+  const fm = matchEl.value;
+  const fa = document.getElementById('fprop-action').value;
+  const vis = playerProps
+    .filter(p => (!fm || (p.home_team + ' vs ' + p.away_team) === fm) && (!fa || p.tracking_action === fa))
+    .slice(0, 80);
+
+  const list = document.getElementById('prop-list');
+  const emp = document.getElementById('prop-emp');
+  const meta = document.getElementById('prop-meta');
+  if (!vis.length) {
+    list.innerHTML = '';
+    emp.style.display = 'block';
+    emp.textContent = playerProps.length ? 'Sin props en este filtro.' : 'Sin props. Sube el radar de jugador y pulsa Actualizar.';
+    meta.textContent = '';
+    return;
+  }
+  emp.style.display = 'none';
+
+  list.innerHTML = vis.map(p => {
+    const partido = esc(p.home_team + ' vs ' + p.away_team);
+    const prob = p.model_probability != null ? (parseFloat(p.model_probability) * 100).toFixed(1) + '%' : '—';
+    const fair = p.fair_odds != null ? parseFloat(p.fair_odds).toFixed(2) : '—';
+    const min = p.min_odds_review != null ? parseFloat(p.min_odds_review).toFixed(2) : '—';
+    const mins = p.expected_minutes != null ? parseFloat(p.expected_minutes).toFixed(0) + ' min' : '—';
+    const label = PROP_ACTION_LABEL[p.tracking_action] || (p.tracking_action || 'PROP');
+    const ruleCls = propRuleClass(p);
+    return '<div class="prop-row">' +
+      '<div class="prop-main">' +
+        '<div class="prop-title">' + esc(p.player_name) + ' · ' + esc(p.market_label) + '</div>' +
+        '<div class="prop-sub">' + partido + ' · ' + esc(p.team) + ' · ' + esc(p.data_quality_tier || '—') + ' · ' + mins + ' · prob ' + prob + '</div>' +
+        '<span class="prop-rule ' + ruleCls + '">' + esc(p.lineup_rule || 'revisar alineacion') + '</span> ' +
+        '<span class="sig-badge sig-paper">' + esc(label) + '</span>' +
+        '<div class="prop-sub">' + esc(p.mobile_action || '') + '</div>' +
+      '</div>' +
+      '<div class="prop-odds">' +
+        '<strong>' + min + '</strong>' +
+        'Min rev.<br>Justa ' + fair +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  const last = playerProps.reduce((m, p) => (p.updated_at && p.updated_at > m ? p.updated_at : m), '');
+  meta.textContent = (playerProps.length + ' props cargadas. Mostrando ' + vis.length + '.') +
+    (last ? (' Ultima actualizacion: ' + new Date(last).toLocaleString('es-ES')) : '');
+}
 
 
 /* ============================================================
