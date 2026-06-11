@@ -63,6 +63,12 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `outputs/backtest2022_total_goals_v2.csv` | Backtest dedicado de Over/Under 2.5. |
 | `outputs/backtest2022_total_goals_v2_summary.csv` | Resumen de ROI del backtest de Over/Under 2.5. |
 | `outputs/backtest2022_total_goals_v2_grid.csv` | Sensibilidad por umbrales EV para Over/Under 2.5. |
+| `outputs/backtest2022_strategy_summary.csv` | Diagnostico ampliado del backtest ensemble: ROI, hit-rate CI95 y drawdown. |
+| `outputs/backtest2022_strategy_grid.csv` | Grid de sensibilidad EV/cuota para el backtest ensemble. |
+| `outputs/backtest2022_strategy_filtered_bets.csv` | Filas del backtest ensemble con razones de filtro y profit de estrategia. |
+| `outputs/backtest2022_legacy_strategy_summary.csv` | Diagnostico equivalente sobre el backtest legacy. |
+| `outputs/backtest2022_legacy_strategy_grid.csv` | Grid de sensibilidad legacy para comparar con el resultado historico +53%. |
+| `outputs/backtest2022_legacy_strategy_filtered_bets.csv` | Filas filtradas legacy con razones y profit de estrategia. |
 | `outputs/btts_readiness_summary.csv` | Semaforo BTTS: estado del modelo, cobertura de cuotas y decision operativa. |
 | `outputs/wc2026_btts_radar_candidates.csv` | Candidatos radar BTTS si aparecen cuotas suficientes, sin stake real. |
 | `outputs/wc2026_market_availability.csv` | Disponibilidad local por mercado: probabilidades, odds, EV, tracker y accion recomendada. |

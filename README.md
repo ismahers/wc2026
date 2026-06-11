@@ -287,13 +287,32 @@ Comando reproducible sin gastar créditos de API:
 python -m src.evaluation.value_filters
 ```
 
-Resultado con `outputs/backtest2022_bets.csv`:
+Lectura legacy con `outputs/backtest2022_bets.csv` y cuotas ya guardadas:
 
 | Segmento | Apuestas | Acierto | Beneficio | ROI |
 |---|---:|---:|---:|---:|
 | Total | 28 | 42.86% | +15.06u | +53.79% |
 | 1X2-A | 12 | 33.33% | +7.58u | +63.17% |
 | 1X2-H | 16 | 50.00% | +7.48u | +46.75% |
+
+Ese resultado es util como diagnostico, pero no como prueba estadistica:
+depende del modelo legacy y de permitir cuotas muy abiertas. Para revisar el
+backtest de forma mas honesta, con intervalos de confianza, drawdown y grid de
+umbrales EV/cuota:
+
+```bash
+python -m src.evaluation.backtest_strategy_analysis \
+  --input outputs/backtest2022_ensemble_bets.csv \
+  --output outputs/backtest2022_strategy_filtered_bets.csv \
+  --summary-output outputs/backtest2022_strategy_summary.csv \
+  --grid-output outputs/backtest2022_strategy_grid.csv
+```
+
+Con la estrategia core estricta (`10%-40% EV`, cuota `1.50-2.50`, sin empates),
+el ensemble actual solo genera 5 apuestas en WC2022; ROI +12.2% en raw ensemble
+y +12.2% en Poisson Dixon-Coles, pero con intervalo de incertidumbre enorme.
+Conclusion operativa: mantener stake bajo, seguir acumulando muestra y usar CLV
+como diagnostico principal.
 
 El calculador en vivo `src/evaluation/ev_calculator.py` ya aplica estos filtros
 por defecto y guarda `strategy_bet_allowed` + `strategy_reason` en el CSV.

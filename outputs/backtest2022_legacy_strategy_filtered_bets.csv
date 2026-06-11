@@ -1,0 +1,216 @@
+home_team,away_team,mercado,seleccion,cuota,prob_modelo,ev_pct,apostada,win,profit,resultado_real,model_variant,match_key,strategy_market_ok,strategy_ev_ok,strategy_odds_ok,strategy_bet_allowed,strategy_reason,profit_strategy
+Qatar,Ecuador,1X2-A,Ecuador,2.26,0.4511,1.95,False,True,0.0,0-2,legacy_model,Qatar vs Ecuador,True,False,True,False,ev_outside_range,0.0
+Qatar,Ecuador,1X2-H,Qatar,3.79,0.2739,3.8,False,False,0.0,0-2,legacy_model,Qatar vs Ecuador,True,False,False,False,ev_outside_range,0.0
+Qatar,Ecuador,1X2-D,Draw,3.17,0.275,-12.82,False,False,0.0,0-2,legacy_model,Qatar vs Ecuador,False,False,False,False,excluded_market,0.0
+Senegal,Netherlands,1X2-A,Netherlands,1.64,0.6406,5.06,True,True,0.64,0-2,legacy_model,Senegal vs Netherlands,True,False,True,False,ev_outside_range,0.0
+Senegal,Netherlands,1X2-H,Senegal,6.5,0.1676,8.96,True,False,-1.0,0-2,legacy_model,Senegal vs Netherlands,True,False,False,False,ev_outside_range,0.0
+Senegal,Netherlands,1X2-D,Draw,3.85,0.1918,-26.18,False,False,0.0,0-2,legacy_model,Senegal vs Netherlands,False,False,False,False,excluded_market,0.0
+England,Iran,1X2-H,England,1.39,0.6347,-11.77,False,True,0.0,6-2,legacy_model,England vs Iran,True,False,False,False,ev_outside_range,0.0
+England,Iran,1X2-A,Iran,11.0,0.1377,51.45,True,False,-1.0,6-2,legacy_model,England vs Iran,True,False,False,False,ev_outside_range,0.0
+England,Iran,1X2-D,Draw,4.75,0.2276,8.1,True,False,-1.0,6-2,legacy_model,England vs Iran,False,False,False,False,excluded_market,0.0
+United States,Wales,1X2-H,USA,2.58,0.3213,-17.12,False,False,0.0,1-1,legacy_model,United States vs Wales,True,False,False,False,ev_outside_range,0.0
+United States,Wales,1X2-A,Wales,3.26,0.3452,12.52,True,False,-1.0,1-1,legacy_model,United States vs Wales,True,True,False,False,odds_outside_range,0.0
+United States,Wales,1X2-D,Draw,3.05,0.3336,1.74,False,True,0.0,1-1,legacy_model,United States vs Wales,False,False,False,False,excluded_market,0.0
+Argentina,Saudi Arabia,1X2-H,Argentina,1.14,0.7961,-9.24,False,False,0.0,1-2,legacy_model,Argentina vs Saudi Arabia,True,False,False,False,ev_outside_range,0.0
+Argentina,Saudi Arabia,1X2-A,Saudi Arabia,21.0,0.0404,-15.09,False,True,0.0,1-2,legacy_model,Argentina vs Saudi Arabia,True,False,False,False,ev_outside_range,0.0
+Argentina,Saudi Arabia,1X2-D,Draw,10.0,0.1634,63.44,True,False,-1.0,1-2,legacy_model,Argentina vs Saudi Arabia,False,False,False,False,excluded_market,0.0
+Mexico,Poland,1X2-H,Mexico,2.56,0.3314,-15.15,False,False,0.0,0-0,legacy_model,Mexico vs Poland,True,False,False,False,ev_outside_range,0.0
+Mexico,Poland,1X2-A,Poland,3.27,0.3392,10.91,True,False,-1.0,0-0,legacy_model,Mexico vs Poland,True,True,False,False,odds_outside_range,0.0
+Mexico,Poland,1X2-D,Draw,3.07,0.3294,1.12,False,True,0.0,0-0,legacy_model,Mexico vs Poland,False,False,False,False,excluded_market,0.0
+Denmark,Tunisia,1X2-H,Denmark,1.61,0.6011,-3.23,False,False,0.0,0-0,legacy_model,Denmark vs Tunisia,True,False,True,False,ev_outside_range,0.0
+Denmark,Tunisia,1X2-A,Tunisia,6.89,0.1486,2.4,False,False,0.0,0-0,legacy_model,Denmark vs Tunisia,True,False,False,False,ev_outside_range,0.0
+Denmark,Tunisia,1X2-D,Draw,3.85,0.2503,-3.63,False,True,0.0,0-0,legacy_model,Denmark vs Tunisia,False,False,False,False,excluded_market,0.0
+France,Australia,1X2-A,Australia,11.5,0.074,-14.86,False,False,0.0,4-1,legacy_model,France vs Australia,True,False,False,False,ev_outside_range,0.0
+France,Australia,1X2-H,France,1.27,0.7202,-8.53,False,True,0.0,4-1,legacy_model,France vs Australia,True,False,False,False,ev_outside_range,0.0
+France,Australia,1X2-D,Draw,6.7,0.2057,37.83,True,False,-1.0,4-1,legacy_model,France vs Australia,False,True,False,False,excluded_market,0.0
+Belgium,Canada,1X2-H,Belgium,1.6,0.6708,7.32,True,True,0.6,1-0,legacy_model,Belgium vs Canada,True,False,True,False,ev_outside_range,0.0
+Belgium,Canada,1X2-A,Canada,5.96,0.1053,-37.22,False,False,0.0,1-0,legacy_model,Belgium vs Canada,True,False,False,False,ev_outside_range,0.0
+Belgium,Canada,1X2-D,Draw,4.31,0.2239,-3.5,False,False,0.0,1-0,legacy_model,Belgium vs Canada,False,False,False,False,excluded_market,0.0
+Spain,Costa Rica,1X2-A,Costa Rica,19.5,0.0992,93.47,True,False,-1.0,7-0,legacy_model,Spain vs Costa Rica,True,False,False,False,ev_outside_range,0.0
+Spain,Costa Rica,1X2-H,Spain,1.18,0.7024,-17.11,False,True,0.0,7-0,legacy_model,Spain vs Costa Rica,True,False,False,False,ev_outside_range,0.0
+Spain,Costa Rica,1X2-D,Draw,8.0,0.1984,58.69,True,False,-1.0,7-0,legacy_model,Spain vs Costa Rica,False,False,False,False,excluded_market,0.0
+Germany,Japan,1X2-H,Germany,1.54,0.5301,-18.37,False,False,0.0,1-2,legacy_model,Germany vs Japan,True,False,True,False,ev_outside_range,0.0
+Germany,Japan,1X2-A,Japan,6.5,0.1876,21.95,True,True,5.5,1-2,legacy_model,Germany vs Japan,True,True,False,False,odds_outside_range,0.0
+Germany,Japan,1X2-D,Draw,4.5,0.2823,27.03,True,False,-1.0,1-2,legacy_model,Germany vs Japan,False,True,False,False,excluded_market,0.0
+Uruguay,South Korea,1X2-A,South Korea,5.37,0.1887,1.33,False,False,0.0,0-0,legacy_model,Uruguay vs South Korea,True,False,False,False,ev_outside_range,0.0
+Uruguay,South Korea,1X2-H,Uruguay,1.82,0.5273,-4.04,False,False,0.0,0-0,legacy_model,Uruguay vs South Korea,True,False,True,False,ev_outside_range,0.0
+Uruguay,South Korea,1X2-D,Draw,3.51,0.284,-0.3,False,True,0.0,0-0,legacy_model,Uruguay vs South Korea,False,False,False,False,excluded_market,0.0
+Portugal,Ghana,1X2-A,Ghana,9.0,0.0731,-34.19,False,False,0.0,3-2,legacy_model,Portugal vs Ghana,True,False,False,False,ev_outside_range,0.0
+Portugal,Ghana,1X2-H,Portugal,1.38,0.7329,1.15,False,True,0.0,3-2,legacy_model,Portugal vs Ghana,True,False,False,False,ev_outside_range,0.0
+Portugal,Ghana,1X2-D,Draw,5.25,0.1939,1.82,False,False,0.0,3-2,legacy_model,Portugal vs Ghana,False,False,False,False,excluded_market,0.0
+Switzerland,Cameroon,1X2-A,Cameroon,5.74,0.0996,-42.84,False,False,0.0,1-0,legacy_model,Switzerland vs Cameroon,True,False,False,False,ev_outside_range,0.0
+Switzerland,Cameroon,1X2-H,Switzerland,1.75,0.7322,28.13,True,True,0.75,1-0,legacy_model,Switzerland vs Cameroon,True,True,True,True,allowed,0.75
+Switzerland,Cameroon,1X2-D,Draw,3.64,0.1682,-38.77,False,False,0.0,1-0,legacy_model,Switzerland vs Cameroon,False,False,False,False,excluded_market,0.0
+Brazil,Serbia,1X2-H,Brazil,1.47,0.6587,-3.16,False,True,0.0,2-0,legacy_model,Brazil vs Serbia,True,False,False,False,ev_outside_range,0.0
+Brazil,Serbia,1X2-A,Serbia,7.42,0.1089,-19.21,False,False,0.0,2-0,legacy_model,Brazil vs Serbia,True,False,False,False,ev_outside_range,0.0
+Brazil,Serbia,1X2-D,Draw,4.77,0.2324,10.84,True,False,-1.0,2-0,legacy_model,Brazil vs Serbia,False,True,False,False,excluded_market,0.0
+Wales,Iran,1X2-A,Iran,3.99,0.2365,-5.63,False,True,0.0,0-2,legacy_model,Wales vs Iran,True,False,False,False,ev_outside_range,0.0
+Wales,Iran,1X2-H,Wales,2.18,0.5057,10.25,True,False,-1.0,0-2,legacy_model,Wales vs Iran,True,True,True,True,allowed,-1.0
+Wales,Iran,1X2-D,Draw,3.23,0.2578,-16.74,False,False,0.0,0-2,legacy_model,Wales vs Iran,False,False,False,False,excluded_market,0.0
+Netherlands,Ecuador,1X2-A,Ecuador,4.89,0.1833,-10.36,False,False,0.0,1-1,legacy_model,Netherlands vs Ecuador,True,False,False,False,ev_outside_range,0.0
+Netherlands,Ecuador,1X2-H,Netherlands,1.87,0.5599,4.69,False,False,0.0,1-1,legacy_model,Netherlands vs Ecuador,True,False,True,False,ev_outside_range,0.0
+Netherlands,Ecuador,1X2-D,Draw,3.55,0.2568,-8.82,False,True,0.0,1-1,legacy_model,Netherlands vs Ecuador,False,False,False,False,excluded_market,0.0
+England,United States,1X2-H,England,1.5,0.5684,-14.74,False,False,0.0,0-0,legacy_model,England vs United States,True,False,True,False,ev_outside_range,0.0
+England,United States,1X2-A,USA,7.75,0.1858,44.01,True,False,-1.0,0-0,legacy_model,England vs United States,True,False,False,False,ev_outside_range,0.0
+England,United States,1X2-D,Draw,4.4,0.2458,8.13,True,True,3.4,0-0,legacy_model,England vs United States,False,False,False,False,excluded_market,0.0
+England,United States,Over2.5,Over,2.04,0.5434,10.85,True,False,-1.0,0-0,legacy_model,England vs United States,False,True,True,False,excluded_market,0.0
+England,United States,Under2.5,Under,1.87,0.4566,-14.61,False,True,0.0,0-0,legacy_model,England vs United States,False,False,True,False,excluded_market,0.0
+Qatar,Senegal,1X2-H,Qatar,5.73,0.3522,101.84,True,False,-1.0,1-3,legacy_model,Qatar vs Senegal,True,False,False,False,ev_outside_range,0.0
+Qatar,Senegal,1X2-A,Senegal,1.75,0.3414,-40.25,False,True,0.0,1-3,legacy_model,Qatar vs Senegal,True,False,True,False,ev_outside_range,0.0
+Qatar,Senegal,1X2-D,Draw,3.63,0.3064,11.21,True,False,-1.0,1-3,legacy_model,Qatar vs Senegal,False,True,False,False,excluded_market,0.0
+Poland,Saudi Arabia,1X2-H,Poland,1.8,0.4732,-14.83,False,True,0.0,2-0,legacy_model,Poland vs Saudi Arabia,True,False,True,False,ev_outside_range,0.0
+Poland,Saudi Arabia,1X2-A,Saudi Arabia,5.35,0.244,30.55,True,False,-1.0,2-0,legacy_model,Poland vs Saudi Arabia,True,True,False,False,odds_outside_range,0.0
+Poland,Saudi Arabia,1X2-D,Draw,3.59,0.2828,1.52,False,False,0.0,2-0,legacy_model,Poland vs Saudi Arabia,False,False,False,False,excluded_market,0.0
+France,Denmark,1X2-A,Denmark,4.89,0.2545,24.45,True,False,-1.0,2-1,legacy_model,France vs Denmark,True,True,False,False,odds_outside_range,0.0
+France,Denmark,1X2-H,France,1.85,0.4045,-25.16,False,True,0.0,2-1,legacy_model,France vs Denmark,True,False,True,False,ev_outside_range,0.0
+France,Denmark,1X2-D,Draw,3.62,0.341,23.43,True,False,-1.0,2-1,legacy_model,France vs Denmark,False,True,False,False,excluded_market,0.0
+Argentina,Mexico,1X2-H,Argentina,1.5,0.7432,11.48,True,True,0.5,2-0,legacy_model,Argentina vs Mexico,True,True,True,True,allowed,0.5
+Argentina,Mexico,1X2-A,Mexico,8.32,0.0758,-36.93,False,False,0.0,2-0,legacy_model,Argentina vs Mexico,True,False,False,False,ev_outside_range,0.0
+Argentina,Mexico,1X2-D,Draw,4.28,0.181,-22.52,False,False,0.0,2-0,legacy_model,Argentina vs Mexico,False,False,False,False,excluded_market,0.0
+Tunisia,Australia,1X2-A,Australia,3.71,0.3001,11.35,True,True,2.71,0-1,legacy_model,Tunisia vs Australia,True,True,False,False,odds_outside_range,0.0
+Tunisia,Australia,1X2-H,Tunisia,2.19,0.4024,-11.87,False,False,0.0,0-1,legacy_model,Tunisia vs Australia,True,False,True,False,ev_outside_range,0.0
+Tunisia,Australia,1X2-D,Draw,3.4,0.2974,1.12,False,False,0.0,0-1,legacy_model,Tunisia vs Australia,False,False,False,False,excluded_market,0.0
+Belgium,Morocco,1X2-H,Belgium,1.96,0.6034,18.27,True,False,-1.0,0-2,legacy_model,Belgium vs Morocco,True,True,True,True,allowed,-1.0
+Belgium,Morocco,1X2-A,Morocco,4.45,0.1403,-37.56,False,True,0.0,0-2,legacy_model,Belgium vs Morocco,True,False,False,False,ev_outside_range,0.0
+Belgium,Morocco,1X2-D,Draw,3.49,0.2562,-10.57,False,False,0.0,0-2,legacy_model,Belgium vs Morocco,False,False,False,False,excluded_market,0.0
+Croatia,Canada,1X2-A,Canada,3.54,0.1916,-32.19,False,False,0.0,4-1,legacy_model,Croatia vs Canada,True,False,False,False,ev_outside_range,0.0
+Croatia,Canada,1X2-H,Croatia,2.28,0.5122,16.78,True,True,1.28,4-1,legacy_model,Croatia vs Canada,True,True,True,True,allowed,1.28
+Croatia,Canada,1X2-D,Draw,3.36,0.2962,-0.46,False,False,0.0,4-1,legacy_model,Croatia vs Canada,False,False,False,False,excluded_market,0.0
+Spain,Germany,1X2-A,Germany,3.02,0.1581,-52.24,False,False,0.0,1-1,legacy_model,Spain vs Germany,True,False,False,False,ev_outside_range,0.0
+Spain,Germany,1X2-H,Spain,2.52,0.5478,38.04,True,False,-1.0,1-1,legacy_model,Spain vs Germany,True,True,False,False,odds_outside_range,0.0
+Spain,Germany,1X2-D,Draw,3.44,0.2941,1.17,False,True,0.0,1-1,legacy_model,Spain vs Germany,False,False,False,False,excluded_market,0.0
+Japan,Costa Rica,1X2-A,Costa Rica,7.5,0.1819,36.42,True,True,6.5,0-1,legacy_model,Japan vs Costa Rica,True,True,False,False,odds_outside_range,0.0
+Japan,Costa Rica,1X2-H,Japan,1.54,0.5488,-15.48,False,False,0.0,0-1,legacy_model,Japan vs Costa Rica,True,False,True,False,ev_outside_range,0.0
+Japan,Costa Rica,1X2-D,Draw,4.15,0.2693,11.75,True,False,-1.0,0-1,legacy_model,Japan vs Costa Rica,False,True,False,False,excluded_market,0.0
+South Korea,Ghana,1X2-A,Ghana,3.2,0.1107,-64.56,False,True,0.0,2-3,legacy_model,South Korea vs Ghana,True,False,False,False,ev_outside_range,0.0
+South Korea,Ghana,1X2-H,South Korea,2.63,0.6348,66.95,True,False,-1.0,2-3,legacy_model,South Korea vs Ghana,True,False,False,False,ev_outside_range,0.0
+South Korea,Ghana,1X2-D,Draw,3.06,0.2545,-22.13,False,False,0.0,2-3,legacy_model,South Korea vs Ghana,False,False,False,False,excluded_market,0.0
+Brazil,Switzerland,1X2-H,Brazil,1.48,0.7683,13.71,True,True,0.48,1-0,legacy_model,Brazil vs Switzerland,True,True,False,False,odds_outside_range,0.0
+Brazil,Switzerland,1X2-A,Switzerland,8.0,0.0781,-37.54,False,False,0.0,1-0,legacy_model,Brazil vs Switzerland,True,False,False,False,ev_outside_range,0.0
+Brazil,Switzerland,1X2-D,Draw,4.5,0.1536,-30.86,False,False,0.0,1-0,legacy_model,Brazil vs Switzerland,False,False,False,False,excluded_market,0.0
+Brazil,Switzerland,Over2.5,Over,2.06,0.4509,-7.12,False,False,0.0,1-0,legacy_model,Brazil vs Switzerland,False,False,True,False,excluded_market,0.0
+Brazil,Switzerland,Under2.5,Under,1.86,0.5491,2.13,False,True,0.0,1-0,legacy_model,Brazil vs Switzerland,False,False,True,False,excluded_market,0.0
+Portugal,Uruguay,1X2-H,Portugal,2.01,0.4647,-6.59,False,True,0.0,2-0,legacy_model,Portugal vs Uruguay,True,False,True,False,ev_outside_range,0.0
+Portugal,Uruguay,1X2-A,Uruguay,4.38,0.1852,-18.9,False,False,0.0,2-0,legacy_model,Portugal vs Uruguay,True,False,False,False,ev_outside_range,0.0
+Portugal,Uruguay,1X2-D,Draw,3.39,0.3501,18.69,True,False,-1.0,2-0,legacy_model,Portugal vs Uruguay,False,True,False,False,excluded_market,0.0
+Cameroon,Serbia,1X2-H,Cameroon,5.05,0.0944,-52.33,False,False,0.0,3-3,legacy_model,Cameroon vs Serbia,True,False,False,False,ev_outside_range,0.0
+Cameroon,Serbia,1X2-A,Serbia,1.83,0.6857,25.48,True,False,-1.0,3-3,legacy_model,Cameroon vs Serbia,True,True,True,True,allowed,-1.0
+Cameroon,Serbia,1X2-D,Draw,3.6,0.2199,-20.83,False,True,0.0,3-3,legacy_model,Cameroon vs Serbia,False,False,False,False,excluded_market,0.0
+Qatar,Netherlands,1X2-A,Netherlands,1.24,0.6543,-18.87,False,True,0.0,0-2,legacy_model,Qatar vs Netherlands,True,False,False,False,ev_outside_range,0.0
+Qatar,Netherlands,1X2-H,Qatar,13.0,0.0761,-1.09,False,False,0.0,0-2,legacy_model,Qatar vs Netherlands,True,False,False,False,ev_outside_range,0.0
+Qatar,Netherlands,1X2-D,Draw,6.9,0.2696,86.05,True,False,-1.0,0-2,legacy_model,Qatar vs Netherlands,False,False,False,False,excluded_market,0.0
+Iran,United States,1X2-H,Iran,4.33,0.2312,0.11,False,False,0.0,0-1,legacy_model,Iran vs United States,True,False,False,False,ev_outside_range,0.0
+Iran,United States,1X2-A,USA,1.93,0.4778,-7.78,False,True,0.0,0-1,legacy_model,Iran vs United States,True,False,True,False,ev_outside_range,0.0
+Iran,United States,1X2-D,Draw,3.58,0.291,4.17,False,False,0.0,0-1,legacy_model,Iran vs United States,False,False,False,False,excluded_market,0.0
+Wales,England,1X2-A,England,1.45,0.5342,-22.54,False,True,0.0,0-3,legacy_model,Wales vs England,True,False,False,False,ev_outside_range,0.0
+Wales,England,1X2-H,Wales,8.5,0.2139,81.78,True,False,-1.0,0-3,legacy_model,Wales vs England,True,False,False,False,ev_outside_range,0.0
+Wales,England,1X2-D,Draw,4.6,0.2519,15.89,True,False,-1.0,0-3,legacy_model,Wales vs England,False,True,False,False,excluded_market,0.0
+Wales,England,Over2.5,Over,2.04,0.4725,-3.62,False,True,0.0,0-3,legacy_model,Wales vs England,False,False,True,False,excluded_market,0.0
+Wales,England,Under2.5,Under,1.87,0.5275,-1.35,False,False,0.0,0-3,legacy_model,Wales vs England,False,False,True,False,excluded_market,0.0
+Ecuador,Senegal,1X2-H,Ecuador,2.43,0.4875,18.47,True,False,-1.0,1-2,legacy_model,Ecuador vs Senegal,True,True,True,True,allowed,-1.0
+Ecuador,Senegal,1X2-A,Senegal,3.31,0.1834,-39.31,False,True,0.0,1-2,legacy_model,Ecuador vs Senegal,True,False,False,False,ev_outside_range,0.0
+Ecuador,Senegal,1X2-D,Draw,3.26,0.3291,7.29,True,False,-1.0,1-2,legacy_model,Ecuador vs Senegal,False,False,False,False,excluded_market,0.0
+Poland,Argentina,1X2-A,Argentina,1.48,0.6538,-3.24,False,True,0.0,0-2,legacy_model,Poland vs Argentina,True,False,False,False,ev_outside_range,0.0
+Poland,Argentina,1X2-H,Poland,8.0,0.1232,-1.45,False,False,0.0,0-2,legacy_model,Poland vs Argentina,True,False,False,False,ev_outside_range,0.0
+Poland,Argentina,1X2-D,Draw,4.5,0.223,0.36,False,False,0.0,0-2,legacy_model,Poland vs Argentina,False,False,False,False,excluded_market,0.0
+Saudi Arabia,Mexico,1X2-A,Mexico,1.68,0.5172,-13.11,False,True,0.0,1-2,legacy_model,Saudi Arabia vs Mexico,True,False,True,False,ev_outside_range,0.0
+Saudi Arabia,Mexico,1X2-H,Saudi Arabia,5.23,0.2387,24.86,True,False,-1.0,1-2,legacy_model,Saudi Arabia vs Mexico,True,True,False,False,odds_outside_range,0.0
+Saudi Arabia,Mexico,1X2-D,Draw,4.22,0.2441,3.0,False,False,0.0,1-2,legacy_model,Saudi Arabia vs Mexico,False,False,False,False,excluded_market,0.0
+Saudi Arabia,Mexico,Over2.5,Over,1.98,0.4212,-16.59,False,True,0.0,1-2,legacy_model,Saudi Arabia vs Mexico,False,False,True,False,excluded_market,0.0
+Saudi Arabia,Mexico,Under2.5,Under,1.93,0.5788,11.7,True,False,-1.0,1-2,legacy_model,Saudi Arabia vs Mexico,False,True,True,False,excluded_market,0.0
+Australia,Denmark,1X2-H,Australia,6.5,0.171,11.15,True,True,5.5,1-0,legacy_model,Australia vs Denmark,True,True,False,False,odds_outside_range,0.0
+Australia,Denmark,1X2-A,Denmark,1.51,0.5062,-23.56,False,False,0.0,1-0,legacy_model,Australia vs Denmark,True,False,True,False,ev_outside_range,0.0
+Australia,Denmark,1X2-D,Draw,4.65,0.3228,50.1,True,False,-1.0,1-0,legacy_model,Australia vs Denmark,False,False,False,False,excluded_market,0.0
+Australia,Denmark,Over2.5,Over,2.0,0.4042,-19.17,False,False,0.0,1-0,legacy_model,Australia vs Denmark,False,False,True,False,excluded_market,0.0
+Australia,Denmark,Under2.5,Under,1.91,0.5958,13.81,True,True,0.91,1-0,legacy_model,Australia vs Denmark,False,True,True,False,excluded_market,0.0
+Tunisia,France,1X2-A,France,1.53,0.696,6.49,True,False,-1.0,1-0,legacy_model,Tunisia vs France,True,False,True,False,ev_outside_range,0.0
+Tunisia,France,1X2-H,Tunisia,7.0,0.0941,-34.13,False,True,0.0,1-0,legacy_model,Tunisia vs France,True,False,False,False,ev_outside_range,0.0
+Tunisia,France,1X2-D,Draw,4.5,0.2099,-5.55,False,False,0.0,1-0,legacy_model,Tunisia vs France,False,False,False,False,excluded_market,0.0
+Tunisia,France,Over2.5,Over,1.93,0.4474,-13.65,False,False,0.0,1-0,legacy_model,Tunisia vs France,False,False,True,False,excluded_market,0.0
+Tunisia,France,Under2.5,Under,1.95,0.5526,7.76,True,True,0.95,1-0,legacy_model,Tunisia vs France,False,False,True,False,excluded_market,0.0
+Croatia,Belgium,1X2-A,Belgium,2.59,0.4215,9.18,True,False,-1.0,0-0,legacy_model,Croatia vs Belgium,True,False,False,False,ev_outside_range,0.0
+Croatia,Belgium,1X2-H,Croatia,2.85,0.2834,-19.23,False,False,0.0,0-0,legacy_model,Croatia vs Belgium,True,False,False,False,ev_outside_range,0.0
+Croatia,Belgium,1X2-D,Draw,3.51,0.295,3.56,False,True,0.0,0-0,legacy_model,Croatia vs Belgium,False,False,False,False,excluded_market,0.0
+Croatia,Belgium,Over2.5,Over,2.06,0.4461,-8.11,False,False,0.0,0-0,legacy_model,Croatia vs Belgium,False,False,True,False,excluded_market,0.0
+Croatia,Belgium,Under2.5,Under,1.85,0.5539,2.48,False,True,0.0,0-0,legacy_model,Croatia vs Belgium,False,False,True,False,excluded_market,0.0
+Canada,Morocco,1X2-H,Canada,4.72,0.2228,5.17,True,False,-1.0,1-2,legacy_model,Canada vs Morocco,True,False,False,False,ev_outside_range,0.0
+Canada,Morocco,1X2-A,Morocco,1.87,0.4899,-8.39,False,True,0.0,1-2,legacy_model,Canada vs Morocco,True,False,True,False,ev_outside_range,0.0
+Canada,Morocco,1X2-D,Draw,3.61,0.2873,3.71,False,False,0.0,1-2,legacy_model,Canada vs Morocco,False,False,False,False,excluded_market,0.0
+Costa Rica,Germany,1X2-H,Costa Rica,22.0,0.223,390.6,True,False,-1.0,2-4,legacy_model,Costa Rica vs Germany,True,False,False,False,ev_outside_range,0.0
+Costa Rica,Germany,1X2-A,Germany,1.12,0.5221,-41.52,False,True,0.0,2-4,legacy_model,Costa Rica vs Germany,True,False,False,False,ev_outside_range,0.0
+Costa Rica,Germany,1X2-D,Draw,11.0,0.2549,180.34,True,False,-1.0,2-4,legacy_model,Costa Rica vs Germany,False,False,False,False,excluded_market,0.0
+Japan,Spain,1X2-H,Japan,7.25,0.1386,0.51,False,True,0.0,2-1,legacy_model,Japan vs Spain,True,False,False,False,ev_outside_range,0.0
+Japan,Spain,1X2-A,Spain,1.48,0.6331,-6.3,False,False,0.0,2-1,legacy_model,Japan vs Spain,True,False,False,False,ev_outside_range,0.0
+Japan,Spain,1X2-D,Draw,4.8,0.2283,9.56,True,False,-1.0,2-1,legacy_model,Japan vs Spain,False,False,False,False,excluded_market,0.0
+Japan,Spain,Over2.5,Over,1.93,0.4445,-14.21,False,True,0.0,2-1,legacy_model,Japan vs Spain,False,False,True,False,excluded_market,0.0
+Japan,Spain,Under2.5,Under,1.97,0.5555,9.43,True,False,-1.0,2-1,legacy_model,Japan vs Spain,False,False,True,False,excluded_market,0.0
+Serbia,Switzerland,1X2-H,Serbia,2.55,0.336,-14.31,False,False,0.0,2-3,legacy_model,Serbia vs Switzerland,True,False,False,False,ev_outside_range,0.0
+Serbia,Switzerland,1X2-A,Switzerland,2.93,0.3726,9.18,True,True,1.93,2-3,legacy_model,Serbia vs Switzerland,True,False,False,False,ev_outside_range,0.0
+Serbia,Switzerland,1X2-D,Draw,3.47,0.2913,1.08,False,False,0.0,2-3,legacy_model,Serbia vs Switzerland,False,False,False,False,excluded_market,0.0
+Serbia,Switzerland,Over2.5,Over,1.97,0.4497,-11.42,False,True,0.0,2-3,legacy_model,Serbia vs Switzerland,False,False,True,False,excluded_market,0.0
+Serbia,Switzerland,Under2.5,Under,1.93,0.5503,6.21,True,False,-1.0,2-3,legacy_model,Serbia vs Switzerland,False,False,True,False,excluded_market,0.0
+South Korea,Portugal,1X2-A,Portugal,1.85,0.6618,22.43,True,False,-1.0,2-1,legacy_model,South Korea vs Portugal,True,True,True,True,allowed,-1.0
+South Korea,Portugal,1X2-H,South Korea,4.3,0.081,-65.17,False,True,0.0,2-1,legacy_model,South Korea vs Portugal,True,False,False,False,ev_outside_range,0.0
+South Korea,Portugal,1X2-D,Draw,3.96,0.2572,1.86,False,False,0.0,2-1,legacy_model,South Korea vs Portugal,False,False,False,False,excluded_market,0.0
+South Korea,Portugal,Over2.5,Over,1.95,0.4584,-10.61,False,True,0.0,2-1,legacy_model,South Korea vs Portugal,False,False,True,False,excluded_market,0.0
+South Korea,Portugal,Under2.5,Under,1.95,0.5416,5.61,True,False,-1.0,2-1,legacy_model,South Korea vs Portugal,False,False,True,False,excluded_market,0.0
+Cameroon,Brazil,1X2-A,Brazil,1.39,0.9396,30.6,True,False,-1.0,1-0,legacy_model,Cameroon vs Brazil,True,True,False,False,odds_outside_range,0.0
+Cameroon,Brazil,1X2-H,Cameroon,8.6,0.0214,-81.63,False,True,0.0,1-0,legacy_model,Cameroon vs Brazil,True,False,False,False,ev_outside_range,0.0
+Cameroon,Brazil,1X2-D,Draw,5.17,0.039,-79.82,False,False,0.0,1-0,legacy_model,Cameroon vs Brazil,False,False,False,False,excluded_market,0.0
+Ghana,Uruguay,1X2-H,Ghana,4.39,0.1137,-50.09,False,False,0.0,0-2,legacy_model,Ghana vs Uruguay,True,False,False,False,ev_outside_range,0.0
+Ghana,Uruguay,1X2-A,Uruguay,1.87,0.688,28.65,True,True,0.87,0-2,legacy_model,Ghana vs Uruguay,True,True,True,True,allowed,0.87
+Ghana,Uruguay,1X2-D,Draw,3.85,0.1983,-23.65,False,False,0.0,0-2,legacy_model,Ghana vs Uruguay,False,False,False,False,excluded_market,0.0
+Ghana,Uruguay,Over2.5,Over,2.06,0.4311,-11.2,False,False,0.0,0-2,legacy_model,Ghana vs Uruguay,False,False,True,False,excluded_market,0.0
+Ghana,Uruguay,Under2.5,Under,1.85,0.5689,5.25,True,True,0.85,0-2,legacy_model,Ghana vs Uruguay,False,False,True,False,excluded_market,0.0
+Netherlands,United States,1X2-H,Netherlands,2.1,0.5681,19.31,True,True,1.1,3-1,legacy_model,Netherlands vs United States,True,True,True,True,allowed,1.1
+Netherlands,United States,1X2-A,USA,4.14,0.1193,-50.6,False,False,0.0,3-1,legacy_model,Netherlands vs United States,True,False,False,False,ev_outside_range,0.0
+Netherlands,United States,1X2-D,Draw,3.31,0.3125,3.45,False,False,0.0,3-1,legacy_model,Netherlands vs United States,False,False,False,False,excluded_market,0.0
+Argentina,Australia,1X2-H,Argentina,1.29,0.7081,-8.65,False,True,0.0,2-1,legacy_model,Argentina vs Australia,True,False,False,False,ev_outside_range,0.0
+Argentina,Australia,1X2-A,Australia,11.5,0.0779,-10.46,False,False,0.0,2-1,legacy_model,Argentina vs Australia,True,False,False,False,ev_outside_range,0.0
+Argentina,Australia,1X2-D,Draw,6.25,0.214,33.75,True,False,-1.0,2-1,legacy_model,Argentina vs Australia,False,True,False,False,excluded_market,0.0
+France,Poland,1X2-H,France,1.34,0.5609,-24.84,False,True,0.0,3-1,legacy_model,France vs Poland,True,False,False,False,ev_outside_range,0.0
+France,Poland,1X2-A,Poland,10.75,0.1858,99.71,True,False,-1.0,3-1,legacy_model,France vs Poland,True,False,False,False,ev_outside_range,0.0
+France,Poland,1X2-D,Draw,5.4,0.2533,36.8,True,False,-1.0,3-1,legacy_model,France vs Poland,False,True,False,False,excluded_market,0.0
+England,Senegal,1X2-H,England,1.55,0.6477,0.39,False,True,0.0,3-0,legacy_model,England vs Senegal,True,False,True,False,ev_outside_range,0.0
+England,Senegal,1X2-A,Senegal,7.35,0.0948,-30.33,False,False,0.0,3-0,legacy_model,England vs Senegal,True,False,False,False,ev_outside_range,0.0
+England,Senegal,1X2-D,Draw,4.1,0.2575,5.59,True,False,-1.0,3-0,legacy_model,England vs Senegal,False,False,False,False,excluded_market,0.0
+Japan,Croatia,1X2-A,Croatia,2.11,0.3707,-21.78,False,False,0.0,1-1,legacy_model,Japan vs Croatia,True,False,True,False,ev_outside_range,0.0
+Japan,Croatia,1X2-H,Japan,4.06,0.3184,29.26,True,False,-1.0,1-1,legacy_model,Japan vs Croatia,True,True,False,False,odds_outside_range,0.0
+Japan,Croatia,1X2-D,Draw,3.31,0.3109,2.92,False,True,0.0,1-1,legacy_model,Japan vs Croatia,False,False,False,False,excluded_market,0.0
+Brazil,South Korea,1X2-H,Brazil,1.29,0.7686,-0.85,False,True,0.0,4-1,legacy_model,Brazil vs South Korea,True,False,False,False,ev_outside_range,0.0
+Brazil,South Korea,1X2-A,South Korea,12.0,0.0724,-13.08,False,False,0.0,4-1,legacy_model,Brazil vs South Korea,True,False,False,False,ev_outside_range,0.0
+Brazil,South Korea,1X2-D,Draw,6.0,0.1589,-4.63,False,False,0.0,4-1,legacy_model,Brazil vs South Korea,False,False,False,False,excluded_market,0.0
+Portugal,Switzerland,1X2-H,Portugal,1.96,0.4449,-12.79,False,True,0.0,6-1,legacy_model,Portugal vs Switzerland,True,False,True,False,ev_outside_range,0.0
+Portugal,Switzerland,1X2-A,Switzerland,4.43,0.19,-15.84,False,False,0.0,6-1,legacy_model,Portugal vs Switzerland,True,False,False,False,ev_outside_range,0.0
+Portugal,Switzerland,1X2-D,Draw,3.48,0.3651,27.05,True,False,-1.0,6-1,legacy_model,Portugal vs Switzerland,False,True,False,False,excluded_market,0.0
+Morocco,Spain,1X2-H,Morocco,6.15,0.1702,4.68,False,False,0.0,0-0,legacy_model,Morocco vs Spain,True,False,False,False,ev_outside_range,0.0
+Morocco,Spain,1X2-A,Spain,1.65,0.6312,4.15,False,False,0.0,0-0,legacy_model,Morocco vs Spain,True,False,True,False,ev_outside_range,0.0
+Morocco,Spain,1X2-D,Draw,3.95,0.1986,-21.56,False,True,0.0,0-0,legacy_model,Morocco vs Spain,False,False,False,False,excluded_market,0.0
+Croatia,Brazil,1X2-A,Brazil,1.42,0.5995,-14.87,False,False,0.0,1-1,legacy_model,Croatia vs Brazil,True,False,False,False,ev_outside_range,0.0
+Croatia,Brazil,1X2-H,Croatia,8.85,0.1539,36.22,True,False,-1.0,1-1,legacy_model,Croatia vs Brazil,True,True,False,False,odds_outside_range,0.0
+Croatia,Brazil,1X2-D,Draw,4.9,0.2466,20.81,True,True,3.9,1-1,legacy_model,Croatia vs Brazil,False,True,False,False,excluded_market,0.0
+Croatia,Brazil,Over2.5,Over,1.96,0.4163,-18.4,False,False,0.0,1-1,legacy_model,Croatia vs Brazil,False,False,True,False,excluded_market,0.0
+Croatia,Brazil,Under2.5,Under,1.94,0.5837,13.23,True,True,0.94,1-1,legacy_model,Croatia vs Brazil,False,True,True,False,excluded_market,0.0
+Netherlands,Argentina,1X2-A,Argentina,2.19,0.43,-5.82,False,False,0.0,2-2,legacy_model,Netherlands vs Argentina,True,False,True,False,ev_outside_range,0.0
+Netherlands,Argentina,1X2-H,Netherlands,3.85,0.2661,2.44,False,False,0.0,2-2,legacy_model,Netherlands vs Argentina,True,False,False,False,ev_outside_range,0.0
+Netherlands,Argentina,1X2-D,Draw,3.28,0.3039,-0.32,False,True,0.0,2-2,legacy_model,Netherlands vs Argentina,False,False,False,False,excluded_market,0.0
+Morocco,Portugal,1X2-H,Morocco,5.88,0.1996,17.34,True,True,4.88,1-0,legacy_model,Morocco vs Portugal,True,True,False,False,odds_outside_range,0.0
+Morocco,Portugal,1X2-A,Portugal,1.71,0.511,-12.62,False,False,0.0,1-0,legacy_model,Morocco vs Portugal,True,False,True,False,ev_outside_range,0.0
+Morocco,Portugal,1X2-D,Draw,3.7,0.2895,7.1,True,False,-1.0,1-0,legacy_model,Morocco vs Portugal,False,False,False,False,excluded_market,0.0
+England,France,1X2-H,England,3.01,0.3434,3.36,False,False,0.0,1-2,legacy_model,England vs France,True,False,False,False,ev_outside_range,0.0
+England,France,1X2-A,France,2.7,0.3858,4.17,False,True,0.0,1-2,legacy_model,England vs France,True,False,False,False,ev_outside_range,0.0
+England,France,1X2-D,Draw,3.13,0.2708,-15.25,False,False,0.0,1-2,legacy_model,England vs France,False,False,False,False,excluded_market,0.0
+Argentina,Croatia,1X2-H,Argentina,1.99,0.5701,13.45,True,True,0.99,3-0,legacy_model,Argentina vs Croatia,True,True,True,True,allowed,0.99
+Argentina,Croatia,1X2-A,Croatia,4.95,0.1299,-35.69,False,False,0.0,3-0,legacy_model,Argentina vs Croatia,True,False,False,False,ev_outside_range,0.0
+Argentina,Croatia,1X2-D,Draw,3.18,0.3,-4.61,False,False,0.0,3-0,legacy_model,Argentina vs Croatia,False,False,False,False,excluded_market,0.0
+France,Morocco,1X2-H,France,1.58,0.4744,-25.05,False,True,0.0,2-0,legacy_model,France vs Morocco,True,False,True,False,ev_outside_range,0.0
+France,Morocco,1X2-A,Morocco,7.15,0.1789,27.91,True,False,-1.0,2-0,legacy_model,France vs Morocco,True,True,False,False,odds_outside_range,0.0
+France,Morocco,1X2-D,Draw,4.0,0.3468,38.7,True,False,-1.0,2-0,legacy_model,France vs Morocco,False,True,False,False,excluded_market,0.0
+Croatia,Morocco,1X2-H,Croatia,2.4,0.385,-7.6,False,True,0.0,2-1,legacy_model,Croatia vs Morocco,True,False,True,False,ev_outside_range,0.0
+Croatia,Morocco,1X2-A,Morocco,3.05,0.3453,5.32,True,False,-1.0,2-1,legacy_model,Croatia vs Morocco,True,False,False,False,ev_outside_range,0.0
+Croatia,Morocco,1X2-D,Draw,3.54,0.2697,-4.54,False,False,0.0,2-1,legacy_model,Croatia vs Morocco,False,False,False,False,excluded_market,0.0
+Croatia,Morocco,Over2.5,Over,1.93,0.4256,-17.85,False,True,0.0,2-1,legacy_model,Croatia vs Morocco,False,False,True,False,excluded_market,0.0
+Croatia,Morocco,Under2.5,Under,1.98,0.5744,13.72,True,False,-1.0,2-1,legacy_model,Croatia vs Morocco,False,True,True,False,excluded_market,0.0
+Argentina,France,1X2-H,Argentina,2.73,0.4399,20.08,True,False,-1.0,3-3,legacy_model,Argentina vs France,True,True,False,False,odds_outside_range,0.0
+Argentina,France,1X2-A,France,2.89,0.3113,-10.04,False,False,0.0,3-3,legacy_model,Argentina vs France,True,False,False,False,ev_outside_range,0.0
+Argentina,France,1X2-D,Draw,3.27,0.2489,-18.62,False,True,0.0,3-3,legacy_model,Argentina vs France,False,False,False,False,excluded_market,0.0
