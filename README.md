@@ -2,6 +2,8 @@
 
 Sistema de predicción de partidos y detección de valor en apuestas para el Mundial de Fútbol 2026.
 
+🌐 **Web App:** https://wc2026-bets-tracker.netlify.app
+
 ## Estructura del proyecto
 
 ```
