@@ -257,8 +257,8 @@ tr:last-child td{border-bottom:none}
       <div class="metric"><div class="ml">Acierto</div><div class="mv" id="m4">—</div></div>
       <div class="metric"><div class="ml">Apuestas</div><div class="mv" id="m5">0</div></div>
     </div>
-    <div class="card collapsible" id="card-signals">
-      <button class="card-head" type="button" onclick="toggleCard('card-signals')" aria-expanded="true">
+    <div class="card collapsible collapsed" id="card-signals">
+      <button class="card-head" type="button" onclick="toggleCard('card-signals')" aria-expanded="false">
         <span class="card-title" style="margin:0">Señales del modelo<span class="ct-count" id="sig-count"></span></span>
         <span class="chev" aria-hidden="true">▾</span>
       </button>
@@ -285,8 +285,8 @@ tr:last-child td{border-bottom:none}
       <div class="sig-meta" id="sig-meta"></div>
       </div>
     </div>
-    <div class="card collapsible" id="card-player-props">
-      <button class="card-head" type="button" onclick="toggleCard('card-player-props')" aria-expanded="true">
+    <div class="card collapsible collapsed" id="card-player-props">
+      <button class="card-head" type="button" onclick="toggleCard('card-player-props')" aria-expanded="false">
         <span class="card-title" style="margin:0">Props móvil<span class="ct-count" id="prop-count"></span></span>
         <span class="chev" aria-hidden="true">▾</span>
       </button>
@@ -303,8 +303,12 @@ tr:last-child td{border-bottom:none}
         <div class="sig-meta" id="prop-meta">Uso móvil: mirar titularidad y comparar cuota real con Min revisión.</div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-title">Nueva apuesta</div>
+    <div class="card collapsible collapsed" id="card-new-bet">
+      <button class="card-head" type="button" onclick="toggleCard('card-new-bet')" aria-expanded="false">
+        <span class="card-title" style="margin:0">Nueva apuesta</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="card-body">
       <div class="bet-mode">
         <button class="mode-btn active" id="mode-single" onclick="setBetMode('single')">Simple</button>
         <button class="mode-btn" id="mode-combo" onclick="setBetMode('combo')">Combinada</button>
@@ -312,7 +316,7 @@ tr:last-child td{border-bottom:none}
       <div class="fg" id="single-fields">
         <div><label class="fl">Partido</label><input id="fp" type="text" placeholder="España vs Alemania"></div>
         <div><label class="fl">Mercado</label>
-          <select id="fm"><option>1X2 local</option><option>1X2 empate</option><option>1X2 visitante</option><option>Over 2.5</option><option>Under 2.5</option><option>BTTS sí</option><option>BTTS no</option><option>Descanso</option><option>Córners</option><option>Amarillas</option><option>Rojas</option><option>1er goleador</option><option>Otro</option></select>
+          <select id="fm"><option>1X2 local</option><option>1X2 empate</option><option>1X2 visitante</option><option>Over 2.5</option><option>Under 2.5</option><option>BTTS sí</option><option>BTTS no</option><option>Córners</option><option>Amarillas</option><option>Jugador</option></select>
         </div>
         <div><label class="fl">Cuota</label><input id="fc" type="number" placeholder="1.85" min="1.01" step="0.01"></div>
         <div><label class="fl">Stake (€)</label><input id="fs" type="number" placeholder="10" min="0.01" step="0.01"></div>
@@ -335,10 +339,16 @@ tr:last-child td{border-bottom:none}
       </div>
       <div class="edge-hint" id="edge-hint" style="display:none"></div>
       <button class="btn-add" id="btn-add" onclick="addBet()">+ Añadir</button>
+      </div>
     </div>
-    <div class="card">
+    <div class="card collapsible collapsed" id="card-register">
+      <button class="card-head" type="button" onclick="toggleCard('card-register')" aria-expanded="false">
+        <span class="card-title" style="margin:0">Registro</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="card-body">
       <div class="table-header">
-        <div class="card-title" style="margin:0">Registro</div>
+        <div></div>
         <div class="filters">
           <select id="fres" onchange="renderTable()"><option value="">Todos</option><option value="ganada">Ganadas</option><option value="perdida">Perdidas</option><option value="pendiente">Pendientes</option></select>
           <button class="btn-add" style="padding:6px 12px;font-size:11px;background:transparent;border:1px solid var(--b2);color:var(--mu)" onclick="exportCSV()">CSV</button>
@@ -351,13 +361,19 @@ tr:last-child td{border-bottom:none}
         </table>
         <div id="emp" class="empty">Aún no hay apuestas. Añade la primera arriba.</div>
       </div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-title" style="margin-bottom:14px">P&L por mercado</div>
+    <div class="card collapsible collapsed" id="card-market-pl">
+      <button class="card-head" type="button" onclick="toggleCard('card-market-pl')" aria-expanded="false">
+        <span class="card-title" style="margin:0">P&L por mercado</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="card-body">
       <div id="mkchart"><div class="empty">Sin datos</div></div>
+      </div>
     </div>
-    <div class="card collapsible" id="card-radar">
-      <button class="card-head" type="button" onclick="toggleCard('card-radar')" aria-expanded="true">
+    <div class="card collapsible collapsed" id="card-radar">
+      <button class="card-head" type="button" onclick="toggleCard('card-radar')" aria-expanded="false">
         <span class="card-title" style="margin:0">Radar de mercados<span class="ct-count" id="rad-count"></span></span>
         <span class="chev" aria-hidden="true">▾</span>
       </button>
@@ -409,7 +425,7 @@ let betMode = 'single';
 const ADMIN_EMAILS = ['ismael.hersua@gmail.com','daniel.fernandezg.backup@gmail.com'];
 let isAdmin = false;
 let adminView = 'all'; // 'all' | 'mine' | <user_id>
-const MARKET_OPTIONS = ['1X2 local','1X2 empate','1X2 visitante','Over 2.5','Under 2.5','BTTS sí','BTTS no','Descanso','Córners','Amarillas','Rojas','1er goleador','Otro'];
+const MARKET_OPTIONS = ['1X2 local','1X2 empate','1X2 visitante','Over 2.5','Under 2.5','BTTS sí','BTTS no','Córners','Amarillas','Jugador'];
 
 function dbg(msg) {
   if (!DEBUG) return;
@@ -617,19 +633,24 @@ function showApp(email) {
 function toggleCard(id) {
   const c = document.getElementById(id);
   if (!c) return;
-  const collapsed = c.classList.toggle('collapsed');
+  setCardCollapsed(id, !c.classList.contains('collapsed'));
+}
+
+function setCardCollapsed(id, collapsed) {
+  const c = document.getElementById(id);
+  if (!c) return;
+  c.classList.toggle('collapsed', collapsed);
   const head = c.querySelector('.card-head');
   if (head) head.setAttribute('aria-expanded', String(!collapsed));
 }
 
 function initCollapsibles() {
-  const mobile = window.innerWidth <= 640;
-  ['card-signals','card-radar'].forEach(id => {
+  ['card-signals','card-player-props','card-new-bet','card-register','card-market-pl','card-radar'].forEach(id => {
     const c = document.getElementById(id);
     if (!c) return;
-    c.classList.toggle('collapsed', mobile);
+    c.classList.add('collapsed');
     const head = c.querySelector('.card-head');
-    if (head) head.setAttribute('aria-expanded', String(!mobile));
+    if (head) head.setAttribute('aria-expanded', 'false');
   });
 }
 
@@ -906,10 +927,11 @@ function renderSignals() {
 function useSignal(id) {
   const s = signals.find(x => x.signal_id === id);
   if (!s) return;
+  setCardCollapsed('card-new-bet', false);
   setBetMode('single');
   document.getElementById('fp').value = s.home_team + ' vs ' + s.away_team;
   const mapped = MODEL_TO_TRACKER[s.mercado];
-  document.getElementById('fm').value = mapped && MARKET_OPTIONS.includes(mapped) ? mapped : 'Otro';
+  document.getElementById('fm').value = mapped && MARKET_OPTIONS.includes(mapped) ? mapped : 'Jugador';
   document.getElementById('fc').value = parseFloat(s.cuota).toFixed(2);
   updateEdgeHint();
   document.getElementById('fs').focus();
