@@ -70,6 +70,7 @@ Estos archivos son pequenos, revisables o contienen decisiones manuales del proy
 | `outputs/wc2026_player_prop_radar.csv` | Radar de props de jugador sin odds, stake ni lineups confirmadas. |
 | `outputs/wc2026_player_prop_radar_summary.csv` | Resumen por mercado/linea/calidad de dato del radar player props. |
 | `outputs/wc2026_player_minutes_projection_summary.csv` | Resumen de minutos esperados por fuente, estado de alineacion y overrides. |
+| `docs/supabase_player_prop_radar.sql` | SQL para crear la tabla movil `player_prop_radar` en Supabase. |
 
 ## Ignorados
 
@@ -125,6 +126,16 @@ python -m src.evaluation.market_availability
 python -m src.evaluation.paper_tracker
 python -m src.evaluation.player_minutes_projection
 python -m src.evaluation.player_prop_radar
+python -m src.evaluation.player_prop_radar_push --dry-run
+```
+
+`player_prop_radar_push` sube por defecto solo las props accionables del dia
+actual en horario Europe/Madrid. Para revisar otro dia o todo el torneo:
+
+```bash
+python -m src.evaluation.player_prop_radar_push --date 2026-06-12
+python -m src.evaluation.player_prop_radar_push --match-number 1
+python -m src.evaluation.player_prop_radar_push --all
 ```
 
 ## FBref Seguro

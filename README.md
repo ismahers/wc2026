@@ -153,6 +153,15 @@ python -m src.evaluation.model_ensemble
 # 11. Generar radar de props de jugador sin odds ni stake real
 python -m src.evaluation.player_minutes_projection
 python -m src.evaluation.player_prop_radar
+
+# 12. Opcional: subir vista movil de props del dia al tracker/Supabase
+#     Requiere crear antes la tabla con docs/supabase_player_prop_radar.sql
+python -m src.evaluation.player_prop_radar_push --dry-run
+python -m src.evaluation.player_prop_radar_push
+
+# Para forzar otro dia o un partido concreto:
+python -m src.evaluation.player_prop_radar_push --date 2026-06-12
+python -m src.evaluation.player_prop_radar_push --match-number 1
 ```
 
 El archivo `data/manual/player_expected_minutes_overrides_wc2026.csv` es la capa
