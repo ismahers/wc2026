@@ -1,0 +1,81 @@
+stage,match_number,home,away,winner,group_pos,group_pts,exp_gd,win_prob
+Group A,,Mexico,,,1.0,9.0,2.215,
+Group A,,South Korea,,,2.0,6.0,0.261,
+Group A,,Czech Republic,,,3.0,3.0,0.419,
+Group A,,South Africa,,,4.0,0.0,-2.895,
+Group B,,Switzerland,,,1.0,9.0,3.826,
+Group B,,Canada,,,2.0,6.0,1.628,
+Group B,,Bosnia and Herzegovina,,,3.0,3.0,-1.191,
+Group B,,Qatar,,,4.0,0.0,-4.263,
+Group C,,Brazil,,,1.0,9.0,4.344,
+Group C,,Morocco,,,2.0,6.0,1.249,
+Group C,,Scotland,,,3.0,3.0,-0.622,
+Group C,,Haiti,,,4.0,0.0,-4.971,
+Group D,,Turkey,,,1.0,9.0,1.179,
+Group D,,Paraguay,,,2.0,6.0,0.168,
+Group D,,United States,,,3.0,3.0,-0.108,
+Group D,,Australia,,,4.0,0.0,-1.239,
+Group E,,Germany,,,1.0,9.0,4.152,
+Group E,,Ecuador,,,2.0,6.0,2.688,
+Group E,,Ivory Coast,,,3.0,3.0,-0.83,
+Group E,,Curacao,,,4.0,0.0,-6.01,
+Group F,,Netherlands,,,1.0,9.0,2.579,
+Group F,,Japan,,,2.0,6.0,1.315,
+Group F,,Sweden,,,3.0,3.0,-2.037,
+Group F,,Tunisia,,,4.0,0.0,-1.857,
+Group G,,Belgium,,,1.0,9.0,3.003,
+Group G,,Iran,,,2.0,6.0,0.488,
+Group G,,Egypt,,,3.0,3.0,-0.588,
+Group G,,New Zealand,,,4.0,0.0,-2.903,
+Group H,,Spain,,,1.0,9.0,7.51,
+Group H,,Uruguay,,,2.0,6.0,1.042,
+Group H,,Cape Verde,,,3.0,3.0,-4.111,
+Group H,,Saudi Arabia,,,4.0,0.0,-4.441,
+Group I,,France,,,1.0,9.0,3.908,
+Group I,,Norway,,,2.0,6.0,1.561,
+Group I,,Senegal,,,3.0,3.0,-0.947,
+Group I,,Iraq,,,4.0,0.0,-4.522,
+Group J,,Argentina,,,1.0,9.0,4.366,
+Group J,,Austria,,,2.0,6.0,-0.249,
+Group J,,Algeria,,,3.0,3.0,-1.283,
+Group J,,Jordan,,,4.0,0.0,-2.834,
+Group K,,Portugal,,,1.0,9.0,2.954,
+Group K,,Colombia,,,2.0,6.0,1.749,
+Group K,,Uzbekistan,,,3.0,1.0,-2.256,
+Group K,,DR Congo,,,4.0,1.0,-2.447,
+Group L,,England,,,1.0,9.0,4.637,
+Group L,,Croatia,,,2.0,6.0,1.299,
+Group L,,Panama,,,3.0,3.0,-2.068,
+Group L,,Ghana,,,4.0,0.0,-3.868,
+Round of 32,73,South Korea,Canada,Canada,,,,0.639
+Round of 32,74,Germany,Czech Republic,Germany,,,,0.795
+Round of 32,75,Netherlands,Morocco,Netherlands,,,,0.627
+Round of 32,76,Brazil,Japan,Brazil,,,,0.757
+Round of 32,77,France,United States,France,,,,0.836
+Round of 32,78,Ecuador,Norway,Ecuador,,,,0.602
+Round of 32,79,Mexico,Scotland,Mexico,,,,0.771
+Round of 32,80,England,Ivory Coast,England,,,,0.905
+Round of 32,81,Turkey,Bosnia and Herzegovina,Turkey,,,,0.732
+Round of 32,82,Belgium,Senegal,Belgium,,,,0.838
+Round of 32,83,Colombia,Croatia,Colombia,,,,0.549
+Round of 32,84,Spain,Austria,Spain,,,,0.959
+Round of 32,85,Switzerland,Egypt,Switzerland,,,,0.861
+Round of 32,86,Argentina,Uruguay,Argentina,,,,0.796
+Round of 32,87,Portugal,Algeria,Portugal,,,,0.855
+Round of 32,88,Paraguay,Iran,Iran,,,,0.532
+Round of 16,89,Germany,France,France,,,,0.522
+Round of 16,90,Canada,Netherlands,Netherlands,,,,0.581
+Round of 16,91,Brazil,Ecuador,Brazil,,,,0.646
+Round of 16,92,Mexico,England,England,,,,0.694
+Round of 16,93,Colombia,Spain,Spain,,,,0.885
+Round of 16,94,Turkey,Belgium,Belgium,,,,0.661
+Round of 16,95,Argentina,Iran,Argentina,,,,0.822
+Round of 16,96,Switzerland,Portugal,Switzerland,,,,0.6
+Quarter-finals,97,France,Netherlands,France,,,,0.632
+Quarter-finals,98,Spain,Belgium,Spain,,,,0.819
+Quarter-finals,99,Brazil,England,England,,,,0.536
+Quarter-finals,100,Argentina,Switzerland,Argentina,,,,0.539
+Semi-finals,101,France,Spain,Spain,,,,0.753
+Semi-finals,102,England,Argentina,England,,,,0.516
+Third-place play-off,103,France,Argentina,Argentina,,,,0.538
+Final,104,Spain,England,Spain,,,,0.71
