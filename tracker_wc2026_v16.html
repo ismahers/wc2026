@@ -138,10 +138,20 @@ tr:last-child td{border-bottom:none}
 .sig-badge{display:inline-block;font-size:9px;letter-spacing:0.06em;padding:3px 8px;border-radius:5px;font-weight:500}
 .sig-core{background:var(--gr-bg);color:var(--gr)}
 .sig-review{background:var(--am-bg);color:var(--am)}
+.sig-watch{background:var(--ac-bg);color:var(--ac-2)}
+.sig-longshot{background:rgba(239,162,51,0.16);color:var(--am)}
 .sig-paper{background:var(--s3);color:var(--mu)}
 .sig-use{background:transparent;border:1px solid var(--b2);border-radius:var(--rs);color:var(--ac-2);font-family:var(--mono);font-size:11px;padding:4px 10px;cursor:pointer;transition:border-color .15s}
 .sig-use:hover{border-color:var(--ac)}
 .sig-meta{font-size:11px;color:var(--hi);margin-top:12px}
+.prop-match{border:1px solid var(--b1);border-radius:var(--r);background:var(--s2);margin-bottom:10px;overflow:hidden}
+.prop-match-head{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:11px 12px;background:transparent;border:0;color:var(--tx);font-family:var(--mono);cursor:pointer;text-align:left}
+.prop-match-title{font-size:12px;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prop-match-count{font-size:10px;color:var(--mu);flex-shrink:0;text-align:right}
+.prop-match-body{padding:0 12px}
+.prop-match.collapsed .prop-match-body{display:none}
+.prop-more{width:100%;margin:8px 0 12px;padding:7px 10px;border:1px solid var(--b2);border-radius:var(--rs);background:transparent;color:var(--ac-2);font-family:var(--mono);font-size:11px;cursor:pointer}
+.prop-more:hover{border-color:var(--ac)}
 .prop-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start;padding:12px 0;border-bottom:1px solid var(--b1)}
 .prop-row:last-child{border-bottom:none}
 .prop-main{min-width:0}
@@ -197,6 +207,7 @@ tr:last-child td{border-bottom:none}
   td>span,td>select,td>button{text-align:right}
   .res-sel{max-width:140px}
   .del-btn{margin-left:auto}
+  .prop-match-head{align-items:flex-start}
   .prop-row{grid-template-columns:1fr}
   .prop-odds{text-align:left}
 }
@@ -294,7 +305,9 @@ tr:last-child td{border-bottom:none}
         <div class="table-header" style="justify-content:flex-end">
           <div class="filters">
             <select id="fprop-match" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todos los partidos</option></select>
+            <select id="fprop-market" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todos los mercados</option></select>
             <select id="fprop-action" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todas</option><option value="manual_review_if_odds_available">Revisión</option><option value="radar_watch">Watchlist</option><option value="longshot_manual_only">Cuota alta</option><option value="card_radar_watch">Amarillas</option></select>
+            <select id="fprop-confidence" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="actionable">Solo accionables</option><option value="paper">Paper tracking</option><option value="all">Todas</option></select>
             <button class="btn-add btn-ghost" style="padding:6px 12px;font-size:11px" onclick="loadPlayerProps()">Actualizar</button>
           </div>
         </div>
@@ -625,6 +638,33 @@ function showApp(email) {
   document.getElementById('admin-pill').style.display = isAdmin ? 'inline-block' : 'none';
   initCollapsibles();
   loadBets();
+  loadSignals();
+  loadPlayerProps();
+  loadRadar();
+}
+
+function isLocalPreview() {
+  const isLocal = location.protocol === 'file:' || ['localhost','127.0.0.1','::1'].includes(location.hostname);
+  return isLocal && new URLSearchParams(location.search).has('preview');
+}
+
+function showPreviewApp() {
+  accessToken = null;
+  currentUserId = 'local-preview';
+  currentEmail = 'preview.local';
+  isAdmin = false;
+  adminView = 'mine';
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('app-screen').style.display='block';
+  document.getElementById('user-email').textContent='preview local';
+  document.getElementById('admin-bar').style.display='none';
+  document.getElementById('admin-pill').style.display='none';
+  initCollapsibles();
+  setCardCollapsed('card-player-props', false);
+  bets = [];
+  renderTable();
+  renderMetrics();
+  renderChart();
   loadSignals();
   loadPlayerProps();
   loadRadar();
@@ -988,6 +1028,9 @@ document.getElementById('fm').addEventListener('change', updateEdgeHint);
    Subida por: python -m src.evaluation.player_prop_radar_push
    ============================================================ */
 let playerProps = [];
+const PROP_PREVIEW_LIMIT = 20;
+const expandedPropMatches = {};
+const expandedPropLists = {};
 
 const PROP_ACTION_LABEL = {
   manual_review_if_odds_available: 'REVISAR',
@@ -997,8 +1040,30 @@ const PROP_ACTION_LABEL = {
   low_confidence_review: 'PAPER'
 };
 
+const PROP_ACTION_CLASS = {
+  manual_review_if_odds_available: 'sig-core',
+  radar_watch: 'sig-watch',
+  card_radar_watch: 'sig-review',
+  longshot_manual_only: 'sig-longshot',
+  low_confidence_review: 'sig-paper'
+};
+
+const PROP_MARKET_LABEL = {
+  shots: 'Tiros',
+  shots_on_target: 'Tiros a puerta',
+  fouls_committed: 'Faltas cometidas',
+  tackles: 'Entradas',
+  yellow_card: 'Tarjeta amarilla',
+  goalkeeper_saves: 'Paradas'
+};
+
 function propBool(v) {
-  return v === true || v === 'true' || v === 1 || v === '1';
+  if (v === true || v === 1) return true;
+  return String(v).trim().toLowerCase() === 'true' || String(v).trim() === '1';
+}
+
+function propMatchKey(p) {
+  return (p.home_team || '') + ' vs ' + (p.away_team || '');
 }
 
 function propRuleClass(p) {
@@ -1007,6 +1072,48 @@ function propRuleClass(p) {
   if (action === 'manual_review_if_odds_available' && ['locked_starter','probable_starter','confirmed_starter'].includes(status)) return 'ok';
   if (action === 'low_confidence_review' || !propBool(p.paper_tracking_allowed)) return 'paper';
   return '';
+}
+
+function propBadgeClass(p) {
+  if (!propBool(p.paper_tracking_allowed)) return 'sig-paper';
+  return PROP_ACTION_CLASS[p.tracking_action] || 'sig-paper';
+}
+
+function togglePropMatch(key) {
+  key = decodeURIComponent(key);
+  expandedPropMatches[key] = expandedPropMatches[key] === false;
+  renderPlayerProps();
+}
+
+function showAllPropsForMatch(key) {
+  key = decodeURIComponent(key);
+  expandedPropLists[key] = true;
+  renderPlayerProps();
+}
+
+function propRowHtml(p) {
+  const partido = esc(propMatchKey(p));
+  const prob = p.model_probability != null ? (parseFloat(p.model_probability) * 100).toFixed(1) + '%' : '—';
+  const fair = p.fair_odds != null ? parseFloat(p.fair_odds).toFixed(2) : '—';
+  const min = p.min_odds_review != null ? parseFloat(p.min_odds_review).toFixed(2) : '—';
+  const mins = p.expected_minutes != null ? parseFloat(p.expected_minutes).toFixed(0) + ' min' : '—';
+  const label = PROP_ACTION_LABEL[p.tracking_action] || (p.tracking_action || 'PROP');
+  const ruleCls = propRuleClass(p);
+  const badgeCls = propBadgeClass(p);
+
+  return '<div class="prop-row">' +
+    '<div class="prop-main">' +
+      '<div class="prop-title">' + esc(p.player_name) + ' · ' + esc(p.market_label) + '</div>' +
+      '<div class="prop-sub">' + partido + ' · ' + esc(p.team) + ' · ' + esc(p.data_quality_tier || '—') + ' · ' + mins + ' · prob ' + prob + '</div>' +
+      '<span class="prop-rule ' + ruleCls + '">' + esc(p.lineup_rule || 'revisar alineacion') + '</span> ' +
+      '<span class="sig-badge ' + badgeCls + '">' + esc(label) + '</span>' +
+      '<div class="prop-sub">' + esc(p.mobile_action || '') + '</div>' +
+    '</div>' +
+    '<div class="prop-odds">' +
+      '<strong>' + min + '</strong>' +
+      'Min rev.<br>Justa ' + fair +
+    '</div>' +
+  '</div>';
 }
 
 async function loadPlayerProps() {
@@ -1028,23 +1135,37 @@ async function loadPlayerProps() {
 
 function renderPlayerProps() {
   const pc = document.getElementById('prop-count');
-  if (pc) pc.textContent = playerProps.length ? playerProps.length : '';
+  const allMatches = [...new Set(playerProps.map(propMatchKey).filter(Boolean))].sort();
+  const actionableCount = playerProps.filter(p => propBool(p.paper_tracking_allowed)).length;
+  if (pc) pc.textContent = playerProps.length ? `${playerProps.length} · ${allMatches.length}p · ${actionableCount} ok` : '';
 
   const matchEl = document.getElementById('fprop-match');
   const prevM = matchEl.value;
-  const matches = [...new Set(playerProps.map(p => p.home_team + ' vs ' + p.away_team))].sort();
-  matchEl.innerHTML = '<option value="">Todos los partidos</option>' + matches.map(m => `<option value="${esc(m)}"${m===prevM?' selected':''}>${esc(m)}</option>`).join('');
+  matchEl.innerHTML = '<option value="">Todos los partidos</option>' + allMatches.map(m => `<option value="${esc(m)}"${m===prevM?' selected':''}>${esc(m)}</option>`).join('');
+
+  const marketEl = document.getElementById('fprop-market');
+  const prevMarket = marketEl ? marketEl.value : '';
+  if (marketEl) {
+    const markets = [...new Set(playerProps.map(p => p.market).filter(Boolean))].sort((a, b) => (PROP_MARKET_LABEL[a] || a).localeCompare(PROP_MARKET_LABEL[b] || b));
+    marketEl.innerHTML = '<option value="">Todos los mercados</option>' + markets.map(m => `<option value="${esc(m)}"${m===prevMarket?' selected':''}>${esc(PROP_MARKET_LABEL[m] || m)}</option>`).join('');
+  }
 
   const fm = matchEl.value;
+  const fmk = marketEl ? marketEl.value : '';
   const fa = document.getElementById('fprop-action').value;
-  const vis = playerProps
-    .filter(p => (!fm || (p.home_team + ' vs ' + p.away_team) === fm) && (!fa || p.tracking_action === fa))
-    .slice(0, 80);
+  const fc = document.getElementById('fprop-confidence')?.value || 'actionable';
+  const filtered = playerProps.filter(p => {
+    const paperAllowed = propBool(p.paper_tracking_allowed);
+    return (!fm || propMatchKey(p) === fm) &&
+      (!fmk || p.market === fmk) &&
+      (!fa || p.tracking_action === fa) &&
+      (fc === 'all' || (fc === 'paper' ? !paperAllowed : paperAllowed));
+  });
 
   const list = document.getElementById('prop-list');
   const emp = document.getElementById('prop-emp');
   const meta = document.getElementById('prop-meta');
-  if (!vis.length) {
+  if (!filtered.length) {
     list.innerHTML = '';
     emp.style.display = 'block';
     emp.textContent = playerProps.length ? 'Sin props en este filtro.' : 'Sin props. Sube el radar de jugador y pulsa Actualizar.';
@@ -1053,31 +1174,34 @@ function renderPlayerProps() {
   }
   emp.style.display = 'none';
 
-  list.innerHTML = vis.map(p => {
-    const partido = esc(p.home_team + ' vs ' + p.away_team);
-    const prob = p.model_probability != null ? (parseFloat(p.model_probability) * 100).toFixed(1) + '%' : '—';
-    const fair = p.fair_odds != null ? parseFloat(p.fair_odds).toFixed(2) : '—';
-    const min = p.min_odds_review != null ? parseFloat(p.min_odds_review).toFixed(2) : '—';
-    const mins = p.expected_minutes != null ? parseFloat(p.expected_minutes).toFixed(0) + ' min' : '—';
-    const label = PROP_ACTION_LABEL[p.tracking_action] || (p.tracking_action || 'PROP');
-    const ruleCls = propRuleClass(p);
-    return '<div class="prop-row">' +
-      '<div class="prop-main">' +
-        '<div class="prop-title">' + esc(p.player_name) + ' · ' + esc(p.market_label) + '</div>' +
-        '<div class="prop-sub">' + partido + ' · ' + esc(p.team) + ' · ' + esc(p.data_quality_tier || '—') + ' · ' + mins + ' · prob ' + prob + '</div>' +
-        '<span class="prop-rule ' + ruleCls + '">' + esc(p.lineup_rule || 'revisar alineacion') + '</span> ' +
-        '<span class="sig-badge sig-paper">' + esc(label) + '</span>' +
-        '<div class="prop-sub">' + esc(p.mobile_action || '') + '</div>' +
-      '</div>' +
-      '<div class="prop-odds">' +
-        '<strong>' + min + '</strong>' +
-        'Min rev.<br>Justa ' + fair +
+  const grouped = new Map();
+  filtered.forEach(p => {
+    const key = propMatchKey(p);
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(p);
+  });
+
+  list.innerHTML = [...grouped.entries()].map(([key, props]) => {
+    const isOpen = expandedPropMatches[key] !== false;
+    const showAll = expandedPropLists[key] || Boolean(fm);
+    const shown = showAll ? props : props.slice(0, PROP_PREVIEW_LIMIT);
+    const hidden = props.length - shown.length;
+    const cls = isOpen ? 'prop-match' : 'prop-match collapsed';
+    const keyArg = encodeURIComponent(key);
+    return '<div class="' + cls + '">' +
+      '<button class="prop-match-head" type="button" onclick="togglePropMatch(\'' + keyArg + '\')">' +
+        '<span class="prop-match-title">' + esc(key) + '</span>' +
+        '<span class="prop-match-count">' + props.length + ' props · ' + (isOpen ? '▾' : '▸') + '</span>' +
+      '</button>' +
+      '<div class="prop-match-body">' +
+        shown.map(propRowHtml).join('') +
+        (hidden > 0 ? '<button class="prop-more" type="button" onclick="showAllPropsForMatch(\'' + keyArg + '\')">Ver todas (' + hidden + ' más)</button>' : '') +
       '</div>' +
     '</div>';
   }).join('');
 
   const last = playerProps.reduce((m, p) => (p.updated_at && p.updated_at > m ? p.updated_at : m), '');
-  meta.textContent = (playerProps.length + ' props cargadas. Mostrando ' + vis.length + '.') +
+  meta.textContent = (playerProps.length + ' props cargadas · ' + filtered.length + ' visibles · ' + grouped.size + ' partidos · ' + actionableCount + ' accionables.') +
     (last ? (' Ultima actualizacion: ' + new Date(last).toLocaleString('es-ES')) : '');
 }
 
@@ -1188,6 +1312,10 @@ function renderRadar() {
 }
 
 (function(){
+  if (isLocalPreview()) {
+    showPreviewApp();
+    return;
+  }
   const token=localStorage.getItem('wc26_token');
   const email=localStorage.getItem('wc26_email');
   const userId=localStorage.getItem('wc26_user_id');

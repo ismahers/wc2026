@@ -24,6 +24,7 @@ DEFAULT_FBREF_FEATURES = Path("data/processed/fbref_player_features_wc2026.csv")
 DEFAULT_TM_FEATURES = Path("data/processed/player_prop_features_wc2026.csv")
 DEFAULT_FIXTURES = Path("data/raw/group_stage_wc2026.csv")
 DEFAULT_MATCH_FEATURES = Path("data/processed/features_wc2026.csv")
+DEFAULT_MATCH_PROJECTIONS = Path("outputs/wc2026_ensemble_predictions.csv")
 DEFAULT_MINUTES_PROJECTION = Path("data/processed/player_expected_minutes_wc2026.csv")
 DEFAULT_OUTPUT = Path("outputs/wc2026_player_prop_radar.csv")
 DEFAULT_SUMMARY = Path("outputs/wc2026_player_prop_radar_summary.csv")
@@ -31,6 +32,8 @@ DEFAULT_SUMMARY = Path("outputs/wc2026_player_prop_radar_summary.csv")
 MIN_PROBABILITY_TO_OUTPUT = 0.08
 MAX_FAIR_ODDS_TO_HIGHLIGHT = 4.50
 MIN_FAIR_ODDS_TO_REVIEW = 1.45
+STARTER_MINUTES_DISCOUNT = 0.94
+STARTER_MINUTES_CAP = 85.0
 
 BIG5_COMPETITIONS = {
     "ENG-Premier League",
@@ -46,6 +49,40 @@ STRONG_SECONDARY_COMPETITIONS = {
     "BEL-Belgian Pro League",
     "TUR-Super Lig",
     "KSA-Saudi Pro League",
+}
+ATTACK_LAMBDA_BASELINE = 1.45
+ATTACK_ADJUSTMENT_ELASTICITY = 0.50
+SHOT_MARKET_POSITION_FACTORS = {
+    "shots": {
+        "Forward": 0.86,
+        "Midfielder": 0.68,
+        "Defender": 0.50,
+        "Goalkeeper": 0.0,
+    },
+    "shots_on_target": {
+        "Forward": 1.00,
+        "Midfielder": 0.54,
+        "Defender": 0.36,
+        "Goalkeeper": 0.0,
+    },
+}
+SHOT_MARKETS = {"shots", "shots_on_target"}
+PROP_PROBABILITY_CAPS = {
+    "shots": {
+        0: 0.82,
+        1: 0.72,
+        2: 0.58,
+    },
+    "shots_on_target": {
+        0: 0.82,
+        1: 0.48,
+    },
+    "fouls_committed": {
+        0: 0.82,
+    },
+    "goalkeeper_saves": {
+        1: 0.82,
+    },
 }
 
 
@@ -89,6 +126,25 @@ def poisson_over_probability(lam: float, line: float) -> float:
         term *= lam / k
         p_le += term
     return float(max(0.0, min(1.0, 1.0 - p_le)))
+
+
+def player_prop_over_probability(lam: float, line: float, market: str) -> float:
+    """Return over probability with conservative caps for shot props.
+
+    Season per90 rates plus Poisson can make low player-prop lines look nearly
+    certain. In real props, role changes and game state create extra zeros, so
+    we cap fragile low-line probabilities rather than letting extreme lambdas
+    imply untradeable fair odds.
+    """
+    probability = poisson_over_probability(lam, line)
+    caps = PROP_PROBABILITY_CAPS.get(market)
+    if not caps:
+        return probability
+    threshold = int(math.floor(line))
+    cap = caps.get(threshold)
+    if cap is None:
+        return probability
+    return float(np.clip(min(probability, cap), 0.0, 1.0))
 
 
 def fair_odds(probability: float) -> float | None:
@@ -143,7 +199,11 @@ def load_player_features(fbref_path: Path, tm_path: Path) -> pd.DataFrame:
     return players
 
 
-def load_group_stage(fixtures_path: Path, match_features_path: Path) -> pd.DataFrame:
+def load_group_stage(
+    fixtures_path: Path,
+    match_features_path: Path,
+    match_projections_path: Path = DEFAULT_MATCH_PROJECTIONS,
+) -> pd.DataFrame:
     fixtures = pd.read_csv(fixtures_path, parse_dates=["match_date"])
     features = pd.read_csv(match_features_path, parse_dates=["date"])
     context_cols = [
@@ -173,7 +233,28 @@ def load_group_stage(fixtures_path: Path, match_features_path: Path) -> pd.DataF
         right_on=["date", "home_team", "away_team"],
         how="left",
     )
-    return merged.drop(columns=["date"], errors="ignore")
+    merged = merged.drop(columns=["date"], errors="ignore")
+
+    if match_projections_path.exists():
+        projections = pd.read_csv(match_projections_path, parse_dates=["date"])
+        projection_cols = [
+            "date",
+            "home_team",
+            "away_team",
+            "lambda_home",
+            "lambda_away",
+            "final_expected_goals",
+        ]
+        projection_cols = [col for col in projection_cols if col in projections.columns]
+        merged = merged.merge(
+            projections[projection_cols],
+            left_on=["match_date", "home_team", "away_team"],
+            right_on=["date", "home_team", "away_team"],
+            how="left",
+            suffixes=("", "_projection"),
+        ).drop(columns=["date"], errors="ignore")
+
+    return merged
 
 
 def estimate_expected_minutes(row: pd.Series) -> tuple[float, str]:
@@ -235,10 +316,20 @@ def signed_match_strength(match: pd.Series, team_side: str) -> float:
 def match_adjustment(match: pd.Series, team_side: str, kind: str) -> float:
     strength = signed_match_strength(match, team_side)
     if kind == "attack":
+        lambda_col = "lambda_home" if team_side == "home" else "lambda_away"
+        team_lambda = pd.to_numeric(match.get(lambda_col), errors="coerce")
+        if pd.notna(team_lambda) and team_lambda > 0:
+            ratio = float(team_lambda) / ATTACK_LAMBDA_BASELINE
+            return float(np.clip(ratio ** ATTACK_ADJUSTMENT_ELASTICITY, 0.65, 1.18))
         return float(np.clip(1.0 + 0.35 * strength, 0.75, 1.25))
     if kind == "defensive_work":
         return float(np.clip(1.0 - 0.35 * strength, 0.75, 1.30))
     return 1.0
+
+
+def prop_calibration_factor(market: str, position: object) -> float:
+    position = str(position or "")
+    return SHOT_MARKET_POSITION_FACTORS.get(market, {}).get(position, 1.0)
 
 
 def tracking_action(probability: float, tier: str, market: str, odds: float | None) -> str:
@@ -332,6 +423,52 @@ def _safe_float(value: object, default: float = 0.0) -> float:
     return float(value)
 
 
+def starter_pricing_minutes(player: pd.Series, position: object) -> tuple[float, str]:
+    """Estimate minutes conditional on the player starting.
+
+    Player props are reviewed only if the player starts. Club minutes per start
+    are therefore a better pricing input than unconditional pre-lineup minutes.
+    """
+    starts = _safe_float(player.get("fbref_starts"), np.nan)
+    minutes = _safe_float(player.get("fbref_minutes"), np.nan)
+    if pd.notna(starts) and starts >= 3 and pd.notna(minutes) and minutes > 0:
+        raw = (minutes / starts) * STARTER_MINUTES_DISCOUNT
+        return float(np.clip(raw, 55.0, STARTER_MINUTES_CAP)), "fbref_minutes_per_start_discounted"
+
+    position = str(position or "")
+    if position == "Goalkeeper":
+        return 85.0, "starter_position_default"
+    if position == "Defender":
+        return 80.0, "starter_position_default"
+    if position == "Midfielder":
+        return 74.0, "starter_position_default"
+    if position == "Forward":
+        return 74.0, "starter_position_default"
+    return 72.0, "starter_position_default"
+
+
+def pricing_minutes_for_prop(player: pd.Series, minutes: dict) -> tuple[float, str]:
+    """Return minutes used to price props.
+
+    The minutes projection is intentionally conservative before lineups. For
+    props we compare prices only when the player starts, so probable/locked
+    starters should be priced with starter-conditional minutes.
+    """
+    expected_minutes = _safe_float(minutes.get("expected_minutes"), 0.0)
+    lineup_status = str(minutes.get("lineup_status") or "")
+    manual_minutes = pd.to_numeric(minutes.get("manual_expected_minutes"), errors="coerce")
+    manual_override = bool(minutes.get("manual_minutes_override_applied", False))
+
+    if manual_override and pd.notna(manual_minutes):
+        return expected_minutes, "manual_expected_minutes"
+
+    if lineup_status in {"locked_starter", "probable_starter", "confirmed_starter"}:
+        starter_minutes, source = starter_pricing_minutes(player, player.get("position_broad"))
+        return max(expected_minutes, starter_minutes), source
+
+    return expected_minutes, minutes.get("expected_minutes_source", "expected_minutes")
+
+
 def paper_tracking_allowed(
     *,
     tier: str,
@@ -364,13 +501,14 @@ def build_player_prop_radar(
     tm_features_path: Path = DEFAULT_TM_FEATURES,
     fixtures_path: Path = DEFAULT_FIXTURES,
     match_features_path: Path = DEFAULT_MATCH_FEATURES,
+    match_projections_path: Path = DEFAULT_MATCH_PROJECTIONS,
     minutes_projection_path: Path = DEFAULT_MINUTES_PROJECTION,
     output_path: Path = DEFAULT_OUTPUT,
     summary_path: Path = DEFAULT_SUMMARY,
     min_probability: float = MIN_PROBABILITY_TO_OUTPUT,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     players = load_player_features(fbref_features_path, tm_features_path)
-    fixtures = load_group_stage(fixtures_path, match_features_path)
+    fixtures = load_group_stage(fixtures_path, match_features_path, match_projections_path)
     minutes_projection = load_minutes_projection(minutes_projection_path)
     rows: list[dict] = []
 
@@ -392,6 +530,7 @@ def build_player_prop_radar(
                 expected_minutes = minutes["expected_minutes"]
                 if expected_minutes <= 0:
                     continue
+                pricing_minutes, pricing_minutes_source = pricing_minutes_for_prop(player, minutes)
 
                 for spec in PROP_SPECS:
                     if spec.positions and str(player.get("position_broad")) not in spec.positions:
@@ -410,8 +549,9 @@ def build_player_prop_radar(
                         continue
 
                     adjustment = adjustment_cache.get(spec.adjustment_kind, 1.0)
-                    lam = float(rate) * expected_minutes / 90.0 * adjustment
-                    probability = poisson_over_probability(lam, spec.line)
+                    calibration = prop_calibration_factor(spec.market, player.get("position_broad"))
+                    lam = float(rate) * pricing_minutes / 90.0 * adjustment * calibration
+                    probability = player_prop_over_probability(lam, spec.line, spec.market)
                     if probability < min_probability:
                         continue
 
@@ -444,6 +584,8 @@ def build_player_prop_radar(
                         "event_lambda": round(lam, 4),
                         "event_rate_per90": round(float(rate), 4),
                         "expected_minutes": round(expected_minutes, 1),
+                        "pricing_minutes": round(pricing_minutes, 1),
+                        "pricing_minutes_source": pricing_minutes_source,
                         "expected_minutes_source": minutes["expected_minutes_source"],
                         "base_expected_minutes": round(minutes["base_expected_minutes"], 1),
                         "manual_expected_minutes": minutes["manual_expected_minutes"],
@@ -452,6 +594,7 @@ def build_player_prop_radar(
                         "minutes_confidence": minutes["minutes_confidence"],
                         "manual_minutes_override_applied": minutes["manual_minutes_override_applied"],
                         "match_adjustment": round(adjustment, 4),
+                        "prop_calibration_factor": round(calibration, 4),
                         "signed_rating_diff": round(signed_match_strength(match, team_side), 4),
                         "data_quality_tier": tier,
                         "data_quality_score": quality_score,
@@ -503,6 +646,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--tm-features", default=str(DEFAULT_TM_FEATURES))
     parser.add_argument("--fixtures", default=str(DEFAULT_FIXTURES))
     parser.add_argument("--match-features", default=str(DEFAULT_MATCH_FEATURES))
+    parser.add_argument("--match-projections", default=str(DEFAULT_MATCH_PROJECTIONS))
     parser.add_argument("--minutes-projection", default=str(DEFAULT_MINUTES_PROJECTION))
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT))
     parser.add_argument("--summary", default=str(DEFAULT_SUMMARY))
@@ -517,6 +661,7 @@ def main() -> None:
         tm_features_path=Path(args.tm_features),
         fixtures_path=Path(args.fixtures),
         match_features_path=Path(args.match_features),
+        match_projections_path=Path(args.match_projections),
         minutes_projection_path=Path(args.minutes_projection),
         output_path=Path(args.output),
         summary_path=Path(args.summary),

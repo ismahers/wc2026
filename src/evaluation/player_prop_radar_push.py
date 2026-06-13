@@ -83,6 +83,14 @@ def _num(value, digits: int = 4):
     return round(float(out), digits)
 
 
+def _bool(value) -> bool:
+    if isinstance(value, bool):
+        return value
+    if value is None or pd.isna(value):
+        return False
+    return str(value).strip().lower() in {"1", "true", "yes", "y", "si", "sí"}
+
+
 def _signal_id(row: pd.Series) -> str:
     raw = "|".join(str(row.get(col, "")) for col in [
         "match_number", "team", "player_key", "market", "line", "selection"
@@ -119,7 +127,7 @@ def _market_label(row: pd.Series) -> str:
 
 def _lineup_rule(row: pd.Series) -> str:
     market = str(row.get("market") or "")
-    expected_minutes = _num(row.get("expected_minutes"), 1) or 0.0
+    expected_minutes = _num(row.get("pricing_minutes"), 1) or _num(row.get("expected_minutes"), 1) or 0.0
     lineup_status = str(row.get("lineup_status") or "")
 
     if market == "goalkeeper_saves":
@@ -132,6 +140,9 @@ def _lineup_rule(row: pd.Series) -> str:
 
 
 def _mobile_action(row: pd.Series) -> str:
+    if not _bool(row.get("paper_tracking_allowed", False)):
+        return "baja confianza - solo paper"
+
     tracking = str(row.get("tracking_action") or "")
     fair_odds = _num(row.get("fair_odds"), 3)
     min_odds = None if fair_odds is None else round(fair_odds * 1.10, 2)
@@ -213,6 +224,7 @@ def load_player_prop_rows(
     rows: list[dict] = []
     for _, r in df.iterrows():
         home, away = _home_away(r)
+        display_minutes = _num(r.get("pricing_minutes"), 1) or _num(r.get("expected_minutes"), 1)
         rows.append({
             "signal_id": _signal_id(r),
             "match_number": int(r["match_number"]),
@@ -232,7 +244,7 @@ def load_player_prop_rows(
             "model_probability": _num(r.get("model_probability")),
             "fair_odds": _num(r.get("fair_odds"), 3),
             "min_odds_review": _num(r.get("min_odds_review"), 3),
-            "expected_minutes": _num(r.get("expected_minutes"), 1),
+            "expected_minutes": display_minutes,
             "lineup_status": str(r.get("lineup_status") or ""),
             "lineup_rule": _lineup_rule(r),
             "mobile_action": _mobile_action(r),
@@ -240,7 +252,7 @@ def load_player_prop_rows(
             "action_if_bench": "descartar salvo linea muy baja",
             "tracking_action": str(r.get("tracking_action") or ""),
             "data_quality_tier": str(r.get("data_quality_tier") or ""),
-            "paper_tracking_allowed": bool(r.get("paper_tracking_allowed", False)),
+            "paper_tracking_allowed": _bool(r.get("paper_tracking_allowed", False)),
             "updated_at": now,
         })
     return rows, scope
