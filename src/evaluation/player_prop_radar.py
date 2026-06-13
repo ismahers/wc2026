@@ -73,10 +73,6 @@ PROP_PROBABILITY_CAPS = {
         1: 0.72,
         2: 0.58,
     },
-    "shots_on_target": {
-        0: 0.82,
-        1: 0.48,
-    },
     "fouls_committed": {
         0: 0.82,
     },
@@ -84,6 +80,25 @@ PROP_PROBABILITY_CAPS = {
         1: 0.82,
     },
 }
+SOT_POSITION_CAPS = {
+    0: {
+        "elite_forward": 0.72,
+        "forward": 0.54,
+        "attacking_midfielder": 0.52,
+        "central_midfielder": 0.38,
+        "defender": 0.24,
+        "goalkeeper": 0.0,
+    },
+    1: {
+        "elite_forward": 0.32,
+        "forward": 0.20,
+        "attacking_midfielder": 0.16,
+        "central_midfielder": 0.10,
+        "defender": 0.05,
+        "goalkeeper": 0.0,
+    },
+}
+SOT_MODEL_WEIGHT = 0.35
 
 
 @dataclass(frozen=True)
@@ -128,7 +143,42 @@ def poisson_over_probability(lam: float, line: float) -> float:
     return float(max(0.0, min(1.0, 1.0 - p_le)))
 
 
-def player_prop_over_probability(lam: float, line: float, market: str) -> float:
+def is_elite_sot_forward(player: pd.Series) -> bool:
+    if str(player.get("position_broad") or "") != "Forward":
+        return False
+    market_value = _safe_float(player.get("market_value_eur"), 0.0)
+    sot_rate = _safe_float(player.get("fbref_shots_on_target_per90"), 0.0)
+    return market_value >= 80_000_000 and sot_rate >= 1.25
+
+
+def sot_role(player: pd.Series) -> str:
+    position = str(player.get("position_broad") or "")
+    detail = str(player.get("position_detail") or "").casefold()
+
+    if is_elite_sot_forward(player):
+        return "elite_forward"
+    if position == "Goalkeeper":
+        return "goalkeeper"
+    if position == "Defender":
+        return "defender"
+    if "attacking midfield" in detail or "winger" in detail or "second striker" in detail:
+        return "attacking_midfielder"
+    if position == "Forward":
+        return "forward"
+    if position == "Midfielder":
+        return "central_midfielder"
+    return "central_midfielder"
+
+
+def probability_cap_for_prop(market: str, line: float, player: pd.Series) -> float | None:
+    threshold = int(math.floor(line))
+    if market == "shots_on_target":
+        return SOT_POSITION_CAPS.get(threshold, {}).get(sot_role(player))
+
+    return PROP_PROBABILITY_CAPS.get(market, {}).get(threshold)
+
+
+def player_prop_over_probability(lam: float, line: float, market: str, player: pd.Series) -> float:
     """Return over probability with conservative caps for shot props.
 
     Season per90 rates plus Poisson can make low player-prop lines look nearly
@@ -137,11 +187,11 @@ def player_prop_over_probability(lam: float, line: float, market: str) -> float:
     imply untradeable fair odds.
     """
     probability = poisson_over_probability(lam, line)
-    caps = PROP_PROBABILITY_CAPS.get(market)
-    if not caps:
-        return probability
-    threshold = int(math.floor(line))
-    cap = caps.get(threshold)
+    prior = probability_cap_for_prop(market, line, player)
+    if market == "shots_on_target" and prior is not None:
+        return float(np.clip(SOT_MODEL_WEIGHT * probability + (1.0 - SOT_MODEL_WEIGHT) * prior, 0.0, 1.0))
+
+    cap = prior
     if cap is None:
         return probability
     return float(np.clip(min(probability, cap), 0.0, 1.0))
@@ -165,6 +215,7 @@ def load_player_features(fbref_path: Path, tm_path: Path) -> pd.DataFrame:
     keep_tm = [
         "player_key",
         "transfermarkt_player_id",
+        "position_detail",
         "age",
         "market_value_eur",
         "recent_minutes",
@@ -337,6 +388,12 @@ def tracking_action(probability: float, tier: str, market: str, odds: float | No
         return "price_too_short_watch_only"
     if odds is not None and odds > 8.00:
         return "longshot_manual_only"
+    if market == "shots_on_target":
+        if tier in {"A", "B"} and probability >= 0.18:
+            return "radar_watch"
+        if tier == "C" and probability >= 0.22:
+            return "low_confidence_review"
+        return "no_action"
     if tier in {"A", "B"} and probability >= 0.22:
         return "manual_review_if_odds_available"
     if tier in {"A", "B"} and probability >= 0.14:
@@ -551,7 +608,7 @@ def build_player_prop_radar(
                     adjustment = adjustment_cache.get(spec.adjustment_kind, 1.0)
                     calibration = prop_calibration_factor(spec.market, player.get("position_broad"))
                     lam = float(rate) * pricing_minutes / 90.0 * adjustment * calibration
-                    probability = player_prop_over_probability(lam, spec.line, spec.market)
+                    probability = player_prop_over_probability(lam, spec.line, spec.market, player)
                     if probability < min_probability:
                         continue
 
@@ -575,6 +632,7 @@ def build_player_prop_radar(
                         "player_key": player.get("player_key"),
                         "player_name": player.get("player_name"),
                         "position_broad": player.get("position_broad"),
+                        "position_detail": player.get("position_detail"),
                         "club_from_squad": player.get("club_from_squad"),
                         "market": spec.market,
                         "line": spec.line,
