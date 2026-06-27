@@ -97,10 +97,13 @@ select option{background:var(--s2)}
 .combo-leg{display:grid;grid-template-columns:2fr 1.4fr 1fr 36px;gap:10px;margin-bottom:10px;align-items:end}
 .combo-remove{height:36px;background:transparent;border:1px solid var(--b2);border-radius:var(--rs);color:var(--mu);font-family:var(--mono);font-size:14px;cursor:pointer;transition:all .15s}
 .combo-remove:hover{color:var(--rd);border-color:rgba(242,154,154,0.35)}
-.combo-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.combo-total{font-size:12px;color:var(--mu)}
-.combo-total strong{color:var(--tx);font-weight:500;font-variant-numeric:tabular-nums}
-.btn-add{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:linear-gradient(180deg,var(--ac),#766de0);color:#fff;border:none;border-radius:var(--rs);padding:10px 18px;font-family:var(--dis);font-size:13px;font-weight:700;cursor:pointer;transition:filter 0.15s,transform 0.05s}
+	.combo-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+	.combo-total{font-size:12px;color:var(--mu)}
+	.combo-total strong{color:var(--tx);font-weight:500;font-variant-numeric:tabular-nums}
+	.import-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+	.file-input{max-width:380px}
+	.import-status{font-size:12px;color:var(--mu);margin-top:10px;min-height:18px;line-height:1.5}
+	.btn-add{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:linear-gradient(180deg,var(--ac),#766de0);color:#fff;border:none;border-radius:var(--rs);padding:10px 18px;font-family:var(--dis);font-size:13px;font-weight:700;cursor:pointer;transition:filter 0.15s,transform 0.05s}
 .btn-add:hover{filter:brightness(1.08)}
 .btn-add:active{transform:translateY(1px)}
 .btn-add:disabled{opacity:0.4;cursor:not-allowed}
@@ -296,27 +299,7 @@ tr:last-child td{border-bottom:none}
       <div class="sig-meta" id="sig-meta"></div>
       </div>
     </div>
-    <div class="card collapsible collapsed" id="card-player-props">
-      <button class="card-head" type="button" onclick="toggleCard('card-player-props')" aria-expanded="false">
-        <span class="card-title" style="margin:0">Props móvil<span class="ct-count" id="prop-count"></span></span>
-        <span class="chev" aria-hidden="true">▾</span>
-      </button>
-      <div class="card-body">
-        <div class="table-header" style="justify-content:flex-end">
-          <div class="filters">
-            <select id="fprop-match" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todos los partidos</option></select>
-            <select id="fprop-market" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todos los mercados</option></select>
-            <select id="fprop-action" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="">Todas</option><option value="manual_review_if_odds_available">Revisión</option><option value="radar_watch">Watchlist</option><option value="longshot_manual_only">Cuota alta</option><option value="card_radar_watch">Amarillas</option></select>
-            <select id="fprop-confidence" onchange="renderPlayerProps()" style="width:auto;font-size:12px;padding:6px 10px"><option value="actionable">Solo accionables</option><option value="paper">Paper tracking</option><option value="all">Todas</option></select>
-            <button class="btn-add btn-ghost" style="padding:6px 12px;font-size:11px" onclick="loadPlayerProps()">Actualizar</button>
-          </div>
-        </div>
-        <div id="prop-list"></div>
-        <div id="prop-emp" class="empty">Sin props. Sube el radar de jugador y pulsa Actualizar.</div>
-        <div class="sig-meta" id="prop-meta">Uso móvil: mirar titularidad y comparar cuota real con Min revisión.</div>
-      </div>
-    </div>
-    <div class="card collapsible collapsed" id="card-new-bet">
+	    <div class="card collapsible collapsed" id="card-new-bet">
       <button class="card-head" type="button" onclick="toggleCard('card-new-bet')" aria-expanded="false">
         <span class="card-title" style="margin:0">Nueva apuesta</span>
         <span class="chev" aria-hidden="true">▾</span>
@@ -329,7 +312,7 @@ tr:last-child td{border-bottom:none}
       <div class="fg" id="single-fields">
         <div><label class="fl">Partido</label><input id="fp" type="text" placeholder="España vs Alemania"></div>
         <div><label class="fl">Mercado</label>
-          <select id="fm"><option>1X2 local</option><option>1X2 empate</option><option>1X2 visitante</option><option>Over 2.5</option><option>Under 2.5</option><option>BTTS sí</option><option>BTTS no</option><option>Córners</option><option>Amarillas</option><option>Jugador</option></select>
+	          <select id="fm"><option>1X2 local</option><option>1X2 empate</option><option>1X2 visitante</option><option>Over 2.5</option><option>Under 2.5</option><option>BTTS sí</option><option>BTTS no</option><option>Córners</option><option>Amarillas</option><option>Rojas</option><option>Otro</option></select>
         </div>
         <div><label class="fl">Cuota</label><input id="fc" type="number" placeholder="1.85" min="1.01" step="0.01"></div>
         <div><label class="fl">Stake (€)</label><input id="fs" type="number" placeholder="10" min="0.01" step="0.01"></div>
@@ -353,8 +336,21 @@ tr:last-child td{border-bottom:none}
       <div class="edge-hint" id="edge-hint" style="display:none"></div>
       <button class="btn-add" id="btn-add" onclick="addBet()">+ Añadir</button>
       </div>
-    </div>
-    <div class="card collapsible collapsed" id="card-register">
+	    </div>
+	    <div class="card collapsible collapsed" id="card-import-shot">
+	      <button class="card-head" type="button" onclick="toggleCard('card-import-shot')" aria-expanded="false">
+	        <span class="card-title" style="margin:0">Importar captura</span>
+	        <span class="chev" aria-hidden="true">▾</span>
+	      </button>
+	      <div class="card-body">
+	        <div class="import-row">
+	          <input class="file-input" id="shot-input" type="file" accept="image/*" multiple>
+	          <button class="btn-add" id="btn-import" onclick="importScreenshots()">Leer e importar</button>
+	        </div>
+	        <div class="import-status" id="import-status">Sube una captura de una simple o combinada. La app intentará leer stake, cuota, resultado y selecciones.</div>
+	      </div>
+	    </div>
+	    <div class="card collapsible collapsed" id="card-register">
       <button class="card-head" type="button" onclick="toggleCard('card-register')" aria-expanded="false">
         <span class="card-title" style="margin:0">Registro</span>
         <span class="chev" aria-hidden="true">▾</span>
@@ -423,6 +419,7 @@ tr:last-child td{border-bottom:none}
 
 <div id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <script>
 const SB_URL = 'https://bcqfyipszvktufenlcep.supabase.co';
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjcWZ5aXBzenZrdHVmZW5sY2VwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3ODc5MDMsImV4cCI6MjA5NTM2MzkwM30.WSfJCNTxhq3n7s1_pCe5sEsLdmEnx_25cw__OIu4RuM';
@@ -438,7 +435,7 @@ let betMode = 'single';
 const ADMIN_EMAILS = ['ismael.hersua@gmail.com','daniel.fernandezg.backup@gmail.com'];
 let isAdmin = false;
 let adminView = 'all'; // 'all' | 'mine' | <user_id>
-const MARKET_OPTIONS = ['1X2 local','1X2 empate','1X2 visitante','Over 2.5','Under 2.5','BTTS sí','BTTS no','Córners','Amarillas','Jugador'];
+	const MARKET_OPTIONS = ['1X2 local','1X2 empate','1X2 visitante','Over 2.5','Under 2.5','BTTS sí','BTTS no','Córners','Amarillas','Rojas','Otro'];
 
 function dbg(msg) {
   if (!DEBUG) return;
@@ -636,12 +633,11 @@ function showApp(email) {
   adminView = 'all';
   document.getElementById('admin-bar').style.display = isAdmin ? 'flex' : 'none';
   document.getElementById('admin-pill').style.display = isAdmin ? 'inline-block' : 'none';
-  initCollapsibles();
-  loadBets();
-  loadSignals();
-  loadPlayerProps();
-  loadRadar();
-}
+	  initCollapsibles();
+	  loadBets();
+	  loadSignals();
+	  loadRadar();
+	}
 
 function isLocalPreview() {
   const isLocal = location.protocol === 'file:' || ['localhost','127.0.0.1','::1'].includes(location.hostname);
@@ -657,18 +653,17 @@ function showPreviewApp() {
   document.getElementById('auth-screen').style.display='none';
   document.getElementById('app-screen').style.display='block';
   document.getElementById('user-email').textContent='preview local';
-  document.getElementById('admin-bar').style.display='none';
-  document.getElementById('admin-pill').style.display='none';
-  initCollapsibles();
-  setCardCollapsed('card-player-props', false);
-  bets = [];
+	  document.getElementById('admin-bar').style.display='none';
+	  document.getElementById('admin-pill').style.display='none';
+	  initCollapsibles();
+	  setCardCollapsed('card-import-shot', false);
+	  bets = [];
   renderTable();
   renderMetrics();
-  renderChart();
-  loadSignals();
-  loadPlayerProps();
-  loadRadar();
-}
+	  renderChart();
+	  loadSignals();
+	  loadRadar();
+	}
 
 function toggleCard(id) {
   const c = document.getElementById(id);
@@ -685,7 +680,7 @@ function setCardCollapsed(id, collapsed) {
 }
 
 function initCollapsibles() {
-  ['card-signals','card-player-props','card-new-bet','card-register','card-market-pl','card-radar'].forEach(id => {
+	  ['card-signals','card-new-bet','card-import-shot','card-register','card-market-pl','card-radar'].forEach(id => {
     const c = document.getElementById(id);
     if (!c) return;
     c.classList.add('collapsed');
@@ -694,15 +689,53 @@ function initCollapsibles() {
   });
 }
 
-async function loadBets() {
-  document.getElementById('emp').textContent='Cargando...';
-  let r = await sbFetch('/rest/v1/bets?select=*,profiles(email)&order=created_at.desc');
-  if (!r.ok && r.status === 400) r = await sbFetch('/rest/v1/bets?select=*&order=created_at.desc');
-  if (!r.ok) { toast('Error: '+JSON.stringify(r.data),'err'); document.getElementById('emp').textContent='Error cargando datos.'; return; }
-  bets = Array.isArray(r.data)?r.data:[];
-  refreshAdminScope();
-  renderTable(); renderMetrics(); renderChart();
-}
+	async function loadBets() {
+	  document.getElementById('emp').textContent='Cargando...';
+	  let r = await sbFetch('/rest/v1/bets?select=*,profiles(email)&order=created_at.desc');
+	  if (!r.ok && r.status === 400) r = await sbFetch('/rest/v1/bets?select=*&order=created_at.desc');
+	  if (!r.ok) { toast('Error: '+JSON.stringify(r.data),'err'); document.getElementById('emp').textContent='Error cargando datos.'; return; }
+	  bets = Array.isArray(r.data)?r.data:[];
+	  refreshAdminScope();
+	  renderTable(); renderMetrics(); renderChart();
+	}
+
+	async function saveBetRecord({ partido, mercado, cuota, stake, resultado }) {
+	  partido = String(partido || '').trim();
+	  mercado = String(mercado || '').trim() || 'Otro';
+	  cuota = parseFloat(cuota);
+	  stake = parseFloat(stake);
+	  resultado = resultado || 'pendiente';
+	  if (!partido || isNaN(cuota) || isNaN(stake) || cuota < 1.01 || stake <= 0) {
+	    throw new Error('Faltan partido, cuota o stake');
+	  }
+	  if (!currentUserId) throw new Error('No se ha podido identificar el usuario. Vuelve a entrar.');
+	  const beneficio = benefitFor(resultado, cuota, stake);
+	  if (currentUserId === 'local-preview' || isLocalPreview()) {
+	    const nb = {
+	      id: 'preview-' + Date.now() + '-' + Math.random().toString(16).slice(2),
+	      user_id: currentUserId,
+	      created_at: new Date().toISOString(),
+	      partido,
+	      mercado,
+	      cuota,
+	      stake,
+	      resultado,
+	      beneficio,
+	      profiles: { email: currentEmail || 'preview.local' }
+	    };
+	    bets.unshift(nb);
+	    return nb;
+	  }
+	  const r = await sbFetch('/rest/v1/bets?select=*', {
+	    method:'POST',
+	    headers:{'Prefer':'return=representation'},
+	    body:JSON.stringify({user_id:currentUserId,partido,mercado,cuota,stake,resultado,beneficio})
+	  });
+	  if (!r.ok) throw new Error(JSON.stringify(r.data));
+	  const nb = Array.isArray(r.data) ? r.data[0] : r.data;
+	  bets.unshift(nb);
+	  return nb;
+	}
 
 /* ============================================================
    VISTAS DE ADMIN (todos / usuario concreto / solo las mías)
@@ -755,9 +788,9 @@ function onAdminScope() {
   renderTable(); renderMetrics(); renderChart();
 }
 
-async function addBet() {
-  let partido=document.getElementById('fp').value.trim();
-  let mercado=document.getElementById('fm').value;
+	async function addBet() {
+	  let partido=document.getElementById('fp').value.trim();
+	  let mercado=document.getElementById('fm').value;
   let cuota=parseFloat(document.getElementById('fc').value);
   let stake=parseFloat(document.getElementById('fs').value);
   let resultado=document.getElementById('fr').value;
@@ -773,24 +806,249 @@ async function addBet() {
     resultado=document.getElementById('fcr').value;
   }
 
-  if (!partido||isNaN(cuota)||isNaN(stake)||cuota<1.01||stake<=0){toast('Rellena partido, cuota y stake','err');return;}
-  if (!currentUserId){toast('No se ha podido identificar el usuario. Vuelve a entrar.','err');return;}
-  const btn=document.getElementById('btn-add');btn.disabled=true;
-  const beneficio=benefitFor(resultado,cuota,stake);
-  const r=await sbFetch('/rest/v1/bets?select=*',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify({user_id:currentUserId,partido,mercado,cuota,stake,resultado,beneficio})});
-  btn.disabled=false;
-  if (!r.ok){toast('Error: '+JSON.stringify(r.data),'err');return;}
-  const nb=Array.isArray(r.data)?r.data[0]:r.data;
-  bets.unshift(nb);
-  if (betMode==='combo') {
-    clearComboForm();
-  } else {
-    document.getElementById('fp').value='';document.getElementById('fc').value='';document.getElementById('fs').value='';document.getElementById('fr').value='pendiente';
-  }
-  renderTable();renderMetrics();renderChart();toast('Apuesta añadida','ok');
-}
+	  if (!partido||isNaN(cuota)||isNaN(stake)||cuota<1.01||stake<=0){toast('Rellena partido, cuota y stake','err');return;}
+	  const btn=document.getElementById('btn-add');btn.disabled=true;
+	  try {
+	    await saveBetRecord({partido,mercado,cuota,stake,resultado});
+	    if (betMode==='combo') {
+	      clearComboForm();
+	    } else {
+	      document.getElementById('fp').value='';document.getElementById('fc').value='';document.getElementById('fs').value='';document.getElementById('fr').value='pendiente';
+	    }
+	    refreshAdminScope();renderTable();renderMetrics();renderChart();toast('Apuesta añadida','ok');
+	  } catch(e) {
+	    toast('Error: '+e.message,'err');
+	  } finally {
+	    btn.disabled=false;
+	  }
+	}
 
-async function changeResult(id,val) {
+	function setImportStatus(msg) {
+	  const el = document.getElementById('import-status');
+	  if (el) el.textContent = msg;
+	}
+
+	function toDec(v) {
+	  const n = parseFloat(String(v || '').replace(',', '.').replace(/[^\d.]/g, ''));
+	  return isNaN(n) ? null : n;
+	}
+
+	function normalizeOcrText(text) {
+	  return String(text || '')
+	    .replace(/[|]/g, ' ')
+	    .replace(/\bCREAR\s+APUESTA\b/gi, 'CREAR APUESTA')
+	    .replace(/\s+/g, ' ')
+	    .trim();
+	}
+
+	function ocrLines(text) {
+	  return String(text || '')
+	    .split(/\r?\n/)
+	    .map(l => l.replace(/\s+/g, ' ').trim())
+	    .filter(Boolean);
+	}
+
+	function parseResultFromText(text) {
+	  const n = normTxt(text);
+	  if (/\bperdida\b|\bperdido\b/.test(n)) return 'perdida';
+	  if (/\bganada\b|\bganado\b/.test(n)) return 'ganada';
+	  if (/\bnula\b|\bvoid\b|\bdevuelta\b/.test(n)) return 'void';
+	  return 'pendiente';
+	}
+
+	function firstMoneyBeforeCreate(text) {
+	  const m = text.match(/(\d+[,.]\d{2})\s*€?\s*Crear apuesta/i);
+	  return m ? toDec(m[1]) : null;
+	}
+
+	function firstStake(text) {
+	  const m = text.match(/(?:Importe|Imp[:.]?)\s*(\d+[,.]\d{2})/i);
+	  return m ? toDec(m[1]) : firstMoneyBeforeCreate(text);
+	}
+
+	function firstWinnings(text) {
+	  const m = text.match(/Ganancias\s*(\d+[,.]\d{2})/i);
+	  return m ? toDec(m[1]) : null;
+	}
+
+	function comboOdds(text) {
+	  const m = text.match(/CREAR APUESTA\s*(\d+[,.]\d{1,2})/i);
+	  return m ? toDec(m[1]) : null;
+	}
+
+	function inferOdds(text, stake, winnings) {
+	  if (stake && winnings && winnings > 0) return +(winnings / stake).toFixed(2);
+	  const nums = [...text.matchAll(/\b(\d+[,.]\d{2})\b/g)]
+	    .map(m => toDec(m[1]))
+	    .filter(n => n && n >= 1.01 && n <= 100);
+	  const filtered = nums.filter(n => Math.abs(n - (stake || -1)) > 0.01 && Math.abs(n - (winnings || -1)) > 0.01);
+	  return filtered.find(n => n >= 1.2 && n <= 15) || filtered[0] || null;
+	}
+
+	function extractMatchFromText(text) {
+	  const score = text.match(/([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,})\s+\d+\s*[-–]\s*\d+\s+([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,})/);
+	  if (score) return score[1].trim() + ' vs ' + score[2].trim();
+	  const colon = text.match(/(?:Supercuota|Gran Supercuota|La Supercuota|La Gran Supercuota)[: ]+([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,})\s*[-–]\s*([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,})/i);
+	  if (colon) return colon[1].trim() + ' vs ' + colon[2].trim();
+	  const plain = text.match(/([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,})\s*[-–]\s*([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,})/);
+	  if (plain) return plain[1].trim() + ' vs ' + plain[2].trim();
+	  return 'Captura importada';
+	}
+
+	function cleanSelectionLine(line) {
+	  return line
+	    .replace(/^[✓✔✕×x]\s*/i, '')
+	    .replace(/^[^\p{L}\d]+/u, '')
+	    .replace(/\s+\d+[,.]\d{2}\s*$/, '')
+	    .trim();
+	}
+
+	function comboRelevantLines(text) {
+	  const lines = ocrLines(text);
+	  const start = lines.findIndex(l => /crear\s+apuesta/i.test(l));
+	  const scoped = start >= 0 ? lines.slice(start) : lines;
+	  const end = scoped.findIndex((l, i) => i > 0 && /(?:Importe|Imp[:.]?|Ganancias|Ref:)/i.test(l));
+	  return end > 0 ? scoped.slice(0, end) : scoped;
+	}
+
+	function isScoreboardLine(line) {
+	  const n = normTxt(line);
+	  if (/^\d+\s*[-–]\s*\d+$/.test(n)) return true;
+	  if (/^[a-z\s]{3,22}\s+\d+$/.test(n)) return true;
+	  if (/^\d+\s+[a-z\s]{3,22}$/.test(n)) return true;
+	  if (/^\d+\s+[a-z\s]{3,22}\s+\d+$/.test(n)) return true;
+	  return false;
+	}
+
+	function isMobileNoiseLine(line) {
+	  const n = normTxt(line);
+	  if (/\b\d{1,2}:\d{2}\b/.test(n)) return true;
+	  if (/\b5g\b|\bbateria\b|\bmis apuestas\b|\bpendientes\b|\bcerrar apuesta\b|\bdirecto\b|\bcasino\b|\bdeportes\b|\bcompartir\b/.test(n)) return true;
+	  if (/^\d+[,.]\d{2}\s*€?\s*(crear apuesta)?$/.test(n)) return true;
+	  if (/^\d+[,.]\d{2}€?\s+crear apuesta/.test(n)) return true;
+	  return false;
+	}
+
+	function isComboSelectionLine(line) {
+	  const n = normTxt(line);
+	  if (!line || n.length < 8) return false;
+	  if (isMobileNoiseLine(line) || isScoreboardLine(line)) return false;
+	  if (/crear apuesta|compartir|ganancias|importe|imp:|perdida|ganada|mis apuestas|pendientes|cerrar apuesta|directo|casino|deportes|ref:|sustituto/.test(n)) return false;
+	  if (/jugador -|equipo local -|equipo visitante -|encuentro -|otras opciones|opciones|^\d+$|^\d+[,.]\d+$/.test(n)) return false;
+	  return /:|mas de|menos de|anotara|asistira|paradas|remates|tarjetas|fuera|goles|corners|corner|portero|francia|ecuador|alemania|noruega/.test(n);
+	}
+
+	function parseComboBet(text) {
+	  const lines = comboRelevantLines(text);
+	  const stake = firstStake(text);
+	  const cuota = comboOdds(text) || inferOdds(text, stake, firstWinnings(text));
+	  const resultado = parseResultFromText(text);
+	  const selections = lines.map(cleanSelectionLine).filter(isComboSelectionLine);
+	  if (!stake || !cuota || selections.length < 2) return null;
+	  const partido = 'Combinada: ' + selections.map((s, i) => `${i + 1}) ${s}`).join(' | ');
+	  return { partido, mercado:'Combinada', cuota, stake, resultado };
+	}
+
+	function splitSimpleBlocks(text) {
+	  const parts = [];
+	  const re = /(Ganada|Perdida|Pendiente|Nula)\s+Simple/gi;
+	  const matches = [...text.matchAll(re)];
+	  if (!matches.length) return [text];
+	  matches.forEach((m, i) => {
+	    const start = m.index;
+	    const end = matches[i + 1] ? matches[i + 1].index : text.length;
+	    parts.push(text.slice(start, end));
+	  });
+	  return parts;
+	}
+
+	function selectionFromSimpleBlock(block) {
+	  const lines = ocrLines(block).map(cleanSelectionLine);
+	  const useful = lines.filter(line => {
+	    const n = normTxt(line);
+	    if (/ganada simple|perdida simple|pendiente simple|en directo|importe|ganancias|ref:|\d{1,2}:\d{2}|junio|^\d+[,.]\d+$/.test(n)) return false;
+	    if (/^\d+\s*[-–]\s*\d+/.test(n)) return false;
+	    return line.length > 8;
+	  });
+	  return useful.slice(0, 2).join(' ').replace(/\s+/g, ' ').trim() || 'Apuesta importada';
+	}
+
+	function parseSimpleBet(block) {
+	  const stake = firstStake(block);
+	  const winnings = firstWinnings(block);
+	  const cuota = inferOdds(block, stake, winnings);
+	  const resultado = parseResultFromText(block);
+	  if (!stake || !cuota) return null;
+	  return {
+	    partido: extractMatchFromText(block),
+	    mercado: selectionFromSimpleBlock(block),
+	    cuota,
+	    stake,
+	    resultado
+	  };
+	}
+
+	function parseOcrBets(rawText) {
+	  const text = normalizeOcrText(rawText);
+	  if (!text) return [];
+	  if (/CREAR APUESTA/i.test(text)) {
+	    const combo = parseComboBet(rawText);
+	    return combo ? [combo] : [];
+	  }
+	  return splitSimpleBlocks(rawText).map(parseSimpleBet).filter(Boolean);
+	}
+
+	async function runOcr(file, onProgress) {
+	  if (!window.Tesseract) throw new Error('OCR no cargado. Revisa conexión y recarga la página.');
+	  const res = await Tesseract.recognize(file, 'spa+eng', {
+	    logger: m => {
+	      if (m.status && onProgress) onProgress(m.status, m.progress || 0);
+	    }
+	  });
+	  return res && res.data ? res.data.text : '';
+	}
+
+	async function importScreenshots() {
+	  const input = document.getElementById('shot-input');
+	  const btn = document.getElementById('btn-import');
+	  const files = [...(input.files || [])];
+	  if (!files.length) { toast('Sube al menos una captura','err'); return; }
+	  if (!currentUserId) { toast('Entra con tu cuenta antes de importar','err'); return; }
+	  btn.disabled = true;
+	  let imported = 0;
+	  let parsedTotal = 0;
+	  try {
+	    for (let i = 0; i < files.length; i++) {
+	      const file = files[i];
+	      setImportStatus(`Leyendo ${i + 1}/${files.length}: ${file.name}`);
+	      const text = await runOcr(file, (status, progress) => {
+	        const pct = Math.round(progress * 100);
+	        setImportStatus(`Leyendo ${i + 1}/${files.length}: ${status} ${pct ? pct + '%' : ''}`);
+	      });
+	      const parsed = parseOcrBets(text);
+	      parsedTotal += parsed.length;
+	      if (!parsed.length) {
+	        setImportStatus(`No pude detectar apuestas en ${file.name}. Prueba con una captura más recortada.`);
+	        continue;
+	      }
+	      for (const bet of parsed) {
+	        await saveBetRecord(bet);
+	        imported++;
+	      }
+	    }
+	    refreshAdminScope();renderTable();renderMetrics();renderChart();
+	    setImportStatus(imported ? `Importadas ${imported} apuesta(s).` : 'No se importó ninguna apuesta.');
+	    toast(imported ? `${imported} apuesta(s) importada(s)` : 'No se detectaron apuestas', imported ? 'ok' : 'err');
+	    if (imported) input.value = '';
+	  } catch(e) {
+	    setImportStatus('Error importando: ' + e.message);
+	    toast('Error importando captura','err');
+	  } finally {
+	    btn.disabled = false;
+	  }
+	}
+
+	async function changeResult(id,val) {
   const bet=bets.find(b=>b.id===id);
   const body={resultado:val};
   if (bet) body.beneficio=benefitFor(val,bet.cuota,bet.stake);
@@ -969,9 +1227,9 @@ function useSignal(id) {
   if (!s) return;
   setCardCollapsed('card-new-bet', false);
   setBetMode('single');
-  document.getElementById('fp').value = s.home_team + ' vs ' + s.away_team;
-  const mapped = MODEL_TO_TRACKER[s.mercado];
-  document.getElementById('fm').value = mapped && MARKET_OPTIONS.includes(mapped) ? mapped : 'Jugador';
+	  document.getElementById('fp').value = s.home_team + ' vs ' + s.away_team;
+	  const mapped = MODEL_TO_TRACKER[s.mercado];
+	  document.getElementById('fm').value = mapped && MARKET_OPTIONS.includes(mapped) ? mapped : 'Otro';
   document.getElementById('fc').value = parseFloat(s.cuota).toFixed(2);
   updateEdgeHint();
   document.getElementById('fs').focus();
@@ -1021,189 +1279,6 @@ function updateEdgeHint() {
 
 ['fp', 'fc'].forEach(id => document.getElementById(id).addEventListener('input', updateEdgeHint));
 document.getElementById('fm').addEventListener('change', updateEdgeHint);
-
-
-/* ============================================================
-   PROPS MOVIL (player_prop_radar subido a Supabase)
-   Subida por: python -m src.evaluation.player_prop_radar_push
-   ============================================================ */
-let playerProps = [];
-const PROP_PREVIEW_LIMIT = 20;
-const expandedPropMatches = {};
-const expandedPropLists = {};
-
-const PROP_ACTION_LABEL = {
-  manual_review_if_odds_available: 'REVISAR',
-  radar_watch: 'WATCH',
-  card_radar_watch: 'AMARILLA',
-  longshot_manual_only: 'CUOTA ALTA',
-  low_confidence_review: 'PAPER'
-};
-
-const PROP_ACTION_CLASS = {
-  manual_review_if_odds_available: 'sig-core',
-  radar_watch: 'sig-watch',
-  card_radar_watch: 'sig-review',
-  longshot_manual_only: 'sig-longshot',
-  low_confidence_review: 'sig-paper'
-};
-
-const PROP_MARKET_LABEL = {
-  shots: 'Tiros',
-  shots_on_target: 'Tiros a puerta',
-  fouls_committed: 'Faltas cometidas',
-  tackles: 'Entradas',
-  yellow_card: 'Tarjeta amarilla',
-  goalkeeper_saves: 'Paradas'
-};
-
-function propBool(v) {
-  if (v === true || v === 1) return true;
-  return String(v).trim().toLowerCase() === 'true' || String(v).trim() === '1';
-}
-
-function propMatchKey(p) {
-  return (p.home_team || '') + ' vs ' + (p.away_team || '');
-}
-
-function propRuleClass(p) {
-  const action = String(p.tracking_action || '');
-  const status = String(p.lineup_status || '');
-  if (action === 'manual_review_if_odds_available' && ['locked_starter','probable_starter','confirmed_starter'].includes(status)) return 'ok';
-  if (action === 'low_confidence_review' || !propBool(p.paper_tracking_allowed)) return 'paper';
-  return '';
-}
-
-function propBadgeClass(p) {
-  if (!propBool(p.paper_tracking_allowed)) return 'sig-paper';
-  return PROP_ACTION_CLASS[p.tracking_action] || 'sig-paper';
-}
-
-function togglePropMatch(key) {
-  key = decodeURIComponent(key);
-  expandedPropMatches[key] = expandedPropMatches[key] === false;
-  renderPlayerProps();
-}
-
-function showAllPropsForMatch(key) {
-  key = decodeURIComponent(key);
-  expandedPropLists[key] = true;
-  renderPlayerProps();
-}
-
-function propRowHtml(p) {
-  const partido = esc(propMatchKey(p));
-  const prob = p.model_probability != null ? (parseFloat(p.model_probability) * 100).toFixed(1) + '%' : '—';
-  const fair = p.fair_odds != null ? parseFloat(p.fair_odds).toFixed(2) : '—';
-  const min = p.min_odds_review != null ? parseFloat(p.min_odds_review).toFixed(2) : '—';
-  const mins = p.expected_minutes != null ? parseFloat(p.expected_minutes).toFixed(0) + ' min' : '—';
-  const label = PROP_ACTION_LABEL[p.tracking_action] || (p.tracking_action || 'PROP');
-  const ruleCls = propRuleClass(p);
-  const badgeCls = propBadgeClass(p);
-
-  return '<div class="prop-row">' +
-    '<div class="prop-main">' +
-      '<div class="prop-title">' + esc(p.player_name) + ' · ' + esc(p.market_label) + '</div>' +
-      '<div class="prop-sub">' + partido + ' · ' + esc(p.team) + ' · ' + esc(p.data_quality_tier || '—') + ' · ' + mins + ' · prob ' + prob + '</div>' +
-      '<span class="prop-rule ' + ruleCls + '">' + esc(p.lineup_rule || 'revisar alineacion') + '</span> ' +
-      '<span class="sig-badge ' + badgeCls + '">' + esc(label) + '</span>' +
-      '<div class="prop-sub">' + esc(p.mobile_action || '') + '</div>' +
-    '</div>' +
-    '<div class="prop-odds">' +
-      '<strong>' + min + '</strong>' +
-      'Min rev.<br>Justa ' + fair +
-    '</div>' +
-  '</div>';
-}
-
-async function loadPlayerProps() {
-  let all = [];
-  for (let off = 0; ; off += 1000) {
-    const r = await sbFetch('/rest/v1/player_prop_radar?select=*&order=match_number.asc,min_odds_review.asc&limit=1000&offset=' + off);
-    if (!r.ok) {
-      document.getElementById('prop-emp').textContent = 'No se pudieron cargar props (¿tabla player_prop_radar creada?).';
-      document.getElementById('prop-emp').style.display = 'block';
-      return;
-    }
-    const chunk = Array.isArray(r.data) ? r.data : [];
-    all = all.concat(chunk);
-    if (chunk.length < 1000) break;
-  }
-  playerProps = all;
-  renderPlayerProps();
-}
-
-function renderPlayerProps() {
-  const pc = document.getElementById('prop-count');
-  const allMatches = [...new Set(playerProps.map(propMatchKey).filter(Boolean))].sort();
-  const actionableCount = playerProps.filter(p => propBool(p.paper_tracking_allowed)).length;
-  if (pc) pc.textContent = playerProps.length ? `${playerProps.length} · ${allMatches.length}p · ${actionableCount} ok` : '';
-
-  const matchEl = document.getElementById('fprop-match');
-  const prevM = matchEl.value;
-  matchEl.innerHTML = '<option value="">Todos los partidos</option>' + allMatches.map(m => `<option value="${esc(m)}"${m===prevM?' selected':''}>${esc(m)}</option>`).join('');
-
-  const marketEl = document.getElementById('fprop-market');
-  const prevMarket = marketEl ? marketEl.value : '';
-  if (marketEl) {
-    const markets = [...new Set(playerProps.map(p => p.market).filter(Boolean))].sort((a, b) => (PROP_MARKET_LABEL[a] || a).localeCompare(PROP_MARKET_LABEL[b] || b));
-    marketEl.innerHTML = '<option value="">Todos los mercados</option>' + markets.map(m => `<option value="${esc(m)}"${m===prevMarket?' selected':''}>${esc(PROP_MARKET_LABEL[m] || m)}</option>`).join('');
-  }
-
-  const fm = matchEl.value;
-  const fmk = marketEl ? marketEl.value : '';
-  const fa = document.getElementById('fprop-action').value;
-  const fc = document.getElementById('fprop-confidence')?.value || 'actionable';
-  const filtered = playerProps.filter(p => {
-    const paperAllowed = propBool(p.paper_tracking_allowed);
-    return (!fm || propMatchKey(p) === fm) &&
-      (!fmk || p.market === fmk) &&
-      (!fa || p.tracking_action === fa) &&
-      (fc === 'all' || (fc === 'paper' ? !paperAllowed : paperAllowed));
-  });
-
-  const list = document.getElementById('prop-list');
-  const emp = document.getElementById('prop-emp');
-  const meta = document.getElementById('prop-meta');
-  if (!filtered.length) {
-    list.innerHTML = '';
-    emp.style.display = 'block';
-    emp.textContent = playerProps.length ? 'Sin props en este filtro.' : 'Sin props. Sube el radar de jugador y pulsa Actualizar.';
-    meta.textContent = '';
-    return;
-  }
-  emp.style.display = 'none';
-
-  const grouped = new Map();
-  filtered.forEach(p => {
-    const key = propMatchKey(p);
-    if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key).push(p);
-  });
-
-  list.innerHTML = [...grouped.entries()].map(([key, props]) => {
-    const isOpen = expandedPropMatches[key] !== false;
-    const showAll = expandedPropLists[key] || Boolean(fm);
-    const shown = showAll ? props : props.slice(0, PROP_PREVIEW_LIMIT);
-    const hidden = props.length - shown.length;
-    const cls = isOpen ? 'prop-match' : 'prop-match collapsed';
-    const keyArg = encodeURIComponent(key);
-    return '<div class="' + cls + '">' +
-      '<button class="prop-match-head" type="button" onclick="togglePropMatch(\'' + keyArg + '\')">' +
-        '<span class="prop-match-title">' + esc(key) + '</span>' +
-        '<span class="prop-match-count">' + props.length + ' props · ' + (isOpen ? '▾' : '▸') + '</span>' +
-      '</button>' +
-      '<div class="prop-match-body">' +
-        shown.map(propRowHtml).join('') +
-        (hidden > 0 ? '<button class="prop-more" type="button" onclick="showAllPropsForMatch(\'' + keyArg + '\')">Ver todas (' + hidden + ' más)</button>' : '') +
-      '</div>' +
-    '</div>';
-  }).join('');
-
-  const last = playerProps.reduce((m, p) => (p.updated_at && p.updated_at > m ? p.updated_at : m), '');
-  meta.textContent = (playerProps.length + ' props cargadas · ' + filtered.length + ' visibles · ' + grouped.size + ' partidos · ' + actionableCount + ' accionables.') +
-    (last ? (' Ultima actualizacion: ' + new Date(last).toLocaleString('es-ES')) : '');
-}
 
 
 /* ============================================================
